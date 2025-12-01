@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Material Icons - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .icon-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .icon-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .icon-demo {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .icon-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .icon-category {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #333;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+        
+        .demo-nav {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .demo-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .demo-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .demo-nav a:hover {
+            background: #5a6fd8;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-container {
+                padding: 1rem;
+            }
+            
+            .demo-header h1 {
+                font-size: 2rem;
+            }
+            
+            .demo-header p {
+                font-size: 1rem;
+            }
+            
+            .icon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .icon-demo {
+                font-size: 2rem;
+            }
+            
+            .demo-nav ul {
+                flex-direction: column;
+            }
+            
+            .demo-nav a {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Demo Header -->
+        <div class="demo-header">
+            <h1><i class="material-icons" style="vertical-align: middle; margin-right: 12px;">emoji_objects</i> Material Icons Demo</h1>
+            <p>Ejemplos de Google Material Icons implementados en EduConecta</p>
+        </div>
+
+        <!-- Navigation Demo -->
+        <div class="demo-nav">
+            <h3 style="margin-bottom: 1rem; color: #333;">Navegación con Icons</h3>
+            <ul>
+                <li><a href="#"><i class="material-icons">dashboard</i> Dashboard</a></li>
+                <li><a href="#"><i class="material-icons">menu_book</i> Cursos</a></li>
+                <li><a href="#"><i class="material-icons">people</i> Usuarios</a></li>
+                <li><a href="#"><i class="material-icons">business</i> Instituciones</a></li>
+                <li><a href="#"><i class="material-icons">payments</i> Pagos</a></li>
+                <li><a href="#"><i class="material-icons">assessment</i> Reportes</a></li>
+                <li><a href="#"><i class="material-icons">settings</i> Configuración</a></li>
+                <li><a href="#"><i class="material-icons">security</i> Seguridad</a></li>
+            </ul>
+        </div>
+
+        <!-- Action Icons -->
+        <h2 class="section-title">Icons de Acción</h2>
+        <div class="icon-grid">
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">add</i></div>
+                <div class="icon-name">add</div>
+                <div class="icon-category">Acción</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">edit</i></div>
+                <div class="icon-name">edit</div>
+                <div class="icon-category">Acción</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">delete</i></div>
+                <div class="icon-name">delete</div>
+                <div class="icon-category">Acción</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">save</i></div>
+                <div class="icon-name">save</div>
+                <div class="icon-category">Acción</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">download</i></div>
+                <div class="icon-name">download</div>
+                <div class="icon-category">Acción</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">upload</i></div>
+                <div class="icon-name">upload</div>
+                <div class="icon-category">Acción</div>
+            </div>
+        </div>
+
+        <!-- Education Icons -->
+        <h2 class="section-title">Icons Educativos</h2>
+        <div class="icon-grid">
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">school</i></div>
+                <div class="icon-name">school</div>
+                <div class="icon-category">Educación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">menu_book</i></div>
+                <div class="icon-name">menu_book</div>
+                <div class="icon-category">Educación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">local_library</i></div>
+                <div class="icon-name">local_library</div>
+                <div class="icon-category">Educación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">emoji_events</i></div>
+                <div class="icon-name">emoji_events</div>
+                <div class="icon-category">Educación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">grade</i></div>
+                <div class="icon-name">grade</div>
+                <div class="icon-category">Educación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">laptop</i></div>
+                <div class="icon-name">laptop</div>
+                <div class="icon-category">Educación</div>
+            </div>
+        </div>
+
+        <!-- Communication Icons -->
+        <h2 class="section-title">Icons de Comunicación</h2>
+        <div class="icon-grid">
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">email</i></div>
+                <div class="icon-name">email</div>
+                <div class="icon-category">Comunicación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">phone</i></div>
+                <div class="icon-name">phone</div>
+                <div class="icon-category">Comunicación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">forum</i></div>
+                <div class="icon-name">forum</div>
+                <div class="icon-category">Comunicación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">chat</i></div>
+                <div class="icon-name">chat</div>
+                <div class="icon-category">Comunicación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">notifications</i></div>
+                <div class="icon-name">notifications</div>
+                <div class="icon-category">Comunicación</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">campaign</i></div>
+                <div class="icon-name">campaign</div>
+                <div class="icon-category">Comunicación</div>
+            </div>
+        </div>
+
+        <!-- Status Icons -->
+        <h2 class="section-title">Icons de Estado</h2>
+        <div class="icon-grid">
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">check_circle</i></div>
+                <div class="icon-name">check_circle</div>
+                <div class="icon-category">Estado</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">cancel</i></div>
+                <div class="icon-name">cancel</div>
+                <div class="icon-category">Estado</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">warning</i></div>
+                <div class="icon-name">warning</div>
+                <div class="icon-category">Estado</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">error</i></div>
+                <div class="icon-name">error</div>
+                <div class="icon-category">Estado</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">info</i></div>
+                <div class="icon-name">info</div>
+                <div class="icon-category">Estado</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">help</i></div>
+                <div class="icon-name">help</div>
+                <div class="icon-category">Estado</div>
+            </div>
+        </div>
+
+        <!-- System Icons -->
+        <h2 class="section-title">Icons del Sistema</h2>
+        <div class="icon-grid">
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">settings</i></div>
+                <div class="icon-name">settings</div>
+                <div class="icon-category">Sistema</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">security</i></div>
+                <div class="icon-name">security</div>
+                <div class="icon-category">Sistema</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">backup</i></div>
+                <div class="icon-name">backup</div>
+                <div class="icon-category">Sistema</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">build</i></div>
+                <div class="icon-name">build</div>
+                <div class="icon-category">Sistema</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">integration_instructions</i></div>
+                <div class="icon-name">integration_instructions</div>
+                <div class="icon-category">Sistema</div>
+            </div>
+            <div class="icon-card">
+                <div class="icon-demo"><i class="material-icons">support_agent</i></div>
+                <div class="icon-name">support_agent</div>
+                <div class="icon-category">Sistema</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 12px;">
+            <p style="color: #666;">
+                <i class="material-icons" style="vertical-align: middle; margin-right: 8px;">check_circle</i>
+                Todos los icons han sido implementados con Google Material Icons
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #999;">
+                <i class="material-icons" style="vertical-align: middle; margin-right: 4px; font-size: 16px;">devices</i>
+                100% Responsive - Optimizado para todos los dispositivos
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

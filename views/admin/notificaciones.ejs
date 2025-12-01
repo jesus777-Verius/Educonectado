@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Notificaciones - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones" class="active"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">campaign</i> Gestión de Notificaciones</h1>
+                        <p>Administra el envío de notificaciones a usuarios</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Enviar Notificación</button>
+                </div>
+            </div>
+
+            <!-- Notification Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">email</i></div>
+                    <div class="stat-info">
+                        <h3>3,456</h3>
+                        <p>Notificaciones Enviadas Hoy</p>
+                        <div style="font-size: 0.8rem; color: #28a745;">↑ 15% vs ayer</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">check_circle</i></div>
+                    <div class="stat-info">
+                        <h3>89%</h3>
+                        <p>Tasa de Apertura</p>
+                        <div style="font-size: 0.8rem; color: #667eea;">Promedio mensual</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">phone</i></div>
+                    <div class="stat-info">
+                        <h3>1,234</h3>
+                        <p>Notificaciones Push</p>
+                        <div style="font-size: 0.8rem; color: #ffc107;">Últimas 24 horas</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">warning</i></div>
+                    <div class="stat-info">
+                        <h3>23</h3>
+                        <p>Fallidos</p>
+                        <div style="font-size: 0.8rem; color: #dc3545;">Requieren revisión</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Notification -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">add</i> Crear Nueva Notificación</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Notificación *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el tipo</option>
+                                <option value="general">General</option>
+                                <option value="course">Curso</option>
+                                <option value="payment">Pago</option>
+                                <option value="system">Sistema</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="urgent">Urgente</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Audiencia *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona la audiencia</option>
+                                <option value="all">Todos los usuarios</option>
+                                <option value="students">Solo estudiantes</option>
+                                <option value="teachers">Solo docentes</option>
+                                <option value="admins">Solo administradores</option>
+                                <option value="custom">Personalizado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Título *</label>
+                            <input type="text" class="form-control" placeholder="Título de la notificación" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Prioridad</label>
+                            <select class="form-control">
+                                <option value="low">Baja</option>
+                                <option value="medium" selected>Media</option>
+                                <option value="high">Alta</option>
+                                <option value="urgent">Urgente</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mensaje *</label>
+                        <textarea class="form-control" rows="4" placeholder="Escribe el mensaje de la notificación..." required></textarea>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">email</i> Canales de Envío</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Email</div>
+                                <div style="font-size: 0.9rem; color: #666;">Enviar notificación por correo electrónico</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Notificaciones Push</div>
+                                <div style="font-size: 0.9rem; color: #666;">Enviar notificación al dispositivo móvil</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">SMS</div>
+                                <div style="font-size: 0.9rem; color: #666;">Enviar mensaje de texto (solo urgente)</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Notificación en Plataforma</div>
+                                <div style="font-size: 0.9rem; color: #666;">Mostrar en el panel de notificaciones</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">schedule</i> Programación de Envío</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Fecha de Envío</label>
+                                <input type="datetime-local" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Envío Recurrente</label>
+                                <select class="form-control">
+                                    <option value="no">No</option>
+                                    <option value="daily">Diario</option>
+                                    <option value="weekly">Semanal</option>
+                                    <option value="monthly">Mensual</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;"><i class="material-icons">assignment</i> Vista Previa</button>
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Cancelar</button>
+                        <button type="submit" class="btn btn-primary"><i class="material-icons">email</i> Enviar Notificación</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Notification Templates -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">assignment</i> Plantillas de Notificación</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">school</i> Bienvenida de Nuevo Curso</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Para nuevos estudiantes inscritos</p>
+                                </div>
+                                <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Curso</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">email</i> Email + Push</span>
+                                    <span style="margin-left: 1rem;">👁️ 1,234 usos</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">star</i> 4.8/5</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Usar Plantilla</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">💳 Recordatorio de Pago</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Para pagos pendientes</p>
+                                </div>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pago</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">email</i> Email + SMS</span>
+                                    <span style="margin-left: 1rem;">👁️ 890 usos</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">star</i> 4.6/5</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Usar Plantilla</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">notifications</i> Mantenimiento del Sistema</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Para avisos de mantenimiento</p>
+                                </div>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Sistema</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">email</i> Email + Push + SMS</span>
+                                    <span style="margin-left: 1rem;">👁️ 156 usos</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">star</i> 4.9/5</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Usar Plantilla</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Notifications -->
+            <div class="dashboard-card">
+                <h2>📬 Notificaciones Recientes</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Notificación</th>
+                                <th style="padding: 1rem; text-align: center;">Tipo</th>
+                                <th style="padding: 1rem; text-align: center;">Audiencia</th>
+                                <th style="padding: 1rem; text-align: center;">Enviado</th>
+                                <th style="padding: 1rem; text-align: center;">Apertura</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;"><i class="material-icons">school</i> Nuevo Curso Disponible</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital Avanzado ya está disponible</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Curso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Estudiantes</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">28 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">10:00 AM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">78%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Enviado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Repetir</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;"><i class="material-icons">notifications</i> Mantenimiento Programado</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Sistema en mantenimiento el 15 de diciembre</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Sistema</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Todos</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">27 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">03:00 PM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">92%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Enviado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Cancelar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">💳 Pago Procesado Exitosamente</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Tu pago ha sido procesado correctamente</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pago</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Individual</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">26 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">11:45 AM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">85%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Enviado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Reenviar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Notification Analytics -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Análisis de Notificaciones</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">show_chart</i> Tasas de Apertura por Tipo</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">email</i> Email</span>
+                                    <span style="font-weight: bold; color: #28a745;">78%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">phone</i> Push</span>
+                                    <span style="font-weight: bold; color: #667eea;">92%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">phone</i> SMS</span>
+                                    <span style="font-weight: bold; color: #ffc107;">95%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">notifications</i> Plataforma</span>
+                                    <span style="font-weight: bold; color: #28a745;">67%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 67%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Notificaciones por Categoría</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">menu_book</i> Cursos</span>
+                                    <span style="font-weight: bold; color: #667eea;">34%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 34%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">payments</i> Pagos</span>
+                                    <span style="font-weight: bold; color: #667eea;">28%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 28%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">build</i> Sistema</span>
+                                    <span style="font-weight: bold; color: #667eea;">23%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 23%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">campaign</i> Marketing</span>
+                                    <span style="font-weight: bold; color: #667eea;">15%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scheduled Notifications -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">schedule</i> Notificaciones Programadas</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Notificación</th>
+                                <th style="padding: 1rem; text-align: center;">Tipo</th>
+                                <th style="padding: 1rem; text-align: center;">Audiencia</th>
+                                <th style="padding: 1rem; text-align: center;">Fecha Envío</th>
+                                <th style="padding: 1rem; text-align: center;">Frecuencia</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;"><i class="material-icons">calendar_today</i> Recordatorio Semanal</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Recordatorio de progreso de cursos</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Curso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Estudiantes</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">1 Dic 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">09:00 AM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Semanal</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Programado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Editar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Cancelar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">🎄 Promoción Navideña</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Ofertas especiales de fin de año</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Marketing</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Todos</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">15 Dic 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">10:00 AM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Único</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Programado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Editar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Cancelar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Enviar Notificación</button>
+                    <button class="btn btn-outline"><i class="material-icons">assignment</i> Ver Plantillas</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline"><i class="material-icons">schedule</i> Gestión Programada</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Configurar Email</button>
+                    <button class="btn btn-outline"><i class="material-icons">phone</i> Configurar Push</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

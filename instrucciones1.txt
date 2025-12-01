@@ -1,0 +1,178 @@
+Roles de Usuarios en la Plataforma
+1. Administrador General
+Acceso: Panel de control completo
+
+Funciones: Gestión global, reportes financieros, supervisión de todas las áreas
+
+2. Coordinador Académico
+Acceso: Módulo académico avanzado
+
+Funciones: Crear programas, asignar docentes, revisar métricas educativas
+
+3. Diseñador Instruccional
+Acceso: Editor de contenidos avanzado
+
+Funciones: Diseñar cursos, subir recursos multimedia, crear evaluaciones
+
+4. Facilitador/Docente
+Acceso: Aula virtual asignada
+
+Funciones: Impartir clases, calificar, interactuar con estudiantes
+
+5. Estudiante
+Acceso: Plataforma de aprendizaje
+
+Funciones: Tomar cursos, realizar actividades, ver progreso
+
+6. Soporte Técnico
+Acceso: Sistema de tickets y monitoreo
+
+Funciones: Resolver problemas técnicos, mantener plataforma
+
+7. Cliente Institucional
+Acceso: Panel corporativo
+
+Funciones: Gestionar grupos de estudiantes, ver reportes de progreso
+
+🎯 Tipos de Clientes
+1. Clientes Individuales
+Perfil: Estudiantes particulares, profesionales
+
+Modelo: Suscripción mensual o pago por curso
+
+Características: Acceso a catálogo abierto
+
+2. Instituciones Educativas
+Perfil: Escuelas, universidades, institutos
+
+Modelo: Licencia anual por usuarios
+
+Características: LMS personalizado, marca blanca
+
+3. Empresas Corporativas
+Perfil: Empresas que capacitan empleados
+
+Modelo: Contrato por volumen de usuarios
+
+Características: Cursos personalizados, API integración
+
+4. Organizaciones Gubernamentales
+Perfil: Ministerios, entes públicos
+
+Modelo: Proyectos especiales
+
+Características: Programas masivos, reporting específico
+
+5. ONG y Fundaciones
+Perfil: Organizaciones sin fines de lucro
+
+Modelo: Precios especiales o gratuitos
+
+Características: Enfoque en comunidades vulnerables
+
+🖥️ Vistas Necesarias en la Plataforma
+A. VISTAS PÚBLICAS (8 vistas)
+Landing Page - Presentación de la plataforma
+
+Catálogo de Cursos - Cursos disponibles con filtros
+
+Detalle de Curso - Información específica de cada curso
+
+Precios y Planes - Opciones de suscripción
+
+Blog/Recursos - Contenido educativo gratuito
+
+Quiénes Somos - Información corporativa
+
+Contacto - Formularios de contacto
+
+Registro/Login - Acceso de usuarios
+
+B. VISTAS DE ESTUDIANTE (12 vistas)
+Dashboard Estudiantil - Resumen de progreso
+
+Mi Aula Virtual - Interfaz principal de aprendizaje
+
+Curso en Progreso - Contenido del curso actual
+
+Biblioteca Digital - Recursos adicionales
+
+Calificaciones - Historial de evaluaciones
+
+Foros de Debate - Espacios colaborativos
+
+Perfil Personal - Gestión de datos personales
+
+Configuración - Preferencias de usuario
+
+Soporte Técnico - Sistema de tickets
+
+Certificados - Diplomas y constancias
+
+Progreso General - Métricas de aprendizaje
+
+Cursos Recomendados - Sugerencias personalizadas
+
+C. VISTAS DE DOCENTE (10 vistas)
+Dashboard Docente - Resumen de cursos asignados
+
+Gestión de Curso - Edición de contenidos
+
+Calificaciones - Sistema de evaluación
+
+Foros Moderados - Gestión de debates
+
+Reportes de Progreso - Análisis de estudiantes
+
+Recursos Didácticos - Biblioteca del docente
+
+Aula Virtual en Vivo - Integración con videoconferencia
+
+Planificación Académica - Calendarización
+
+Comunicaciones - Mensajería con estudiantes
+
+Perfil Profesional - Portafolio docente
+
+D. VISTAS ADMINISTRATIVAS (15 vistas)
+Admin Dashboard - Métricas globales
+
+Gestión de Usuarios - CRUD completo de usuarios
+
+Gestión de Cursos - Administración de catálogo
+
+Reportes Financieros - Ingresos y métricas económicas
+
+Analíticas de Plataforma - Uso y engagement
+
+Configuración LMS - Parámetros del sistema
+
+Gestión de Contenidos - Recursos globales
+
+Soporte Técnico Admin - Tickets del sistema
+
+Configuración Académica - Planes de estudio
+
+Gestión de Certificados - Plantillas y emisión
+
+Comunicaciones Masivas - Email marketing
+
+Backup y Seguridad - Respaldo de datos
+
+Integraciones - APIs y servicios externos
+
+Logs del Sistema - Auditoría y monitoreo
+
+Personalización Branding - Configuración visual
+
+E. VISTAS ESPECIALES (5 vistas)
+Panel Institucional - Para clientes corporativos
+
+App Móvil - Versión responsive móvil
+
+Modo Sin Conexión - Contenido descargable
+
+Accesibilidad - Modos para discapacidades
+
+Modo Bajo Ancho de Banda - Versión liviana
+

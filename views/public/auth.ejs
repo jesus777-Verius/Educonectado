@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión / Registrarse - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="container nav">
+            <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/catalogo">Catálogo</a></li>
+                <li><a href="/precios">Precios</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/quienes-somos">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/login" class="btn btn-outline">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 0;">
+        <div class="container text-center">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Bienvenido a EduConecta</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9;">Inicia sesión o crea tu cuenta para comenzar tu journey educativo</p>
+        </div>
+    </section>
+
+    <!-- Auth Section -->
+    <section class="container mb-3">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="grid grid-2" style="gap: 3rem;">
+                <!-- Login Form -->
+                <div class="card">
+                    <h2 style="color: #667eea; text-align: center; margin-bottom: 2rem;">Iniciar Sesión</h2>
+                    <% if (error_msg && error_msg.length > 0) { %>
+                        <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                            <% error_msg.forEach(function(msg) { %>
+                                <p style="margin: 0;"><%= msg %></p>
+                            <% }); %>
+                        </div>
+                    <% } %>
+                    <% if (success_msg && success_msg.length > 0) { %>
+                        <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                            <% success_msg.forEach(function(msg) { %>
+                                <p style="margin: 0;"><%= msg %></p>
+                            <% }); %>
+                        </div>
+                    <% } %>
+                    <form action="/login" method="POST">
+                        <div class="form-group">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" name="email" class="form-control" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <label style="display: flex; align-items: center;">
+                                <input type="checkbox" name="remember" style="margin-right: 0.5rem;">
+                                <span style="font-size: 0.9rem;">Recordarme</span>
+                            </label>
+                            <a href="#" style="color: #667eea; font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Iniciar Sesión</button>
+                        
+                        <div style="text-align: center; margin: 1.5rem 0;">
+                            <span style="color: #666;">O continuar con</span>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <button type="button" class="btn btn-outline" style="flex: 1;">
+                                <span style="margin-right: 0.5rem;">📘</span> Facebook
+                            </button>
+                            <button type="button" class="btn btn-outline" style="flex: 1;">
+                                <span style="margin-right: 0.5rem;">🔷</span> Google
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Register Form -->
+                <div class="card">
+                    <h2 style="color: #667eea; text-align: center; margin-bottom: 2rem;">Crear Cuenta</h2>
+                    <form action="/register" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Nombres</label>
+                                <input type="text" name="nombres" class="form-control" placeholder="Juan" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Apellidos</label>
+                                <input type="text" name="apellidos" class="form-control" placeholder="Pérez" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" name="email" class="form-control" placeholder="juan.perez@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Teléfono</label>
+                            <input type="tel" name="telefono" class="form-control" placeholder="+58 414-123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Contraseña</label>
+                            <input type="password" name="password" class="form-control" placeholder="Mínimo 8 caracteres" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Confirmar Contraseña</label>
+                            <input type="password" name="password2" class="form-control" placeholder="Repite tu contraseña" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Usuario</label>
+                            <select name="tipo_usuario" class="form-control" required>
+                                <option value="">Selecciona tu rol</option>
+                                <option value="estudiante">Estudiante</option>
+                                <option value="docente">Docente</option>
+                                <option value="institucion">Institución Educativa</option>
+                                <option value="empresa">Empresa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center;">
+                                <input type="checkbox" name="terminos" style="margin-right: 0.5rem;" required>
+                                <span style="font-size: 0.9rem;">Acepto los <a href="#" style="color: #667eea;">términos y condiciones</a> y la <a href="#" style="color: #667eea;">política de privacidad</a></span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center;">
+                                <input type="checkbox" name="newsletter" style="margin-right: 0.5rem;">
+                                <span style="font-size: 0.9rem;">Deseo recibir información sobre nuevos cursos y ofertas especiales</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Crear Cuenta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="container mb-3">
+        <div class="card" style="background: #f8f9fa;">
+            <h2 class="text-center mb-2">¿Por qué registrarte en EduConecta?</h2>
+            <div class="grid grid-3">
+                <div class="text-center">
+                    <div style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;"><i class="material-icons">school</i></div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">Aprendizaje de Calidad</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Accede a cursos diseñados por expertos con experiencia real en sus campos.</p>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;"><i class="material-icons">phone</i></div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">Flexibilidad Total</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Estudia cuando y donde quieras, desde cualquier dispositivo con conexión a internet.</p>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 3rem; color: #667eea; margin-bottom: 1rem;"><i class="material-icons">emoji_events</i></div>
+                    <h4 style="color: #667eea; margin-bottom: 0.5rem;">Certificación Reconocida</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Obtén certificados verificados que impulsarán tu perfil profesional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="container mb-3">
+        <h2 class="text-center mb-2">Lo que dicen nuestros estudiantes</h2>
+        <div class="grid grid-3">
+            <div class="card" style="text-align: center;">
+                <img src="../../OIP.webp" alt="Testimonial" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1rem;">
+                <div style="margin-bottom: 1rem;">
+                    <span style="color: #ffc107;"><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i></span>
+                </div>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">"La mejor plataforma de aprendizaje que he utilizado. Los cursos son muy prácticos y los instructores excelentes."</p>
+                <strong>Juan Carlos</strong>
+                <div style="font-size: 0.9rem; color: #666;">Estudiante de Marketing</div>
+            </div>
+            <div class="card" style="text-align: center;">
+                <img src="https://via.placeholder.com/80x80/764ba2/ffffff?text=M" alt="Testimonial" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1rem;">
+                <div style="margin-bottom: 1rem;">
+                    <span style="color: #ffc107;"><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i></span>
+                </div>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">"Gracias a EduConecta pude actualizar mis conocimientos y conseguir un mejor trabajo."</p>
+                <strong>María González</strong>
+                <div style="font-size: 0.9rem; color: #666;">Estudiante de Programación</div>
+            </div>
+            <div class="card" style="text-align: center;">
+                <img src="https://via.placeholder.com/80x80/667eea/ffffff?text=L" alt="Testimonial" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1rem;">
+                <div style="margin-bottom: 1rem;">
+                    <span style="color: #ffc107;"><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i><i class="material-icons">star</i></span>
+                </div>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">"La flexibilidad de horarios me permite estudiar mientras trabajo. ¡Recomendado!"</p>
+                <strong>Luis Pérez</strong>
+                <div style="font-size: 0.9rem; color: #666;">Estudiante de Negocios</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container mb-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem; border-radius: 12px; text-align: center;">
+        <h2>¿Listo para comenzar tu transformación?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Únete a más de 10,000 estudiantes que ya están transformando su futuro.</p>
+        <a href="/catalogo" class="btn btn-primary" style="background: white; color: #667eea;">Explorar Cursos Gratuitos</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre EduConecta</h3>
+                    <p>Plataforma educativa líder en Venezuela, comprometida con la formación de calidad accesible para todos.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="/catalogo">Catálogo de Cursos</a></li>
+                        <li><a href="/precios">Planes y Precios</a></li>
+                        <li><a href="/blog">Blog Educativo</a></li>
+                        <li><a href="/contacto">Soporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="material-icons">email</i> info@educonecta.edu.ve</li>
+                        <li><i class="material-icons">phone</i> +58 414-123-4567</li>
+                        <li><i class="material-icons">place</i> Caracas, Venezuela</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduConecta. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

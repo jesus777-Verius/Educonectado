@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Certificados - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Estudiante</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">3</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=J" alt="Usuario" class="user-avatar">
+                        <span>Juan Pérez</span>
+                        <div class="dropdown">
+                            <a href="/estudiante/perfil">Mi Perfil</a>
+                            <a href="/estudiante/configuracion">Configuración</a>
+                            <a href="/estudiante/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados" class="active"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">emoji_events</i> Mis Certificados</h1>
+                        <p>Revisa y comparte tus logros académicos</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #667eea; font-weight: bold;">Total de Certificados</div>
+                        <div style="font-size: 2rem; font-weight: bold;">3</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Resumen de Logros</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">emoji_events</i></div>
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>Certificados Obtenidos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">check_circle</i></div>
+                        <div class="stat-info">
+                            <h3>8</h3>
+                            <p>Cursos Completados</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="material-icons">star</i></div>
+                        <div class="stat-info">
+                            <h3>91%</h3>
+                            <p>Promedio General</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red"><i class="material-icons">show_chart</i></div>
+                        <div class="stat-info">
+                            <h3>52h</h3>
+                            <p>Horas de Estudio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available Certificates -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">school</i> Certificados Disponibles</h2>
+                <div class="course-grid">
+                    <!-- Certificate 1 -->
+                    <div class="course-card" style="border: 2px solid #28a745;">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;"><i class="material-icons">emoji_events</i></div>
+                            <h3 style="color: #28a745; margin-bottom: 1rem;">Excel Avanzado</h3>
+                            <div style="background: #d4edda; color: #155724; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem;">
+                                <i class="material-icons">check_circle</i> Completado
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;">Calificación Final</span>
+                                    <span style="font-weight: bold; color: #28a745;">92/100</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;">Fecha de Emisión</span>
+                                    <span style="font-weight: bold;">15 Nov 2024</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">Código Verificación</span>
+                                    <span style="font-weight: bold; font-size: 0.8rem;">EC-2024-EX-001</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">description</i> Descargar PDF</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">link</i> Compartir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 2 -->
+                    <div class="course-card" style="border: 2px solid #28a745;">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;"><i class="material-icons">emoji_events</i></div>
+                            <h3 style="color: #28a745; margin-bottom: 1rem;">Gestión del Tiempo</h3>
+                            <div style="background: #d4edda; color: #155724; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem;">
+                                <i class="material-icons">check_circle</i> Completado
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;">Calificación Final</span>
+                                    <span style="font-weight: bold; color: #28a745;">88/100</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;">Fecha de Emisión</span>
+                                    <span style="font-weight: bold;">10 Nov 2024</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">Código Verificación</span>
+                                    <span style="font-weight: bold; font-size: 0.8rem;">EC-2024-GT-002</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">description</i> Descargar PDF</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">link</i> Compartir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certificate 3 -->
+                    <div class="course-card" style="border: 2px solid #28a745;">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;"><i class="material-icons">emoji_events</i></div>
+                            <h3 style="color: #28a745; margin-bottom: 1rem;">Habilidades de Comunicación</h3>
+                            <div style="background: #d4edda; color: #155724; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem;">
+                                <i class="material-icons">check_circle</i> Completado
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;">Calificación Final</span>
+                                    <span style="font-weight: bold; color: #28a745;">95/100</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;">Fecha de Emisión</span>
+                                    <span style="font-weight: bold;">5 Nov 2024</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">Código Verificación</span>
+                                    <span style="font-weight: bold; font-size: 0.8rem;">EC-2024-HC-003</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">description</i> Descargar PDF</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">link</i> Compartir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In Progress Certificates -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">menu_book</i> En Progreso</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Marketing Digital Completo</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">75%</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;">Progreso Actual</span>
+                                    <span style="font-weight: bold; color: #667eea;">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.9rem; color: #666;">
+                                    <span><i class="material-icons">menu_book</i> 9/12 lecciones completadas</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">local_library</i> Continuar Curso</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">bar_chart</i> Ver Progreso</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Desarrollo Web Moderno</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">45%</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;">Progreso Actual</span>
+                                    <span style="font-weight: bold; color: #667eea;">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.9rem; color: #666;">
+                                    <span><i class="material-icons">menu_book</i> 11/24 lecciones completadas</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">local_library</i> Continuar Curso</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">bar_chart</i> Ver Progreso</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Verification -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">search</i> Verificación de Certificados</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">Verificar Certificado</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Ingresa el código de verificación para validar la autenticidad de un certificado</p>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="text" placeholder="Ej: EC-2024-EX-001" class="form-control" style="flex: 1;">
+                            <button class="btn btn-primary">Verificar</button>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">Mis Códigos de Verificación</h3>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                            <div style="margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-weight: bold;">Excel Avanzado</span>
+                                    <span style="color: #667eea;">EC-2024-EX-001</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-weight: bold;">Gestión del Tiempo</span>
+                                    <span style="color: #667eea;">EC-2024-GT-002</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="font-weight: bold;">Habilidades de Comunicación</span>
+                                    <span style="color: #667eea;">EC-2024-HC-003</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Share Options -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">link</i> Compartir Certificados</h2>
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
+                    <h3 style="margin-bottom: 1rem;">¡Comparte tus Logros!</h3>
+                    <p style="color: #666; margin-bottom: 2rem;">Muestra tus certificados en LinkedIn, CV y redes sociales para destacar tus habilidades</p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <button class="btn btn-primary">
+                            <span style="margin-right: 0.5rem;">💼</span> LinkedIn
+                        </button>
+                        <button class="btn btn-outline">
+                            <span style="margin-right: 0.5rem;"><i class="material-icons">email</i></span> Email
+                        </button>
+                        <button class="btn btn-outline">
+                            <span style="margin-right: 0.5rem;"><i class="material-icons">link</i></span> Copiar Link
+                        </button>
+                        <button class="btn btn-outline">
+                            <span style="margin-right: 0.5rem;"><i class="material-icons">phone</i></span> WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Templates -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">palette</i> Plantillas de Certificados</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">Personaliza el diseño de tus certificados para diferentes ocasiones</p>
+                <div style="display: flex; gap: 1rem; overflow-x: auto;">
+                    <div style="min-width: 200px; text-align: center;">
+                        <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 3rem 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <div style="font-size: 2rem;"><i class="material-icons">emoji_events</i></div>
+                            <div style="font-size: 0.9rem;">Profesional</div>
+                        </div>
+                        <button class="btn btn-outline" style="font-size: 0.9rem;">Usar Plantilla</button>
+                    </div>
+                    <div style="min-width: 200px; text-align: center;">
+                        <div style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 3rem 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <div style="font-size: 2rem;"><i class="material-icons">school</i></div>
+                            <div style="font-size: 0.9rem;">Académico</div>
+                        </div>
+                        <button class="btn btn-outline" style="font-size: 0.9rem;">Usar Plantilla</button>
+                    </div>
+                    <div style="min-width: 200px; text-align: center;">
+                        <div style="background: linear-gradient(135deg, #ffc107, #ff6b6b); color: white; padding: 3rem 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <div style="font-size: 2rem;"><i class="material-icons">star</i></div>
+                            <div style="font-size: 0.9rem;">Moderno</div>
+                        </div>
+                        <button class="btn btn-outline" style="font-size: 0.9rem;">Usar Plantilla</button>
+                    </div>
+                    <div style="min-width: 200px; text-align: center;">
+                        <div style="background: linear-gradient(135deg, #dc3545, #e91e63); color: white; padding: 3rem 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <div style="font-size: 2rem;"><i class="material-icons">military_tech</i></div>
+                            <div style="font-size: 0.9rem;">Elegante</div>
+                        </div>
+                        <button class="btn btn-outline" style="font-size: 0.9rem;">Usar Plantilla</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

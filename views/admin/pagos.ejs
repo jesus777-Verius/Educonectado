@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pagos - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos" class="active"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">payments</i> Gestión de Pagos</h1>
+                        <p>Administra transacciones, facturación y métodos de pago</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Procesar Pago</button>
+                </div>
+            </div>
+
+            <!-- Payment Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">payments</i></div>
+                    <div class="stat-info">
+                        <h3>$45,678</h3>
+                        <p>Ingresos Mensuales</p>
+                        <div style="font-size: 0.8rem; color: #28a745;">↑ 18% vs mes anterior</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">check_circle</i></div>
+                    <div class="stat-info">
+                        <h3>1,234</h3>
+                        <p>Transacciones Exitosas</p>
+                        <div style="font-size: 0.8rem; color: #667eea;">96% del total</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">⏳</div>
+                    <div class="stat-info">
+                        <h3>45</h3>
+                        <p>Pagos Pendientes</p>
+                        <div style="font-size: 0.8rem; color: #ffc107;">Requieren atención</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">cancel</i></div>
+                    <div class="stat-info">
+                        <h3>23</h3>
+                        <p>Transacciones Fallidas</div>
+                        <div style="font-size: 0.8rem; color: #dc3545;">2% del total</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">search</i> Búsqueda y Filtros</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los estados</option>
+                            <option value="completed">Completado</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="failed">Fallido</option>
+                            <option value="refunded">Reembolsado</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los métodos</option>
+                            <option value="card">Tarjeta</option>
+                            <option value="transfer">Transferencia</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="corporate">Corporativo</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los tipos</option>
+                            <option value="course">Curso</option>
+                            <option value="subscription">Suscripción</option>
+                            <option value="certificate">Certificado</option>
+                        </select>
+                        <input type="text" placeholder="Buscar transacciones..." class="form-control" style="width: 250px;">
+                    </div>
+                </div>
+
+                <!-- Payments Table -->
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Transacción</th>
+                                <th style="padding: 1rem; text-align: center;">Cliente</th>
+                                <th style="padding: 1rem; text-align: center;">Concepto</th>
+                                <th style="padding: 1rem; text-align: center;">Método</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Fecha</th>
+                                <th style="padding: 1rem; text-align: center;">Monto</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#PAY001</div>
+                                        <div style="font-size: 0.8rem; color: #666;">ID: #TXN2024001</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=J" alt="Cliente" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Juan Pérez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>
+                                        <div style="font-weight: bold;">Marketing Digital</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Curso</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Tarjeta</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Completado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">15 Nov 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$58.00</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Factura</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Reembolsar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#PAY002</div>
+                                        <div style="font-size: 0.8rem; color: #666;">ID: #TXN2024002</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=M" alt="Cliente" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">María González</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>
+                                        <div style="font-weight: bold;">Programación Web</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Curso</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">PayPal</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Completado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">14 Nov 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$87.00</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Factura</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Reembolsar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#PAY003</div>
+                                        <div style="font-size: 0.8rem; color: #666;">ID: #TXN2024003</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=T" alt="Cliente" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">TechCorp</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>
+                                        <div style="font-weight: bold;">Suscripción Empresarial</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Mensual</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Transferencia</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pendiente</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">13 Nov 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">$299.00</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-primary" style="font-size: 0.8rem;">Procesar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Cancelar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Payment Processing Form -->
+            <div class="dashboard-card">
+                <h2>💳 Procesar Nuevo Pago</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Cliente *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un cliente</option>
+                                <option value="customer1">Juan Pérez - juan.perez@email.com</option>
+                                <option value="customer2">María González - maria.gonzalez@email.com</option>
+                                <option value="customer3">TechCorp Solutions - corporativo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Pago *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el tipo</option>
+                                <option value="course">Matrícula de Curso</option>
+                                <option value="subscription">Suscripción</option>
+                                <option value="certificate">Certificado</option>
+                                <option value="renewal">Renovación</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Método de Pago *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el método</option>
+                                <option value="card">Tarjeta de Crédito/Débito</option>
+                                <option value="transfer">Transferencia Bancaria</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="cash">Efectivo</option>
+                                <option value="corporate">Facturación Corporativa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Monto *</label>
+                            <input type="number" class="form-control" placeholder="0.00" step="0.01" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción del Pago</label>
+                        <textarea class="form-control" rows="3" placeholder="Describe el concepto del pago..."></textarea>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;">💳 Información de Pago</h3>
+                        <div id="card-info" style="display: block;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Número de Tarjeta</label>
+                                    <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Nombre del Titular</label>
+                                    <input type="text" class="form-control" placeholder="Juan Pérez">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Fecha de Vencimiento</label>
+                                    <input type="text" class="form-control" placeholder="MM/AA" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">CVV</label>
+                                    <input type="text" class="form-control" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">description</i> Opciones de Facturación</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Generar Factura</div>
+                                <div style="font-size: 0.9rem; color: #666;">Crear factura fiscal automáticamente</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Enviar Email de Confirmación</div>
+                                <div style="font-size: 0.9rem; color: #666;">Notificar al cliente sobre el pago</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Guardar Método de Pago</div>
+                                <div style="font-size: 0.9rem; color: #666;">Para futuros pagos recurrentes</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Procesar Pago</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Payment Analytics -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Análisis de Pagos</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">payments</i> Ingresos Mensuales</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Enero</span>
+                                    <span style="font-weight: bold; color: #28a745;">$38,450</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 84%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Febrero</span>
+                                    <span style="font-weight: bold; color: #28a745;">$42,890</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 94%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Marzo</span>
+                                    <span style="font-weight: bold; color: #28a745;">$45,678</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Abril (proyección)</span>
+                                    <span style="font-weight: bold; color: #667eea;">$48,500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">💳 Métodos de Pago</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">💳 Tarjeta de Crédito</span>
+                                    <span style="font-weight: bold; color: #667eea;">65%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">🏦 Transferencia Bancaria</span>
+                                    <span style="font-weight: bold; color: #667eea;">20%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">payments</i> PayPal</span>
+                                    <span style="font-weight: bold; color: #667eea;">12%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 12%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">business</i> Corporativo</span>
+                                    <span style="font-weight: bold; color: #667eea;">3%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 3%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Payments -->
+            <div class="dashboard-card">
+                <h2>⏳ Pagos Pendientes</h2>
+                <div class="course-grid">
+                    <div class="course-card" style="border: 2px solid #ffc107;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">TechCorp Solutions</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">facturacion@techcorp.com</p>
+                                </div>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pendiente</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">business</i> Suscripción Empresarial</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">calendar_today</i> Vencimiento: 30 Nov 2024</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">payments</i> $299</span>
+                                </div>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <p style="margin: 0; font-size: 0.9rem;">Esperando confirmación de transferencia bancaria para renovación mensual.</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">check_circle</i> Confirmar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">assignment</i> Ver Detalles</button>
+                                <button class="btn btn-outline" style="flex: 1; border-color: #dc3545; color: #dc3545;"><i class="material-icons">cancel</i> Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Procesar Pago</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline">📥 Exportar Transacciones</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Enviar Recordatorios</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configurar Pasarelas</button>
+                    <button class="btn btn-outline"><i class="material-icons">refresh</i> Conciliar Pagos</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

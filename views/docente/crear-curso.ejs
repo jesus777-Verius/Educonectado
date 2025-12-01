@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Curso - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso" class="active"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">add</i> Crear Nuevo Curso</h1>
+                <p>Diseña y lanza tu curso con nuestras herramientas intuitivas</p>
+            </div>
+
+            <!-- Progress Steps -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <div style="background: #667eea; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+                        <div style="font-weight: bold;">Información Básica</div>
+                    </div>
+                    <div style="flex: 1; height: 2px; background: #667eea; margin: 0 1rem;"></div>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <div style="background: #e0e0e0; color: #666; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+                        <div style="color: #666;">Contenido</div>
+                    </div>
+                    <div style="flex: 1; height: 2px; background: #e0e0e0; margin: 0 1rem;"></div>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <div style="background: #e0e0e0; color: #666; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+                        <div style="color: #666;">Configuración</div>
+                    </div>
+                    <div style="flex: 1; height: 2px; background: #e0e0e0; margin: 0 1rem;"></div>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <div style="background: #e0e0e0; color: #666; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">4</div>
+                        <div style="color: #666;">Publicación</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Creation Form -->
+            <form>
+                <!-- Basic Information -->
+                <div class="dashboard-card">
+                    <h2><i class="material-icons">assignment</i> Información Básica del Curso</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Título del Curso *</label>
+                            <input type="text" class="form-control" placeholder="Ej: Marketing Digital Completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Categoría *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="marketing">Marketing Digital</option>
+                                <option value="programming">Programación</option>
+                                <option value="business">Negocios</option>
+                                <option value="design">Diseño</option>
+                                <option value="languages">Idiomas</option>
+                                <option value="productivity">Productividad</option>
+                                <option value="personal">Desarrollo Personal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción Corta *</label>
+                        <textarea class="form-control" rows="3" placeholder="Describe tu curso en una frase (máximo 150 caracteres)" maxlength="150" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción Completa *</label>
+                        <textarea class="form-control" rows="6" placeholder="Describe en detalle qué aprenderán los estudiantes, para quién es este curso, y qué resultados esperan obtener" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nivel *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el nivel</option>
+                                <option value="beginner">Principiante</option>
+                                <option value="intermediate">Intermedio</option>
+                                <option value="advanced">Avanzado</option>
+                                <option value="all">Todos los niveles</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Idioma *</label>
+                            <select class="form-control" required>
+                                <option value="es">Español</option>
+                                <option value="en">Inglés</option>
+                                <option value="pt">Portugués</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Duración Estimada *</label>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <input type="number" class="form-control" placeholder="0" min="1" required>
+                                <select class="form-control" required>
+                                    <option value="hours">horas</option>
+                                    <option value="days">días</option>
+                                    <option value="weeks">semanas</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Precio *</label>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <span style="font-size: 1.2rem;">$</span>
+                                <input type="number" class="form-control" placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Descuento (opcional)</label>
+                            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                <input type="number" class="form-control" placeholder="0" min="0" max="100">
+                                <span style="font-size: 1.2rem;">%</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Capacidad Máxima</label>
+                            <input type="number" class="form-control" placeholder="Sin límite" min="1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Media -->
+                <div class="dashboard-card">
+                    <h2>🎥 Multimedia del Curso</h2>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Imagen del Curso *</label>
+                        <div style="border: 2px dashed #e0e0e0; border-radius: 8px; padding: 2rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📷</div>
+                            <p style="margin-bottom: 1rem;">Arrastra y suelta tu imagen aquí o haz clic para seleccionar</p>
+                            <p style="font-size: 0.9rem; color: #666;">Formato: JPG, PNG. Tamaño recomendado: 1280x720px. Máximo 5MB</p>
+                            <button type="button" class="btn btn-outline">Seleccionar Imagen</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Video Promocional (opcional)</label>
+                        <div style="border: 2px dashed #e0e0e0; border-radius: 8px; padding: 2rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🎥</div>
+                            <p style="margin-bottom: 1rem;">Sube un video promocional o ingresa el enlace de YouTube/Vimeo</p>
+                            <p style="font-size: 0.9rem; color: #666;">Formato: MP4. Duración recomendada: 1-3 minutos. Máximo 100MB</p>
+                            <div style="display: flex; gap: 1rem; justify-content: center;">
+                                <button type="button" class="btn btn-outline">Subir Video</button>
+                                <button type="button" class="btn btn-outline">Usar Enlace</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Objectives -->
+                <div class="dashboard-card">
+                    <h2><i class="material-icons">my_location</i> Objetivos de Aprendizaje</h2>
+                    <p style="color: #666; margin-bottom: 1.5rem;">¿Qué podrán hacer los estudiantes al completar este curso?</p>
+                    
+                    <div id="objectives-container">
+                        <div class="form-row" style="margin-bottom: 1rem;">
+                            <div class="form-group" style="flex: 1;">
+                                <input type="text" class="form-control" placeholder="Objetivo 1: Ej: Crear campañas de marketing digital efectivas">
+                            </div>
+                            <button type="button" class="btn btn-outline" onclick="removeObjective(this)"><i class="material-icons">delete</i></button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline" onclick="addObjective()">+ Añadir Objetivo</button>
+                </div>
+
+                <!-- Requirements -->
+                <div class="dashboard-card">
+                    <h2><i class="material-icons">assignment</i> Requisitos del Curso</h2>
+                    <p style="color: #666; margin-bottom: 1.5rem;">¿Qué necesitan saber los estudiantes antes de tomar este curso?</p>
+                    
+                    <div id="requirements-container">
+                        <div class="form-row" style="margin-bottom: 1rem;">
+                            <div class="form-group" style="flex: 1;">
+                                <input type="text" class="form-control" placeholder="Requisito 1: Ej: Conocimientos básicos de marketing">
+                            </div>
+                            <button type="button" class="btn btn-outline" onclick="removeRequirement(this)"><i class="material-icons">delete</i></button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline" onclick="addRequirement()">+ Añadir Requisito</button>
+                </div>
+
+                <!-- Target Audience -->
+                <div class="dashboard-card">
+                    <h2><i class="material-icons">people</i> Público Objetivo</h2>
+                    <p style="color: #666; margin-bottom: 1.5rem;">¿Para quién está diseñado este curso?</p>
+                    
+                    <div id="audience-container">
+                        <div class="form-row" style="margin-bottom: 1rem;">
+                            <div class="form-group" style="flex: 1;">
+                                <input type="text" class="form-control" placeholder="Audiencia 1: Ej: Emprendedores que quieren mejorar su marketing">
+                            </div>
+                            <button type="button" class="btn btn-outline" onclick="removeAudience(this)"><i class="material-icons">delete</i></button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline" onclick="addAudience()">+ Añadir Audiencia</button>
+                </div>
+
+                <!-- Course Structure Preview -->
+                <div class="dashboard-card">
+                    <h2><i class="material-icons">menu_book</i> Estructura del Curso</h2>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Define los módulos y lecciones de tu curso</p>
+                    
+                    <div id="modules-container">
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <h4 style="margin: 0;">Módulo 1: Introducción</h4>
+                                <button type="button" class="btn btn-outline" style="font-size: 0.8rem;"><i class="material-icons">delete</i></button>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <input type="text" class="form-control" placeholder="Título del módulo" value="Introducción al Marketing Digital">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <textarea class="form-control" rows="2" placeholder="Descripción del módulo">Conoce los fundamentos básicos del marketing digital y su importancia en el mundo actual.</textarea>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-weight: bold;">Lecciones:</span>
+                                <button type="button" class="btn btn-outline" style="font-size: 0.8rem;">+ Añadir Lección</button>
+                            </div>
+                            <div style="margin-left: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                    <span style="color: #667eea;"><i class="material-icons">videocam</i></span>
+                                    <input type="text" class="form-control" placeholder="Título de la lección" value="¿Qué es el Marketing Digital?" style="flex: 1;">
+                                    <button type="button" class="btn btn-outline" style="font-size: 0.8rem;"><i class="material-icons">delete</i></button>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span style="color: #667eea;"><i class="material-icons">videocam</i></span>
+                                    <input type="text" class="form-control" placeholder="Título de la lección" value="Historia y Evolución" style="flex: 1;">
+                                    <button type="button" class="btn btn-outline" style="font-size: 0.8rem;"><i class="material-icons">delete</i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline">+ Añadir Módulo</button>
+                </div>
+
+                <!-- Course Settings -->
+                <div class="dashboard-card">
+                    <h2><i class="material-icons">settings</i> Configuración del Curso</h2>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">calendar_today</i> Calendario y Disponibilidad</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Fecha de Inicio</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Fecha de Fin</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo de Inscripción</label>
+                                <select class="form-control">
+                                    <option value="open">Abierta</option>
+                                    <option value="scheduled">Programada</option>
+                                    <option value="closed">Cerrada</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">security</i> Configuración de Acceso</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Certificado de Finalización</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Los estudiantes recibirán un certificado al completar el curso</div>
+                                </div>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Foro del Curso</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Habilitar foro de discusión para estudiantes</div>
+                                </div>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Descarga de Videos</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Permitir que los estudiantes descarguen los videos</div>
+                                </div>
+                                <input type="checkbox" style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Acceso Vitalicio</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Los estudiantes tendrán acceso al curso para siempre</div>
+                                </div>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">email</i> Notificaciones Automáticas</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Bienvenida</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Enviar correo de bienvenida al inscribirse</div>
+                                </div>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Recordatorios</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Enviar recordatorios de progreso</div>
+                                </div>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Felicitaciones</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Enviar correo al completar el curso</div>
+                                </div>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Actions -->
+                <div class="dashboard-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <button type="button" class="btn btn-outline"><i class="material-icons">backup</i> Guardar Borrador</button>
+                            <button type="button" class="btn btn-outline">👁️ Vista Previa</button>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline">← Anterior</button>
+                            <button type="submit" class="btn btn-primary">Continuar →</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+
+    <script>
+        function addObjective() {
+            const container = document.getElementById('objectives-container');
+            const newObjective = document.createElement('div');
+            newObjective.className = 'form-row';
+            newObjective.style.marginBottom = '1rem';
+            newObjective.innerHTML = `
+                <div class="form-group" style="flex: 1;">
+                    <input type="text" class="form-control" placeholder="Nuevo objetivo">
+                </div>
+                <button type="button" class="btn btn-outline" onclick="removeObjective(this)"><i class="material-icons">delete</i></button>
+            `;
+            container.appendChild(newObjective);
+        }
+
+        function removeObjective(button) {
+            button.parentElement.remove();
+        }
+
+        function addRequirement() {
+            const container = document.getElementById('requirements-container');
+            const newRequirement = document.createElement('div');
+            newRequirement.className = 'form-row';
+            newRequirement.style.marginBottom = '1rem';
+            newRequirement.innerHTML = `
+                <div class="form-group" style="flex: 1;">
+                    <input type="text" class="form-control" placeholder="Nuevo requisito">
+                </div>
+                <button type="button" class="btn btn-outline" onclick="removeRequirement(this)"><i class="material-icons">delete</i></button>
+            `;
+            container.appendChild(newRequirement);
+        }
+
+        function removeRequirement(button) {
+            button.parentElement.remove();
+        }
+
+        function addAudience() {
+            const container = document.getElementById('audience-container');
+            const newAudience = document.createElement('div');
+            newAudience.className = 'form-row';
+            newAudience.style.marginBottom = '1rem';
+            newAudience.innerHTML = `
+                <div class="form-group" style="flex: 1;">
+                    <input type="text" class="form-control" placeholder="Nueva audiencia">
+                </div>
+                <button type="button" class="btn btn-outline" onclick="removeAudience(this)"><i class="material-icons">delete</i></button>
+            `;
+            container.appendChild(newAudience);
+        }
+
+        function removeAudience(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

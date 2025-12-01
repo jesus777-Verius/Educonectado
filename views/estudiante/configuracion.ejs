@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Estudiante</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">3</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=J" alt="Usuario" class="user-avatar">
+                        <span>Juan Pérez</span>
+                        <div class="dropdown">
+                            <a href="/estudiante/perfil">Mi Perfil</a>
+                            <a href="/estudiante/configuracion">Configuración</a>
+                            <a href="/estudiante/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">settings</i> Configuración de la Cuenta</h1>
+                <p>Administra tu cuenta y preferencias de aprendizaje</p>
+            </div>
+
+            <!-- Settings Navigation -->
+            <div class="dashboard-card">
+                <div style="display: flex; gap: 1rem; border-bottom: 2px solid #f0f0f0; margin-bottom: 2rem;">
+                    <button class="btn btn-primary" style="border-radius: 0; border-bottom: 2px solid #667eea;">🔐 Cuenta</button>
+                    <button class="btn btn-outline" style="border-radius: 0;"><i class="material-icons">email</i> Notificaciones</button>
+                    <button class="btn btn-outline" style="border-radius: 0;"><i class="material-icons">school</i> Aprendizaje</button>
+                    <button class="btn btn-outline" style="border-radius: 0;">💳 Pagos</button>
+                    <button class="btn btn-outline" style="border-radius: 0;"><i class="material-icons">security</i> Privacidad</button>
+                </div>
+
+                <!-- Account Settings -->
+                <div>
+                    <h3 style="margin-bottom: 1.5rem;">Configuración de Cuenta</h3>
+                    
+                    <!-- Email Settings -->
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin-bottom: 1rem;"><i class="material-icons">email</i> Correo Electrónico</h4>
+                        <div style="display: flex; gap: 1rem; align-items: end; margin-bottom: 1rem;">
+                            <div style="flex: 1;">
+                                <label class="form-label">Correo Actual</label>
+                                <input type="email" class="form-control" value="juan.perez@email.com" readonly>
+                            </div>
+                            <button class="btn btn-outline">Cambiar Correo</button>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666;">Correo verificado el 15 Nov 2024</p>
+                    </div>
+
+                    <!-- Password Settings -->
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin-bottom: 1rem;">🔐 Contraseña</h4>
+                        <div style="margin-bottom: 1rem;">
+                            <label class="form-label">Contraseña Actual</label>
+                            <input type="password" class="form-control" placeholder="Ingresa tu contraseña actual">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label class="form-label">Nueva Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Ingresa nueva contraseña">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label class="form-label">Confirmar Nueva Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Confirma nueva contraseña">
+                        </div>
+                        <button class="btn btn-primary">Actualizar Contraseña</button>
+                    </div>
+
+                    <!-- Two-Factor Authentication -->
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin-bottom: 1rem;">🔐 Autenticación de Dos Factores</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <p style="margin-bottom: 0.5rem;">Añade una capa extra de seguridad a tu cuenta</p>
+                                <p style="font-size: 0.9rem; color: #666;">Usa Google Authenticator o SMS para verificar tu identidad</p>
+                            </div>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" style="width: 20px; height: 20px;">
+                                <span>Activar 2FA</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Session Management -->
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="margin-bottom: 1rem;">🖥️ Sesiones Activas</h4>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: white; border-radius: 6px; margin-bottom: 0.75rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Windows PC - Chrome</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Caracas, Venezuela • Última actividad: Ahora mismo</div>
+                                </div>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Actual</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: white; border-radius: 6px; margin-bottom: 0.75rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">iPhone - Safari</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Caracas, Venezuela • Última actividad: Hace 2 horas</div>
+                                </div>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">Cerrar Sesión</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline" style="border-color: #dc3545; color: #dc3545;">Cerrar Todas las Sesiones</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Preferences -->
+            <div class="dashboard-card">
+                <h2 style="margin-bottom: 1.5rem;"><i class="material-icons">school</i> Preferencias de Aprendizaje</h2>
+                
+                <!-- Language Settings -->
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;"><i class="material-icons">language</i> Idioma y Región</h3>
+                    <div style="display: flex; gap: 1rem;">
+                        <div style="flex: 1;">
+                            <label class="form-label">Idioma de la Interfaz</label>
+                            <select class="form-control">
+                                <option value="es" selected>Español</option>
+                                <option value="en">English</option>
+                                <option value="pt">Português</option>
+                            </select>
+                        </div>
+                        <div style="flex: 1;">
+                            <label class="form-label">Zona Horaria</label>
+                            <select class="form-control">
+                                <option value="America/Caracas" selected>Venezuela Time (GMT-4)</option>
+                                <option value="America/Bogota">Colombia Time (GMT-5)</option>
+                                <option value="America/Mexico_City">Mexico Time (GMT-6)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Style -->
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;"><i class="material-icons">palette</i> Estilo de Aprendizaje</h3>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <p style="margin-bottom: 1rem;">¿Cómo prefieres aprender?</p>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; background: white; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer;">
+                                <input type="radio" name="learning-style" value="visual" checked>
+                                <span>👀 Visual</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem; background: white; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer;">
+                                <input type="radio" name="learning-style" value="auditory">
+                                <span><i class="material-icons">headphones</i> Auditivo</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem; background: white; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer;">
+                                <input type="radio" name="learning-style" value="kinesthetic">
+                                <span>✋ Kinestésico</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem; background: white; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer;">
+                                <input type="radio" name="learning-style" value="reading">
+                                <span><i class="material-icons">local_library</i> Lectura</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Study Reminders -->
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;"><i class="material-icons">schedule</i> Recordatorios de Estudio</h3>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Recordatorios Diarios</div>
+                                <div style="font-size: 0.9rem; color: #666;">Recibir notificaciones para estudiar</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <div style="display: flex; gap: 1rem; align-items: end;">
+                            <div style="flex: 1;">
+                                <label class="form-label">Hora del Recordatorio</label>
+                                <input type="time" class="form-control" value="19:00">
+                            </div>
+                            <div style="flex: 1;">
+                                <label class="form-label">Días</label>
+                                <select class="form-control">
+                                    <option value="daily">Todos los días</option>
+                                    <option value="weekdays">Días laborales</option>
+                                    <option value="weekends">Fines de semana</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Quality -->
+                <div>
+                    <h3 style="margin-bottom: 1rem;">🎥 Calidad de Video</h3>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <div style="margin-bottom: 1rem;">
+                            <label class="form-label">Calidad de Reproducción</label>
+                            <select class="form-control">
+                                <option value="auto" selected>Automática (recomendado)</option>
+                                <option value="1080p">1080p HD</option>
+                                <option value="720p">720p</option>
+                                <option value="480p">480p</option>
+                                <option value="360p">360p (ahorra datos)</option>
+                            </select>
+                        </div>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" checked>
+                            <span>Reproducir videos automáticamente</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="dashboard-card">
+                <h2 style="margin-bottom: 1.5rem;"><i class="material-icons">email</i> Configuración de Notificaciones</h2>
+                
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">email</i> Correo Electrónico</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span><i class="material-icons">menu_book</i> Nuevos cursos recomendados</span>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span><i class="material-icons">show_chart</i> Progreso semanal</span>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span><i class="material-icons">my_location</i> Recordatorios de tareas</span>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span><i class="material-icons">forum</i> Respuestas en foros</span>
+                                <input type="checkbox" style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between;">
+                                <span><i class="material-icons">emoji_events</i> Certificados obtenidos</span>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">notifications</i> Notificaciones del Sitio</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span><i class="material-icons">menu_book</i> Actualizaciones de cursos</span>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span><i class="material-icons">forum</i> Mensajes de instructores</span>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span><i class="material-icons">my_location</i> Recordatorios de estudio</span>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <span><i class="material-icons">local_fire_department</i> Cursos trending</span>
+                                <input type="checkbox" style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between;">
+                                <span><i class="material-icons">campaign</i> Anuncios importantes</span>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="dashboard-card">
+                <h2 style="margin-bottom: 1.5rem;">💳 Métodos de Pago</h2>
+                
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3>Métodos Guardados</h3>
+                        <button class="btn btn-primary">+ Añadir Método</button>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 2px solid #667eea; min-width: 250px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-weight: bold;">💳 Visa</span>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Principal</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">•••• •••• •••• 4567</div>
+                            <div style="font-size: 0.8rem; color: #666;">Expira: 12/25</div>
+                        </div>
+                        
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #e0e0e0; min-width: 250px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-weight: bold;">🏦 Banco Provincial</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Cuenta: •••• 7890</div>
+                            <div style="font-size: 0.8rem; color: #666;">Tipo: Ahorro</div>
+                        </div>
+                        
+                        <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid #e0e0e0; min-width: 250px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <span style="font-weight: bold;"><i class="material-icons">phone</i> Pago Móvil</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">0414-123-4567</div>
+                            <div style="font-size: 0.8rem; color: #666;">Banco: Mercantil</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing Address -->
+                <div>
+                    <h3 style="margin-bottom: 1rem;"><i class="material-icons">place</i> Dirección de Facturación</h3>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="flex: 1;">
+                                <label class="form-label">Dirección</label>
+                                <input type="text" class="form-control" value="Av. Bolívar, Edificio Centro, Piso 5">
+                            </div>
+                            <div style="flex: 1;">
+                                <label class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" value="Caracas">
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <div style="flex: 1;">
+                                <label class="form-label">Estado</label>
+                                <select class="form-control">
+                                    <option value="DF" selected>Distrito Capital</option>
+                                    <option value="MI">Miranda</option>
+                                    <option value="AN">Anzoátegui</option>
+                                </select>
+                            </div>
+                            <div style="flex: 1;">
+                                <label class="form-label">Código Postal</label>
+                                <input type="text" class="form-control" value="1010">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Settings -->
+            <div class="dashboard-card">
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" style="margin-right: 1rem;"><i class="material-icons">backup</i> Guardar Cambios</button>
+                    <button class="btn btn-outline">↩️ Restablecer Valores</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'Panel Docente' %> - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard" class="active"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Flash Messages -->
+            <% if (success_msg.length > 0) { %>
+                <div class="alert alert-success">
+                    <%= success_msg %>
+                </div>
+            <% } %>
+            
+            <% if (error_msg.length > 0) { %>
+                <div class="alert alert-error">
+                    <%= error_msg %>
+                </div>
+            <% } %>
+
+            <%- body %>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

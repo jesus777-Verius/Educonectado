@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas" class="active"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">assignment</i> Gestión de Tareas</h1>
+                        <p>Crea, asigna y evalúa tareas para tus estudiantes</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Crear Nueva Tarea</button>
+                </div>
+            </div>
+
+            <!-- Task Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">assignment</i></div>
+                    <div class="stat-info">
+                        <h3>24</h3>
+                        <p>Tareas Activas</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">edit</i></div>
+                    <div class="stat-info">
+                        <h3>18</h3>
+                        <p>Por Calificar</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">schedule</i></div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Vencen Hoy</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">check_circle</i></div>
+                    <div class="stat-info">
+                        <h3>156</h3>
+                        <p>Entregas Totales</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">menu_book</i> Filtrar por Curso</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 200px;">
+                            <option value="all">Todos los cursos</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="programming">Programación Web</option>
+                            <option value="business">Gestión Empresarial</option>
+                            <option value="design">Diseño Gráfico</option>
+                            <option value="english">Inglés Conversacional</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los estados</option>
+                            <option value="draft">Borrador</option>
+                            <option value="published">Publicado</option>
+                            <option value="closed">Cerrado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tasks List -->
+                <div class="course-grid">
+                    <!-- Task 1 - Active -->
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Proyecto Final: Campaña de Marketing</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Desarrollar una campaña completa de marketing digital para un producto real.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Marketing Digital</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">schedule</i> Vence: 15 Dic</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">edit</i> 12 entregas</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso de Entregas</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">13%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 13%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Gestionar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Entregas</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 2 - Grading -->
+                    <div class="course-card" style="border: 2px solid #ffc107;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Quiz: Fundamentos de SEO</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Calificando</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Evaluación sobre conceptos básicos de optimización para buscadores.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Marketing Digital</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">schedule</i> Venció: 28 Nov</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">edit</i> 67 entregas</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso de Calificación</span>
+                                    <span style="font-size: 0.9rem; color: #ffc107;">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Continuar Calificación</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Estadísticas</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 3 - Draft -->
+                    <div class="course-card" style="border: 2px dashed #6c757d;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Análisis de Caso: Empresa Tech</h3>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Borrador</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Análisis estratégico de una empresa tecnológica emergente.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Gestión Empresarial</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">people</i> 45 estudiantes</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">schedule</i> Sin fecha</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">edit</i> 0 entregas</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Editar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Publicar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task 4 - Closed -->
+                    <div class="course-card" style="opacity: 0.7;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Tarea Práctica: HTML & CSS</h3>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Cerrado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Crear una página web responsive usando HTML5 y CSS3.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Programación Web</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">people</i> 67 estudiantes</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">schedule</i> Cerró: 20 Nov</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">edit</i> 58 entregas</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Completado</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">87%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 87%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="flex: 1;">Ver Resultados</button>
+                                <button class="btn btn-outline" style="flex: 1;">Exportar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Task Modal Preview -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">add</i> Crear Nueva Tarea</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Título de la Tarea *</label>
+                            <input type="text" class="form-control" placeholder="Ej: Proyecto Final de Marketing" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Curso *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un curso</option>
+                                <option value="marketing">Marketing Digital</option>
+                                <option value="programming">Programación Web</option>
+                                <option value="business">Gestión Empresarial</option>
+                                <option value="design">Diseño Gráfico</option>
+                                <option value="english">Inglés Conversacional</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción *</label>
+                        <textarea class="form-control" rows="4" placeholder="Describe detalladamente lo que los estudiantes deben hacer..." required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Tarea *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el tipo</option>
+                                <option value="project">Proyecto</option>
+                                <option value="quiz">Quiz/Examen</option>
+                                <option value="essay">Ensayo</option>
+                                <option value="presentation">Presentación</option>
+                                <option value="practical">Trabajo Práctico</option>
+                                <option value="discussion">Discusión</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha de Entrega *</label>
+                            <input type="datetime-local" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Puntos Máximos *</label>
+                            <input type="number" class="form-control" placeholder="100" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Archivos Adjuntos</label>
+                            <div style="border: 2px dashed #e0e0e0; border-radius: 8px; padding: 1rem; text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="material-icons">folder</i></div>
+                                <p style="margin-bottom: 0.5rem;">Arrastra archivos aquí o haz clic para seleccionar</p>
+                                <button type="button" class="btn btn-outline">Seleccionar Archivos</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Configuración Adicional</label>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                    <input type="checkbox" style="width: 20px; height: 20px;">
+                                    <span style="font-size: 0.9rem;">Permitir entregas tardías</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                    <input type="checkbox" style="width: 20px; height: 20px;">
+                                    <span style="font-size: 0.9rem;">Notificar estudiantes</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                    <input type="checkbox" style="width: 20px; height: 20px;">
+                                    <span style="font-size: 0.9rem;">Publicar automáticamente</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" style="width: 20px; height: 20px;">
+                                    <span style="font-size: 0.9rem;">Mostrar rúbrica de evaluación</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right; margin-top: 2rem;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Crear Tarea</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Recent Submissions -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">edit</i> Entregas Recientes</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Estudiante</th>
+                                <th style="padding: 1rem; text-align: left;">Tarea</th>
+                                <th style="padding: 1rem; text-align: center;">Fecha de Entrega</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Calificación</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/32x32/667eea/ffffff?text=J" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                        <div>
+                                            <div style="font-weight: bold;">Juan Pérez</div>
+                                            <div style="font-size: 0.8rem; color: #666;">juan.perez@email.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Proyecto Final: Campaña de Marketing</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>Hoy, 2:30 PM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Por Calificar</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #666;">-</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-primary" style="font-size: 0.8rem;">Calificar</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/32x32/764ba2/ffffff?text=A" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                        <div>
+                                            <div style="font-weight: bold;">Ana Rodríguez</div>
+                                            <div style="font-size: 0.8rem; color: #666;">ana.rodriguez@email.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Quiz: Fundamentos de SEO</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>Ayer, 4:15 PM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Calificado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">92/100</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/32x32/28a745/ffffff?text=C" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                        <div>
+                                            <div style="font-weight: bold;">Carlos Méndez</div>
+                                            <div style="font-size: 0.8rem; color: #666;">carlos.mendez@email.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Tarea Práctica: HTML & CSS</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Programación Web</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>Hace 2 días</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Calificado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">88/100</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Crear Tarea</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Recordar Estudiantes</button>
+                    <button class="btn btn-outline">📥 Exportar Entregas</button>
+                    <button class="btn btn-outline"><i class="material-icons">assignment</i> Plantillas de Tareas</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

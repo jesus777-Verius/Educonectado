@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progreso General - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Estudiante</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">3</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=J" alt="Usuario" class="user-avatar">
+                        <span>Juan Pérez</span>
+                        <div class="dropdown">
+                            <a href="/estudiante/perfil">Mi Perfil</a>
+                            <a href="/estudiante/configuracion">Configuración</a>
+                            <a href="/estudiante/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso" class="active"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">show_chart</i> Mi Progreso General</h1>
+                <p>Visualiza y analiza tu evolución en el aprendizaje</p>
+            </div>
+
+            <!-- Overall Progress -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">my_location</i> Progreso General de Aprendizaje</h2>
+                <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
+                    <div style="flex: 1;">
+                        <div style="position: relative; width: 200px; height: 200px; margin: 0 auto;">
+                            <svg style="transform: rotate(-90deg);" width="200" height="200">
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="#e0e0e0" stroke-width="20"/>
+                                <circle cx="100" cy="100" r="80" fill="none" stroke="url(#gradient)" stroke-width="20" stroke-dasharray="502" stroke-dashoffset="126" stroke-linecap="round"/>
+                                <defs>
+                                    <linearGradient id="gradient">
+                                        <stop offset="0%" stop-color="#667eea"/>
+                                        <stop offset="100%" stop-color="#764ba2"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                                <div style="font-size: 2.5rem; font-weight: bold; color: #667eea;">75%</div>
+                                <div style="color: #666;">Completado</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Cursos Totales</span>
+                                <strong>8</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Completados</span>
+                                <strong style="color: #28a745;">3</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>En Progreso</span>
+                                <strong style="color: #ffc107;">5</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Tiempo Total</span>
+                                <strong>52 horas</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress by Category -->
+                <h3 style="margin-bottom: 1rem;">Progreso por Categoría</h3>
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span><i class="material-icons">menu_book</i> Marketing Digital</span>
+                        <span style="color: #667eea; font-weight: bold;">75%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>💻 Programación</span>
+                        <span style="color: #667eea; font-weight: bold;">45%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span><i class="material-icons">business</i> Negocios</span>
+                        <span style="color: #667eea; font-weight: bold;">30%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 30%;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span><i class="material-icons">palette</i> Diseño</span>
+                        <span style="color: #667eea; font-weight: bold;">60%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>🗣️ Idiomas</span>
+                        <span style="color: #667eea; font-weight: bold;">20%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Timeline -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">calendar_today</i> Línea de Tiempo de Aprendizaje</h2>
+                <div style="position: relative; padding-left: 2rem;">
+                    <!-- Timeline Line -->
+                    <div style="position: absolute; left: 1rem; top: 0; bottom: 0; width: 2px; background: #e0e0e0;"></div>
+                    
+                    <!-- Timeline Items -->
+                    <div style="position: relative; margin-bottom: 2rem;">
+                        <div style="position: absolute; left: -1.5rem; top: 0.5rem; width: 12px; height: 12px; background: #28a745; border-radius: 50%; border: 2px solid white;"></div>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 3px solid #28a745;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <strong>Curso Completado: Excel Avanzado</strong>
+                                <small style="color: #666;">15 Nov 2024</small>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem;">¡Felicidades! Has completado el curso con una calificación de 92/100</p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; margin-bottom: 2rem;">
+                        <div style="position: absolute; left: -1.5rem; top: 0.5rem; width: 12px; height: 12px; background: #667eea; border-radius: 50%; border: 2px solid white;"></div>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 3px solid #667eea;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <strong>Lección Completada: SEO On-Page</strong>
+                                <small style="color: #666;">12 Nov 2024</small>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem;">Marketing Digital - Módulo 2, Lección 1</p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; margin-bottom: 2rem;">
+                        <div style="position: absolute; left: -1.5rem; top: 0.5rem; width: 12px; height: 12px; background: #ffc107; border-radius: 50%; border: 2px solid white;"></div>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 3px solid #ffc107;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <strong>Quiz Aprobado: JavaScript Básico</strong>
+                                <small style="color: #666;">10 Nov 2024</small>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem;">Desarrollo Web Moderno - Calificación: 85/100</p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; margin-bottom: 2rem;">
+                        <div style="position: absolute; left: -1.5rem; top: 0.5rem; width: 12px; height: 12px; background: #dc3545; border-radius: 50%; border: 2px solid white;"></div>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 3px solid #dc3545;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <strong>Curso Iniciado: Marketing Digital</strong>
+                                <small style="color: #666;">1 Nov 2024</small>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem;">Comenzaste tu journey en marketing digital</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Course Progress -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Progreso Detallado por Curso</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Curso</th>
+                                <th style="padding: 1rem; text-align: center;">Lecciones</th>
+                                <th style="padding: 1rem; text-align: center;">Completadas</th>
+                                <th style="padding: 1rem; text-align: center;">Progreso</th>
+                                <th style="padding: 1rem; text-align: center;">Tiempo</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=M" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Marketing Digital</div>
+                                            <div style="font-size: 0.8rem; color: #666;">12 lecciones</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">12</td>
+                                <td style="padding: 1rem; text-align: center;">9</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #667eea; font-weight: bold;">75%</div>
+                                    <div class="progress-bar" style="height: 4px;">
+                                        <div class="progress-fill" style="width: 75%;"></div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">6h</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/40x40/764ba2/ffffff?text=P" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Programación Web</div>
+                                            <div style="font-size: 0.8rem; color: #666;">24 lecciones</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">24</td>
+                                <td style="padding: 1rem; text-align: center;">11</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #667eea; font-weight: bold;">45%</div>
+                                    <div class="progress-bar" style="height: 4px;">
+                                        <div class="progress-fill" style="width: 45%;"></div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">9h</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=E" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Excel Avanzado</div>
+                                            <div style="font-size: 0.8rem; color: #666;">20 lecciones</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">20</td>
+                                <td style="padding: 1rem; text-align: center;">20</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #28a745; font-weight: bold;">100%</div>
+                                    <div class="progress-bar" style="height: 4px;">
+                                        <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">16h</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Completado</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Learning Goals -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">my_location</i> Metas de Aprendizaje</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 1rem;">Meta Semanal</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Completar 5 lecciones</span>
+                                    <span style="color: #667eea; font-weight: bold;">3/5</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Estudiar 10 horas</span>
+                                    <span style="color: #667eea; font-weight: bold;">7/10</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: 1rem;">
+                                <small style="color: #666;">2 días restantes</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 1rem;">Meta Mensual</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Completar 1 curso</span>
+                                    <span style="color: #667eea; font-weight: bold;">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Obtener certificado</span>
+                                    <span style="color: #667eea; font-weight: bold;">En progreso</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: 1rem;">
+                                <small style="color: #666;">12 días restantes</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

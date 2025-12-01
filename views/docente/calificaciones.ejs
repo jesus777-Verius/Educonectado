@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones" class="active"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">edit</i> Gestión de Calificaciones</h1>
+                <p>Evalúa y califica el rendimiento de tus estudiantes</p>
+            </div>
+
+            <!-- Grading Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">edit</i></div>
+                    <div class="stat-info">
+                        <h3>18</h3>
+                        <p>Tareas por Calificar</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">my_location</i></div>
+                    <div class="stat-info">
+                        <h3>45</h3>
+                        <p>Evaluaciones Pendientes</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">bar_chart</i></div>
+                    <div class="stat-info">
+                        <h3>4.6</h3>
+                        <p>Calificación Promedio</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">schedule</i></div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>Vencen Hoy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">menu_book</i> Seleccionar Curso</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 200px;">
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="programming">Programación Web</option>
+                            <option value="business">Gestión Empresarial</option>
+                            <option value="design">Diseño Gráfico</option>
+                            <option value="english">Inglés Conversacional</option>
+                        </select>
+                        <button class="btn btn-primary"><i class="material-icons">bar_chart</i> Ver Reportes</button>
+                    </div>
+                </div>
+
+                <!-- Pending Grading -->
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;"><i class="material-icons">warning</i> Tareas Pendientes de Calificación</h3>
+                    <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h4 style="margin-bottom: 0.5rem;">Marketing Digital - Proyecto Final</h4>
+                                <p style="color: #856404; font-size: 0.9rem;">12 estudiantes han entregado sus proyectos</p>
+                            </div>
+                            <button class="btn btn-primary" style="background: #ffc107; color: #000;">Comenzar Calificación</button>
+                        </div>
+                    </div>
+                    <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h4 style="margin-bottom: 0.5rem;">Programación Web - Quiz JavaScript</h4>
+                                <p style="color: #721c24; font-size: 0.9rem;">6 estudiantes necesitan calificación</p>
+                            </div>
+                            <button class="btn btn-primary">Calificar Ahora</button>
+                        </div>
+                    </div>
+                    <div style="background: #d1ecf1; border: 1px solid #bee5eb; border-radius: 8px; padding: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h4 style="margin-bottom: 0.5rem;">Gestión Empresarial - Caso Práctico</h4>
+                                <p style="color: #0c5460; font-size: 0.9rem;">3 estudiantes han entregado sus trabajos</p>
+                            </div>
+                            <button class="btn btn-primary" style="background: #17a2b8;">Revisar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gradebook -->
+                <div>
+                    <h3 style="margin-bottom: 1rem;"><i class="material-icons">assignment</i> Libro de Calificaciones</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #f8f9fa;">
+                                    <th style="padding: 1rem; text-align: left;">Estudiante</th>
+                                    <th style="padding: 1rem; text-align: center;">Tarea 1</th>
+                                    <th style="padding: 1rem; text-align: center;">Quiz 1</th>
+                                    <th style="padding: 1rem; text-align: center;">Proyecto</th>
+                                    <th style="padding: 1rem; text-align: center;">Participación</th>
+                                    <th style="padding: 1rem; text-align: center;">Examen Final</th>
+                                    <th style="padding: 1rem; text-align: center;">Promedio</th>
+                                    <th style="padding: 1rem; text-align: center;">Estado</th>
+                                    <th style="padding: 1rem; text-align: center;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <img src="https://via.placeholder.com/32x32/667eea/ffffff?text=J" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                            <div>
+                                                <div style="font-weight: bold;">Juan Pérez</div>
+                                                <div style="font-size: 0.8rem; color: #666;">juan.perez@email.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">95</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">88</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">92</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">90</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">94</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">91.8</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Excelente</span>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Detalles</button>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <img src="https://via.placeholder.com/32x32/764ba2/ffffff?text=A" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                            <div>
+                                                <div style="font-weight: bold;">Ana Rodríguez</div>
+                                                <div style="font-size: 0.8rem; color: #666;">ana.rodriguez@email.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">85</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #ffc107;">78</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">82</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">88</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #ffc107;">79</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #ffc107;">82.4</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Bueno</span>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Detalles</button>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <img src="https://via.placeholder.com/32x32/28a745/ffffff?text=C" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                            <div>
+                                                <div style="font-weight: bold;">Carlos Méndez</div>
+                                                <div style="font-size: 0.8rem; color: #666;">carlos.mendez@email.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">90</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">85</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">88</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">92</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">87</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #28a745;">88.4</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Excelente</span>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Detalles</button>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 1rem;">
+                                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                            <img src="https://via.placeholder.com/32x32/dc3545/ffffff?text=L" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                            <div>
+                                                <div style="font-weight: bold;">Luisa Fernández</div>
+                                                <div style="font-size: 0.8rem; color: #666;">luisa.fernandez@email.com</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #dc3545;">65</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #dc3545;">58</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #dc3545;">62</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #ffc107;">75</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #dc3545;">68</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <div style="font-weight: bold; color: #dc3545;">65.6</div>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Mejorar</span>
+                                    </td>
+                                    <td style="padding: 1rem; text-align: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Detalles</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grading Rubric -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Rúbrica de Evaluación</h2>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="margin-bottom: 1rem;">Criterios de Calificación</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: #e9ecef;">
+                                    <th style="padding: 0.75rem; text-align: left;">Criterio</th>
+                                    <th style="padding: 0.75rem; text-align: center;">Excelente (90-100)</th>
+                                    <th style="padding: 0.75rem; text-align: center;">Bueno (80-89)</th>
+                                    <th style="padding: 0.75rem; text-align: center;">Suficiente (70-79)</th>
+                                    <th style="padding: 0.75rem; text-align: center;">Mejorar (0-69)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #dee2e6;">
+                                    <td style="padding: 0.75rem; font-weight: bold;">Contenido</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Completo y preciso</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Adecuado</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Básico</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Insuficiente</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #dee2e6;">
+                                    <td style="padding: 0.75rem; font-weight: bold;">Organización</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Estructura clara</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Organizado</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Poco ordenado</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Desorganizado</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #dee2e6;">
+                                    <td style="padding: 0.75rem; font-weight: bold;">Creatividad</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Innovador</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Original</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Común</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Sin originalidad</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem; font-weight: bold;">Presentación</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Profesional</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Buena</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Aceptable</td>
+                                    <td style="padding: 0.75rem; text-align: center; font-size: 0.9rem;">Deficiente</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade Distribution -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">show_chart</i> Distribución de Calificaciones</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">Por Rango de Calificación</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Excelente (90-100)</span>
+                                    <span style="font-weight: bold; color: #28a745;">35%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 35%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Bueno (80-89)</span>
+                                    <span style="font-weight: bold; color: #667eea;">40%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%; background: #667eea;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Suficiente (70-79)</span>
+                                    <span style="font-weight: bold; color: #ffc107;">20%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Mejorar (0-69)</span>
+                                    <span style="font-weight: bold; color: #dc3545;">5%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 5%; background: #dc3545;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">Estadísticas Generales</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Calificación Promedio</span>
+                                    <span style="font-weight: bold; color: #667eea;">82.3</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Calificación Más Alta</span>
+                                    <span style="font-weight: bold; color: #28a745;">98</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Calificación Más Baja</span>
+                                    <span style="font-weight: bold; color: #dc3545;">45</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Tasa de Aprobación</span>
+                                    <span style="font-weight: bold; color: #28a745;">95%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Total Evaluados</span>
+                                    <span style="font-weight: bold; color: #764ba2;">89</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">edit</i> Calificar Tareas</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Exportar Calificaciones</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Notificar Estudiantes</button>
+                    <button class="btn btn-outline"><i class="material-icons">assignment</i> Generar Reportes</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configurar Rúbrica</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

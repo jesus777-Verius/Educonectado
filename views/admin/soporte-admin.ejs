@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte Administrativo - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin" class="active"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">forum</i> Soporte Administrativo</h1>
+                        <p>Gestiona tickets de soporte y ayuda a usuarios</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Nuevo Ticket</button>
+                </div>
+            </div>
+
+            <!-- Support Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">assignment</i></div>
+                    <div class="stat-info">
+                        <h3>89</h3>
+                        <p>Tickets Totales</p>
+                        <div style="font-size: 0.8rem; color: #28a745;">↑ 12% esta semana</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">⏳</div>
+                    <div class="stat-info">
+                        <h3>23</h3>
+                        <p>Tickets Abiertos</p>
+                        <div style="font-size: 0.8rem; color: #ffc107;">Requieren atención</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">check_circle</i></div>
+                    <div class="stat-info">
+                        <h3>56</h3>
+                        <p>Tickets Resueltos</p>
+                        <div style="font-size: 0.8rem; color: #667eea;">63% del total</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red">🚨</div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>Urgentes</p>
+                        <div style="font-size: 0.8rem; color: #dc3545;">Acción inmediata</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ticket Filters -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">search</i> Filtros de Tickets</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los estados</option>
+                            <option value="open">Abierto</option>
+                            <option value="in-progress">En Progreso</option>
+                            <option value="resolved">Resuelto</option>
+                            <option value="closed">Cerrado</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todas las prioridades</option>
+                            <option value="urgent">Urgente</option>
+                            <option value="high">Alta</option>
+                            <option value="medium">Media</option>
+                            <option value="low">Baja</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todas las categorías</option>
+                            <option value="technical"> Técnico</option>
+                            <option value="billing">Facturación</option>
+                            <option value="account">Cuenta</option>
+                            <option value="course">Curso</option>
+                        </select>
+                        <input type="text" placeholder="Buscar tickets..." class="form-control" style="width: 250px;">
+                    </div>
+                </div>
+
+                <!-- Tickets Table -->
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Ticket</th>
+                                <th style="padding: 1rem; text-align: center;">Usuario</th>
+                                <th style="padding: 1rem; text-align: center;">Categoría</th>
+                                <th style="padding: 1rem; text-align: center;">Prioridad</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Fecha</th>
+                                <th style="padding: 1rem; text-align: center;">Asignado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#TCK001</div>
+                                        <div style="font-size: 0.8rem; color: #666;">No puedo acceder a mi curso</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=J" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Juan Pérez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Técnico</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Urgente</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">28 Nov 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=S" alt="Agente" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Sofía</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Asignar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Cerrar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#TCK002</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Error en pago con tarjeta</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=M" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">María González</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Facturación</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Alta</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Resuelto</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">27 Nov 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=C" alt="Agente" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Carlos</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Reabrir</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Archivar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#TCK003</div>
+                                        <div style="font-size: 0.8rem; color: #666;">No puedo cambiar mi contraseña</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=A" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Ana Rodríguez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Cuenta</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Media</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Abierto</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">29 Nov 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Sin asignar</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-primary" style="font-size: 0.8rem;">Asignar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Cerrar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Create Ticket Form -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">add</i> Crear Nuevo Ticket</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Usuario *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un usuario</option>
+                                <option value="user1">Juan Pérez - juan.perez@email.com</option>
+                                <option value="user2">María González - maria.gonzalez@email.com</option>
+                                <option value="user3">Ana Rodríguez - ana.rodriguez@email.com</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Categoría *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona la categoría</option>
+                                <option value="technical">Técnico</option>
+                                <option value="billing">Facturación</option>
+                                <option value="account">Cuenta</option>
+                                <option value="course">Curso</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Prioridad *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona la prioridad</option>
+                                <option value="urgent">Urgente</option>
+                                <option value="high">Alta</option>
+                                <option value="medium">Media</option>
+                                <option value="low">Baja</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Asignar a Agente</label>
+                            <select class="form-control">
+                                <option value="">Sin asignar</option>
+                                <option value="agent1">Sofía Martínez</option>
+                                <option value="agent2">Carlos Rodríguez</option>
+                                <option value="agent3">Laura Sánchez</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Asunto *</label>
+                        <input type="text" class="form-control" placeholder="Describe brevemente el problema" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción Detallada *</label>
+                        <textarea class="form-control" rows="5" placeholder="Describe el problema en detalle, incluyendo pasos para reproducirlo si es aplicable..." required></textarea>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">assignment</i> Información Adicional</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Navegador</label>
+                                <select class="form-control">
+                                    <option value="">No especificado</option>
+                                    <option value="chrome">Chrome</option>
+                                    <option value="firefox">Firefox</option>
+                                    <option value="safari">Safari</option>
+                                    <option value="edge">Edge</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Dispositivo</label>
+                                <select class="form-control">
+                                    <option value="">No especificado</option>
+                                    <option value="desktop">Desktop</option>
+                                    <option value="mobile">Móvil</option>
+                                    <option value="tablet">Tablet</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">URL donde ocurrió el problema</label>
+                            <input type="url" class="form-control" placeholder="https://educonecta.com/...">
+                        </div>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Cancelar</button>
+                        <button type="submit" class="btn btn-primary"><i class="material-icons">assignment</i> Crear Ticket</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Knowledge Base -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">menu_book</i> Base de Conocimiento</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">🔐 Problemas de Acceso</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Soluciones comunes para problemas de login</p>
+                                </div>
+                                <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Técnico</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">local_library</i> 12 artículos</span>
+                                    <span style="margin-left: 1rem;">👁️ 1,234 vistas</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">star</i> 4.8/5</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100;">Ver Artículos</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">💳 Pagos y Facturación</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Guía de pagos y facturación</p>
+                                </div>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Facturación</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">local_library</i> 8 artículos</span>
+                                    <span style="margin-left: 1rem;">👁️ 890 vistas</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">star</i> 4.6/5</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100;">Ver Artículos</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">menu_book</i> Gestión de Cursos</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Uso de la plataforma de cursos</p>
+                                </div>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Curso</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">local_library</i> 15 artículos</span>
+                                    <span style="margin-left: 1rem;">👁️ 2,345 vistas</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">star</i> 4.9/5</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100;">Ver Artículos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Agents -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">people</i> Agentes de Soporte</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Agente</th>
+                                <th style="padding: 1rem; text-align: center;">Tickets Asignados</th>
+                                <th style="padding: 1rem; text-align: center;">Resueltos Hoy</th>
+                                <th style="padding: 1rem; text-align: center;">Tiempo Respuesta</th>
+                                <th style="padding: 1rem; text-align: center;">Satisfacción</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=S" alt="Agente" style="width: 40px; height: 40px; border-radius: 50%;">
+                                        <div>
+                                            <div style="font-weight: bold;">Sofía Martínez</div>
+                                            <div style="font-size: 0.8rem; color: #666;">sofia@educonecta.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">8</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">5</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">15 min</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">4.8/5</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En línea</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Asignar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=C" alt="Agente" style="width: 40px; height: 40px; border-radius: 50%;">
+                                        <div>
+                                            <div style="font-weight: bold;">Carlos Rodríguez</div>
+                                            <div style="font-size: 0.8rem; color: #666;">carlos@educonecta.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">6</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">3</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">12 min</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">4.7/5</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En línea</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Asignar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Nuevo Ticket</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline">📥 Exportar Tickets</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Enviar Respuesta Masiva</button>
+                    <button class="btn btn-outline"><i class="material-icons">menu_book</i> Actualizar Base de Conocimiento</button>
+                    <button class="btn btn-outline"><i class="material-icons">people</i> Gestionar Agentes</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

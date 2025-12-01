@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: #f8f9fa;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .modal-close:hover {
+            background: #e9ecef;
+            transform: rotate(90deg);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input,
+        .form-group password {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group password:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        .btn-outline {
+            border: 2px solid #667eea;
+            color: #667eea;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="container nav">
+            <a href="/" class="logo"><span class="material-symbols-outlined" style="font-size: 1.5rem; vertical-align: middle; margin-right: 0.5rem;">menu_book</span> EduConecta</a>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/catalogo">Catálogo</a></li>
+                <li><a href="/precios">Precios</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/quienes-somos">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="#" class="btn btn-outline" onclick="openModal('loginModal')">Iniciar Sesión</a></li>
+                <li><a href="#" class="btn btn-primary" onclick="openModal('registerModal')">Crear Cuenta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Enhanced Page Header -->
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8rem 0; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/images/OIP.webp') center/cover; opacity: 0.15;"></div>
+        <div class="container text-center" style="position: relative; z-index: 2;">
+            <div style="background: rgba(255,255,255,0.1); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; display: inline-block; margin-bottom: 1.5rem; backdrop-filter: blur(10px); font-weight: 600;">
+                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">chat</span>
+                Estamos aquí para ayudarte
+            </div>
+            <h1 style="font-size: 4rem; margin-bottom: 2rem; font-weight: bold; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Contacto</h1>
+            <p style="font-size: 1.4rem; opacity: 0.95; max-width: 700px; margin: 0 auto; line-height: 1.6; text-shadow: 0 1px 5px rgba(0,0,0,0.2);">Tu journey educativo comienza aquí. Conéctate con nuestro equipo de expertos y descubre cómo podemos transformar tu futuro profesional.</p>
+            <div style="margin-top: 3rem; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">24/7</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">Soporte Online</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">&lt;1hr</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">Tiempo de Respuesta</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">98%</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">Satisfacción</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Contact Section -->
+    <section class="container mb-3" style="padding: 5rem 0;">
+        <div class="text-center mb-3">
+            <h2 style="color: #333; font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem;">Conéctate con Nosotros</h2>
+            <p style="color: #666; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Estamos listos para responder todas tus preguntas y ayudarte a comenzar tu journey educativo</p>
+        </div>
+        <div class="grid grid-2" style="gap: 3rem;">
+            <!-- Enhanced Contact Form -->
+            <div>
+                <div class="contact-form-card" style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #667eea, #764ba2);"></div>
+                    <div style="margin-bottom: 2rem;">
+                        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">edit_note</span>
+                            Envíanos un Mensaje
+                        </div>
+                        <h3 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">¿Cómo podemos ayudarte?</h3>
+                        <p style="color: #666; font-size: 1rem;">Completa el formulario y te responderemos en menos de 1 hora</p>
+                    </div>
+                    <form id="contactForm" style="">
+                        <div class="form-row" style="gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label" style="color: #333; font-weight: 600; margin-bottom: 0.5rem; display: block;">Nombre Completo *</label>
+                                <div style="position: relative;">
+                                    <input type="text" name="nombre" class="form-control" required placeholder="Juan Pérez" style="background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 1rem 1rem 1rem 3rem; transition: all 0.3s ease;">
+                                    <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea; font-size: 1.2rem;">
+                                        <span class="material-symbols-outlined">person</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label" style="color: #333; font-weight: 600; margin-bottom: 0.5rem; display: block;">Correo Electrónico *</label>
+                                <div style="position: relative;">
+                                    <input type="email" name="email" class="form-control" required placeholder="juan@email.com" style="background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 1rem 1rem 1rem 3rem; transition: all 0.3s ease;">
+                                    <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea; font-size: 1.2rem;">
+                                        <span class="material-symbols-outlined">email</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="gap: 1rem; margin-bottom: 1.5rem;">
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label" style="color: #333; font-weight: 600; margin-bottom: 0.5rem; display: block;">Teléfono</label>
+                                <div style="position: relative;">
+                                    <input type="tel" name="telefono" class="form-control" placeholder="+58 414-123-4567" style="background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 1rem 1rem 1rem 3rem; transition: all 0.3s ease;">
+                                    <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea; font-size: 1.2rem;">
+                                        <span class="material-symbols-outlined">phone</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label" style="color: #333; font-weight: 600; margin-bottom: 0.5rem; display: block;">Asunto *</label>
+                                <div style="position: relative;">
+                                    <select name="asunto" class="form-control" required style="background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 1rem 1rem 1rem 3rem; transition: all 0.3s ease; appearance: none; cursor: pointer;">
+                                        <option value="">Selecciona un asunto</option>
+                                        <option value="soporte">
+                                            <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; margin-right: 0.5rem;">build</span>
+                                            Soporte Técnico
+                                        </option>
+                                        <option value="ventas">
+                                            <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; margin-right: 0.5rem;">payments</span>
+                                            Ventas y Planes
+                                        </option>
+                                        <option value="academico">
+                                            <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; margin-right: 0.5rem;">school</span>
+                                            Consultas Académicas
+                                        </option>
+                                        <option value="partnership">
+                                            <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; margin-right: 0.5rem;">handshake</span>
+                                            Alianzas Estratégicas
+                                        </option>
+                                        <option value="general">
+                                            <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; margin-right: 0.5rem;">chat</span>
+                                            Consulta General
+                                        </option>
+                                    </select>
+                                    <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea; font-size: 1.2rem;">
+                                        <span class="material-symbols-outlined">list_alt</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label class="form-label" style="color: #333; font-weight: 600; margin-bottom: 0.5rem; display: block;">Mensaje *</label>
+                            <div style="position: relative;">
+                                <textarea name="mensaje" class="form-control" rows="5" required placeholder="Describe tu consulta o solicitud en detalle..." style="background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 1rem 1rem 1rem 3rem; transition: all 0.3s ease; resize: vertical;"></textarea>
+                                <div style="position: absolute; left: 1rem; top: 1rem; color: #667eea; font-size: 1.2rem;">
+                                    <span class="material-symbols-outlined">chat</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 2rem;">
+                            <label style="display: flex; align-items: center; cursor: pointer; padding: 1rem; background: #f8f9fa; border-radius: 10px; border: 2px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#667eea'" onmouseout="this.style.borderColor='transparent'">
+                                <input type="checkbox" name="newsletter" style="margin-right: 1rem; width: 20px; height: 20px; accent-color: #667eea;">
+                                <span style="color: #333; font-size: 1rem;">Deseo recibir información sobre nuevos cursos y ofertas especiales</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 2rem; border: none; border-radius: 12px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">send</span>
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Enhanced Contact Information -->
+            <div>
+                <div class="contact-info-card" style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative; overflow: hidden; margin-bottom: 2rem;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #28a745, #20c997);"></div>
+                    <div style="margin-bottom: 2rem;">
+                        <div style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">call</span>
+                            Información de Contacto
+                        </div>
+                        <h3 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">Múltiples Vías de Contacto</h3>
+                        <p style="color: #666; font-size: 1rem;">Elige la opción que mejor se adapte a tus necesidades</p>
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 1.5rem; background: #f8f9fa; border-radius: 15px; border-left: 4px solid #667eea; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);">
+                                <span class="material-symbols-outlined">email</span>
+                            </div>
+                            <div style="flex: 1;">
+                                <strong style="color: #333; font-size: 1.1rem; margin-bottom: 0.5rem; display: block;">Correo Electrónico</strong>
+                                <div style="color: #666; margin-bottom: 0.25rem; font-size: 0.95rem;">info@educonecta.edu.ve</div>
+                                <div style="color: #666; font-size: 0.95rem;">soporte@educonecta.edu.ve</div>
+                                <div style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-top: 0.5rem;">Respuesta en &lt;1hr</div>
+                            </div>
+                        </div>
+                        <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 1.5rem; background: #f8f9fa; border-radius: 15px; border-left: 4px solid #28a745; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);">
+                                <span class="material-symbols-outlined">phone</span>
+                            </div>
+                            <div style="flex: 1;">
+                                <strong style="color: #333; font-size: 1.1rem; margin-bottom: 0.5rem; display: block;">Teléfono</strong>
+                                <div style="color: #666; margin-bottom: 0.25rem; font-size: 0.95rem;">+58 414-123-4567</div>
+                                <div style="color: #666; font-size: 0.95rem;">+58 212-123-4567</div>
+                                <div style="background: rgba(40, 167, 69, 0.1); color: #28a745; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-top: 0.5rem;">Lunes a Sábado</div>
+                            </div>
+                        </div>
+                        <div class="contact-item" style="display: flex; align-items: center; margin-bottom: 1.5rem; padding: 1.5rem; background: #f8f9fa; border-radius: 15px; border-left: 4px solid #ffc107; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div style="flex: 1;">
+                                <strong style="color: #333; font-size: 1.1rem; margin-bottom: 0.5rem; display: block;">Dirección</strong>
+                                <div style="color: #666; margin-bottom: 0.25rem; font-size: 0.95rem;">Edificio Torre Educativa, Piso 8</div>
+                                <div style="color: #666; margin-bottom: 0.25rem; font-size: 0.95rem;">Av. Libertador, Caracas 1010</div>
+                                <div style="color: #666; font-size: 0.95rem;">Venezuela</div>
+                                <div style="background: rgba(255, 193, 7, 0.1); color: #ffc107; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-top: 0.5rem;">Visitas con cita</div>
+                            </div>
+                        </div>
+                        <div class="contact-item" style="display: flex; align-items: center; padding: 1.5rem; background: #f8f9fa; border-radius: 15px; border-left: 4px solid #dc3545; transition: all 0.3s ease;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);">
+                                <span class="material-symbols-outlined">schedule</span>
+                            </div>
+                            <div style="flex: 1;">
+                                <strong style="color: #333; font-size: 1.1rem; margin-bottom: 0.5rem; display: block;">Horario de Atención</strong>
+                                <div style="color: #666; margin-bottom: 0.25rem; font-size: 0.95rem;">Lunes a Viernes: 9:00 AM - 6:00 PM</div>
+                                <div style="color: #666; font-size: 0.95rem;">Sábados: 10:00 AM - 2:00 PM</div>
+                                <div style="background: rgba(220, 53, 69, 0.1); color: #dc3545; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-top: 0.5rem;">Soporte 24/7 Online</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Quick Support -->
+                <div class="quick-support-card" style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ffc107, #ff8f00);"></div>
+                    <div style="margin-bottom: 2rem;">
+                        <div style="background: linear-gradient(135deg, #ffc107 0%, #ff8f00 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">bolt</span>
+                            Soporte Rápido
+                        </div>
+                        <h3 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">Ayuda Instantánea</h3>
+                        <p style="color: #666; font-size: 1rem;">Resuelve tus dudas rápidamente con nuestras opciones de autosoporte</p>
+                    </div>
+                    <div style="display: grid; gap: 1rem;">
+                        <div class="support-option" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 1.5rem; border-radius: 15px; border-left: 4px solid #667eea; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'" onclick="window.open('/faq', '_blank')">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem; color: #333; font-weight: bold; font-size: 1.1rem;">
+                                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem; color: #667eea;">build</span>
+                                        ¿Necesitas ayuda técnica?
+                                    </h4>
+                                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 0;">Revisa nuestra sección de preguntas frecuentes</p>
+                                </div>
+                                <div style="background: #667eea; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);">→</div>
+                            </div>
+                        </div>
+                        <div class="support-option" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 1.5rem; border-radius: 15px; border-left: 4px solid #28a745; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'" onclick="window.open('/catalogo', '_blank')">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem; color: #333; font-weight: bold; font-size: 1.1rem;">
+                                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem; color: #28a745;">school</span>
+                                        ¿Consultas sobre cursos?
+                                    </h4>
+                                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 0;">Explora nuestro catálogo de cursos</p>
+                                </div>
+                                <div style="background: #28a745; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);">→</div>
+                            </div>
+                        </div>
+                        <div class="support-option" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 1.5rem; border-radius: 15px; border-left: 4px solid #ffc107; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateX(5px)'" onmouseout="this.style.transform='translateX(0)'" onclick="openModal('loginModal')">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem; color: #333; font-weight: bold; font-size: 1.1rem;">
+                                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem; color: #ffc107;">lock</span>
+                                        ¿Problemas con tu cuenta?
+                                    </h4>
+                                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 0;">Recupera tu contraseña o accede a tu cuenta</p>
+                                </div>
+                                <div style="background: #ffc107; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);">→</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced FAQ Section -->
+    <section class="container mb-3" style="padding: 5rem 0;">
+        <div class="text-center mb-3">
+            <h2 style="color: #333; font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem;">Preguntas Frecuentes</h2>
+            <p style="color: #666; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Encuentra respuestas rápidas a las dudas más comunes de nuestros estudiantes</p>
+        </div>
+        <div class="grid grid-2" style="gap: 2rem;">
+            <div class="faq-card" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2);"></div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">INSCRIPCIÓN</div>
+                    <h4 style="color: #333; margin-bottom: 1rem; font-weight: bold; font-size: 1.3rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.5rem; vertical-align: middle; margin-right: 0.5rem; color: #667eea;">edit_note</span>
+                        ¿Cómo puedo inscribirme en un curso?
+                    </h4>
+                    <p style="color: #666; line-height: 1.7; font-size: 1rem;">Es muy sencillo. Ve al catálogo de cursos, selecciona el que te interesa y haz clic en "Comprar" o "Inscribirse". Si eres nuevo, deberás crear una cuenta primero.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                    <div style="color: #667eea; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">lightbulb</span>
+                        Tip Rápido
+                    </div>
+                    <div style="color: #666; font-size: 0.85rem;">Usa el filtro por categoría para encontrar cursos más rápido</div>
+                </div>
+            </div>
+            <div class="faq-card" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #28a745, #20c997);"></div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="background: rgba(40, 167, 69, 0.1); color: #28a745; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">PAGOS</div>
+                    <h4 style="color: #333; margin-bottom: 1rem; font-weight: bold; font-size: 1.3rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.5rem; vertical-align: middle; margin-right: 0.5rem; color: #28a745;">payments</span>
+                        ¿Qué métodos de pago aceptan?
+                    </h4>
+                    <p style="color: #666; line-height: 1.7; font-size: 1rem;">Aceptamos tarjetas de crédito/débito, transferencias bancarias, Pago Móvil y Zelle para mayor comodidad de nuestros usuarios en Venezuela.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                    <div style="color: #28a745; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">celebration</span>
+                        Oferta Especial
+                    </div>
+                    <div style="color: #666; font-size: 0.85rem;">10% de descuento con Pago Móvil</div>
+                </div>
+            </div>
+            <div class="faq-card" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #ffc107, #ff8f00);"></div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="background: rgba(255, 193, 7, 0.1); color: #ffc107; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">CERTIFICACIÓN</div>
+                    <h4 style="color: #333; margin-bottom: 1rem; font-weight: bold; font-size: 1.3rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.5rem; vertical-align: middle; margin-right: 0.5rem; color: #ffc107;">school</span>
+                        ¿Los certificados son reconocidos?
+                    </h4>
+                    <p style="color: #666; line-height: 1.7; font-size: 1rem;">Sí, nuestros certificados son reconocidos por empresas en Venezuela y Latinoamérica. Incluyen códigos de verificación únicos y pueden ser compartidos en LinkedIn.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                    <div style="color: #ffc107; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">emoji_events</span>
+                        Reconocimiento
+                    </div>
+                    <div style="color: #666; font-size: 0.85rem;">Validados por más de 500 empresas</div>
+                </div>
+            </div>
+            <div class="faq-card" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #dc3545, #c82333);"></div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="background: rgba(220, 53, 69, 0.1); color: #dc3545; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">ACCESO</div>
+                    <h4 style="color: #333; margin-bottom: 1rem; font-weight: bold; font-size: 1.3rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.5rem; vertical-align: middle; margin-right: 0.5rem; color: #dc3545;">devices</span>
+                        ¿Puedo acceder a los cursos sin conexión?
+                    </h4>
+                    <p style="color: #666; line-height: 1.7; font-size: 1rem;">Los planes Profesional y Empresarial incluyen acceso offline. Puedes descargar las lecciones para verlas cuando no tengas conexión a internet.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                    <div style="color: #dc3545; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">smartphone</span>
+                        Móvil
+                    </div>
+                    <div style="color: #666; font-size: 0.85rem;">App disponible para iOS y Android</div>
+                </div>
+            </div>
+            <div class="faq-card" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #667eea, #764ba2);"></div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="background: rgba(102, 126, 234, 0.1); color: #667eea; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">GARANTÍA</div>
+                    <h4 style="color: #333; margin-bottom: 1rem; font-weight: bold; font-size: 1.3rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.5rem; vertical-align: middle; margin-right: 0.5rem; color: #667eea;">shield</span>
+                        ¿Hay garantía de reembolso?
+                    </h4>
+                    <p style="color: #666; line-height: 1.7; font-size: 1rem;">Sí, ofrecemos garantía de reembolso de 30 días. Si no estás satisfecho con el curso, solicita un reembolso completo sin preguntas.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                    <div style="color: #667eea; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">verified</span>
+                        Confianza
+                    </div>
+                    <div style="color: #666; font-size: 0.85rem;">98% de satisfacción garantizada</div>
+                </div>
+            </div>
+            <div class="faq-card" style="background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #28a745, #20c997);"></div>
+                <div style="margin-bottom: 1rem;">
+                    <div style="background: rgba(40, 167, 69, 0.1); color: #28a745; padding: 0.5rem 1rem; border-radius: 20px; display: inline-block; font-weight: 600; font-size: 0.8rem; margin-bottom: 1rem;">EMPRESAS</div>
+                    <h4 style="color: #333; margin-bottom: 1rem; font-weight: bold; font-size: 1.3rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.5rem; vertical-align: middle; margin-right: 0.5rem; color: #28a745;">handshake</span>
+                        ¿Ofrecen descuentos para grupos?
+                    </h4>
+                    <p style="color: #666; line-height: 1.7; font-size: 1rem;">Sí, tenemos planes especiales para empresas e instituciones educativas. Contáctanos para obtener una cotización personalizada.</p>
+                </div>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                    <div style="color: #28a745; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">business</span>
+                        Empresarial
+                    </div>
+                    <div style="color: #666; font-size: 0.85rem;">Hasta 50% de descuento para grupos</div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 3rem;">
+            <p style="color: #666; font-size: 1.1rem; margin-bottom: 1.5rem;">¿No encuentras lo que buscas?</p>
+            <a href="#contactForm" class="btn btn-primary" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 2rem; border: none; border-radius: 12px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);">
+                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">chat</span>
+                Contacta a Soporte
+            </a>
+        </div>
+    </section>
+
+    <!-- Enhanced Social Media Section -->
+    <section class="container mb-3" style="padding: 5rem 0;">
+        <div class="text-center mb-3">
+            <h2 style="color: #333; font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem;">Síguenos en Redes Sociales</h2>
+            <p style="color: #666; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Mantente conectado y recibe contenido educativo diario, tips exclusivos y promociones especiales</p>
+        </div>
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 3rem; border-radius: 25px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/images/OIP.webp') center/cover; opacity: 0.1;"></div>
+            <div style="position: relative; z-index: 2;">
+                <div style="background: rgba(255,255,255,0.1); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; display: inline-block; margin-bottom: 2rem; backdrop-filter: blur(10px); font-weight: 600;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">star</span>
+                    Únete a nuestra comunidad
+                </div>
+                <h3 style="font-size: 2rem; margin-bottom: 1.5rem; font-weight: bold; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Más de 50,000 Seguidores Activos</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.95; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">Sé parte de una comunidad vibrante de estudiantes, profesionales y expertos en educación que comparten conocimiento y experiencias.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <div class="social-item" style="background: rgba(255,255,255,0.1); padding: 2rem 1rem; border-radius: 20px; transition: all 0.3s ease; backdrop-filter: blur(10px); cursor: pointer;" onmouseover="this.style.transform='translateY(-10px) scale(1.05)'" onmouseout="this.style.transform='translateY(0) scale(1)'" onclick="window.open('https://facebook.com', '_blank')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 3rem;">facebook</span>
+                        </div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: bold;">Facebook</h4>
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">25K+ Seguidores</div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">Comunidad Activa</div>
+                    </div>
+                    <div class="social-item" style="background: rgba(255,255,255,0.1); padding: 2rem 1rem; border-radius: 20px; transition: all 0.3s ease; backdrop-filter: blur(10px); cursor: pointer;" onmouseover="this.style.transform='translateY(-10px) scale(1.05)'" onmouseout="this.style.transform='translateY(0) scale(1)'" onclick="window.open('https://instagram.com', '_blank')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 3rem;">photo_camera</span>
+                        </div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: bold;">Instagram</h4>
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">15K+ Seguidores</div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">Contenido Visual</div>
+                    </div>
+                    <div class="social-item" style="background: rgba(255,255,255,0.1); padding: 2rem 1rem; border-radius: 20px; transition: all 0.3s ease; backdrop-filter: blur(10px); cursor: pointer;" onmouseover="this.style.transform='translateY(-10px) scale(1.05)'" onmouseout="this.style.transform='translateY(0) scale(1)'" onclick="window.open('https://linkedin.com', '_blank')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 3rem;">work</span>
+                        </div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: bold;">LinkedIn</h4>
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">8K+ Seguidores</div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">Networking Profesional</div>
+                    </div>
+                    <div class="social-item" style="background: rgba(255,255,255,0.1); padding: 2rem 1rem; border-radius: 20px; transition: all 0.3s ease; backdrop-filter: blur(10px); cursor: pointer;" onmouseover="this.style.transform='translateY(-10px) scale(1.05)'" onmouseout="this.style.transform='translateY(0) scale(1)'" onclick="window.open('https://youtube.com', '_blank')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 3rem;">smart_display</span>
+                        </div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: bold;">YouTube</h4>
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">12K+ Suscriptores</div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">Videos Educativos</div>
+                    </div>
+                    <div class="social-item" style="background: rgba(255,255,255,0.1); padding: 2rem 1rem; border-radius: 20px; transition: all 0.3s ease; backdrop-filter: blur(10px); cursor: pointer;" onmouseover="this.style.transform='translateY(-10px) scale(1.05)'" onmouseout="this.style.transform='translateY(0) scale(1)'" onclick="window.open('https://twitter.com', '_blank')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 3rem;">alternate_email</span>
+                        </div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: bold;">Twitter</h4>
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">5K+ Seguidores</div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">Updates Rápidos</div>
+                    </div>
+                    <div class="social-item" style="background: rgba(255,255,255,0.1); padding: 2rem 1rem; border-radius: 20px; transition: all 0.3s ease; backdrop-filter: blur(10px); cursor: pointer;" onmouseover="this.style.transform='translateY(-10px) scale(1.05)'" onmouseout="this.style.transform='translateY(0) scale(1)'" onclick="window.open('https://t.me', '_blank')">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 3rem;">send</span>
+                        </div>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: bold;">Telegram</h4>
+                        <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem;">3K+ Miembros</div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block;">Comunidad VIP</div>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px; backdrop-filter: blur(10px);">
+                    <h4 style="font-size: 1.3rem; margin-bottom: 1rem; font-weight: bold;">
+                        <span class="material-symbols-outlined" style="font-size: 1.5rem; vertical-align: middle; margin-right: 0.5rem;">card_giftcard</span>
+                        Beneficios Exclusivos
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">
+                                <span class="material-symbols-outlined" style="font-size: 1.5rem;">savings</span>
+                            </div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Descuentos exclusivos</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">
+                                <span class="material-symbols-outlined" style="font-size: 1.5rem;">menu_book</span>
+                            </div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Contenido gratuito</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">
+                                <span class="material-symbols-outlined" style="font-size: 1.5rem;">school</span>
+                            </div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Tips educativos</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">
+                                <span class="material-symbols-outlined" style="font-size: 1.5rem;">emoji_events</span>
+                            </div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;">Sorteos mensuales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Map Section -->
+    <section class="container mb-3" style="padding: 5rem 0;">
+        <div class="text-center mb-3">
+            <h2 style="color: #333; font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem;">Visítanos en Nuestra Oficina</h2>
+            <p style="color: #666; font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Te esperamos en nuestra sede principal para una atención personalizada y conocer nuestras instalaciones</p>
+        </div>
+        <div style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #28a745, #20c997, #ffc107, #dc3545);"></div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                <div>
+                    <div style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1.5rem;">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">location_on</span>
+                        Ubicación Principal
+                    </div>
+                    <h3 style="color: #333; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: bold;">Edificio Torre Educativa</h3>
+                    <div style="margin-bottom: 2rem;">
+                        <div class="location-info" style="display: flex; align-items: center; margin-bottom: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #28a745;">
+                            <div style="width: 40px; height: 40px; background: #28a745; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem;">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div>
+                                <strong style="color: #333; font-size: 1.1rem; margin-bottom: 0.25rem; display: block;">Dirección Completa</strong>
+                                <div style="color: #666; margin-bottom: 0.25rem;">Edificio Torre Educativa, Piso 8</div>
+                                <div style="color: #666; margin-bottom: 0.25rem;">Av. Libertador, Caracas 1010</div>
+                                <div style="color: #666;">Venezuela</div>
+                            </div>
+                        </div>
+                        <div class="location-info" style="display: flex; align-items: center; margin-bottom: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #ffc107;">
+                            <div style="width: 40px; height: 40px; background: #ffc107; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem;">
+                                <span class="material-symbols-outlined">schedule</span>
+                            </div>
+                            <div>
+                                <strong style="color: #333; font-size: 1.1rem; margin-bottom: 0.25rem; display: block;">Horario de Atención Presencial</strong>
+                                <div style="color: #666; margin-bottom: 0.25rem;">Lunes a Viernes: 9:00 AM - 6:00 PM</div>
+                                <div style="color: #666;">Sábados: 10:00 AM - 2:00 PM</div>
+                            </div>
+                        </div>
+                        <div class="location-info" style="display: flex; align-items: center; margin-bottom: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #667eea;">
+                            <div style="width: 40px; height: 40px; background: #667eea; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem;">
+                                <span class="material-symbols-outlined">directions_car</span>
+                            </div>
+                            <div>
+                                <strong style="color: #333; font-size: 1.1rem; margin-bottom: 0.25rem; display: block;">Estacionamiento</strong>
+                                <div style="color: #666; margin-bottom: 0.25rem;">Estacionamiento gratuito para visitantes</div>
+                                <div style="color: #666;">50 espacios disponibles</div>
+                            </div>
+                        </div>
+                        <div class="location-info" style="display: flex; align-items: center; padding: 1rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #dc3545;">
+                            <div style="width: 40px; height: 40px; background: #dc3545; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.2rem;">
+                                <span class="material-symbols-outlined">directions_bus</span>
+                            </div>
+                            <div>
+                                <strong style="color: #333; font-size: 1.1rem; margin-bottom: 0.25rem; display: block;">Transporte Público</strong>
+                                <div style="color: #666; margin-bottom: 0.25rem;">Metro: Estación Bellas Artes (Línea 2)</div>
+                                <div style="color: #666;">Bus: Rutas 1, 3, 7, 12</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; padding: 1rem 2rem; border: none; border-radius: 12px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">map</span>
+                            Abrir en Google Maps
+                        </a>
+                        <a href="#contactForm" class="btn btn-outline" style="border-color: #667eea; color: #667eea; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; background: rgba(102, 126, 234, 0.1);" onmouseover="this.style.background='rgba(102, 126, 234, 0.2)'" onmouseout="this.style.background='rgba(102, 126, 234, 0.1)'">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">event</span>
+                            Agendar Visita
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div style="height: 450px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #666; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/images/OIP.webp') center/cover; opacity: 0.3;"></div>
+                        <div style="position: relative; z-index: 2; text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1.5rem;">
+                                <span class="material-symbols-outlined" style="font-size: 4rem;">map</span>
+                            </div>
+                            <h4 style="font-size: 1.5rem; margin-bottom: 1rem; font-weight: bold; color: #333;">Mapa Interactivo</h4>
+                            <p style="font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6; color: #666;">Explora nuestra ubicación y planifica tu visita</p>
+                            <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                                <div style="color: #28a745; font-weight: 600; margin-bottom: 0.5rem; font-size: 1rem;">
+                                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">my_location</span>
+                                    Punto de Referencia
+                                </div>
+                                <div style="color: #666; font-size: 0.9rem;">Frente al Centro Comercial El Recreo</div>
+                            </div>
+                            <button onclick="window.open('https://maps.google.com', '_blank')" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 2rem; border: none; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">rocket_launch</span>
+                                Ver en Maps
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('loginModal')">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">login</span>
+                    Iniciar Sesión
+                </div>
+                <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">Bienvenido de Nuevo</h2>
+                <p style="color: #666; font-size: 1rem;">Ingresa tus credenciales para acceder a tu cuenta</p>
+            </div>
+            <form id="loginForm" style="">
+                <div class="form-group">
+                    <label for="loginEmail">Correo Electrónico</label>
+                    <div style="position: relative;">
+                        <input type="email" id="loginEmail" name="email" required placeholder="tu@email.com" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">email</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <div style="position: relative;">
+                        <input type="password" id="loginPassword" name="password" required placeholder="••••••••" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="display: flex; align-items: center;">
+                        <input type="checkbox" name="remember" style="margin-right: 0.5rem;">
+                        <span style="color: #666; font-size: 0.9rem;">Recordarme</span>
+                    </label>
+                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">login</span>
+                    Iniciar Sesión
+                </button>
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #e9ecef;">
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">¿No tienes una cuenta?</p>
+                    <a href="#" onclick="switchToRegister()" style="color: #667eea; text-decoration: none; font-weight: 600;">Regístrate gratis</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('registerModal')">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">person_add</span>
+                    Crear Cuenta
+                </div>
+                <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">Únete a EduConecta</h2>
+                <p style="color: #666; font-size: 1rem;">Comienza tu journey educativo hoy mismo</p>
+            </div>
+            <form id="registerForm" style="">
+                <div class="form-group">
+                    <label for="registerName">Nombre Completo</label>
+                    <div style="position: relative;">
+                        <input type="text" id="registerName" name="name" required placeholder="Juan Pérez" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Correo Electrónico</label>
+                    <div style="position: relative;">
+                        <input type="email" id="registerEmail" name="email" required placeholder="tu@email.com" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">email</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Contraseña</label>
+                    <div style="position: relative;">
+                        <input type="password" id="registerPassword" name="password" required placeholder="••••••••" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Contraseña</label>
+                    <div style="position: relative;">
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="••••••••" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" name="terms" required style="margin-right: 0.5rem;">
+                        <span style="color: #666; font-size: 0.9rem;">Acepto los términos y condiciones</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">person_add</span>
+                    Crear Cuenta
+                </button>
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #e9ecef;">
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">¿Ya tienes una cuenta?</p>
+                    <a href="#" onclick="switchToLogin()" style="color: #667eea; text-decoration: none; font-weight: 600;">Inicia sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchToRegister() {
+            closeModal('loginModal');
+            setTimeout(() => openModal('registerModal'), 300);
+        }
+
+        function switchToLogin() {
+            closeModal('registerModal');
+            setTimeout(() => openModal('loginModal'), 300);
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal.active');
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Form submissions
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle login logic here
+            console.log('Login submitted');
+            closeModal('loginModal');
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle registration logic here
+            console.log('Register submitted');
+            closeModal('registerModal');
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre EduConecta</h3>
+                    <p>Plataforma educativa líder en Venezuela, comprometida con la formación de calidad accesible para todos.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="/catalogo">Catálogo de Cursos</a></li>
+                        <li><a href="/precios">Planes y Precios</a></li>
+                        <li><a href="/blog">Blog Educativo</a></li>
+                        <li><a href="/contacto">Soporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="material-icons">email</i> info@educonecta.edu.ve</li>
+                        <li><i class="material-icons">phone</i> +58 414-123-4567</li>
+                        <li><i class="material-icons">place</i> Caracas, Venezuela</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduConecta. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript para animaciones -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animación de entrada para las cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar todas las cards importantes
+            document.querySelectorAll('.contact-form-card, .contact-info-card, .quick-support-card, .faq-card, .social-item').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                observer.observe(card);
+            });
+            
+            // Efecto hover en las cards
+            document.querySelectorAll('.faq-card, .social-item, .contact-item, .support-option').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                    this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                });
+            });
+            
+            // Validación y envío del formulario
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validación básica
+                    const nombre = document.querySelector('input[name="nombre"]').value.trim();
+                    const email = document.querySelector('input[name="email"]').value.trim();
+                    const asunto = document.querySelector('select[name="asunto"]').value;
+                    const mensaje = document.querySelector('textarea[name="mensaje"]').value.trim();
+                    
+                    if (!nombre || !email || !asunto || !mensaje) {
+                        showNotification('Por favor, completa todos los campos obligatorios', 'error');
+                        return;
+                    }
+                    
+                    if (!isValidEmail(email)) {
+                        showNotification('Por favor, ingresa un correo electrónico válido', 'error');
+                        return;
+                    }
+                    
+                    // Simulación de envío
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitButton.innerHTML;
+                    submitButton.innerHTML = '⏳ Enviando...';
+                    submitButton.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitButton.innerHTML = '✅ Mensaje Enviado';
+                        showNotification('¡Tu mensaje ha sido enviado correctamente! Te responderemos en menos de 1 hora.', 'success');
+                        
+                        // Resetear formulario
+                        contactForm.reset();
+                        
+                        setTimeout(() => {
+                            submitButton.innerHTML = originalText;
+                            submitButton.disabled = false;
+                        }, 3000);
+                    }, 2000);
+                });
+            }
+            
+            // Validación de email
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Sistema de notificaciones
+            function showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 1rem 1.5rem;
+                    border-radius: 10px;
+                    color: white;
+                    font-weight: 600;
+                    z-index: 1000;
+                    transform: translateX(400px);
+                    transition: transform 0.3s ease;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                `;
+                
+                const colors = {
+                    success: 'linear-gradient(135deg, #28a745, #20c997)',
+                    error: 'linear-gradient(135deg, #dc3545, #c82333)',
+                    info: 'linear-gradient(135deg, #667eea, #764ba2)'
+                };
+                
+                notification.style.background = colors[type] || colors.info;
+                notification.innerHTML = message;
+                
+                document.body.appendChild(notification);
+                
+                // Animación de entrada
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 100);
+                
+                // Auto-eliminación
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(400px)';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 300);
+                }, 5000);
+            }
+            
+            // Efecto de escritura en el textarea
+            const messageTextarea = document.querySelector('textarea[name="mensaje"]');
+            if (messageTextarea) {
+                messageTextarea.addEventListener('input', function() {
+                    const maxLength = 500;
+                    const currentLength = this.value.length;
+                    
+                    if (currentLength > maxLength) {
+                        this.value = this.value.substring(0, maxLength);
+                    }
+                    
+                    // Actualizar contador de caracteres si existe
+                    let counter = document.getElementById('charCounter');
+                    if (!counter) {
+                        counter = document.createElement('div');
+                        counter.id = 'charCounter';
+                        counter.style.cssText = `
+                            text-align: right;
+                            font-size: 0.8rem;
+                            color: #666;
+                            margin-top: 0.5rem;
+                        `;
+                        this.parentNode.appendChild(counter);
+                    }
+                    
+                    counter.textContent = `${this.value.length}/${maxLength} caracteres`;
+                    
+                    if (this.value.length > maxLength * 0.8) {
+                        counter.style.color = '#ffc107';
+                    } else {
+                        counter.style.color = '#666';
+                    }
+                });
+            }
+            
+            // Smooth scroll para anclas
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Animaciones CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes pulse {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+            
+            .contact-form-card:hover {
+                transform: translateY(-5px) scale(1.01) !important;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+            }
+            
+            .faq-card:hover {
+                transform: translateY(-8px) scale(1.02) !important;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+            }
+            
+            .social-item:hover {
+                transform: translateY(-10px) scale(1.05) !important;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
+            }
+            
+            .contact-item:hover {
+                transform: translateX(10px) !important;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+            }
+            
+            .support-option:hover {
+                transform: translateX(10px) scale(1.02) !important;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+            }
+            
+            .form-control:focus {
+                border-color: #667eea !important;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+                outline: none !important;
+            }
+            
+            .form-control:hover {
+                border-color: #764ba2 !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

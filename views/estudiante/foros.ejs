@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foros - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Estudiante</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">3</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=J" alt="Usuario" class="user-avatar">
+                        <span>Juan Pérez</span>
+                        <div class="dropdown">
+                            <a href="/estudiante/perfil">Mi Perfil</a>
+                            <a href="/estudiante/configuracion">Configuración</a>
+                            <a href="/estudiante/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros" class="active"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">forum</i> Foros Comunitarios</h1>
+                        <p>Conecta con otros estudiantes y comparte conocimientos</p>
+                    </div>
+                    <button class="btn btn-primary">+ Nueva Discusión</button>
+                </div>
+            </div>
+
+            <!-- Forum Stats -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Actividad de la Comunidad</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">forum</i></div>
+                        <div class="stat-info">
+                            <h3>156</h3>
+                            <p>Discusiones Activas</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">people</i></div>
+                        <div class="stat-info">
+                            <h3>2,847</h3>
+                            <p>Participantes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="material-icons">edit</i></div>
+                        <div class="stat-info">
+                            <h3>5,234</h3>
+                            <p>Respuestas</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red"><i class="material-icons">local_fire_department</i></div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Trending Topics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forum Categories -->
+            <div class="dashboard-card">
+                <h2>📂 Categorías del Foro</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3><i class="material-icons">menu_book</i> Marketing Digital</h3>
+                                <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">45 temas</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Discusiones sobre SEO, redes sociales, email marketing y más</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 234 participantes</span>
+                                <a href="#" class="btn btn-outline" style="font-size: 0.9rem;">Ver Discusiones</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>💻 Programación</h3>
+                                <span style="background: #764ba2; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">38 temas</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Ayuda con código, proyectos, frameworks y mejores prácticas</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 189 participantes</span>
+                                <a href="#" class="btn btn-outline" style="font-size: 0.9rem;">Ver Discusiones</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3><i class="material-icons">business</i> Negocios</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">27 temas</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Emprendimiento, gestión financiera y estrategias empresariales</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 156 participantes</span>
+                                <a href="#" class="btn btn-outline" style="font-size: 0.9rem;">Ver Discusiones</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3><i class="material-icons">palette</i> Diseño</h3>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">22 temas</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Diseño gráfico, UI/UX, herramientas y técnicas creativas</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 98 participantes</span>
+                                <a href="#" class="btn btn-outline" style="font-size: 0.9rem;">Ver Discusiones</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>🗣️ Idiomas</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">18 temas</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Práctica de idiomas, recursos y consejos de aprendizaje</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 67 participantes</span>
+                                <a href="#" class="btn btn-outline" style="font-size: 0.9rem;">Ver Discusiones</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3><i class="material-icons">lightbulb</i> General</h3>
+                                <span style="background: #17a2b8; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">56 temas</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Temas generales, noticias, eventos y comunidad EduConecta</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 412 participantes</span>
+                                <a href="#" class="btn btn-outline" style="font-size: 0.9rem;">Ver Discusiones</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Discussions -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">local_fire_department</i> Discusiones Recientes</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <!-- Main Discussion List -->
+                    <div style="flex: 1;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #667eea;">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem;">
+                                            <a href="#" style="color: #667eea; text-decoration: none;">¿Cómo mejorar el ranking SEO de mi sitio web?</a>
+                                        </h3>
+                                        <div style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; color: #666;">
+                                            <span><i class="material-icons">menu_book</i> Marketing Digital</span>
+                                            <span>👤 Carlos Méndez</span>
+                                            <span>🕒 Hace 2 horas</span>
+                                        </div>
+                                    </div>
+                                    <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">local_fire_department</i> Hot</span>
+                                </div>
+                                <p style="color: #666; margin-bottom: 1rem;">Hola comunidad, tengo un sitio web de e-commerce y estoy luchando para mejorar mi posicionamiento en Google. He intentado varias estrategias pero no veo resultados...</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; gap: 1.5rem; font-size: 0.9rem; color: #666;">
+                                        <span><i class="material-icons">forum</i> 23 respuestas</span>
+                                        <span>👁️ 156 vistas</span>
+                                        <span>👍 45 likes</span>
+                                    </div>
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Leer Más</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #28a745;">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem;">
+                                            <a href="#" style="color: #667eea; text-decoration: none;">Best practices para JavaScript asíncrono</a>
+                                        </h3>
+                                        <div style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; color: #666;">
+                                            <span>💻 Programación</span>
+                                            <span>👤 Ana Rodríguez</span>
+                                            <span>🕒 Hace 5 horas</span>
+                                        </div>
+                                    </div>
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">check_circle</i> Resuelto</span>
+                                </div>
+                                <p style="color: #666; margin-bottom: 1rem;">Comparto mi experiencia trabajando con async/await y Promises en proyectos reales. Aquí están los patrones que mejor funcionaron para mí...</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; gap: 1.5rem; font-size: 0.9rem; color: #666;">
+                                        <span><i class="material-icons">forum</i> 18 respuestas</span>
+                                        <span>👁️ 89 vistas</span>
+                                        <span>👍 32 likes</span>
+                                    </div>
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Leer Más</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; border-left: 4px solid #ffc107;">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                                    <div>
+                                        <h3 style="margin-bottom: 0.5rem;">
+                                            <a href="#" style="color: #667eea; text-decoration: none;">Recomendaciones para empezar en e-commerce</a>
+                                        </h3>
+                                        <div style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; color: #666;">
+                                            <span><i class="material-icons">business</i> Negocios</span>
+                                            <span>👤 Luis Pérez</span>
+                                            <span>🕒 Ayer</span>
+                                        </div>
+                                    </div>
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">show_chart</i> Popular</span>
+                                </div>
+                                <p style="color: #666; margin-bottom: 1rem;">Estoy pensando en lanzar mi tienda online y me gustaría saber qué plataformas recomiendan, qué errores evitar al inicio...</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; gap: 1.5rem; font-size: 0.9rem; color: #666;">
+                                        <span><i class="material-icons">forum</i> 31 respuestas</span>
+                                        <span>👁️ 234 vistas</span>
+                                        <span>👍 56 likes</span>
+                                    </div>
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Leer Más</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div style="flex: 0 0 300px;">
+                        <!-- Trending Topics -->
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 1rem;"><i class="material-icons">local_fire_department</i> Temas Trending</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        #SEO2024
+                                        <span style="color: #666; margin-left: 0.5rem;">(45)</span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        #JavaScriptTips
+                                        <span style="color: #666; margin-left: 0.5rem;">(32)</span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        #MarketingDigital
+                                        <span style="color: #666; margin-left: 0.5rem;">(28)</span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        #WebDev
+                                        <span style="color: #666; margin-left: 0.5rem;">(24)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        #Emprendimiento
+                                        <span style="color: #666; margin-left: 0.5rem;">(19)</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Top Contributors -->
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 1rem;"><i class="material-icons">emoji_events</i> Top Contribuidores</h4>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/667eea/ffffff?text=C" alt="Usuario" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; font-size: 0.9rem;">Carlos Méndez</div>
+                                        <div style="font-size: 0.8rem; color: #666;">156 respuestas</div>
+                                    </div>
+                                    <span style="color: #ffc107;"><i class="material-icons">emoji_events</i></span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/764ba2/ffffff?text=A" alt="Usuario" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; font-size: 0.9rem;">Ana Rodríguez</div>
+                                        <div style="font-size: 0.8rem; color: #666;">134 respuestas</div>
+                                    </div>
+                                    <span style="color: #999;"><i class="material-icons">emoji_events</i></span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/28a745/ffffff?text=L" alt="Usuario" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold; font-size: 0.9rem;">Luis Pérez</div>
+                                        <div style="font-size: 0.8rem; color: #666;">98 respuestas</div>
+                                    </div>
+                                    <span style="color: #dc3545;"><i class="material-icons">emoji_events</i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                            <h4 style="margin-bottom: 1rem;"><i class="material-icons">link</i> Enlaces Rápidos</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.5rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        <i class="material-icons">assignment</i> Normas del Foro
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.5rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        ❓ Preguntas Frecuentes
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.5rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        <i class="material-icons">emoji_events</i> Sistema de Reputación
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">
+                                        <i class="material-icons">email</i> Contactar Moderador
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Discussions -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">forum</i> Mis Discusiones</h2>
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" style="font-size: 0.9rem;">Iniciadas (3)</button>
+                        <button class="btn btn-outline" style="font-size: 0.9rem;">Participadas (12)</button>
+                        <button class="btn btn-outline" style="font-size: 0.9rem;">Guardadas (5)</button>
+                    </div>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                        <div>
+                            <h3 style="margin-bottom: 0.5rem;">
+                                <a href="#" style="color: #667eea; text-decoration: none;">Duda sobre el módulo de SEO</a>
+                            </h3>
+                            <div style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> Marketing Digital</span>
+                                <span>🕒 Hace 1 día</span>
+                                <span><i class="material-icons">forum</i> 8 respuestas</span>
+                            </div>
+                        </div>
+                        <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">check_circle</i> Abierta</span>
+                    </div>
+                    <p style="color: #666;">Estoy en la lección 2.3 y no entiendo muy bien cómo funciona el link building...</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.75rem;">
+                        <div>
+                            <h3 style="margin-bottom: 0.5rem;">
+                                <a href="#" style="color: #667eea; text-decoration: none;">Recomendación de herramientas de diseño</a>
+                            </h3>
+                            <div style="display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">palette</i> Diseño</span>
+                                <span>🕒 Hace 3 días</span>
+                                <span><i class="material-icons">forum</i> 15 respuestas</span>
+                            </div>
+                        </div>
+                        <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">check_circle</i> Abierta</span>
+                    </div>
+                    <p style="color: #666;">Quiero saber qué herramientas gratuitas recomiendan para empezar en diseño gráfico...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

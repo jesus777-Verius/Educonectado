@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1764435809554",
+    "nombres": "Juan",
+    "apellidos": "Estudiante",
+    "email": "estudiante@educonecta.com",
+    "telefono": "+58 414-111-1111",
+    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+    "tipo_usuario": "estudiante",
+    "fecha_registro": "2025-11-29T17:03:29.554Z",
+    "primer_login": true,
+    "activo": true
+  },
+  {
+    "id": "1764435809570",
+    "nombres": "María",
+    "apellidos": "Docente",
+    "email": "docente@educonecta.com",
+    "telefono": "+58 414-222-2222",
+    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+    "tipo_usuario": "docente",
+    "fecha_registro": "2025-11-29T17:03:29.570Z",
+    "primer_login": true,
+    "activo": true
+  },
+  {
+    "id": "1764435809573",
+    "nombres": "Carlos",
+    "apellidos": "Admin",
+    "email": "admin@educonecta.com",
+    "telefono": "+58 414-333-3333",
+    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+    "tipo_usuario": "admin",
+    "fecha_registro": "2025-11-29T17:03:29.573Z",
+    "primer_login": true,
+    "activo": true
+  },
+  {
+    "id": "1764435809576",
+    "nombres": "Institución",
+    "apellidos": "Educativa",
+    "email": "institucion@educonecta.com",
+    "telefono": "+58 414-444-4444",
+    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+    "tipo_usuario": "institucion",
+    "fecha_registro": "2025-11-29T17:03:29.576Z",
+    "primer_login": true,
+    "activo": true
+  },
+  {
+    "id": "1764435809581",
+    "nombres": "Empresa",
+    "apellidos": "Corporativa",
+    "email": "empresa@educonecta.com",
+    "telefono": "+58 414-555-5555",
+    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+    "tipo_usuario": "empresa",
+    "fecha_registro": "2025-11-29T17:03:29.581Z",
+    "primer_login": true,
+    "activo": true
+  },
+  {
+    "id": "1764451194641",
+    "nombres": "Juan",
+    "apellidos": "Pérez Estudiante",
+    "email": "estudiante@test.com",
+    "telefono": "04141234567",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "tipo_usuario": "estudiante",
+    "fecha_registro": "2025-11-29T21:19:54.641Z",
+    "primer_login": false,
+    "activo": true
+  }
+]

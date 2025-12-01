@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Página No Encontrada | EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .error-content {
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            opacity: 0.9;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .error-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .search-box {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .search-box::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .helpful-links {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-top: 2rem;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .link-item {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .link-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-content">
+            <div class="floating-icon"><i class="material-icons">menu_book</i></div>
+            
+            <div class="error-code">404</div>
+            
+            <h1 class="error-title">¡Oops! Página No Encontrada</h1>
+            
+            <p class="error-description">
+                La página que estás buscando parece haber desaparecido. 
+                Quizás fue movida, eliminada o nunca existió.
+            </p>
+            
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary" style="background: white; color: #667eea;">
+                    🏠 Ir al Inicio
+                </a>
+                <a href="/catalogo" class="btn btn-outline" style="border-color: white; color: white;">
+                    <i class="material-icons">menu_book</i> Ver Cursos
+                </a>
+                <a href="/contacto" class="btn btn-outline" style="border-color: white; color: white;">
+                    <i class="material-icons">forum</i> Contactar Soporte
+                </a>
+            </div>
+            
+            <div class="search-box-container">
+                <input type="text" class="search-box" placeholder="<i class="material-icons">search</i> Buscar lo que necesitas..." />
+            </div>
+            
+            <div class="helpful-links">
+                <h3 style="margin-bottom: 1rem;"><i class="material-icons">link</i> Enlaces Útiles</h3>
+                <div class="links-grid">
+                    <a href="/catalogo" class="link-item">
+                        <span><i class="material-icons">local_library</i></span>
+                        <span>Catálogo de Cursos</span>
+                    </a>
+                    <a href="/precios" class="link-item">
+                        <span><i class="material-icons">payments</i></span>
+                        <span>Planes y Precios</span>
+                    </a>
+                    <a href="/blog" class="link-item">
+                        <span><i class="material-icons">edit</i></span>
+                        <span>Blog Educativo</span>
+                    </a>
+                    <a href="/quienes-somos" class="link-item">
+                        <span><i class="material-icons">business</i></span>
+                        <span>Sobre Nosotros</span>
+                    </a>
+                    <a href="/auth" class="link-item">
+                        <span>👤</span>
+                        <span>Iniciar Sesión</span>
+                    </a>
+                    <a href="/contacto" class="link-item">
+                        <span><i class="material-icons">email</i></span>
+                        <span>Contacto</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem; opacity: 0.7; font-size: 0.9rem;">
+                <p>¿Necesitas ayuda? <a href="/soporte" style="color: white; text-decoration: underline;">Visita nuestro centro de ayuda</a></p>
+                <p style="margin-top: 0.5rem;">Código de error: 404-001</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-search functionality
+        document.querySelector('.search-box').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = e.target.value;
+                if (searchTerm.trim()) {
+                    window.location.href = `/catalogo?search=${encodeURIComponent(searchTerm)}`;
+                }
+            }
+        });
+        
+        // Log 404 error for analytics
+        console.log('404 Error:', {
+            url: window.location.href,
+            referrer: document.referrer,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent
+        });
+    </script>
+</body>
+</html>

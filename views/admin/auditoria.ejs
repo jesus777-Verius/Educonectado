@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría del Sistema - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria" class="active"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">assignment</i> Auditoría del Sistema</h1>
+                <p>Monitorea y registra todas las actividades del sistema</p>
+            </div>
+
+            <!-- Audit Overview -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Resumen de Auditoría</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">edit</i></div>
+                        <div class="stat-info">
+                            <h3>12,456</h3>
+                            <p>Eventos Totales Hoy</p>
+                            <div style="font-size: 0.8rem; color: #28a745;">↑ 8% vs ayer</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">people</i></div>
+                        <div class="stat-info">
+                            <h3>89</h3>
+                            <p>Usuarios Activos</p>
+                            <div style="font-size: 0.8rem; color: #667eea;">Últimas 24 horas</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="material-icons">warning</i></div>
+                        <div class="stat-info">
+                            <h3>23</h3>
+                            <p>Eventos Críticos</p>
+                            <div style="font-size: 0.8rem; color: #ffc107;">Requieren revisión</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red">🚨</div>
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>Alertas de Seguridad</p>
+                            <div style="font-size: 0.8rem; color: #dc3545;">Acción inmediata</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audit Filters -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">search</i> Filtros de Auditoría</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los eventos</option>
+                            <option value="login">Login/Logout</option>
+                            <option value="create">Creaciones</option>
+                            <option value="update">Actualizaciones</option>
+                            <option value="delete">Eliminaciones</option>
+                            <option value="access">Acceso a Datos</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los usuarios</option>
+                            <option value="admin">Administradores</option>
+                            <option value="teacher">Docentes</option>
+                            <option value="student">Estudiantes</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los niveles</option>
+                            <option value="critical">Crítico</option>
+                            <option value="high">Alto</option>
+                            <option value="medium">Medio</option>
+                            <option value="low">Bajo</option>
+                        </select>
+                        <input type="date" class="form-control" style="width: 150px;" value="2024-11-29">
+                        <button class="btn btn-primary"><i class="material-icons">refresh</i> Actualizar</button>
+                    </div>
+                </div>
+
+                <!-- Audit Logs Table -->
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Fecha/Hora</th>
+                                <th style="padding: 1rem; text-align: left;">Usuario</th>
+                                <th style="padding: 1rem; text-align: center;">Acción</th>
+                                <th style="padding: 1rem; text-align: center;">Módulo</th>
+                                <th style="padding: 1rem; text-align: center;">IP</th>
+                                <th style="padding: 1rem; text-align: center;">Nivel</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="font-size: 0.9rem;">29 Nov 2024, 10:23:45 AM</div>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=A" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Admin Sistema</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Login</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Autenticación</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">192.168.1.100</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Medio</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Exitoso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Detalles</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="font-size: 0.9rem;">29 Nov 2024, 10:15:32 AM</div>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=A" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Admin Sistema</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Crear</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Usuarios</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">192.168.1.100</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Alto</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Exitoso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Detalles</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="font-size: 0.9rem;">29 Nov 2024, 09:45:18 AM</div>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=J" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Juan Pérez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Eliminar</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Cursos</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">192.168.1.45</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Crítico</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Exitoso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Detalles</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="font-size: 0.9rem;">29 Nov 2024, 09:30:12 AM</div>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=M" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">María González</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Actualizar</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pagos</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">192.168.1.67</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Alto</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Exitoso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Detalles</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Critical Events -->
+            <div class="dashboard-card">
+                <h2>🚨 Eventos Críticos</h2>
+                <div class="course-grid">
+                    <div class="course-card" style="border: 2px solid #dc3545;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Eliminación Masiva de Datos</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Usuario: Juan Pérez</p>
+                                </div>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Crítico</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span>🕐 29 Nov 2024, 09:45 AM</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">menu_book</i> Cursos</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">language</i> 192.168.1.45</span>
+                                </div>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <p style="margin: 0; font-size: 0.9rem;">Se eliminaron 5 cursos y 234 registros relacionados. Acción requiere revisión inmediata.</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">search</i> Investigar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">assignment</i> Ver Detalles</button>
+                                <button class="btn btn-outline" style="flex: 1; border-color: #dc3545; color: #dc3545;">🚫 Bloquear Usuario</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card" style="border: 2px solid #dc3545;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Acceso No Autorizado</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Usuario: Desconocido</p>
+                                </div>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Crítico</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span>🕐 29 Nov 2024, 08:30 AM</span>
+                                    <span style="margin-left: 1rem;">🔐 Seguridad</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">language</i> 185.220.101.182</span>
+                                </div>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <p style="margin: 0; font-size: 0.9rem;">Intento de acceso al panel de administración desde IP sospechosa. Múltiples intentos fallidos.</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">security</i> Bloquear IP</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">assignment</i> Ver Detalles</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">email</i> Notificar Equipo</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Activity Timeline -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">show_chart</i> Línea de Tiempo de Actividad</h2>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="background: #667eea; color: white; padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">10</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">10:00 AM - Pico de Actividad</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">234 usuarios activos simultáneamente</div>
+                                <div style="background: #e9ecef; height: 8px; border-radius: 4px;">
+                                    <div style="background: #667eea; height: 8px; border-radius: 4px; width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="background: #28a745; color: white; padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">9</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">9:00 AM - Actividad Normal</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">156 usuarios activos simultáneamente</div>
+                                <div style="background: #e9ecef; height: 8px; border-radius: 4px;">
+                                    <div style="background: #28a745; height: 8px; border-radius: 4px; width: 65%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; gap: 1rem; align-items: start;">
+                            <div style="background: #ffc107; color: #000; padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">8</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">8:00 AM - Inicio de Actividad</div>
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">89 usuarios activos simultáneamente</div>
+                                <div style="background: #e9ecef; height: 8px; border-radius: 4px;">
+                                    <div style="background: #ffc107; height: 8px; border-radius: 4px; width: 35%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Health -->
+            <div class="dashboard-card">
+                <h2>🏥 Salud del Sistema</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🟢</div>
+                            <h3 style="margin-bottom: 1rem;">Base de Datos</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 2rem; font-weight: bold; color: #28a745;">Operativa</div>
+                                <div style="font-size: 0.9rem; color: #666;">Tiempo de respuesta: 12ms</div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.2rem; font-weight: bold; color: #28a745;">99.9% uptime</div>
+                                <div style="font-size: 0.9rem; color: #666;">Últimos 30 días</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🟢</div>
+                            <h3 style="margin-bottom: 1rem;">Servidor Web</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 2rem; font-weight: bold; color: #28a745;">Operativo</div>
+                                <div style="font-size: 0.9rem; color: #666;">Tiempo de respuesta: 45ms</div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.2rem; font-weight: bold; color: #28a745;">99.8% uptime</div>
+                                <div style="font-size: 0.9rem; color: #666;">Últimos 30 días</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🟡</div>
+                            <h3 style="margin-bottom: 1rem;">Servidor de Email</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 2rem; font-weight: bold; color: #ffc107;">Lento</div>
+                                <div style="font-size: 0.9rem; color: #666;">Tiempo de respuesta: 2.3s</div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.2rem; font-weight: bold; color: #ffc107;">98.5% uptime</div>
+                                <div style="font-size: 0.9rem; color: #666;">Últimos 30 días</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🟢</div>
+                            <h3 style="margin-bottom: 1rem;">API Gateway</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 2rem; font-weight: bold; color: #28a745;">Operativo</div>
+                                <div style="font-size: 0.9rem; color: #666;">Tiempo de respuesta: 23ms</div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.2rem; font-weight: bold; color: #28a745;">99.9% uptime</div>
+                                <div style="font-size: 0.9rem; color: #666;">Últimos 30 días</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export Options -->
+            <div class="dashboard-card">
+                <h2>📥 Exportar Logs de Auditoría</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Rango de Fechas</label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="date" class="form-control" value="2024-11-01">
+                                <input type="date" class="form-control" value="2024-11-29">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Formato de Exportación</label>
+                            <select class="form-control">
+                                <option value="csv">CSV</option>
+                                <option value="json">JSON</option>
+                                <option value="xml">XML</option>
+                                <option value="pdf">PDF</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Filtros de Exportación</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Incluir Eventos Críticos</div>
+                                <div style="font-size: 0.9rem; color: #666;">Solo eventos de nivel crítico y alto</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Incluir Información del Usuario</div>
+                                <div style="font-size: 0.9rem; color: #666;">Datos personales de usuarios involucrados</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Incluir Detalles Técnicos</div>
+                                <div style="font-size: 0.9rem; color: #666;">IP addresses, user agents, timestamps completos</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Vista Previa</button>
+                        <button type="submit" class="btn btn-primary">📥 Exportar Logs</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary">📥 Exportar Logs</button>
+                    <button class="btn btn-outline"><i class="material-icons">search</i> Investigar Eventos</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Generar Reporte</button>
+                    <button class="btn btn-outline"><i class="material-icons">delete</i> Limpiar Logs Antiguos</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configurar Alertas</button>
+                    <button class="btn btn-outline"><i class="material-icons">refresh</i> Actualizar Sistema</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

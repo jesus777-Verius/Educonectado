@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluaciones - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones" class="active"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">my_location</i> Gestión de Evaluaciones</h1>
+                        <p>Crea y administra exámenes, quizzes y evaluaciones formativas</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Crear Evaluación</button>
+                </div>
+            </div>
+
+            <!-- Assessment Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">my_location</i></div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Evaluaciones Activas</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">edit</i></div>
+                    <div class="stat-info">
+                        <h3>45</h3>
+                        <p>Por Calificar</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">schedule</i></div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>En Progreso</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">bar_chart</i></div>
+                    <div class="stat-info">
+                        <h3>4.2</h3>
+                        <p>Promedio General</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">menu_book</i> Filtrar por Curso</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 200px;">
+                            <option value="all">Todos los cursos</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="programming">Programación Web</option>
+                            <option value="business">Gestión Empresarial</option>
+                            <option value="design">Diseño Gráfico</option>
+                            <option value="english">Inglés Conversacional</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los tipos</option>
+                            <option value="quiz">Quiz</option>
+                            <option value="exam">Examen</option>
+                            <option value="survey">Encuesta</option>
+                            <option value="assignment">Tarea Evaluada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Assessments Grid -->
+                <div class="course-grid">
+                    <!-- Assessment 1 - Active -->
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Examen Parcial: Marketing Digital</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Evaluación de conocimientos de los primeros 4 módulos del curso.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Marketing Digital</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">schedule</i> Duración: 90 min</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">edit</i> 25 preguntas</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Completados</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">67/89 (75%)</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Gestionar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Resultados</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assessment 2 - In Progress -->
+                    <div class="course-card" style="border: 2px solid #ffc107;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Quiz Rápido: Conceptos de SEO</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Evaluación rápida sobre fundamentos de optimización para buscadores.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Marketing Digital</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">schedule</i> Duración: 30 min</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">edit</i> 15 preguntas</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">En curso</span>
+                                    <span style="font-size: 0.9rem; color: #ffc107;">12/89 (13%)</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 13%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Monitorear</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Estadísticas</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assessment 3 - Draft -->
+                    <div class="course-card" style="border: 2px dashed #6c757d;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Examen Final: Programación Web</h3>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Borrador</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Evaluación final de todos los conceptos del curso de programación web.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Programación Web</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">schedule</i> Duración: 120 min</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">edit</i> 40 preguntas</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">people</i> 67 estudiantes</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Editar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Vista Previa</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assessment 4 - Completed -->
+                    <div class="course-card" style="opacity: 0.7;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Encuesta de Satisfacción</h3>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Finalizado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Encuesta sobre la experiencia del curso.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Todos los cursos</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">schedule</i> Duración: 10 min</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">edit</i> 8 preguntas</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">people</i> 234 respuestas</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Completado</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="flex: 1;">Ver Reporte</button>
+                                <button class="btn btn-outline" style="flex: 1;">Exportar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Assessment Form -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">add</i> Crear Nueva Evaluación</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Título de la Evaluación *</label>
+                            <input type="text" class="form-control" placeholder="Ej: Examen Parcial de Marketing" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Curso *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un curso</option>
+                                <option value="marketing">Marketing Digital</option>
+                                <option value="programming">Programación Web</option>
+                                <option value="business">Gestión Empresarial</option>
+                                <option value="design">Diseño Gráfico</option>
+                                <option value="english">Inglés Conversacional</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Evaluación *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el tipo</option>
+                                <option value="quiz">Quiz Rápido</option>
+                                <option value="exam">Examen</option>
+                                <option value="survey">Encuesta</option>
+                                <option value="diagnostic">Diagnóstico</option>
+                                <option value="practice">Práctica Guiada</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Duración (minutos) *</label>
+                            <input type="number" class="form-control" placeholder="60" min="5" max="180" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Intentos Permitidos *</label>
+                            <select class="form-control" required>
+                                <option value="1">1 intento</option>
+                                <option value="2">2 intentos</option>
+                                <option value="3">3 intentos</option>
+                                <option value="unlimited">Ilimitados</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Instrucciones</label>
+                        <textarea class="form-control" rows="3" placeholder="Proporciona instrucciones claras para los estudiantes..."></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Fecha de Inicio</label>
+                            <input type="datetime-local" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha de Fin</label>
+                            <input type="datetime-local" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- Question Builder -->
+                    <div>
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">edit</i> Preguntas de la Evaluación</h3>
+                        <div id="questions-container">
+                            <!-- Question 1 -->
+                            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                    <h4 style="margin: 0;">Pregunta 1</h4>
+                                    <button type="button" class="btn btn-outline" style="font-size: 0.8rem;"><i class="material-icons">delete</i></button>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label class="form-label">Tipo de Pregunta</label>
+                                    <select class="form-control">
+                                        <option value="multiple">Opción Múltiple</option>
+                                        <option value="truefalse">Verdadero/Falso</option>
+                                        <option value="short">Respuesta Corta</option>
+                                        <option value="essay">Ensayo</option>
+                                        <option value="matching">Relacionar</option>
+                                    </select>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label class="form-label">Pregunta</label>
+                                    <textarea class="form-control" rows="2" placeholder="Escribe tu pregunta aquí..."></textarea>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <label class="form-label">Opciones (para opción múltiple)</label>
+                                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                        <input type="radio" name="correct1" style="width: 20px; height: 20px;">
+                                        <input type="text" class="form-control" placeholder="Opción A">
+                                    </div>
+                                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                        <input type="radio" name="correct1" style="width: 20px; height: 20px;">
+                                        <input type="text" class="form-control" placeholder="Opción B">
+                                    </div>
+                                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                        <input type="radio" name="correct1" style="width: 20px; height: 20px;">
+                                        <input type="text" class="form-control" placeholder="Opción C">
+                                    </div>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <input type="radio" name="correct1" style="width: 20px; height: 20px;">
+                                        <input type="text" class="form-control" placeholder="Opción D">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="form-label">Puntos</label>
+                                    <input type="number" class="form-control" placeholder="10" min="1" value="10">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-outline">+ Añadir Pregunta</button>
+                    </div>
+
+                    <!-- Assessment Settings -->
+                    <div style="margin-top: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">settings</i> Configuración de la Evaluación</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Barajar Preguntas</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Mostrar preguntas en orden aleatorio</div>
+                                </div>
+                                <input type="checkbox" style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Mostrar Resultados</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Permitir que los estudiantes vean sus resultados</div>
+                                </div>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Mostrar Respuestas Correctas</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Revelar las respuestas correctas después de completar</div>
+                                </div>
+                                <input type="checkbox" style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Temporizador Visible</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Mostrar cuenta regresiva durante el examen</div>
+                                </div>
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                            </label>
+                            <label style="display: flex; align-items: center; justify-content: space-between;">
+                                <div>
+                                    <div style="font-weight: bold; margin-bottom: 0.25rem;">Navegación Restringida</div>
+                                    <div style="font-size: 0.9rem; color: #666;">Impedir retroceder después de responder</div>
+                                </div>
+                                <input type="checkbox" style="width: 20px; height: 20px;">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right; margin-top: 2rem;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Cancelar</button>
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Vista Previa</button>
+                        <button type="submit" class="btn btn-primary">Crear Evaluación</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Recent Results -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Resultados Recientes</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Evaluación</th>
+                                <th style="padding: 1rem; text-align: center;">Estudiantes</th>
+                                <th style="padding: 1rem; text-align: center;">Completados</th>
+                                <th style="padding: 1rem; text-align: center;">Promedio</th>
+                                <th style="padding: 1rem; text-align: center;">Más Alta</th>
+                                <th style="padding: 1rem; text-align: center;">Más Baja</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Quiz: Fundamentos de SEO</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">89</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">67</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">82.3</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">98</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #dc3545;">45</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Detalles</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Examen: HTML & CSS</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Programación Web</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">67</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">58</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">76.8</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">95</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #dc3545;">52</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Detalles</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Crear Evaluación</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline"><i class="material-icons">assignment</i> Banco de Preguntas</button>
+                    <button class="btn btn-outline">📥 Exportar Resultados</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Notificar Estudiantes</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

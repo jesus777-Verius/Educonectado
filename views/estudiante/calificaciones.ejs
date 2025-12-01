@@ -1,0 +1,1494 @@
+<%- include('layout') %>
+
+<style>
+    /* Grades Styles */
+    .grades-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .grades-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .grades-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    
+    .header-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .header-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+    }
+    
+    .header-stats {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+    }
+    
+    .stat-label {
+        opacity: 0.8;
+        font-size: 0.9rem;
+    }
+    
+    /* Filters */
+    .filters-section {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+    }
+    
+    .filters-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .filters-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .filter-label {
+        font-weight: 600;
+        color: #555;
+        font-size: 0.9rem;
+    }
+    
+    .filter-select, .filter-input {
+        padding: 0.5rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .filter-select:focus, .filter-input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    /* Grades Table */
+    .grades-table-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+    
+    .table-header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .table-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .table-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    
+    .btn-outline {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    .btn-outline:hover {
+        background: rgba(255,255,255,0.3);
+    }
+    
+    .table-content {
+        overflow-x: auto;
+    }
+    
+    .grades-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .grades-table th {
+        background: #f8f9fa;
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #e9ecef;
+    }
+    
+    .grades-table td {
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+        vertical-align: middle;
+    }
+    
+    .grades-table tr:hover {
+        background: rgba(102, 126, 234, 0.05);
+    }
+    
+    .course-name {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.25rem;
+    }
+    
+    .course-instructor {
+        color: #666;
+        font-size: 0.85rem;
+    }
+    
+    .grade-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: inline-block;
+    }
+    
+    .grade-excellent {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    .grade-good {
+        background: #cce5ff;
+        color: #004085;
+    }
+    
+    .grade-average {
+        background: #fff3cd;
+        color: #856404;
+    }
+    
+    .grade-poor {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    
+    .status-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: inline-block;
+    }
+    
+    .status-completed {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    .status-in-progress {
+        background: #cce5ff;
+        color: #004085;
+    }
+    
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .btn-small {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.8rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-weight: 600;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+    
+    .btn-secondary:hover {
+        background: #5a6268;
+    }
+    
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+    
+    .modal-content {
+        background: white;
+        border-radius: 16px;
+        max-width: 800px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 2rem;
+        position: relative;
+    }
+    
+    .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255,255,255,0.2);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .modal-close:hover {
+        background: rgba(255,255,255,0.3);
+        transform: scale(1.1);
+    }
+    
+    .modal-body {
+        padding: 2rem;
+    }
+    
+    .grade-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .detail-card {
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        text-align: center;
+    }
+    
+    .detail-label {
+        font-weight: 600;
+        color: #666;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .detail-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .grade-breakdown {
+        margin-bottom: 2rem;
+    }
+    
+    .breakdown-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .breakdown-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .breakdown-name {
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .breakdown-weight {
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    .breakdown-grade {
+        font-weight: bold;
+        color: #667eea;
+    }
+    
+    .certificate-section {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .certificate-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    
+    .certificate-description {
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+    }
+    
+    .certificate-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .btn-certificate {
+        padding: 0.75rem 1.5rem;
+        background: white;
+        color: #667eea;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .btn-certificate:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .filters-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .grades-table {
+            font-size: 0.85rem;
+        }
+        
+        .grades-table th,
+        .grades-table td {
+            padding: 0.5rem;
+        }
+        
+        .action-buttons {
+            flex-direction: column;
+        }
+        
+        .modal.active {
+            padding: 1rem;
+        }
+        
+        .grade-details {
+            grid-template-columns: 1fr;
+        }
+        
+        .certificate-actions {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="grades-container">
+    <!-- Header -->
+    <div class="grades-header">
+        <div class="header-content">
+            <div>
+                <h1 class="header-title">Mis Calificaciones</h1>
+                <p class="header-subtitle">Consulta tu rendimiento académico y certificados</p>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">88.5%</div>
+                        <div class="stat-label">Promedio General</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Cursos Completados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Certificados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-section">
+        <div class="filters-header">
+            <h2 class="filters-title">
+                <span class="material-symbols-outlined">filter_list</span>
+                Filtrar Calificaciones
+            </h2>
+            <button class="btn btn-outline" onclick="resetFilters()">
+                <span class="material-symbols-outlined" style="font-size: 1rem;">refresh</span>
+                Limpiar Filtros
+            </button>
+        </div>
+        <div class="filters-grid">
+            <div class="filter-group">
+                <label class="filter-label">Categoría</label>
+                <select class="filter-select" id="categoryFilter" onchange="filterGrades()">
+                    <option value="">Todas las categorías</option>
+                    <option value="marketing">Marketing Digital</option>
+                    <option value="development">Desarrollo Web</option>
+                    <option value="business">Negocios</option>
+                    <option value="languages">Idiomas</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Estado</label>
+                <select class="filter-select" id="statusFilter" onchange="filterGrades()">
+                    <option value="">Todos los estados</option>
+                    <option value="completed">Completado</option>
+                    <option value="in-progress">En progreso</option>
+                    <option value="pending">Pendiente</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Rango de Calificación</label>
+                <select class="filter-select" id="gradeFilter" onchange="filterGrades()">
+                    <option value="">Todos los rangos</option>
+                    <option value="excellent">Excelente (90-100)</option>
+                    <option value="good">Bueno (80-89)</option>
+                    <option value="average">Regular (70-79)</option>
+                    <option value="poor">Bajo (<70)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Buscar</label>
+                <input type="text" class="filter-input" id="searchFilter" placeholder="Buscar cursos..." oninput="filterGrades()">
+            </div>
+        </div>
+    </div>
+
+    <!-- Grades Table -->
+    <div class="grades-table-container">
+        <div class="table-header">
+            <h2 class="table-title">
+                <span class="material-symbols-outlined">school</span>
+                Historial de Calificaciones
+            </h2>
+            <div class="table-actions">
+                <button class="btn btn-outline" onclick="exportGrades()">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                    Exportar
+                </button>
+                <button class="btn btn-outline" onclick="printGrades()">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">print</span>
+                    Imprimir
+                </button>
+            </div>
+        </div>
+        <div class="table-content">
+            <table class="grades-table" id="gradesTable">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Instructor</th>
+                        <th>Calificación</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-category="marketing" data-status="completed" data-grade="excellent" data-title="marketing digital completo">
+                        <td>
+                            <div class="course-name">Marketing Digital Completo</div>
+                            <div class="course-instructor">Prof. Carlos Rodríguez</div>
+                        </td>
+                        <td>Prof. Carlos Rodríguez</td>
+                        <td>
+                            <span class="grade-badge grade-excellent">92/100</span>
+                        </td>
+                        <td>
+                            <span class="status-badge status-completed">Completado</span>
+                        </td>
+                        <td>15/11/2024</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-small btn-primary" onclick="viewGradeDetails(1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                                    Ver Detalles
+                                </button>
+                                <button class="btn-small btn-primary" onclick="viewCertificate(1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">card_membership</span>
+                                    Certificado
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr data-category="development" data-status="completed" data-grade="good" data-title="desarrollo web moderno">
+                        <td>
+                            <div class="course-name">Desarrollo Web Moderno</div>
+                            <div class="course-instructor">Prof. Ana Martínez</div>
+                        </td>
+                        <td>Prof. Ana Martínez</td>
+                        <td>
+                            <span class="grade-badge grade-good">85/100</span>
+                        </td>
+                        <td>
+                            <span class="status-badge status-completed">Completado</span>
+                        </td>
+                        <td>10/11/2024</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-small btn-primary" onclick="viewGradeDetails(2)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                                    Ver Detalles
+                                </button>
+                                <button class="btn-small btn-primary" onclick="viewCertificate(2)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">card_membership</span>
+                                    Certificado
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr data-category="languages" data-status="in-progress" data-grade="good" data-title="inglés técnico">
+                        <td>
+                            <div class="course-name">Inglés Técnico</div>
+                            <div class="course-instructor">Prof. María González</div>
+                        </td>
+                        <td>Prof. María González</td>
+                        <td>
+                            <span class="grade-badge grade-good">88/100</span>
+                        </td>
+                        <td>
+                            <span class="status-badge status-in-progress">En progreso</span>
+                        </td>
+                        <td>20/11/2024</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-small btn-primary" onclick="viewGradeDetails(3)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                                    Ver Detalles
+                                </button>
+                                <button class="btn-small btn-secondary" disabled>
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">card_membership</span>
+                                    Pendiente
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr data-category="business" data-status="pending" data-grade="average" data-title="gestión empresarial">
+                        <td>
+                            <div class="course-name">Gestión Empresarial</div>
+                            <div class="course-instructor">Prof. Roberto Silva</div>
+                        </td>
+                        <td>Prof. Roberto Silva</td>
+                        <td>
+                            <span class="grade-badge grade-average">75/100</span>
+                        </td>
+                        <td>
+                            <span class="status-badge status-pending">Pendiente</span>
+                        </td>
+                        <td>25/11/2024</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-small btn-primary" onclick="viewGradeDetails(4)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                                    Ver Detalles
+                                </button>
+                                <button class="btn-small btn-secondary" disabled>
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">card_membership</span>
+                                    No disponible
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Grade Details Modal -->
+<div class="modal" id="gradeModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalCourseTitle">Marketing Digital Completo</h2>
+            <button class="modal-close" onclick="closeModal()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="grade-details">
+                <div class="detail-card">
+                    <div class="detail-label">Calificación Final</div>
+                    <div class="detail-value" id="modalFinalGrade">92/100</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Estado</div>
+                    <div class="detail-value" id="modalStatus">Completado</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Fecha de Finalización</div>
+                    <div class="detail-value" id="modalDate">15/11/2024</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Horas Totales</div>
+                    <div class="detail-value" id="modalHours">45h</div>
+                </div>
+            </div>
+            
+            <div class="grade-breakdown">
+                <h3 class="breakdown-title">Desglose de Calificación</h3>
+                <div class="breakdown-item">
+                    <div>
+                        <div class="breakdown-name">Tareas y Proyectos</div>
+                        <div class="breakdown-weight">40%</div>
+                    </div>
+                    <div class="breakdown-grade">95/100</div>
+                </div>
+                <div class="breakdown-item">
+                    <div>
+                        <div class="breakdown-name">Quizzes y Exámenes</div>
+                        <div class="breakdown-weight">30%</div>
+                    </div>
+                    <div class="breakdown-grade">88/100</div>
+                </div>
+                <div class="breakdown-item">
+                    <div>
+                        <div class="breakdown-name">Participación</div>
+                        <div class="breakdown-weight">20%</div>
+                    </div>
+                    <div class="breakdown-grade">90/100</div>
+                </div>
+                <div class="breakdown-item">
+                    <div>
+                        <div class="breakdown-name">Proyecto Final</div>
+                        <div class="breakdown-weight">10%</div>
+                    </div>
+                    <div class="breakdown-grade">94/100</div>
+                </div>
+            </div>
+            
+            <div class="certificate-section" id="certificateSection">
+                <h3 class="certificate-title">🎉 ¡Felicidades! Has completado el curso</h3>
+                <p class="certificate-description">Tu certificado está disponible para descargar y compartir en tus redes profesionales.</p>
+                <div class="certificate-actions">
+                    <button class="btn-certificate" onclick="downloadCertificate()">
+                        <span class="material-symbols-outlined">download</span>
+                        Descargar Certificado
+                    </button>
+                    <button class="btn-certificate" onclick="shareCertificate()">
+                        <span class="material-symbols-outlined">share</span>
+                        Compartir
+                    </button>
+                    <button class="btn-certificate" onclick="verifyCertificate()">
+                        <span class="material-symbols-outlined">verified</span>
+                        Verificar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Certificate Modal -->
+<div class="modal" id="certificateModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Certificado de Completion</h2>
+            <button class="modal-close" onclick="closeCertificateModal()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 3rem; border-radius: 12px; text-align: center; position: relative;">
+                <div style="position: absolute; top: 20px; left: 20px; right: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="font-size: 1.5rem; font-weight: bold;">EduConecta</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">Certificado Oficial</div>
+                </div>
+                
+                <div style="margin-top: 3rem; margin-bottom: 2rem;">
+                    <div style="font-size: 1rem; opacity: 0.8; margin-bottom: 1rem;">Este certificado se otorga a</div>
+                    <div style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">Juan Pérez</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 2rem;">Por haber completado exitosamente el curso</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Marketing Digital Completo</div>
+                    <div style="font-size: 1rem; opacity: 0.8;">con una calificación de</div>
+                    <div style="font-size: 2rem; font-weight: bold; margin: 1rem 0;">92/100</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-around; align-items: flex-end; margin-top: 3rem;">
+                    <div style="text-align: center;">
+                        <div style="width: 100px; height: 2px; background: white; margin-bottom: 0.5rem;"></div>
+                        <div style="font-size: 0.9rem;">Prof. Carlos Rodríguez</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Instructor</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 100px; height: 2px; background: white; margin-bottom: 0.5rem;"></div>
+                        <div style="font-size: 0.9rem;">Dr. Ana Martínez</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Directora Académica</div>
+                    </div>
+                </div>
+                
+                <div style="position: absolute; bottom: 20px; right: 20px; font-size: 0.8rem; opacity: 0.8;">
+                    Código: <span id="certificateCode">EDU-2024-MKT-1234</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: center;">
+                <button class="btn btn-primary" onclick="downloadCertificatePDF()">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">picture_as_pdf</span>
+                    Descargar como PDF
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Grade Management Functions
+    function viewGradeDetails(gradeId) {
+        const modal = document.getElementById('gradeModal');
+        modal.classList.add('active');
+        
+        // Update modal content based on grade ID
+        const gradeData = {
+            1: {
+                title: 'Marketing Digital Completo',
+                finalGrade: '92/100',
+                status: 'Completado',
+                date: '15/11/2024',
+                hours: '45h',
+                hasCertificate: true
+            },
+            2: {
+                title: 'Desarrollo Web Moderno',
+                finalGrade: '85/100',
+                status: 'Completado',
+                date: '10/11/2024',
+                hours: '60h',
+                hasCertificate: true
+            },
+            3: {
+                title: 'Inglés Técnico',
+                finalGrade: '88/100',
+                status: 'En progreso',
+                date: '20/11/2024',
+                hours: '30h',
+                hasCertificate: false
+            },
+            4: {
+                title: 'Gestión Empresarial',
+                finalGrade: '75/100',
+                status: 'Pendiente',
+                date: '25/11/2024',
+                hours: '40h',
+                hasCertificate: false
+            }
+        };
+        
+        const data = gradeData[gradeId];
+        document.getElementById('modalCourseTitle').textContent = data.title;
+        document.getElementById('modalFinalGrade').textContent = data.finalGrade;
+        document.getElementById('modalStatus').textContent = data.status;
+        document.getElementById('modalDate').textContent = data.date;
+        document.getElementById('modalHours').textContent = data.hours;
+        
+        // Show/hide certificate section
+        const certificateSection = document.getElementById('certificateSection');
+        certificateSection.style.display = data.hasCertificate ? 'block' : 'none';
+    }
+
+    function viewCertificate(gradeId) {
+        const modal = document.getElementById('certificateModal');
+        modal.classList.add('active');
+        
+        // Generate unique certificate code
+        const code = 'EDU-2024-' + gradeId + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+        document.getElementById('certificateCode').textContent = code;
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('gradeModal');
+        modal.classList.remove('active');
+    }
+
+    function closeCertificateModal() {
+        const modal = document.getElementById('certificateModal');
+        modal.classList.remove('active');
+    }
+
+    function downloadCertificate() {
+        showNotification('Preparando certificado para descargar...');
+        setTimeout(() => {
+            viewCertificate(1);
+        }, 1000);
+    }
+
+    function shareCertificate() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Mi Certificado de EduConecta',
+                text: '¡He completado exitosamente el curso de Marketing Digital Completo con 92/100!',
+                url: window.location.href
+            });
+        } else {
+            // Fallback - copy to clipboard
+            const text = '¡He completado exitosamente el curso de Marketing Digital Completo con 92/100!';
+            navigator.clipboard.writeText(text);
+            showNotification('Enlace copiado al portapapeles');
+        }
+    }
+
+    function verifyCertificate() {
+        showNotification('Verificando autenticidad del certificado...');
+        setTimeout(() => {
+            showNotification('✅ Certificado verificado y auténtico');
+        }, 2000);
+    }
+
+    function downloadCertificatePDF() {
+        showNotification('Generando PDF del certificado...');
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = '/certificates/certificate-' + Date.now() + '.pdf';
+            link.download = 'certificado-educonecta.pdf';
+            link.click();
+        }, 1500);
+    }
+
+    // Filter Functions
+    function filterGrades() {
+        const category = document.getElementById('categoryFilter').value;
+        const status = document.getElementById('statusFilter').value;
+        const grade = document.getElementById('gradeFilter').value;
+        const search = document.getElementById('searchFilter').value.toLowerCase();
+        
+        const rows = document.querySelectorAll('#gradesTable tbody tr');
+        
+        rows.forEach(row => {
+            const rowCategory = row.dataset.category;
+            const rowStatus = row.dataset.status;
+            const rowGrade = row.dataset.grade;
+            const rowTitle = row.dataset.title;
+            
+            const matchesCategory = !category || rowCategory === category;
+            const matchesStatus = !status || rowStatus === status;
+            const matchesGrade = !grade || rowGrade === grade;
+            const matchesSearch = !search || rowTitle.includes(search);
+            
+            if (matchesCategory && matchesStatus && matchesGrade && matchesSearch) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    function resetFilters() {
+        document.getElementById('categoryFilter').value = '';
+        document.getElementById('statusFilter').value = '';
+        document.getElementById('gradeFilter').value = '';
+        document.getElementById('searchFilter').value = '';
+        
+        const rows = document.querySelectorAll('#gradesTable tbody tr');
+        rows.forEach(row => {
+            row.style.display = '';
+        });
+    }
+
+    function exportGrades() {
+        showNotification('Exportando calificaciones a Excel...');
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = '/exports/calificaciones.xlsx';
+            link.download = 'mis-calificaciones.xlsx';
+            link.click();
+        }, 1500);
+    }
+
+    function printGrades() {
+        showNotification('Preparando vista de impresión...');
+        setTimeout(() => {
+            window.print();
+        }, 1000);
+    }
+
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'alert alert-success';
+        notification.textContent = message;
+        notification.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 9999; animation: slideIn 0.3s ease; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Close modals when clicking outside
+    document.getElementById('gradeModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    document.getElementById('certificateModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeCertificateModal();
+        }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate stats on page load
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+            const finalValue = stat.textContent;
+            const isPercentage = finalValue.includes('%');
+            const numericValue = parseFloat(finalValue.replace(/[^0-9.]/g, ''));
+            
+            let currentValue = 0;
+            const increment = numericValue / 50;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= numericValue) {
+                    currentValue = numericValue;
+                    clearInterval(timer);
+                }
+                
+                stat.textContent = (isPercentage ? currentValue.toFixed(1) + '%' : Math.floor(currentValue));
+            }, 30);
+        });
+    });
+</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones" class="active"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">my_location</i> Mis Calificaciones</h1>
+                <p>Revisa tu rendimiento académico y evaluaciones</p>
+            </div>
+
+            <!-- Overall Performance -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Rendimiento General</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">emoji_events</i></div>
+                        <div class="stat-info">
+                            <h3>91%</h3>
+                            <p>Promedio General</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">check_circle</i></div>
+                        <div class="stat-info">
+                            <h3>24</h3>
+                            <p>Evaluaciones Completadas</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="material-icons">star</i></div>
+                        <div class="stat-info">
+                            <h3>4.7</h3>
+                            <p>Calificación Promedio</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red"><i class="material-icons">show_chart</i></div>
+                        <div class="stat-info">
+                            <h3>+15%</h3>
+                            <p>Mejora este mes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Grades -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">edit</i> Calificaciones Recientes</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Fecha</th>
+                                <th style="padding: 1rem; text-align: left;">Curso</th>
+                                <th style="padding: 1rem; text-align: left;">Evaluación</th>
+                                <th style="padding: 1rem; text-align: center;">Tipo</th>
+                                <th style="padding: 1rem; text-align: center;">Puntaje</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">15 Nov 2024</td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Marketing Digital</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Módulo 2</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem;">SEO Avanzado</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Quiz</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 1.2rem; font-weight: bold; color: #28a745;">85/100</div>
+                                    <div style="font-size: 0.8rem; color: #666;">85%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Aprobado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Detalles</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">12 Nov 2024</td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Programación Web</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Módulo 1</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem;">JavaScript Básico</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Tarea</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 1.2rem; font-weight: bold; color: #28a745;">92/100</div>
+                                    <div style="font-size: 0.8rem; color: #666;">92%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Aprobado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Detalles</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">10 Nov 2024</td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Diseño Gráfico</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Módulo 3</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem;">Diseño de Logos</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Proyecto</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 1.2rem; font-weight: bold; color: #ffc107;">78/100</div>
+                                    <div style="font-size: 0.8rem; color: #666;">78%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Revisión</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Retroalimentación</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">8 Nov 2024</td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Gestión Empresarial</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Módulo 1</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem;">Fundamentos de Administración</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Quiz</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 1.2rem; font-weight: bold; color: #28a745;">95/100</div>
+                                    <div style="font-size: 0.8rem; color: #666;">95%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Aprobado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Detalles</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">5 Nov 2024</td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Excel Avanzado</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Final</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem;">Evaluación Final</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Examen</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 1.2rem; font-weight: bold; color: #28a745;">92/100</div>
+                                    <div style="font-size: 0.8rem; color: #666;">92%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Aprobado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Certificado</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Course Performance -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">show_chart</i> Rendimiento por Curso</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Marketing Digital</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Promedio del Curso</span>
+                                    <span style="color: #667eea; font-weight: bold;">87%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 87%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">
+                                    <span><i class="material-icons">edit</i> 8 evaluaciones</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">check_circle</i> 7 aprobadas</span>
+                                    <span style="margin-left: 1rem;">⏳ 1 pendiente</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;">Mejor calificación: 95%</span>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Programación Web</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Promedio del Curso</span>
+                                    <span style="color: #667eea; font-weight: bold;">82%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 82%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">
+                                    <span><i class="material-icons">edit</i> 6 evaluaciones</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">check_circle</i> 5 aprobadas</span>
+                                    <span style="margin-left: 1rem;">⏳ 1 pendiente</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;">Mejor calificación: 92%</span>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Excel Avanzado</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">check_circle</i> Completado</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span>Promedio del Curso</span>
+                                    <span style="color: #28a745; font-weight: bold;">92%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">
+                                    <span><i class="material-icons">edit</i> 10 evaluaciones</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">check_circle</i> 10 aprobadas</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">emoji_events</i> Certificado</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #666;">Mejor calificación: 98%</span>
+                                <button class="btn btn-primary" style="font-size: 0.8rem;">Ver Certificado</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Assessments -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">calendar_today</i> Próximas Evaluaciones</h2>
+                <div class="course-grid">
+                    <div class="course-card" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Marketing Digital</h3>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En 3 días</span>
+                            </div>
+                            <h4 style="color: #856404; margin-bottom: 0.5rem;">Proyecto Final: Plan de Marketing</h4>
+                            <p style="color: #856404; font-size: 0.9rem; margin-bottom: 1rem;">Desarrolla un plan integral de marketing digital para una empresa local</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #856404;">Valor: 25% de la calificación final</span>
+                                <button class="btn btn-primary" style="background: #ffc107; color: #000;">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card" style="background: #f8d7da; border-left: 4px solid #dc3545;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Programación Web</h3>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En 5 días</span>
+                            </div>
+                            <h4 style="color: #721c24; margin-bottom: 0.5rem;">Quiz: JavaScript Intermedio</h4>
+                            <p style="color: #721c24; font-size: 0.9rem; margin-bottom: 1rem;">Evaluación sobre conceptos intermedios de JavaScript y DOM</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 0.9rem; color: #721c24;">20 preguntas • 30 minutos</span>
+                                <button class="btn btn-primary" style="background: #dc3545;">Comenzar Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade Distribution -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Distribución de Calificaciones</h2>
+                <div style="display: flex; gap: 2rem; align-items: center;">
+                    <div style="flex: 1;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span><i class="material-icons">emoji_events</i> Excelente (90-100)</span>
+                                <span style="color: #28a745; font-weight: bold;">12 evaluaciones</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%; background: #28a745;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span><i class="material-icons">check_circle</i> Bueno (80-89)</span>
+                                <span style="color: #667eea; font-weight: bold;">8 evaluaciones</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 33%; background: #667eea;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span><i class="material-icons">show_chart</i> Suficiente (70-79)</span>
+                                <span style="color: #ffc107; font-weight: bold;">3 evaluaciones</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 12.5%; background: #ffc107;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span><i class="material-icons">warning</i> Necesita Mejorar (60-69)</span>
+                                <span style="color: #dc3545; font-weight: bold;">1 evaluación</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 4%; background: #dc3545;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 0 0 300px;">
+                        <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h3 style="margin-bottom: 1rem;"><i class="material-icons">show_chart</i> Tu Progreso</h3>
+                            <div style="font-size: 3rem; font-weight: bold; color: #667eea; margin-bottom: 1rem;">91%</div>
+                            <p style="color: #666; margin-bottom: 1rem;">Estás en el top 15% de tu clase</p>
+                            <div style="font-size: 0.9rem; color: #666;">
+                                <div><i class="material-icons">menu_book</i> 24 evaluaciones completadas</div>
+                                <div><i class="material-icons">star</i> 4.7/5.0 calificación promedio</div>
+                                <div><i class="material-icons">my_location</i> 83% tasa de aprobación</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

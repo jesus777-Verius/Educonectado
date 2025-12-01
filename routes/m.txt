@@ -1,0 +1,20 @@
+ESTUDIANTE:
+
+Email: estudiante@educonecta.com
+Password: 12345678
+👩‍🏫 DOCENTE:
+
+Email: docente@educonecta.com
+Password: 12345678
+👨‍💼 ADMIN:
+
+Email: admin@educonecta.com
+Password: 12345678
+🏫 INSTITUCIÓN:
+
+Email: institucion@educonecta.com
+Password: 12345678
+🏢 EMPRESA:
+
+Email: empresa@educonecta.com
+Password: 12345678

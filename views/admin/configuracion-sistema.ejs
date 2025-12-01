@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración del Sistema - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema" class="active"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">settings</i> Configuración del Sistema</h1>
+                <p>Administra las configuraciones globales de EduConecta</p>
+            </div>
+
+            <!-- System Status -->
+            <div class="dashboard-card">
+                <h2>🖥️ Estado del Sistema</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">check_circle</i></div>
+                        <div class="stat-info">
+                            <h3>Operativo</h3>
+                            <p>Estado General</p>
+                            <div style="font-size: 0.8rem; color: #28a745;">Todos los sistemas funcionando</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">refresh</i></div>
+                        <div class="stat-info">
+                            <h3>v2.4.1</h3>
+                            <p>Versión Actual</p>
+                            <div style="font-size: 0.8rem; color: #667eea;">Última actualización: 15 Nov 2024</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="material-icons">schedule</i></div>
+                        <div class="stat-info">
+                            <h3>UTC-6</h3>
+                            <p>Zona Horaria</p>
+                            <div style="font-size: 0.8rem; color: #ffc107;">Ciudad de México</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red"><i class="material-icons">backup</i></div>
+                        <div class="stat-info">
+                            <h3>89%</h3>
+                            <p>Almacenamiento</p>
+                            <div style="font-size: 0.8rem; color: #28a745;">Disponible</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Settings -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">language</i> Configuración General</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nombre de la Plataforma</label>
+                            <input type="text" class="form-control" value="EduConecta">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email de Soporte</label>
+                            <input type="email" class="form-control" value="soporte@educonecta.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Teléfono de Contacto</label>
+                            <input type="tel" class="form-control" value="+52 555 123 4567">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Idioma Predeterminado</label>
+                            <select class="form-control">
+                                <option value="es" selected>Español</option>
+                                <option value="en">English</option>
+                                <option value="pt">Português</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción de la Plataforma</label>
+                        <textarea class="form-control" rows="3">Plataforma educativa líder en aprendizaje online con cursos de alta calidad para profesionales y estudiantes.</textarea>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">build</i> Configuración de Funcionalidades</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Registro de Nuevos Usuarios</div>
+                                <div style="font-size: 0.9rem; color: #666;">Permitir que nuevos usuarios se registren</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Verificación de Email</div>
+                                <div style="font-size: 0.9rem; color: #666;">Requerir verificación de email para activar cuenta</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Mantenimiento Programado</div>
+                                <div style="font-size: 0.9rem; color: #666;">Mostrar aviso de mantenimiento programado</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Modo Debug</div>
+                                <div style="font-size: 0.9rem; color: #666;">Activar mensajes de depuración (solo desarrollo)</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Restablecer</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Email Configuration -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">email</i> Configuración de Email</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Servidor SMTP</label>
+                            <input type="text" class="form-control" placeholder="smtp.gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Puerto SMTP</label>
+                            <input type="number" class="form-control" placeholder="587">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Email Remitente</label>
+                            <input type="email" class="form-control" placeholder="noreply@educonecta.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nombre Remitente</label>
+                            <input type="text" class="form-control" placeholder="EduConecta">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Usuario SMTP</label>
+                            <input type="text" class="form-control" placeholder="usuario@educonecta.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Contraseña SMTP</label>
+                            <input type="password" class="form-control" placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">email</i> Tipos de Notificaciones por Email</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Bienvenida de Nuevos Usuarios</div>
+                                <div style="font-size: 0.9rem; color: #666;">Enviar email de bienvenida al registrarse</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Notificaciones de Pagos</div>
+                                <div style="font-size: 0.9rem; color: #666;">Confirmación de pagos y facturas</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Recordatorios de Curso</div>
+                                <div style="font-size: 0.9rem; color: #666;">Recordatorios de lecciones y deadlines</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Alertas del Sistema</div>
+                                <div style="font-size: 0.9rem; color: #666;">Notificaciones importantes del sistema</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;"><i class="material-icons">email</i> Probar Email</button>
+                        <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Payment Gateway Configuration -->
+            <div class="dashboard-card">
+                <h2>💳 Configuración de Pasarelas de Pago</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <h3>💳 Stripe</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Clave Pública</div>
+                                <input type="text" class="form-control" placeholder="pk_test_..." value="pk_test_1234567890">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Clave Secreta</div>
+                                <input type="password" class="form-control" placeholder="sk_test_..." value="••••••••••••••">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Webhook Secret</div>
+                                <input type="password" class="form-control" placeholder="whsec_..." value="••••••••••••••">
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Configurar</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <h3><i class="material-icons">payments</i> PayPal</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Client ID</div>
+                                <input type="text" class="form-control" placeholder="AQ..." value="AQ1234567890">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Client Secret</div>
+                                <input type="password" class="form-control" placeholder="EJ..." value="••••••••••••••">
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Modo Sandbox</div>
+                                <select class="form-control">
+                                    <option value="true">Sí</option>
+                                    <option value="false" selected>No</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Configurar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storage Configuration -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">backup</i> Configuración de Almacenamiento</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Almacenamiento</label>
+                            <select class="form-control">
+                                <option value="local" selected>Local</option>
+                                <option value="s3">Amazon S3</option>
+                                <option value="google">Google Cloud Storage</option>
+                                <option value="azure">Azure Blob Storage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Límite de Subida (MB)</label>
+                            <input type="number" class="form-control" value="500" min="1" max="1000">
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Uso de Almacenamiento</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.9rem;">Espacio Total</span>
+                                <span style="font-weight: bold; color: #667eea;">10 GB</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.9rem;">Espacio Usado</span>
+                                <span style="font-weight: bold; color: #ffc107;">1.1 GB</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 11%; background: #ffc107;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.9rem;">Espacio Disponible</span>
+                                <span style="font-weight: bold; color: #28a745;">8.9 GB</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 89%; background: #28a745;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">🧹 Limpiar Cache</button>
+                        <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- API Configuration -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">power</i> Configuración de API</h2>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">URL Base de API</label>
+                        <input type="url" class="form-control" value="https://api.educonecta.com/v1">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Clave de API</label>
+                            <input type="text" class="form-control" value="educonecta_api_2024_key" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Límite de Rate Limiting</label>
+                            <input type="number" class="form-control" value="1000" min="100" max="10000">
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;">🔐 Seguridad de API</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">CORS Habilitado</div>
+                                <div style="font-size: 0.9rem; color: #666;">Permitir solicitudes跨dominio</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">API Key Requerida</div>
+                                <div style="font-size: 0.9rem; color: #666;">Exigir clave de API para todas las solicitudes</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Logging de API</div>
+                                <div style="font-size: 0.9rem; color: #666;">Registrar todas las llamadas a la API</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;"><i class="material-icons">refresh</i> Generar Nueva Clave</button>
+                        <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Backup Configuration -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">backup</i> Configuración de Backup</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Frecuencia de Backup</label>
+                            <select class="form-control">
+                                <option value="daily" selected>Diario</option>
+                                <option value="weekly">Semanal</option>
+                                <option value="monthly">Mensual</option>
+                                <option value="manual">Manual</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hora de Backup</label>
+                            <input type="time" class="form-control" value="02:00">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Retención de Backups</label>
+                            <select class="form-control">
+                                <option value="7">7 días</option>
+                                <option value="14">14 días</option>
+                                <option value="30" selected>30 días</option>
+                                <option value="90">90 días</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Ubicación de Backup</label>
+                            <select class="form-control">
+                                <option value="local" selected>Local</option>
+                                <option value="s3">Amazon S3</option>
+                                <option value="google">Google Drive</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">assignment</i> Historial de Backups</h3>
+                        <div style="overflow-x: auto;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: #f8f9fa;">
+                                        <th style="padding: 0.5rem; text-align: left;">Fecha</th>
+                                        <th style="padding: 0.5rem; text-align: center;">Tipo</th>
+                                        <th style="padding: 0.5rem; text-align: center;">Tamaño</th>
+                                        <th style="padding: 0.5rem; text-align: center;">Estado</th>
+                                        <th style="padding: 0.5rem; text-align: center;">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                                        <td style="padding: 0.5rem;">
+                                            <div style="font-size: 0.9rem;">28 Nov 2024, 02:00 AM</div>
+                                        </td>
+                                        <td style="padding: 0.5rem; text-align: center;">
+                                            <span style="background: #667eea; color: white; padding: 0.25rem 0.5rem; border-radius: 20px; font-size: 0.7rem;">Completo</span>
+                                        </td>
+                                        <td style="padding: 0.5rem; text-align: center;">
+                                            <div style="font-size: 0.9rem;">245 MB</div>
+                                        </td>
+                                        <td style="padding: 0.5rem; text-align: center;">
+                                            <span style="background: #28a745; color: white; padding: 0.25rem 0.5rem; border-radius: 20px; font-size: 0.7rem;">Exitoso</span>
+                                        </td>
+                                        <td style="padding: 0.5rem; text-align: center;">
+                                            <button class="btn btn-outline" style="font-size: 0.7rem;">Descargar</button>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                                        <td style="padding: 0.5rem;">
+                                            <div style="font-size: 0.9rem;">27 Nov 2024, 02:00 AM</div>
+                                        </td>
+                                        <td style="padding: 0.5rem; text-align: center;">
+                                            <span style="background: #667eea; color: white; padding: 0.25rem 0.5rem; border-radius: 20px; font-size: 0.7rem;">Completo</span>
+                                        </td>
+                                        <td style="padding: 0.5rem; text-align: center;">
+                                            <div style="font-size: 0.9rem;">238 MB</div>
+                                        </td>
+                                        <td style="padding: 0.5rem; text-align: center;">
+                                            <span style="background: #28a745; color: white; padding: 0.25rem 0.5rem; border-radius: 20px; font-size: 0.7rem;">Exitoso</span>
+                                        </td>
+                                        <td style="padding: 0.5rem; text-align: center;">
+                                            <button class="btn btn-outline" style="font-size: 0.7rem;">Descargar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-primary" style="margin-right: 1rem;"><i class="material-icons">backup</i> Backup Manual</button>
+                        <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">backup</i> Backup Manual</button>
+                    <button class="btn btn-outline"><i class="material-icons">refresh</i> Reiniciar Sistema</button>
+                    <button class="btn btn-outline">🧹 Limpiar Cache</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Probar Email</button>
+                    <button class="btn btn-outline"><i class="material-icons">search</i> Ver Logs</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Restablecer Configuración</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

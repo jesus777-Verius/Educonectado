@@ -1,0 +1,1514 @@
+<%- include('layout') %>
+
+<style>
+    /* Virtual Classroom Styles */
+    .classroom-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .classroom-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .classroom-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    
+    .header-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .course-info {
+        flex: 1;
+    }
+    
+    .course-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    
+    .course-instructor {
+        opacity: 0.9;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .course-progress {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .progress-text {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .progress-percentage {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    
+    .progress-label {
+        opacity: 0.8;
+        font-size: 0.9rem;
+    }
+    
+    .progress-bar {
+        width: 200px;
+        height: 8px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: white;
+        border-radius: 4px;
+        transition: width 0.3s ease;
+    }
+    
+    /* Classroom Layout */
+    .classroom-layout {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Main Content Area */
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    /* Video Player */
+    .video-section {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+    
+    .video-player {
+        position: relative;
+        padding-bottom: 56.25%;
+        background: #000;
+        border-radius: 12px 12px 0 0;
+        overflow: hidden;
+    }
+    
+    .video-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .video-placeholder:hover {
+        background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    }
+    
+    .play-button {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 3rem;
+        transition: all 0.3s ease;
+    }
+    
+    .video-placeholder:hover .play-button {
+        transform: scale(1.1);
+        background: rgba(255,255,255,0.3);
+    }
+    
+    .video-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .video-duration {
+        opacity: 0.8;
+    }
+    
+    .video-controls {
+        padding: 1.5rem;
+        border-top: 1px solid #e9ecef;
+    }
+    
+    .video-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .video-lesson-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .video-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .video-btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    
+    .video-btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+    
+    .video-btn-outline {
+        background: transparent;
+        color: #667eea;
+        border: 1px solid #667eea;
+    }
+    
+    .video-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Course Content */
+    .content-section {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+    
+    .section-header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .section-content {
+        padding: 1.5rem;
+    }
+    
+    /* Tabs */
+    .content-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #e9ecef;
+    }
+    
+    .tab-btn {
+        padding: 1rem 1.5rem;
+        background: none;
+        border: none;
+        color: #666;
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .tab-btn.active {
+        color: #667eea;
+    }
+    
+    .tab-btn.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #667eea;
+    }
+    
+    .tab-content {
+        display: none;
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    /* Lesson List */
+    .lesson-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .lesson-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .lesson-item:hover {
+        border-color: #667eea;
+        background: rgba(102, 126, 234, 0.05);
+    }
+    
+    .lesson-item.active {
+        background: rgba(102, 126, 234, 0.1);
+        border-color: #667eea;
+    }
+    
+    .lesson-item.completed {
+        background: rgba(76, 175, 80, 0.05);
+        border-color: #4caf50;
+    }
+    
+    .lesson-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+    }
+    
+    .lesson-item.active .lesson-icon {
+        background: #667eea;
+        color: white;
+    }
+    
+    .lesson-item.completed .lesson-icon {
+        background: #4caf50;
+        color: white;
+    }
+    
+    .lesson-item:not(.active):not(.completed) .lesson-icon {
+        background: #e9ecef;
+        color: #666;
+    }
+    
+    .lesson-content {
+        flex: 1;
+    }
+    
+    .lesson-title {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: #333;
+    }
+    
+    .lesson-duration {
+        color: #666;
+        font-size: 0.85rem;
+    }
+    
+    .lesson-status {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .lesson-item.active .lesson-status {
+        background: #667eea;
+        color: white;
+    }
+    
+    .lesson-item.completed .lesson-status {
+        background: #4caf50;
+        color: white;
+    }
+    
+    .lesson-item:not(.active):not(.completed) .lesson-status {
+        background: #e9ecef;
+        color: #666;
+    }
+    
+    /* Resources */
+    .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .resource-card {
+        padding: 1.5rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .resource-card:hover {
+        border-color: #667eea;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+    }
+    
+    .resource-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 1.5rem;
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+    }
+    
+    .resource-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+    
+    .resource-type {
+        color: #666;
+        font-size: 0.85rem;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .sidebar-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+    
+    .sidebar-header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 1rem 1.5rem;
+        font-weight: 600;
+    }
+    
+    .sidebar-content {
+        padding: 1.5rem;
+    }
+    
+    /* Chat */
+    .chat-messages {
+        height: 300px;
+        overflow-y: auto;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background: #f8f9fa;
+    }
+    
+    .chat-message {
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        border-radius: 8px;
+        background: white;
+    }
+    
+    .chat-message.instructor {
+        background: rgba(102, 126, 234, 0.1);
+        border-left: 3px solid #667eea;
+    }
+    
+    .message-author {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: #333;
+    }
+    
+    .message-text {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .message-time {
+        color: #999;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+    }
+    
+    .chat-input {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .chat-input input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 0.9rem;
+    }
+    
+    .chat-input button {
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .chat-input button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    /* Notes */
+    .notes-textarea {
+        width: 100%;
+        min-height: 150px;
+        padding: 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        resize: vertical;
+    }
+    
+    .notes-textarea:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .notes-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    }
+    
+    .notes-info {
+        color: #666;
+        font-size: 0.85rem;
+    }
+    
+    /* Quiz Section */
+    .quiz-card {
+        padding: 1.5rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+    
+    .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .quiz-title {
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .quiz-status {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .quiz-status.available {
+        background: #4caf50;
+        color: white;
+    }
+    
+    .quiz-status.completed {
+        background: #2196f3;
+        color: white;
+    }
+    
+    .quiz-status.locked {
+        background: #e9ecef;
+        color: #666;
+    }
+    
+    .quiz-info {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .classroom-layout {
+            grid-template-columns: 1fr;
+        }
+        
+        .sidebar {
+            order: -1;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .course-progress {
+            justify-content: center;
+        }
+        
+        .content-tabs {
+            flex-wrap: wrap;
+        }
+        
+        .resources-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="classroom-container">
+    <!-- Header -->
+    <div class="classroom-header">
+        <div class="header-content">
+            <div class="course-info">
+                <h1 class="course-title">Marketing Digital Completo</h1>
+                <div class="course-instructor">
+                    <span class="material-symbols-outlined">person</span>
+                    Prof. Carlos Rodríguez
+                </div>
+                <div class="course-progress">
+                    <div class="progress-text">
+                        <div class="progress-percentage">75%</div>
+                        <div class="progress-label">Progreso del Curso</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="classroom-layout">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Video Section -->
+            <div class="video-section">
+                <div class="video-player">
+                    <div class="video-placeholder" onclick="playVideo()">
+                        <div class="play-button">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                        </div>
+                        <div class="video-title">Lección 3: SEO Avanzado</div>
+                        <div class="video-duration">Duración: 90 minutos</div>
+                    </div>
+                </div>
+                <div class="video-controls">
+                    <div class="video-info">
+                        <div class="video-lesson-title">Lección 3: SEO Avanzado</div>
+                        <div class="video-actions">
+                            <button class="video-btn video-btn-primary" onclick="playVideo()">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">play_arrow</span>
+                                Reproducir
+                            </button>
+                            <button class="video-btn video-btn-outline" onclick="downloadVideo()">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                                Descargar
+                            </button>
+                            <button class="video-btn video-btn-outline" onclick="markComplete()">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">check_circle</span>
+                                Completar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Section -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="material-symbols-outlined">menu_book</span>
+                        Contenido del Curso
+                    </h2>
+                </div>
+                <div class="section-content">
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab('lessons')">Lecciones</button>
+                        <button class="tab-btn" onclick="switchTab('resources')">Recursos</button>
+                        <button class="tab-btn" onclick="switchTab('assignments')">Tareas</button>
+                        <button class="tab-btn" onclick="switchTab('quizzes')">Quizzes</button>
+                    </div>
+                    
+                    <!-- Lessons Tab -->
+                    <div class="tab-content active" id="lessons">
+                        <div class="lesson-list">
+                            <div class="lesson-item completed">
+                                <div class="lesson-icon">
+                                    <span class="material-symbols-outlined">check</span>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Lección 1: Introducción al Marketing Digital</div>
+                                    <div class="lesson-duration">45 minutos</div>
+                                </div>
+                                <div class="lesson-status">Completado</div>
+                            </div>
+                            
+                            <div class="lesson-item completed">
+                                <div class="lesson-icon">
+                                    <span class="material-symbols-outlined">check</span>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Lección 2: Fundamentos de SEO</div>
+                                    <div class="lesson-duration">60 minutos</div>
+                                </div>
+                                <div class="lesson-status">Completado</div>
+                            </div>
+                            
+                            <div class="lesson-item active">
+                                <div class="lesson-icon">
+                                    <span class="material-symbols-outlined">play_arrow</span>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Lección 3: SEO Avanzado</div>
+                                    <div class="lesson-duration">90 minutos</div>
+                                </div>
+                                <div class="lesson-status">En progreso</div>
+                            </div>
+                            
+                            <div class="lesson-item">
+                                <div class="lesson-icon">
+                                    <span class="material-symbols-outlined">lock</span>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Lección 4: Marketing en Redes Sociales</div>
+                                    <div class="lesson-duration">75 minutos</div>
+                                </div>
+                                <div class="lesson-status">Bloqueado</div>
+                            </div>
+                            
+                            <div class="lesson-item">
+                                <div class="lesson-icon">
+                                    <span class="material-symbols-outlined">lock</span>
+                                </div>
+                                <div class="lesson-content">
+                                    <div class="lesson-title">Lección 5: Email Marketing</div>
+                                    <div class="lesson-duration">60 minutos</div>
+                                </div>
+                                <div class="lesson-status">Bloqueado</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Resources Tab -->
+                    <div class="tab-content" id="resources">
+                        <div class="resources-grid">
+                            <div class="resource-card" onclick="downloadResource('pdf')">
+                                <div class="resource-icon">
+                                    <span class="material-symbols-outlined">picture_as_pdf</span>
+                                </div>
+                                <div class="resource-title">Guía SEO 2024</div>
+                                <div class="resource-type">PDF • 2.5 MB</div>
+                            </div>
+                            
+                            <div class="resource-card" onclick="downloadResource('presentation')">
+                                <div class="resource-icon">
+                                    <span class="material-symbols-outlined">slideshow</span>
+                                </div>
+                                <div class="resource-title">Presentación SEO</div>
+                                <div class="resource-type">PPT • 5.1 MB</div>
+                            </div>
+                            
+                            <div class="resource-card" onclick="downloadResource('video')">
+                                <div class="resource-icon">
+                                    <span class="material-symbols-outlined">video_file</span>
+                                </div>
+                                <div class="resource-title">Video Tutorial</div>
+                                <div class="resource-type">MP4 • 125 MB</div>
+                            </div>
+                            
+                            <div class="resource-card" onclick="downloadResource('excel')">
+                                <div class="resource-icon">
+                                    <span class="material-symbols-outlined">table_chart</span>
+                                </div>
+                                <div class="resource-title">Herramientas SEO</div>
+                                <div class="resource-type">XLS • 890 KB</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Assignments Tab -->
+                    <div class="tab-content" id="assignments">
+                        <div class="quiz-card">
+                            <div class="quiz-header">
+                                <div class="quiz-title">Tarea 1: Análisis SEO Competitivo</div>
+                                <div class="quiz-status available">Entregar</div>
+                            </div>
+                            <div class="quiz-info">
+                                Analiza el SEO de 3 competidores y presenta un informe detallado con recomendaciones.
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <button class="btn btn-primary" onclick="openAssignment(1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">edit</span>
+                                    Comenzar Tarea
+                                </button>
+                                <button class="btn btn-outline" onclick="viewAssignmentDetails(1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">info</span>
+                                    Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-card">
+                            <div class="quiz-header">
+                                <div class="quiz-title">Tarea 2: Plan de Contenidos</div>
+                                <div class="quiz-status completed">Calificado: 92/100</div>
+                            </div>
+                            <div class="quiz-info">
+                                Crea un plan de contenidos para 3 meses enfocado en tu nicho de mercado.
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <button class="btn btn-outline" onclick="viewAssignmentFeedback(2)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                                    Ver Feedback
+                                </button>
+                                <button class="btn btn-outline" onclick="downloadAssignment(2)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                                    Descargar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quizzes Tab -->
+                    <div class="tab-content" id="quizzes">
+                        <div class="quiz-card">
+                            <div class="quiz-header">
+                                <div class="quiz-title">Quiz 1: Fundamentos de SEO</div>
+                                <div class="quiz-status completed">Completado: 85/100</div>
+                            </div>
+                            <div class="quiz-info">
+                                10 preguntas • 30 minutos • Evaluación de conocimientos básicos de SEO
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <button class="btn btn-outline" onclick="viewQuizResults(1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                                    Ver Resultados
+                                </button>
+                                <button class="btn btn-outline" onclick="retakeQuiz(1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">replay</span>
+                                    Repetir
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-card">
+                            <div class="quiz-header">
+                                <div class="quiz-title">Quiz 2: SEO Avanzado</div>
+                                <div class="quiz-status available">Disponible</div>
+                            </div>
+                            <div class="quiz-info">
+                                15 preguntas • 45 minutos • Evaluación de técnicas avanzadas de SEO
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <button class="btn btn-primary" onclick="startQuiz(2)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">quiz</span>
+                                    Comenzar Quiz
+                                </button>
+                                <button class="btn btn-outline" onclick="viewQuizDetails(2)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">info</span>
+                                    Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Chat Section -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <span class="material-symbols-outlined" style="vertical-align: middle; margin-right: 0.5rem;">chat</span>
+                    Chat del Curso
+                </div>
+                <div class="sidebar-content">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message instructor">
+                            <div class="message-author">Prof. Carlos Rodríguez</div>
+                            <div class="message-text">¡Bienvenidos a la lección de SEO Avanzado! No olviden revisar los recursos adicionales.</div>
+                            <div class="message-time">Hace 10 minutos</div>
+                        </div>
+                        
+                        <div class="chat-message">
+                            <div class="message-author">Juan Pérez</div>
+                            <div class="message-text">¿Podrían explicar mejor el concepto de link building?</div>
+                            <div class="message-time">Hace 5 minutos</div>
+                        </div>
+                        
+                        <div class="chat-message instructor">
+                            <div class="message-author">Prof. Carlos Rodríguez</div>
+                            <div class="message-text">Claro Juan, el link building es el proceso de conseguir enlaces de otros sitios web hacia el tuyo...</div>
+                            <div class="message-time">Hace 2 minutos</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeypress="handleChatKeypress(event)">
+                        <button onclick="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <span class="material-symbols-outlined" style="vertical-align: middle; margin-right: 0.5rem;">note</span>
+                    Mis Notas
+                </div>
+                <div class="sidebar-content">
+                    <textarea class="notes-textarea" id="notesTextarea" placeholder="Toma notas sobre esta lección..." onchange="saveNotes()">SEO Avanzado:
+
+Puntos clave:
+- Link building estratégico
+- Optimización de velocidad
+- SEO técnico
+- Análisis de competidores
+
+Próximos pasos:
+1. Auditar sitio web actual
+2. Identificar oportunidades de mejora
+3. Implementar cambios recomendados</textarea>
+                    <div class="notes-actions">
+                        <div class="notes-info">Guardado automáticamente</div>
+                        <button class="btn btn-outline" onclick="clearNotes()">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">clear</span>
+                            Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Overview -->
+            <div class="sidebar-card">
+                <div class="sidebar-header">
+                    <span class="material-symbols-outlined" style="vertical-align: middle; margin-right: 0.5rem;">trending_up</span>
+                    Progreso General
+                </div>
+                <div class="sidebar-content">
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Lecciones Completadas</span>
+                            <strong>2/5</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Tareas Entregadas</span>
+                            <strong>1/2</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Quizzes Completados</span>
+                            <strong>1/2</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Promedio</span>
+                            <strong>88.5%</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Tiempo Total</span>
+                            <strong>12h 45m</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Video Player Functions
+    function playVideo() {
+        showNotification('Iniciando video...');
+        // Simulate video player opening
+        setTimeout(() => {
+            const videoPlaceholder = document.querySelector('.video-placeholder');
+            videoPlaceholder.innerHTML = `
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                    <div class="play-button" style="margin-bottom: 1rem;">
+                        <span class="material-symbols-outlined">pause</span>
+                    </div>
+                    <div style="font-size: 1.25rem; font-weight: 600;">Reproduciendo...</div>
+                    <div style="opacity: 0.8; margin-top: 0.5rem;">Lección 3: SEO Avanzado</div>
+                </div>
+            `;
+            }, 1000);
+    }
+
+    function downloadVideo() {
+        showNotification('Descargando video...');
+        // Simulate video download
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = '/videos/seo-avanzado.mp4';
+            link.download = 'leccion-3-seo-avanzado.mp4';
+            link.click();
+        }, 1500);
+    }
+
+    function markComplete() {
+        showNotification('Marcando lección como completada...');
+        // Update UI to show completion
+        setTimeout(() => {
+            const activeLesson = document.querySelector('.lesson-item.active');
+            if (activeLesson) {
+                activeLesson.classList.remove('active');
+                activeLesson.classList.add('completed');
+                activeLesson.querySelector('.lesson-icon').innerHTML = '<span class="material-symbols-outlined">check</span>';
+                activeLesson.querySelector('.lesson-status').textContent = 'Completado';
+                
+                // Unlock next lesson
+                const nextLesson = activeLesson.nextElementSibling;
+                if (nextLesson && nextLesson.classList.contains('lesson-item')) {
+                    nextLesson.classList.remove('lesson-item');
+                    nextLesson.querySelector('.lesson-icon').innerHTML = '<span class="material-symbols-outlined">play_arrow</span>';
+                    nextLesson.querySelector('.lesson-status').textContent = 'Disponible';
+                }
+                
+                // Update progress
+                updateProgress();
+            }
+        }, 1000);
+    }
+
+    // Tab Functions
+    function switchTab(tabName) {
+        // Remove active class from all tabs and contents
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        // Add active class to selected tab and content
+        event.target.classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+    }
+
+    // Resource Functions
+    function downloadResource(type) {
+        showNotification(`Descargando recurso...`);
+        // Simulate resource download
+        setTimeout(() => {
+            const resources = {
+                'pdf': '/guides/guia-seo-2024.pdf',
+                'presentation': '/presentaciones/seo.pptx',
+                'video': '/videos/tutorial-seo.mp4',
+                'excel': '/herramientas/herramientas-seo.xlsx'
+            };
+            
+            const link = document.createElement('a');
+            link.href = resources[type];
+            link.download = `recurso-seo-${type}.${type === 'pdf' ? 'pdf' : type === 'presentation' ? 'pptx' : type === 'video' ? 'mp4' : 'xlsx'}`;
+            link.click();
+        }, 1500);
+    }
+
+    // Assignment Functions
+    function openAssignment(assignmentId) {
+        showNotification('Abriendo editor de tareas...');
+        setTimeout(() => {
+            window.open('/estudiante/tareas/' + assignmentId, '_blank');
+        }, 1000);
+    }
+
+    function viewAssignmentDetails(assignmentId) {
+        showNotification('Cargando detalles de la tarea...');
+    }
+
+    function viewAssignmentFeedback(assignmentId) {
+        showNotification('Cargando feedback del instructor...');
+    }
+
+    function downloadAssignment(assignmentId) {
+        showNotification('Descargando tarea entregada...');
+    }
+
+    // Quiz Functions
+    function startQuiz(quizId) {
+        showNotification('Iniciando quiz...');
+        setTimeout(() => {
+            window.open('/estudiante/quiz/' + quizId, '_blank');
+        }, 1000);
+    }
+
+    function viewQuizDetails(quizId) {
+        showNotification('Cargando detalles del quiz...');
+    }
+
+    function viewQuizResults(quizId) {
+        showNotification('Cargando resultados del quiz...');
+    }
+
+    function retakeQuiz(quizId) {
+        showNotification('Reiniciando quiz...');
+        setTimeout(() => {
+            window.open('/estudiante/quiz/' + quizId, '_blank');
+        }, 1000);
+    }
+
+    // Chat Functions
+    function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const message = input.value.trim();
+        
+        if (message) {
+            const chatMessages = document.getElementById('chatMessages');
+            const newMessage = document.createElement('div');
+            newMessage.className = 'chat-message';
+            newMessage.innerHTML = `
+                <div class="message-author">Yo</div>
+                <div class="message-text">${message}</div>
+                <div class="message-time">Ahora</div>
+            `;
+            
+            chatMessages.appendChild(newMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            input.value = '';
+            
+            showNotification('Mensaje enviado');
+        }
+    }
+
+    function handleChatKeypress(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    // Notes Functions
+    function saveNotes() {
+        const notes = document.getElementById('notesTextarea').value;
+        localStorage.setItem('course-notes', notes);
+        showNotification('Notas guardadas');
+    }
+
+    function clearNotes() {
+        if (confirm('¿Estás seguro de que quieres limpiar tus notas?')) {
+            document.getElementById('notesTextarea').value = '';
+            localStorage.removeItem('course-notes');
+            showNotification('Notas eliminadas');
+        }
+    }
+
+    // Progress Functions
+    function updateProgress() {
+        const completedLessons = document.querySelectorAll('.lesson-item.completed').length;
+        const totalLessons = document.querySelectorAll('.lesson-item').length;
+        const percentage = Math.round((completedLessons / totalLessons) * 100);
+        
+        // Update header progress
+        document.querySelector('.progress-percentage').textContent = percentage + '%';
+        document.querySelector('.progress-fill').style.width = percentage + '%';
+        
+        // Update sidebar progress
+        const sidebarProgress = document.querySelector('.sidebar-card:last-child .sidebar-content');
+        sidebarProgress.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Lecciones Completadas</span>
+                    <strong>${completedLessons}/${totalLessons}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Tareas Entregadas</span>
+                    <strong>1/2</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Quizzes Completados</span>
+                    <strong>1/2</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Promedio</span>
+                    <strong>${percentage}%</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>Tiempo Total</span>
+                    <strong>12h 45m</strong>
+                </div>
+            </div>
+        `;
+    }
+
+    // Utility Functions
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'alert alert-success';
+        notification.textContent = message;
+        notification.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 9999; animation: slideIn 0.3s ease; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load saved notes
+        const savedNotes = localStorage.getItem('course-notes');
+        if (savedNotes) {
+            document.getElementById('notesTextarea').value = savedNotes;
+        }
+        
+        // Animate progress bars
+        const progressBars = document.querySelectorAll('.progress-fill');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+        
+        // Auto-scroll chat to bottom
+        const chatMessages = document.getElementById('chatMessages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula" class="active"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Current Session -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <div>
+                        <h1><i class="material-icons">school</i> Mi Aula Virtual</h1>
+                        <p>Continúa tu aprendizaje interactivo</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #667eea; font-weight: bold;">Sesión Actual</div>
+                        <div style="color: #666;">Marketing Digital - Módulo 2</div>
+                    </div>
+                </div>
+
+                <!-- Video Player Section -->
+                <div style="background: #000; border-radius: 12px; overflow: hidden; margin-bottom: 2rem;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 4rem; margin-bottom: 1rem;">▶️</div>
+                                <h3>Lección 2.3: SEO Avanzado</h3>
+                                <p>Haz clic para comenzar la lección</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson Controls -->
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: #f8f9fa; border-radius: 8px; margin-bottom: 2rem;">
+                    <div>
+                        <h4>SEO Avanzado - Técnicas de Link Building</h4>
+                        <p style="color: #666; font-size: 0.9rem;">Duración: 45 minutos • Módulo 2, Lección 3</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-outline">← Lección Anterior</button>
+                        <button class="btn btn-primary">Marcar como Completada</button>
+                        <button class="btn btn-outline">Siguiente Lección →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Content Navigation -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">menu_book</i> Contenido del Curso</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <!-- Modules List -->
+                    <div style="flex: 1;">
+                        <h3 style="color: #667eea; margin-bottom: 1rem;">Marketing Digital Completo</h3>
+                        
+                        <!-- Module 1 -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; cursor: pointer;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <h4>Módulo 1: Fundamentos del Marketing Digital</h4>
+                                    <span style="color: #28a745;"><i class="material-icons">check_circle</i> Completado</span>
+                                </div>
+                                <p style="color: #666; font-size: 0.9rem;">4 lecciones • 1.5 horas</p>
+                            </div>
+                            <div style="margin-left: 1rem; margin-top: 0.5rem;">
+                                <div style="padding: 0.5rem; border-left: 2px solid #28a745; margin-bottom: 0.25rem;">
+                                    <span style="color: #28a745; margin-right: 0.5rem;"><i class="material-icons">check_circle</i></span>
+                                    <span style="font-size: 0.9rem;">1.1 Introducción al Marketing Digital</span>
+                                </div>
+                                <div style="padding: 0.5rem; border-left: 2px solid #28a745; margin-bottom: 0.25rem;">
+                                    <span style="color: #28a745; margin-right: 0.5rem;"><i class="material-icons">check_circle</i></span>
+                                    <span style="font-size: 0.9rem;">1.2 El Entorno Digital en Venezuela</span>
+                                </div>
+                                <div style="padding: 0.5rem; border-left: 2px solid #28a745; margin-bottom: 0.25rem;">
+                                    <span style="color: #28a745; margin-right: 0.5rem;"><i class="material-icons">check_circle</i></span>
+                                    <span style="font-size: 0.9rem;">1.3 Conceptos Clave y Terminología</span>
+                                </div>
+                                <div style="padding: 0.5rem; border-left: 2px solid #28a745;">
+                                    <span style="color: #28a745; margin-right: 0.5rem;"><i class="material-icons">check_circle</i></span>
+                                    <span style="font-size: 0.9rem;">1.4 Quiz: Fundamentos</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 2 - Current -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="background: #e8f4fd; padding: 1rem; border-radius: 8px; cursor: pointer; border: 2px solid #667eea;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <h4 style="color: #667eea;">Módulo 2: SEO y Posicionamiento</h4>
+                                    <span style="color: #667eea;"><i class="material-icons">local_library</i> En Progreso</span>
+                                </div>
+                                <p style="color: #666; font-size: 0.9rem;">3 lecciones • 2 horas</p>
+                            </div>
+                            <div style="margin-left: 1rem; margin-top: 0.5rem;">
+                                <div style="padding: 0.5rem; border-left: 2px solid #28a745; margin-bottom: 0.25rem;">
+                                    <span style="color: #28a745; margin-right: 0.5rem;"><i class="material-icons">check_circle</i></span>
+                                    <span style="font-size: 0.9rem;">2.1 SEO On-Page Fundamentals</span>
+                                </div>
+                                <div style="padding: 0.5rem; border-left: 2px solid #28a745; margin-bottom: 0.25rem;">
+                                    <span style="color: #28a745; margin-right: 0.5rem;"><i class="material-icons">check_circle</i></span>
+                                    <span style="font-size: 0.9rem;">2.2 SEO Off-Page y Link Building</span>
+                                </div>
+                                <div style="padding: 0.5rem; border-left: 2px solid #667eea; background: #e8f4fd; margin-bottom: 0.25rem;">
+                                    <span style="color: #667eea; margin-right: 0.5rem;"><i class="material-icons">videocam</i></span>
+                                    <span style="font-size: 0.9rem; font-weight: bold;">2.3 SEO Avanzado - Técnicas de Link Building</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module 3 -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; cursor: pointer;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <h4>Módulo 3: Redes Sociales</h4>
+                                    <span style="color: #999;"><i class="material-icons">security</i> Bloqueado</span>
+                                </div>
+                                <p style="color: #666; font-size: 0.9rem;">4 lecciones • 2.5 horas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lesson Resources -->
+                    <div style="flex: 0 0 300px;">
+                        <h3 style="color: #667eea; margin-bottom: 1rem;"><i class="material-icons">folder</i> Recursos de la Lección</h3>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="material-icons">description</i> PDF - Guía SEO</h4>
+                                <p style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Guía completa de técnicas SEO avanzadas</p>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">Descargar</button>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="material-icons">bar_chart</i> Plantilla - Auditoría SEO</h4>
+                                <p style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem;">Hoja de cálculo para auditoría</p>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">Descargar</button>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="material-icons">link</i> Enlaces Útiles</h4>
+                                <ul style="font-size: 0.8rem; color: #666; list-style: none; padding: 0;">
+                                    <li><a href="#" style="color: #667eea;">Google Search Console</a></li>
+                                    <li><a href="#" style="color: #667eea;">Herramientas SEO Gratuitas</a></li>
+                                    <li><a href="#" style="color: #667eea;">Guía de Google SEO</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Elements -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">forum</i> Interacción y Comunidad</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <!-- Comments Section -->
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">Comentarios de la Lección</h3>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                            <textarea placeholder="¿Qué dudas tienes sobre esta lección?" style="width: 100%; min-height: 80px; padding: 0.75rem; border: 1px solid #e0e0e0; border-radius: 6px; resize: vertical;"></textarea>
+                            <button class="btn btn-primary" style="margin-top: 0.5rem;">Publicar Comentario</button>
+                        </div>
+                        
+                        <!-- Existing Comments -->
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; gap: 1rem;">
+                                <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=M" alt="Usuario" style="width: 40px; height: 40px; border-radius: 50%;">
+                                <div style="flex: 1;">
+                                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                            <strong>Maria González</strong>
+                                            <small style="color: #666;">Hace 2 horas</small>
+                                        </div>
+                                        <p style="margin: 0;">¡Excelente explicación! Me quedó muy claro el concepto de link building.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Chat -->
+                    <div style="flex: 0 0 300px;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">forum</i> Chat del Curso</h3>
+                        <div style="background: #f8f9fa; border-radius: 8px; height: 300px; display: flex; flex-direction: column;">
+                            <div style="flex: 1; padding: 1rem; overflow-y: auto;">
+                                <div style="margin-bottom: 1rem;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Carlos - 14:30</div>
+                                    <div style="background: white; padding: 0.5rem; border-radius: 6px;">¿Alguien más tiene dudas sobre los backlinks?</div>
+                                </div>
+                                <div style="margin-bottom: 1rem;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Ana - 14:32</div>
+                                    <div style="background: white; padding: 0.5rem; border-radius: 6px;">Yo también, la parte de anchor text es confusa</div>
+                                </div>
+                            </div>
+                            <div style="padding: 1rem; border-top: 1px solid #e0e0e0;">
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="text" placeholder="Escribe un mensaje..." style="flex: 1; padding: 0.5rem; border: 1px solid #e0e0e0; border-radius: 6px;">
+                                    <button class="btn btn-primary" style="padding: 0.5rem 1rem;">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon blue"><i class="material-icons">edit</i></div>
+                        <div class="stat-info">
+                            <h3>Tareas</h3>
+                            <p>2 pendientes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon green"><i class="material-icons">my_location</i></div>
+                        <div class="stat-info">
+                            <h3>Quizzes</h3>
+                            <p>1 disponible</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon orange"><i class="material-icons">forum</i></div>
+                        <div class="stat-info">
+                            <h3>Foros</h3>
+                            <p>5 nuevos mensajes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon red"><i class="material-icons">menu_book</i></div>
+                        <div class="stat-info">
+                            <h3>Biblioteca</h3>
+                            <p>12 recursos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

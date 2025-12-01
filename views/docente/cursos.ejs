@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Cursos - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos" class="active"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">menu_book</i> Mis Cursos</h1>
+                        <p>Gestiona y monitorea todos tus cursos</p>
+                    </div>
+                    <a href="/docente/crear-curso" class="btn btn-primary"><i class="material-icons">add</i> Crear Nuevo Curso</a>
+                </div>
+            </div>
+
+            <!-- Course Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">menu_book</i></div>
+                    <div class="stat-info">
+                        <h3>6</h3>
+                        <p>Cursos Activos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">people</i></div>
+                    <div class="stat-info">
+                        <h3>234</h3>
+                        <p>Estudiantes Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">star</i></div>
+                    <div class="stat-info">
+                        <h3>4.8</h3>
+                        <p>Calificación Promedio</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">show_chart</i></div>
+                    <div class="stat-info">
+                        <h3>89%</h3>
+                        <p>Tasa de Finalización</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter and Search -->
+            <div class="dashboard-card">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                    <input type="text" placeholder="Buscar cursos..." class="form-control" style="flex: 1;">
+                    <select class="form-control" style="width: 200px;">
+                        <option>Todos los estados</option>
+                        <option>Publicado</option>
+                        <option>Borrador</option>
+                        <option>Archivado</option>
+                    </select>
+                    <select class="form-control" style="width: 200px;">
+                        <option>Todas las categorías</option>
+                        <option>Marketing</option>
+                        <option>Programación</option>
+                        <option>Negocios</option>
+                        <option>Diseño</option>
+                    </select>
+                </div>
+
+                <!-- Courses Grid -->
+                <div class="course-grid">
+                    <!-- Course 1 - Published -->
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/300x150/667eea/ffffff?text=Marketing+Digital" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Marketing Digital Completo</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Publicado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Domina las estrategias de marketing digital para redes sociales, SEO y publicidad online.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 89 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.9 (67 reseñas)</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso Promedio</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">edit</i> 5 tareas</span>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">forum</i> 12 mensajes</span>
+                                <span style="background: #17a2b8; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">bar_chart</i> Analytics</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Gestionar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Vista Pública</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 2 - Published -->
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/300x150/764ba2/ffffff?text=Programación+Web" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Desarrollo Web Moderno</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Publicado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Aprende HTML5, CSS3, JavaScript y frameworks modernos para desarrollo web.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 67 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.7 (45 reseñas)</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso Promedio</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">edit</i> 8 tareas</span>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">forum</i> 8 mensajes</span>
+                                <span style="background: #17a2b8; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">bar_chart</i> Analytics</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Gestionar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Vista Pública</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 3 - Published -->
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/300x150/28a745/ffffff?text=Negocios" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Gestión Empresarial</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Publicado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Aprende a administrar empresas eficientemente con herramientas modernas de gestión.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 45 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.8 (32 reseñas)</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso Promedio</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">60%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">edit</i> 3 tareas</span>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">forum</i> 5 mensajes</span>
+                                <span style="background: #17a2b8; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">bar_chart</i> Analytics</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Gestionar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Vista Pública</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 4 - Draft -->
+                    <div class="course-card" style="border: 2px dashed #ffc107;">
+                        <img src="https://via.placeholder.com/300x150/dc3545/ffffff?text=Diseño+Gráfico" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Diseño Gráfico Digital</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Borrador</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Crea diseños profesionales con Photoshop, Illustrator y herramientas online.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 0 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> Sin reseñas</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Completitud</span>
+                                    <span style="font-size: 0.9rem; color: #ffc107;">80%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">edit</i> En desarrollo</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Continuar Edición</button>
+                                <button class="btn btn-outline" style="flex: 1;">Vista Previa</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 5 - Published -->
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/300x150/17a2b8/ffffff?text=Inglés" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Inglés Conversacional</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Publicado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Mejora tu inglés hablado con técnicas modernas de aprendizaje.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 23 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.6 (18 reseñas)</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso Promedio</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">55%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 55%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">edit</i> 2 tareas</span>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">forum</i> 3 mensajes</span>
+                                <span style="background: #17a2b8; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">bar_chart</i> Analytics</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Gestionar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Vista Pública</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 6 - Archived -->
+                    <div class="course-card" style="opacity: 0.7;">
+                        <img src="https://via.placeholder.com/300x150/6c757d/ffffff?text=Excel+Básico" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Excel Básico</h3>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Archivado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Fundamentos de Excel para principiantes.</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 10 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.5 (8 reseñas)</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso Promedio</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">menu_book</i> Curso completado</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="flex: 1;">Ver Estadísticas</button>
+                                <button class="btn btn-outline" style="flex: 1;">Restaurar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Performance Summary -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Resumen de Rendimiento de Cursos</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Curso</th>
+                                <th style="padding: 1rem; text-align: center;">Estudiantes</th>
+                                <th style="padding: 1rem; text-align: center;">Progreso</th>
+                                <th style="padding: 1rem; text-align: center;">Calificación</th>
+                                <th style="padding: 1rem; text-align: center;">Tareas Pendientes</th>
+                                <th style="padding: 1rem; text-align: center;">Ingresos</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=M" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Marketing Digital</div>
+                                            <div style="font-size: 0.8rem; color: #666;">12 módulos</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">89</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #28a745; font-weight: bold;">75%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #667eea; font-weight: bold;">4.9</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #ffc107; font-weight: bold;">5</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #28a745; font-weight: bold;">$4,450</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/40x40/764ba2/ffffff?text=P" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Programación Web</div>
+                                            <div style="font-size: 0.8rem; color: #666;">8 módulos</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">67</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #ffc107; font-weight: bold;">45%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #667eea; font-weight: bold;">4.7</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #ffc107; font-weight: bold;">8</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #28a745; font-weight: bold;">$3,350</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=N" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Gestión Empresarial</div>
+                                            <div style="font-size: 0.8rem; color: #666;">6 módulos</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">45</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #28a745; font-weight: bold;">60%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #667eea; font-weight: bold;">4.8</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #ffc107; font-weight: bold;">3</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="color: #28a745; font-weight: bold;">$2,250</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Crear Nuevo Curso</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Analytics</button>
+                    <button class="btn btn-outline">📥 Exportar Datos</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Notificar Estudiantes</button>
+                    <button class="btn btn-outline"><i class="material-icons">assignment</i> Plantillas de Curso</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

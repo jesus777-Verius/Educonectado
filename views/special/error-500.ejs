@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 500 - Error del Servidor | EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .error-content {
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            opacity: 0.9;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .error-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .status-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-working {
+            background: #ffc107;
+        }
+        
+        .status-down {
+            background: #dc3545;
+        }
+        
+        .status-checking {
+            background: #28a745;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .server-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffc107, #28a745);
+            border-radius: 4px;
+            animation: progress 3s ease-in-out infinite;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+        
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .tech-badge {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-content">
+            <div class="server-icon"><i class="material-icons">build</i></div>
+            
+            <div class="error-code">500</div>
+            
+            <h1 class="error-title">Error del Servidor</h1>
+            
+            <p class="error-description">
+                Estamos experimentando dificultades técnicas. 
+                Nuestro equipo está trabajando para resolver el problema lo antes posible.
+            </p>
+            
+            <div class="status-card">
+                <h3 style="margin-bottom: 1rem;"><i class="material-icons">search</i> Estado del Sistema</h3>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <span><span class="status-indicator status-down"></span>Servidor Principal</span>
+                    <span style="font-size: 0.9rem;">En mantenimiento</span>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <span><span class="status-indicator status-working"></span>Base de Datos</span>
+                    <span style="font-size: 0.9rem;">Funcionando</span>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <span><span class="status-indicator status-checking"></span>API Services</span>
+                    <span style="font-size: 0.9rem;">Verificando...</span>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">Tiempo estimado de recuperación:</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="countdown" id="countdown">05:00</div>
+                </div>
+            </div>
+            
+            <div class="error-actions">
+                <button onclick="location.reload()" class="btn btn-primary" style="background: white; color: #dc3545;">
+                    <i class="material-icons">refresh</i> Reintentar
+                </button>
+                <a href="/" class="btn btn-outline" style="border-color: white; color: white;">
+                    🏠 Ir al Inicio
+                </a>
+                <a href="/contacto" class="btn btn-outline" style="border-color: white; color: white;">
+                    <i class="material-icons">email</i> Reportar Error
+                </a>
+            </div>
+            
+            <div class="status-card">
+                <h3 style="margin-bottom: 1rem;">🛠️ Información Técnica</h3>
+                <div style="text-align: left; font-size: 0.9rem; opacity: 0.9;">
+                    <p style="margin-bottom: 0.5rem;"><strong>Error ID:</strong> ERR-500-20241129</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Timestamp:</strong> <span id="timestamp"></span></p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Server:</strong> educonecta-prod-01</p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Region:</strong> US-East-1</p>
+                </div>
+                
+                <div class="tech-stack">
+                    <div class="tech-badge">Node.js</div>
+                    <div class="tech-badge">Express</div>
+                    <div class="tech-badge">MongoDB</div>
+                    <div class="tech-badge">Redis</div>
+                    <div class="tech-badge">Docker</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+                <p>¿El problema persiste? <a href="/soporte" style="color: white; text-decoration: underline;">Contacta a nuestro equipo técnico</a></p>
+                <p style="margin-top: 0.5rem;">Código de error: 500-001</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Update timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Countdown timer
+        let seconds = 300; // 5 minutes
+        const countdownEl = document.getElementById('countdown');
+        
+        const countdown = setInterval(() => {
+            seconds--;
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            countdownEl.textContent = `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+            
+            if (seconds <= 0) {
+                clearInterval(countdown);
+                countdownEl.textContent = 'Completado';
+                // Auto-reload when countdown finishes
+                setTimeout(() => location.reload(), 2000);
+            }
+        }, 1000);
+        
+        // Auto-retry every 30 seconds
+        let retryCount = 0;
+        const autoRetry = setInterval(() => {
+            retryCount++;
+            if (retryCount >= 6) { // Stop after 5 retries (30s * 6 = 3 minutes)
+                clearInterval(autoRetry);
+                return;
+            }
+            
+            fetch(window.location.href, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        clearInterval(autoRetry);
+                        location.reload();
+                    }
+                })
+                .catch(() => {
+                    // Still down, continue trying
+                });
+        }, 30000);
+        
+        // Log 500 error for analytics
+        console.log('500 Error:', {
+            url: window.location.href,
+            referrer: document.referrer,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            errorId: 'ERR-500-20241129'
+        });
+    </script>
+</body>
+</html>

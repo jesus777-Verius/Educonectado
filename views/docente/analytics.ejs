@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics" class="active"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">show_chart</i> Analytics y Reportes</h1>
+                        <p>Analiza el rendimiento y el impacto de tus cursos</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 150px;">
+                            <option value="7">Últimos 7 días</option>
+                            <option value="30">Últimos 30 días</option>
+                            <option value="90">Últimos 90 días</option>
+                            <option value="365">Último año</option>
+                        </select>
+                        <button class="btn btn-primary">📥 Exportar Reporte</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overview Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">people</i></div>
+                    <div class="stat-info">
+                        <h3>234</h3>
+                        <p>Estudiantes Totales</p>
+                        <div style="font-size: 0.8rem; color: #28a745;">↑ 12% este mes</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">menu_book</i></div>
+                    <div class="stat-info">
+                        <h3>6</h3>
+                        <p>Cursos Activos</p>
+                        <div style="font-size: 0.8rem; color: #667eea;">Estable</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">star</i></div>
+                    <div class="stat-info">
+                        <h3>4.8</h3>
+                        <p>Calificación Promedio</p>
+                        <div style="font-size: 0.8rem; color: #ffc107;">↑ 0.2 puntos</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">payments</i></div>
+                    <div class="stat-info">
+                        <h3>$12,450</h3>
+                        <p>Ingresos Totales</p>
+                        <div style="font-size: 0.8rem; color: #28a745;">↑ 23% este mes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Performance -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Rendimiento por Curso</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Curso</th>
+                                <th style="padding: 1rem; text-align: center;">Estudiantes</th>
+                                <th style="padding: 1rem; text-align: center;">Completados</th>
+                                <th style="padding: 1rem; text-align: center;">Tasa Finalización</th>
+                                <th style="padding: 1rem; text-align: center;">Calificación Promedio</th>
+                                <th style="padding: 1rem; text-align: center;">Ingresos</th>
+                                <th style="padding: 1rem; text-align: center;">Satisfacción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=M" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Marketing Digital</div>
+                                            <div style="font-size: 0.8rem; color: #666;">12 módulos</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">89</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">67</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">75%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.9</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$4,450</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.8</div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/40x40/764ba2/ffffff?text=P" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Programación Web</div>
+                                            <div style="font-size: 0.8rem; color: #666;">8 módulos</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">67</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">30</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">45%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.7</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$3,350</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.6</div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=N" alt="Curso" style="width: 40px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Gestión Empresarial</div>
+                                            <div style="font-size: 0.8rem; color: #666;">6 módulos</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">45</td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">27</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">60%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.8</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$2,250</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.7</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Engagement Metrics -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">show_chart</i> Métricas de Engagement</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Actividad Semanal</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Lunes</span>
+                                    <span style="font-weight: bold; color: #667eea;">89%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 89%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Martes</span>
+                                    <span style="font-weight: bold; color: #667eea;">92%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Miércoles</span>
+                                    <span style="font-weight: bold; color: #667eea;">78%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Jueves</span>
+                                    <span style="font-weight: bold; color: #667eea;">85%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Viernes</span>
+                                    <span style="font-weight: bold; color: #667eea;">72%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 72%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Sábado</span>
+                                    <span style="font-weight: bold; color: #667eea;">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Domingo</span>
+                                    <span style="font-weight: bold; color: #667eea;">38%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 38%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">my_location</i> Métricas Clave</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Tiempo Promedio de Estudio</span>
+                                    <span style="font-weight: bold; color: #667eea;">3.5 horas/semana</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Tasa de Retención</span>
+                                    <span style="font-weight: bold; color: #28a745;">87%</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Participación en Foros</span>
+                                    <span style="font-weight: bold; color: #667eea;">67%</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Entrega de Tareas</span>
+                                    <span style="font-weight: bold; color: #28a745;">92%</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Tasa de Completación</span>
+                                    <span style="font-weight: bold; color: #ffc107;">68%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Satisfacción General</span>
+                                    <span style="font-weight: bold; color: #28a745;">4.8/5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Progress Analysis -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Análisis de Progreso Estudiantil</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 1rem;"><i class="material-icons">emoji_events</i> Estudiantes Destacados</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/667eea/ffffff?text=J" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold;">Juan Pérez</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-weight: bold; color: #28a745;">95%</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Progreso</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/764ba2/ffffff?text=A" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold;">Ana Rodríguez</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Programación Web</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-weight: bold; color: #28a745;">88%</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Progreso</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/28a745/ffffff?text=C" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold;">Carlos Méndez</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Gestión Empresarial</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-weight: bold; color: #28a745;">82%</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Progreso</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Todos</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 1rem;"><i class="material-icons">warning</i> Estudiantes en Riesgo</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/dc3545/ffffff?text=M" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold;">María López</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-weight: bold; color: #dc3545;">23%</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Progreso</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/ffc107/000000?text=R" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold;">Roberto Silva</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Programación Web</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-weight: bold; color: #ffc107;">35%</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Progreso</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <img src="https://via.placeholder.com/32x32/17a2b8/ffffff?text=S" alt="Estudiante" style="width: 32px; height: 32px; border-radius: 50%;">
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: bold;">Sofía Martínez</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Gestión Empresarial</div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-weight: bold; color: #ffc107;">42%</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Progreso</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Tomar Acción</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 1rem;"><i class="material-icons">show_chart</i> Distribución de Rendimiento</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Excelente (90-100)</span>
+                                    <span style="font-weight: bold; color: #28a745;">35%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 35%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Bueno (80-89)</span>
+                                    <span style="font-weight: bold; color: #667eea;">40%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%; background: #667eea;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Suficiente (70-79)</span>
+                                    <span style="font-weight: bold; color: #ffc107;">20%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Mejorar (0-69)</span>
+                                    <span style="font-weight: bold; color: #dc3545;">5%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 5%; background: #dc3545;"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100;">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Analysis -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">payments</i> Análisis de Ingresos</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Ingresos Mensuales</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Enero</span>
+                                    <span style="font-weight: bold; color: #667eea;">$2,340</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Febrero</span>
+                                    <span style="font-weight: bold; color: #667eea;">$2,890</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 96%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Marzo</span>
+                                    <span style="font-weight: bold; color: #667eea;">$3,120</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Abril</span>
+                                    <span style="font-weight: bold; color: #667eea;">$2,780</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 89%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Maye</span>
+                                    <span style="font-weight: bold; color: #28a745;">$3,450</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">lightbulb</i> Insights Financieros</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Ingreso Promedio por Estudiante</span>
+                                    <span style="font-weight: bold; color: #28a745;">$53.21</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Tasa de Conversión</span>
+                                    <span style="font-weight: bold; color: #667eea;">12.3%</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Valor de Vida del Cliente</span>
+                                    <span style="font-weight: bold; color: #667eea;">$159.63</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Ingresos Recurrentes</span>
+                                    <span style="font-weight: bold; color: #28a745;">$1,234/mes</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Proyección Anual</span>
+                                    <span style="font-weight: bold; color: #28a745;">$41,400</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Performance -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">menu_book</i> Rendimiento del Contenido</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Módulo/Lección</th>
+                                <th style="padding: 1rem; text-align: center;">Completados</th>
+                                <th style="padding: 1rem; text-align: center;">Tiempo Promedio</th>
+                                <th style="padding: 1rem; text-align: center;">Tasa de Abandono</th>
+                                <th style="padding: 1rem; text-align: center;">Calificación</th>
+                                <th style="padding: 1rem; text-align: center;">Popularidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">M1: Introducción al Marketing</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">89/89</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold;">45 min</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">5%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.9</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;"><i class="material-icons">local_fire_department</i> Alta</div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">M2: SEO Básico</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">76/89</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold;">62 min</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">15%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.6</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;"><i class="material-icons">show_chart</i> Media</div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">M3: Redes Sociales</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Marketing Digital</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">58/89</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold;">78 min</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #dc3545;">35%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">4.3</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #dc3545;"><i class="material-icons">warning</i> Baja</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Export Options -->
+            <div class="dashboard-card">
+                <h2>📥 Exportar Reportes</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">bar_chart</i> Reporte Completo</button>
+                    <button class="btn btn-outline"><i class="material-icons">show_chart</i> Análisis de Cursos</button>
+                    <button class="btn btn-outline"><i class="material-icons">people</i> Datos de Estudiantes</button>
+                    <button class="btn btn-outline"><i class="material-icons">payments</i> Reporte Financiero</button>
+                    <button class="btn btn-outline"><i class="material-icons">assignment</i> Reporte de Engagement</button>
+                    <button class="btn btn-outline"><i class="material-icons">calendar_today</i> Programar Reporte</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

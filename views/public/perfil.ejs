@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <style>
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            background: #f8f9fa;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-menu a.active {
+            background: rgba(255,255,255,0.2);
+            border-left: 4px solid white;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+        }
+        
+        .header {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .avatar-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .avatar-edit {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #667eea;
+            color: white;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .avatar-edit:hover {
+            background: #5a6fd8;
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .profile-email {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-type {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .profile-details {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .info-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .info-value {
+            color: #333;
+        }
+        
+        .achievements-section {
+            margin-top: 2rem;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .achievement-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .achievement-icon {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .achievement-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+        
+        .achievement-description {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+        
+        .btn-secondary {
+            background: #e9ecef;
+            color: #666;
+        }
+        
+        .btn-secondary:hover {
+            background: #dee2e6;
+        }
+        
+        .progress-section {
+            margin-top: 2rem;
+        }
+        
+        .progress-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-title {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .progress-percentage {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .progress-bar {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 style="margin: 0; font-size: 1.5rem;">EduConecta</h2>
+                <p style="margin: 0.5rem 0 0; opacity: 0.8;">Panel Estudiante</p>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="/dashboard-estudiante">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">dashboard</span>
+                    Dashboard
+                </a></li>
+                <li><a href="/catalogo-cursos">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">menu_book</span>
+                    Catálogo de Cursos
+                </a></li>
+                <li><a href="/mis-cursos">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">play_lesson</span>
+                    Mis Cursos
+                </a></li>
+                <li><a href="/tareas">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">assignment</span>
+                    Tareas
+                </a></li>
+                <li><a href="/certificados">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">certificate</span>
+                    Certificados
+                </a></li>
+                <li><a href="/pagos">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">payments</span>
+                    Pagos
+                </a></li>
+                <li><a href="/configuracion">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">settings</span>
+                    Configuración
+                </a></li>
+                <li><a href="/logout">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">logout</span>
+                    Cerrar Sesión
+                </a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div>
+                    <h1 style="margin: 0; color: #333;">Mi Perfil</h1>
+                    <p style="margin: 0.5rem 0 0; color: #666;">Gestiona tu información personal y logros académicos</p>
+                </div>
+                <a href="/configuracion" class="btn btn-primary">
+                    <span class="material-symbols-outlined">edit</span>
+                    Editar Perfil
+                </a>
+            </div>
+
+            <!-- Profile Container -->
+            <div class="profile-container">
+                <!-- Profile Card -->
+                <div class="profile-card">
+                    <div class="avatar-container">
+                        <div class="avatar">
+                            <%= user.nombres.charAt(0) %><%= user.apellidos.charAt(0) %>
+                        </div>
+                        <div class="avatar-edit" onclick="changeAvatar()">
+                            <span class="material-symbols-outlined">camera_alt</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="profile-name"><%= user.nombres %> <%= user.apellidos %></h2>
+                    <p class="profile-email"><%= user.email %></p>
+                    
+                    <div class="profile-type">
+                        <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle; margin-right: 0.5rem;">school</span>
+                        Estudiante
+                    </div>
+                    
+                    <div style="text-align: left; margin-top: 1.5rem;">
+                        <div style="margin-bottom: 1rem;">
+                            <span style="color: #666; font-size: 0.9rem;">Teléfono:</span>
+                            <div style="font-weight: 600;"><%= user.telefono %></div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <span style="color: #666; font-size: 0.9rem;">Miembro desde:</span>
+                            <div style="font-weight: 600;">Noviembre 2024</div>
+                        </div>
+                        <div>
+                            <span style="color: #666; font-size: 0.9rem;">Estado:</span>
+                            <div style="font-weight: 600; color: #28a745;">Activo</div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Cursos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Certificados</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">156</div>
+                            <div class="stat-label">Horas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Details -->
+                <div class="profile-details">
+                    <h2 class="section-title">Información Personal</h2>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Nombre Completo</span>
+                            <span class="info-value"><%= user.nombres %> <%= user.apellidos %></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Correo Electrónico</span>
+                            <span class="info-value"><%= user.email %></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Teléfono</span>
+                            <span class="info-value"><%= user.telefono %></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Tipo de Usuario</span>
+                            <span class="info-value">Estudiante</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Fecha de Registro</span>
+                            <span class="info-value">29 de noviembre de 2024</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Último Acceso</span>
+                            <span class="info-value">Hoy, <%= new Date().toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit' }) %></span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Section -->
+                    <div class="progress-section">
+                        <h3 class="section-title">Progreso de Aprendizaje</h3>
+                        
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-title">Marketing Digital Completo</span>
+                                <span class="progress-percentage">67%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 67%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-title">Desarrollo Web Moderno</span>
+                                <span class="progress-percentage">62%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 62%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="progress-title">Excel Avanzado</span>
+                                <span class="progress-percentage">100%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Section -->
+                    <div class="achievements-section">
+                        <h3 class="section-title">Logros y Certificaciones</h3>
+                        
+                        <div class="achievements-grid">
+                            <div class="achievement-card">
+                                <div class="achievement-icon">
+                                    <span class="material-symbols-outlined">workspace_premium</span>
+                                </div>
+                                <div class="achievement-title">Excel Avanzado</div>
+                                <div class="achievement-description">Completado con 95%</div>
+                            </div>
+                            
+                            <div class="achievement-card">
+                                <div class="achievement-icon">
+                                    <span class="material-symbols-outlined">military_tech</span>
+                                </div>
+                                <div class="achievement-title">Marketing Digital</div>
+                                <div class="achievement-description">En progreso</div>
+                            </div>
+                            
+                            <div class="achievement-card">
+                                <div class="achievement-icon">
+                                    <span class="material-symbols-outlined">emoji_events</span>
+                                </div>
+                                <div class="achievement-title">Primer Curso</div>
+                                <div class="achievement-description">Logro desbloqueado</div>
+                            </div>
+                            
+                            <div class="achievement-card">
+                                <div class="achievement-icon">
+                                    <span class="material-symbols-outlined">local_fire_department</span>
+                                </div>
+                                <div class="achievement-title">Racha de 7 días</div>
+                                <div class="achievement-description">Estudio constante</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <a href="/configuracion" class="btn btn-primary">
+                            <span class="material-symbols-outlined">edit</span>
+                            Editar Perfil
+                        </a>
+                        <a href="/certificados" class="btn btn-secondary">
+                            <span class="material-symbols-outlined">certificate</span>
+                            Ver Certificados
+                        </a>
+                        <a href="/mis-cursos" class="btn btn-secondary">
+                            <span class="material-symbols-outlined">play_lesson</span>
+                            Mis Cursos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Change avatar
+        function changeAvatar() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    showNotification('Subiendo nueva foto de perfil...');
+                    setTimeout(() => {
+                        showNotification('Foto de perfil actualizada');
+                    }, 1500);
+                }
+            };
+            input.click();
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #667eea;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Animate progress bars on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressFills = document.querySelectorAll('.progress-fill');
+            progressFills.forEach(fill => {
+                const width = fill.style.width;
+                fill.style.width = '0%';
+                setTimeout(() => {
+                    fill.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

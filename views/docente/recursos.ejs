@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos" class="active"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">folder</i> Gestión de Recursos</h1>
+                        <p>Organiza y comparte materiales educativos con tus estudiantes</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Subir Recurso</button>
+                </div>
+            </div>
+
+            <!-- Storage Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">folder</i></div>
+                    <div class="stat-info">
+                        <h3>156</h3>
+                        <p>Archivos Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">backup</i></div>
+                    <div class="stat-info">
+                        <h3>2.3 GB</h3>
+                        <p>Almacenamiento Usado</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">bar_chart</i></div>
+                    <div class="stat-info">
+                        <h3>89%</h3>
+                        <p>Disponible</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">show_chart</i></div>
+                    <div class="stat-info">
+                        <h3>1,234</h3>
+                        <p>Descargas Totales</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">menu_book</i> Filtrar por Curso</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 200px;">
+                            <option value="all">Todos los cursos</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="programming">Programación Web</option>
+                            <option value="business">Gestión Empresarial</option>
+                            <option value="design">Diseño Gráfico</option>
+                            <option value="english">Inglés Conversacional</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los tipos</option>
+                            <option value="document">Documentos</option>
+                            <option value="video">Videos</option>
+                            <option value="audio">Audio</option>
+                            <option value="image">Imágenes</option>
+                            <option value="other">Otros</option>
+                        </select>
+                        <input type="text" placeholder="Buscar recursos..." class="form-control" style="width: 250px;">
+                    </div>
+                </div>
+
+                <!-- Resources Grid -->
+                <div class="course-grid">
+                    <!-- Resource 1 - PDF -->
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div style="font-size: 2rem;"><i class="material-icons">description</i></div>
+                                    <div>
+                                        <h3>Guía de Marketing Digital</h3>
+                                        <p style="color: #666; font-size: 0.9rem;">PDF • 15.2 MB</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">⋮</button>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Guía completa con estrategias y mejores prácticas de marketing digital.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Marketing Digital</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">calendar_today</i> Subido: 15 Nov 2024</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                    <div style="font-size: 0.8rem; color: #666;">📥 45 descargas</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Descargar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Compartir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resource 2 - Video -->
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div style="font-size: 2rem;">🎥</div>
+                                    <div>
+                                        <h3>Tutorial: SEO Básico</h3>
+                                        <p style="color: #666; font-size: 0.9rem;">MP4 • 125.8 MB</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">⋮</button>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Video tutorial explicando los fundamentos de optimización para buscadores.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Marketing Digital</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">calendar_today</i> Subido: 10 Nov 2024</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                    <div style="font-size: 0.8rem; color: #666;">📥 67 descargas</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Reproducir</button>
+                                <button class="btn btn-outline" style="flex: 1;">Compartir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resource 3 - Presentation -->
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div style="font-size: 2rem;"><i class="material-icons">bar_chart</i></div>
+                                    <div>
+                                        <h3>Presentación: Estrategias de Redes</h3>
+                                        <p style="color: #666; font-size: 0.9rem;">PPTX • 8.4 MB</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">⋮</button>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Presentación sobre estrategias efectivas para redes sociales.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Marketing Digital</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">calendar_today</i> Subido: 5 Nov 2024</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                    <div style="font-size: 0.8rem; color: #666;">📥 34 descargas</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Descargar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Compartir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resource 4 - Audio -->
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div style="font-size: 2rem;"><i class="material-icons">headphones</i></div>
+                                    <div>
+                                        <h3>Podcast: Entrevista con Experto</h3>
+                                        <p style="color: #666; font-size: 0.9rem;">MP3 • 45.2 MB</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline" style="font-size: 0.8rem;">⋮</button>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Entrevista con un experto en marketing digital sobre tendencias actuales.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">menu_book</i> Marketing Digital</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">calendar_today</i> Subido: 1 Nov 2024</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                    <div style="font-size: 0.8rem; color: #666;">📥 28 descargas</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Reproducir</button>
+                                <button class="btn btn-outline" style="flex: 1;">Compartir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Resource Form -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">add</i> Subir Nuevo Recurso</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nombre del Recurso *</label>
+                            <input type="text" class="form-control" placeholder="Ej: Guía de Estudio" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Curso *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un curso</option>
+                                <option value="marketing">Marketing Digital</option>
+                                <option value="programming">Programación Web</option>
+                                <option value="business">Gestión Empresarial</option>
+                                <option value="design">Diseño Gráfico</option>
+                                <option value="english">Inglés Conversacional</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Recurso *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el tipo</option>
+                                <option value="document">Documento (PDF, DOC, PPT)</option>
+                                <option value="video">Video (MP4, AVI, MOV)</option>
+                                <option value="audio">Audio (MP3, WAV)</option>
+                                <option value="image">Imagen (JPG, PNG, GIF)</option>
+                                <option value="archive">Archivo Comprimido (ZIP, RAR)</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Categoría</label>
+                            <select class="form-control">
+                                <option value="material">Material de Estudio</option>
+                                <option value="reference">Material de Referencia</option>
+                                <option value="template">Plantilla</option>
+                                <option value="example">Ejemplo</option>
+                                <option value="tutorial">Tutorial</option>
+                                <option value="assessment">Material de Evaluación</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" rows="3" placeholder="Describe el contenido y propósito del recurso..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Archivo *</label>
+                        <div style="border: 2px dashed #e0e0e0; border-radius: 8px; padding: 2rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="material-icons">folder</i></div>
+                            <p style="margin-bottom: 1rem;">Arrastra y suelta tu archivo aquí o haz clic para seleccionar</p>
+                            <p style="font-size: 0.9rem; color: #666;">Tamaño máximo: 500MB. Formatos soportados: PDF, DOC, PPT, MP4, MP3, JPG, PNG, ZIP</p>
+                            <button type="button" class="btn btn-outline">Seleccionar Archivo</button>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">settings</i> Configuración del Recurso</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Disponible para Descarga</div>
+                                <div style="font-size: 0.9rem; color: #666;">Permitir que los estudiantes descarguen el recurso</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Requerir para Progreso</div>
+                                <div style="font-size: 0.9rem; color: #666;">Contar como completado para el progreso del curso</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Notificar Estudiantes</div>
+                                <div style="font-size: 0.9rem; color: #666;">Enviar notificación cuando se suba el recurso</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Acceso Restringido</div>
+                                <div style="font-size: 0.9rem; color: #666;">Solo disponible para estudiantes inscritos</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Subir Recurso</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Resource Categories -->
+            <div class="dashboard-card">
+                <h2>📂 Categorías de Recursos</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="material-icons">menu_book</i></div>
+                            <h3 style="margin-bottom: 1rem;">Material de Estudio</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Guías, apuntes y materiales de aprendizaje</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">45</div>
+                                <div style="font-size: 0.9rem; color: #666;">recursos</div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Categoría</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="material-icons">bar_chart</i></div>
+                            <h3 style="margin-bottom: 1rem;">Plantillas</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Plantillas y formatos para tareas y proyectos</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">23</div>
+                                <div style="font-size: 0.9rem; color: #666;">recursos</div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Categoría</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🎥</div>
+                            <h3 style="margin-bottom: 1rem;">Videos Tutoriales</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Videos explicativos y demostraciones</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">34</div>
+                                <div style="font-size: 0.9rem; color: #666;">recursos</div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Categoría</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="material-icons">assignment</i></div>
+                            <h3 style="margin-bottom: 1rem;">Evaluaciones</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Exámenes, quizzes y material de evaluación</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">28</div>
+                                <div style="font-size: 0.9rem; color: #666;">recursos</div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Categoría</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Downloads -->
+            <div class="dashboard-card">
+                <h2>📥 Descargas Recientes</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Recurso</th>
+                                <th style="padding: 1rem; text-align: center;">Estudiante</th>
+                                <th style="padding: 1rem; text-align: center;">Curso</th>
+                                <th style="padding: 1rem; text-align: center;">Fecha</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <div style="font-size: 1.5rem;"><i class="material-icons">description</i></div>
+                                        <div>
+                                            <div style="font-weight: bold;">Guía de Marketing Digital</div>
+                                            <div style="font-size: 0.8rem; color: #666;">PDF • 15.2 MB</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=J" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Juan Pérez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Marketing</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">Hoy, 2:30 PM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Completado</span>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <div style="font-size: 1.5rem;">🎥</div>
+                                        <div>
+                                            <div style="font-weight: bold;">Tutorial: SEO Básico</div>
+                                            <div style="font-size: 0.8rem; color: #666;">MP4 • 125.8 MB</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/764ba2/ffffff?text=A" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Ana Rodríguez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Marketing</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">Hoy, 11:15 AM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Completado</span>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <div style="font-size: 1.5rem;"><i class="material-icons">bar_chart</i></div>
+                                        <div>
+                                            <div style="font-weight: bold;">Presentación: Estrategias</div>
+                                            <div style="font-size: 0.8rem; color: #666;">PPTX • 8.4 MB</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=C" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Carlos Méndez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Marketing</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">Ayer, 4:45 PM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Completado</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Storage Management -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">backup</i> Gestión de Almacenamiento</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Uso de Espacio</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Documentos</span>
+                                    <span style="font-weight: bold; color: #667eea;">845 MB</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 37%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Videos</span>
+                                    <span style="font-weight: bold; color: #667eea;">1.2 GB</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 52%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Audio</span>
+                                    <span style="font-weight: bold; color: #667eea;">156 MB</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 7%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Imágenes</span>
+                                    <span style="font-weight: bold; color: #667eea;">89 MB</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 4%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Otros</span>
+                                    <span style="font-weight: bold; color: #667eea;">10 MB</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">show_chart</i> Estadísticas de Uso</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Espacio Total</span>
+                                    <span style="font-weight: bold; color: #667eea;">10 GB</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Espacio Usado</span>
+                                    <span style="font-weight: bold; color: #ffc107;">2.3 GB</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Espacio Disponible</span>
+                                    <span style="font-weight: bold; color: #28a745;">7.7 GB</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Archivos Totales</span>
+                                    <span style="font-weight: bold; color: #667eea;">156</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Descargas Totales</span>
+                                    <span style="font-weight: bold; color: #667eea;">1,234</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Subir Recurso</button>
+                    <button class="btn btn-outline">📂 Crear Carpeta</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline">📥 Exportar Lista</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configuración</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

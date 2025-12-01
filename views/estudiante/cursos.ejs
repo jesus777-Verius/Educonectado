@@ -1,0 +1,1350 @@
+<%- include('layout') %>
+
+<style>
+    /* Courses Styles */
+    .courses-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .courses-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .courses-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    
+    .header-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .header-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+    }
+    
+    .header-stats {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+    }
+    
+    .stat-label {
+        opacity: 0.8;
+        font-size: 0.9rem;
+    }
+    
+    /* Filters */
+    .filters-section {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+    }
+    
+    .filters-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .filters-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .filter-label {
+        font-weight: 600;
+        color: #555;
+        font-size: 0.9rem;
+    }
+    
+    .filter-select, .filter-input {
+        padding: 0.5rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .filter-select:focus, .filter-input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    /* Courses Grid */
+    .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .course-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .course-image {
+        height: 200px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+    }
+    
+    .course-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .course-progress {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        background: rgba(255,255,255,0.9);
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+    
+    .progress-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+        color: #333;
+    }
+    
+    .progress-bar {
+        background: #e9ecef;
+        height: 6px;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 3px;
+        transition: width 0.3s ease;
+    }
+    
+    .course-content {
+        padding: 1.5rem;
+    }
+    
+    .course-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+    }
+    
+    .course-instructor {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .course-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: #666;
+        font-size: 0.85rem;
+    }
+    
+    .course-description {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    .course-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        padding: 0.75rem 1.25rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        flex: 1;
+        justify-content: center;
+        min-width: 120px;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    .btn-outline {
+        background: transparent;
+        color: #667eea;
+        border: 2px solid #667eea;
+    }
+    
+    .btn-outline:hover {
+        background: #667eea;
+        color: white;
+    }
+    
+    /* Course Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    
+    .modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+    
+    .modal-content {
+        background: white;
+        border-radius: 16px;
+        max-width: 800px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 2rem;
+        position: relative;
+    }
+    
+    .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255,255,255,0.2);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .modal-close:hover {
+        background: rgba(255,255,255,0.3);
+        transform: scale(1.1);
+    }
+    
+    .modal-body {
+        padding: 2rem;
+    }
+    
+    .course-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #e9ecef;
+    }
+    
+    .tab-btn {
+        padding: 1rem 1.5rem;
+        background: none;
+        border: none;
+        color: #666;
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .tab-btn.active {
+        color: #667eea;
+    }
+    
+    .tab-btn.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #667eea;
+    }
+    
+    .tab-content {
+        display: none;
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    .lesson-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .lesson-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .lesson-item:hover {
+        border-color: #667eea;
+        background: rgba(102, 126, 234, 0.05);
+    }
+    
+    .lesson-item.completed {
+        background: rgba(76, 175, 80, 0.05);
+        border-color: #4caf50;
+    }
+    
+    .lesson-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+    }
+    
+    .lesson-item.completed .lesson-icon {
+        background: #4caf50;
+        color: white;
+    }
+    
+    .lesson-item:not(.completed) .lesson-icon {
+        background: #e9ecef;
+        color: #666;
+    }
+    
+    .lesson-content {
+        flex: 1;
+    }
+    
+    .lesson-title {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: #333;
+    }
+    
+    .lesson-duration {
+        color: #666;
+        font-size: 0.85rem;
+    }
+    
+    .lesson-status {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .lesson-item.completed .lesson-status {
+        background: #4caf50;
+        color: white;
+    }
+    
+    .lesson-item:not(.completed) .lesson-status {
+        background: #e9ecef;
+        color: #666;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .courses-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .filters-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .modal.active {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<div class="courses-container">
+    <!-- Header -->
+    <div class="courses-header">
+        <div class="header-content">
+            <div>
+                <h1 class="header-title">Mis Cursos</h1>
+                <p class="header-subtitle">Continúa tu aprendizaje y alcanza tus metas</p>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Cursos Activos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Completados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Promedio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-section">
+        <div class="filters-header">
+            <h2 class="filters-title">
+                <span class="material-symbols-outlined">filter_list</span>
+                Filtrar Cursos
+            </h2>
+            <button class="btn btn-outline" onclick="resetFilters()">
+                <span class="material-symbols-outlined" style="font-size: 1rem;">refresh</span>
+                Limpiar Filtros
+            </button>
+        </div>
+        <div class="filters-grid">
+            <div class="filter-group">
+                <label class="filter-label">Categoría</label>
+                <select class="filter-select" id="categoryFilter" onchange="filterCourses()">
+                    <option value="">Todas las categorías</option>
+                    <option value="marketing">Marketing Digital</option>
+                    <option value="development">Desarrollo Web</option>
+                    <option value="business">Negocios</option>
+                    <option value="languages">Idiomas</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Estado</label>
+                <select class="filter-select" id="statusFilter" onchange="filterCourses()">
+                    <option value="">Todos los estados</option>
+                    <option value="active">En progreso</option>
+                    <option value="completed">Completados</option>
+                    <option value="not-started">No iniciados</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Buscar</label>
+                <input type="text" class="filter-input" id="searchFilter" placeholder="Buscar cursos..." oninput="filterCourses()">
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="courses-grid" id="coursesGrid">
+        <div class="course-card" data-category="marketing" data-status="active" data-title="marketing digital completo">
+            <div class="course-image">
+                <span class="material-symbols-outlined">trending_up</span>
+                <div class="course-badge">En Progreso</div>
+                <div class="course-progress">
+                    <div class="progress-info">
+                        <span>Progreso</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="course-content">
+                <h3 class="course-title">Marketing Digital Completo</h3>
+                <div class="course-instructor">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                    Prof. Carlos Rodríguez
+                </div>
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                        12 semanas
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">video_library</span>
+                        48 lecciones
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                        4.8/5
+                    </div>
+                </div>
+                <p class="course-description">Aprende las estrategias más efectivas de marketing digital para posicionar tu marca y aumentar tus ventas.</p>
+                <div class="course-actions">
+                    <button class="btn btn-primary" onclick="continueCourse(1)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">play_arrow</span>
+                        Continuar
+                    </button>
+                    <button class="btn btn-outline" onclick="viewCourseDetails(1)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">info</span>
+                        Detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" data-category="development" data-status="active" data-title="desarrollo web moderno">
+            <div class="course-image">
+                <span class="material-symbols-outlined">code</span>
+                <div class="course-badge">En Progreso</div>
+                <div class="course-progress">
+                    <div class="progress-info">
+                        <span>Progreso</span>
+                        <span>45%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="course-content">
+                <h3 class="course-title">Desarrollo Web Moderno</h3>
+                <div class="course-instructor">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                    Prof. Ana Martínez
+                </div>
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                        16 semanas
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">video_library</span>
+                        64 lecciones
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                        4.9/5
+                    </div>
+                </div>
+                <p class="course-description">Domina las tecnologías web más modernas: HTML5, CSS3, JavaScript, React y Node.js.</p>
+                <div class="course-actions">
+                    <button class="btn btn-primary" onclick="continueCourse(2)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">play_arrow</span>
+                        Continuar
+                    </button>
+                    <button class="btn btn-outline" onclick="viewCourseDetails(2)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">info</span>
+                        Detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" data-category="languages" data-status="completed" data-title="inglés técnico">
+            <div class="course-image">
+                <span class="material-symbols-outlined">language</span>
+                <div class="course-badge">Completado</div>
+                <div class="course-progress">
+                    <div class="progress-info">
+                        <span>Progreso</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="course-content">
+                <h3 class="course-title">Inglés Técnico</h3>
+                <div class="course-instructor">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                    Prof. María González
+                </div>
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                        10 semanas
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">video_library</span>
+                        40 lecciones
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                        4.7/5
+                    </div>
+                </div>
+                <p class="course-description">Mejora tu inglés profesional con vocabulario técnico y comunicación en entornos empresariales.</p>
+                <div class="course-actions">
+                    <button class="btn btn-primary" onclick="reviewCourse(3)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">replay</span>
+                        Repasar
+                    </button>
+                    <button class="btn btn-outline" onclick="downloadCertificate(3)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                        Certificado
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-card" data-category="business" data-status="not-started" data-title="gestión empresarial">
+            <div class="course-image">
+                <span class="material-symbols-outlined">business</span>
+                <div class="course-badge">No Iniciado</div>
+                <div class="course-progress">
+                    <div class="progress-info">
+                        <span>Progreso</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="course-content">
+                <h3 class="course-title">Gestión Empresarial</h3>
+                <div class="course-instructor">
+                    <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                    Prof. Roberto Silva
+                </div>
+                <div class="course-meta">
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                        14 semanas
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">video_library</span>
+                        56 lecciones
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                        4.6/5
+                    </div>
+                </div>
+                <p class="course-description">Aprende a gestionar empresas eficientemente con las mejores prácticas de administración.</p>
+                <div class="course-actions">
+                    <button class="btn btn-primary" onclick="startCourse(4)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">play_arrow</span>
+                        Comenzar
+                    </button>
+                    <button class="btn btn-outline" onclick="viewCourseDetails(4)">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">info</span>
+                        Detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Course Details Modal -->
+<div class="modal" id="courseModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalCourseTitle">Marketing Digital Completo</h2>
+            <button class="modal-close" onclick="closeModal()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="course-tabs">
+                <button class="tab-btn active" onclick="switchTab('overview')">Descripción</button>
+                <button class="tab-btn" onclick="switchTab('curriculum')">Contenido</button>
+                <button class="tab-btn" onclick="switchTab('instructor')">Instructor</button>
+                <button class="tab-btn" onclick="switchTab('reviews')">Reseñas</button>
+            </div>
+            
+            <div class="tab-content active" id="overview">
+                <h3>Descripción del Curso</h3>
+                <p>Este curso completo de marketing digital te enseñará todas las estrategias y herramientas necesarias para tener éxito en el mundo digital.</p>
+                <h4>¿Qué aprenderás?</h4>
+                <ul>
+                    <li>SEO y SEM para posicionamiento web</li>
+                    <li>Marketing en redes sociales</li>
+                    <li>Email marketing automatizado</li>
+                    <li>Analítica web y métricas</li>
+                    <li>Creación de contenido digital</li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="curriculum">
+                <h3>Contenido del Curso</h3>
+                <div class="lesson-list">
+                    <div class="lesson-item completed">
+                        <div class="lesson-icon">
+                            <span class="material-symbols-outlined">check</span>
+                        </div>
+                        <div class="lesson-content">
+                            <div class="lesson-title">Introducción al Marketing Digital</div>
+                            <div class="lesson-duration">45 minutos</div>
+                        </div>
+                        <div class="lesson-status">Completado</div>
+                    </div>
+                    <div class="lesson-item completed">
+                        <div class="lesson-icon">
+                            <span class="material-symbols-outlined">check</span>
+                        </div>
+                        <div class="lesson-content">
+                            <div class="lesson-title">Fundamentos de SEO</div>
+                            <div class="lesson-duration">60 minutos</div>
+                        </div>
+                        <div class="lesson-status">Completado</div>
+                    </div>
+                    <div class="lesson-item">
+                        <div class="lesson-icon">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                        </div>
+                        <div class="lesson-content">
+                            <div class="lesson-title">SEO Avanzado</div>
+                            <div class="lesson-duration">90 minutos</div>
+                        </div>
+                        <div class="lesson-status">En progreso</div>
+                    </div>
+                    <div class="lesson-item">
+                        <div class="lesson-icon">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                        <div class="lesson-content">
+                            <div class="lesson-title">Marketing en Redes Sociales</div>
+                            <div class="lesson-duration">75 minutos</div>
+                        </div>
+                        <div class="lesson-status">Bloqueado</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="instructor">
+                <h3>Sobre el Instructor</h3>
+                <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                    <img src="https://via.placeholder.com/100x100/667eea/ffffff?text=CR" alt="Instructor" style="border-radius: 50%;">
+                    <div>
+                        <h4>Prof. Carlos Rodríguez</h4>
+                        <p>Especialista en marketing digital con más de 10 años de experiencia. Ha trabajado con empresas multinacionales y startups, ayudándoles a desarrollar estrategias digitales efectivas.</p>
+                        <p><strong>Certificaciones:</strong></p>
+                        <ul>
+                            <li>Google Ads Certified Professional</li>
+                            <li>Facebook Marketing Professional</li>
+                            <li>HubSpot Inbound Marketing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="reviews">
+                <h3>Reseñas de Estudiantes</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong>Juan Pérez</strong>
+                            <div style="color: #ffc107;">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p>Excelente curso, muy completo y práctico. El instructor explica de forma clara y los ejemplos son reales.</p>
+                    </div>
+                    <div style="padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong>María García</strong>
+                            <div style="color: #ffc107;">⭐⭐⭐⭐</div>
+                        </div>
+                        <p>Muy buen contenido, aunque me gustaría tener más ejercicios prácticos. En general, lo recomiendo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Course Management Functions
+    function continueCourse(courseId) {
+        // Simulate course continuation
+        showNotification(`Continuando curso ${courseId}...`);
+        
+        // Redirect to course player or open in modal
+        setTimeout(() => {
+            window.location.href = `/estudiante/aula/${courseId}`;
+        }, 1000);
+    }
+
+    function startCourse(courseId) {
+        showNotification(`Iniciando curso ${courseId}...`);
+        
+        setTimeout(() => {
+            window.location.href = `/estudiante/aula/${courseId}`;
+        }, 1000);
+    }
+
+    function reviewCourse(courseId) {
+        showNotification(`Abriendo curso ${courseId} para repaso...`);
+        
+        setTimeout(() => {
+            window.location.href = `/estudiante/aula/${courseId}`;
+        }, 1000);
+    }
+
+    function downloadCertificate(courseId) {
+        showNotification('Descargando certificado...');
+        
+        // Simulate certificate download
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = '/certificates/certificate-' + courseId + '.pdf';
+            link.download = 'certificado-curso-' + courseId + '.pdf';
+            link.click();
+        }, 1500);
+    }
+
+    function viewCourseDetails(courseId) {
+        const modal = document.getElementById('courseModal');
+        modal.classList.add('active');
+        
+        // Update modal content based on course ID
+        const courseData = {
+            1: { title: 'Marketing Digital Completo' },
+            2: { title: 'Desarrollo Web Moderno' },
+            3: { title: 'Inglés Técnico' },
+            4: { title: 'Gestión Empresarial' }
+        };
+        
+        document.getElementById('modalCourseTitle').textContent = courseData[courseId].title;
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('courseModal');
+        modal.classList.remove('active');
+    }
+
+    function switchTab(tabName) {
+        // Remove active class from all tabs and contents
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        // Add active class to selected tab and content
+        event.target.classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+    }
+
+    function filterCourses() {
+        const category = document.getElementById('categoryFilter').value;
+        const status = document.getElementById('statusFilter').value;
+        const search = document.getElementById('searchFilter').value.toLowerCase();
+        
+        const courses = document.querySelectorAll('.course-card');
+        
+        courses.forEach(course => {
+            const courseCategory = course.dataset.category;
+            const courseStatus = course.dataset.status;
+            const courseTitle = course.dataset.title;
+            
+            const matchesCategory = !category || courseCategory === category;
+            const matchesStatus = !status || courseStatus === status;
+            const matchesSearch = !search || courseTitle.includes(search);
+            
+            if (matchesCategory && matchesStatus && matchesSearch) {
+                course.style.display = 'block';
+            } else {
+                course.style.display = 'none';
+            }
+        });
+    }
+
+    function resetFilters() {
+        document.getElementById('categoryFilter').value = '';
+        document.getElementById('statusFilter').value = '';
+        document.getElementById('searchFilter').value = '';
+        
+        const courses = document.querySelectorAll('.course-card');
+        courses.forEach(course => {
+            course.style.display = 'block';
+        });
+    }
+
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'alert alert-success';
+        notification.textContent = message;
+        notification.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 9999; animation: slideIn 0.3s ease; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('courseModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    // Animate progress bars on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const progressBars = document.querySelectorAll('.progress-fill');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+    });
+</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos" class="active"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">menu_book</i> Mis Cursos</h1>
+                        <p>Gestiona y continúa tu aprendizaje</p>
+                    </div>
+                    <a href="/catalogo" class="btn btn-primary">Explorar Más Cursos</a>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="dashboard-card">
+                <div style="display: flex; gap: 1rem; border-bottom: 2px solid #f0f0f0; margin-bottom: 2rem;">
+                    <button class="btn btn-primary" style="border-radius: 0; border-bottom: 2px solid #667eea;">Todos (8)</button>
+                    <button class="btn btn-outline" style="border-radius: 0;">En Progreso (5)</button>
+                    <button class="btn btn-outline" style="border-radius: 0;">Completados (3)</button>
+                    <button class="btn btn-outline" style="border-radius: 0;">En Espera (0)</button>
+                </div>
+
+                <!-- Search and Sort -->
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                    <input type="text" placeholder="Buscar cursos..." class="form-control" style="flex: 1;">
+                    <select class="form-control" style="width: 200px;">
+                        <option>Ordenar por: Progreso</option>
+                        <option>Ordenar por: Nombre</option>
+                        <option>Ordenar por: Fecha</option>
+                        <option>Ordenar por: Calificación</option>
+                    </select>
+                </div>
+
+                <!-- Courses Grid -->
+                <div class="course-grid">
+                    <!-- Course 1 - In Progress -->
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Marketing Digital Completo</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Domina las estrategias de marketing digital para redes sociales, SEO y publicidad online.</p>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>Progreso General</span>
+                                    <span class="course-progress">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> 9/12 lecciones</span>
+                                <span>⏱️ 6h restantes</span>
+                            </div>
+                            <div class="course-meta">
+                                <span>Próxima: SEO Avanzado</span>
+                                <a href="/estudiante/aula/1" class="course-action">Continuar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 2 - In Progress -->
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Desarrollo Web Moderno</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Aprende HTML5, CSS3, JavaScript y frameworks modernos para desarrollo web.</p>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>Progreso General</span>
+                                    <span class="course-progress">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> 11/24 lecciones</span>
+                                <span>⏱️ 11h restantes</span>
+                            </div>
+                            <div class="course-meta">
+                                <span>Próxima: JavaScript Básico</span>
+                                <a href="/estudiante/aula/2" class="course-action">Continuar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 3 - In Progress -->
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Gestión Empresarial</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Aprende a administrar empresas eficientemente con herramientas modernas de gestión.</p>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>Progreso General</span>
+                                    <span class="course-progress">30%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 30%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> 5/18 lecciones</span>
+                                <span>⏱️ 10.5h restantes</span>
+                            </div>
+                            <div class="course-meta">
+                                <span>Próxima: Planificación Estratégica</span>
+                                <a href="/estudiante/aula/3" class="course-action">Continuar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 4 - In Progress -->
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Diseño Gráfico Digital</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Crea diseños profesionales con Photoshop, Illustrator y herramientas online.</p>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>Progreso General</span>
+                                    <span class="course-progress">60%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> 10/16 lecciones</span>
+                                <span>⏱️ 4.8h restantes</span>
+                            </div>
+                            <div class="course-meta">
+                                <span>Próxima: Diseño de Logos</span>
+                                <a href="/estudiante/aula/4" class="course-action">Continuar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 5 - In Progress -->
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Inglés Conversacional</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Mejora tu inglés hablado con técnicas modernas de aprendizaje.</p>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>Progreso General</span>
+                                    <span class="course-progress">20%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> 6/30 lecciones</span>
+                                <span>⏱️ 20h restantes</span>
+                            </div>
+                            <div class="course-meta">
+                                <span>Próxima: Verbos Irregulares</span>
+                                <a href="/estudiante/aula/5" class="course-action">Continuar</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 6 - Completed -->
+                    <div class="course-card" style="border: 2px solid #28a745;">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Excel Avanzado</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">check_circle</i> Completado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Domina fórmulas complejas, macros y análisis de datos en Excel.</p>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>Progreso General</span>
+                                    <span class="course-progress" style="color: #28a745;">100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> 20/20 lecciones</span>
+                                <span><i class="material-icons">emoji_events</i> Certificado disponible</span>
+                            </div>
+                            <div class="course-meta">
+                                <span><i class="material-icons">star</i> Calificación: 92/100</span>
+                                <a href="/estudiante/certificados" class="course-action" style="background: #28a745;">Ver Certificado</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 7 - Completed -->
+                    <div class="course-card" style="border: 2px solid #28a745;">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Gestión del Tiempo</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">check_circle</i> Completado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Aprende técnicas efectivas para optimizar tu tiempo y productividad.</p>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>Progreso General</span>
+                                    <span class="course-progress" style="color: #28a745;">100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> 8/8 lecciones</span>
+                                <span><i class="material-icons">emoji_events</i> Certificado disponible</span>
+                            </div>
+                            <div class="course-meta">
+                                <span><i class="material-icons">star</i> Calificación: 88/100</span>
+                                <a href="/estudiante/certificados" class="course-action" style="background: #28a745;">Ver Certificado</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 8 - Completed -->
+                    <div class="course-card" style="border: 2px solid #28a745;">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3 class="course-title">Habilidades de Comunicación</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">check_circle</i> Completado</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Desarrolla tus habilidades de comunicación interpersonal y profesional.</p>
+                            <div class="progress-container">
+                                <div class="progress-header">
+                                    <span>Progreso General</span>
+                                    <span class="course-progress" style="color: #28a745;">100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                <span><i class="material-icons">menu_book</i> 12/12 lecciones</span>
+                                <span><i class="material-icons">emoji_events</i> Certificado disponible</span>
+                            </div>
+                            <div class="course-meta">
+                                <span><i class="material-icons">star</i> Calificación: 95/100</span>
+                                <a href="/estudiante/certificados" class="course-action" style="background: #28a745;">Ver Certificado</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Stats -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Estadísticas de Aprendizaje</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">menu_book</i></div>
+                        <div class="stat-info">
+                            <h3>8</h3>
+                            <p>Cursos Totales</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">check_circle</i></div>
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>Completados</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">⏱️</div>
+                        <div class="stat-info">
+                            <h3>52h</h3>
+                            <p>Tiempo Total</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red"><i class="material-icons">emoji_events</i></div>
+                        <div class="stat-info">
+                            <h3>91%</h3>
+                            <p>Promedio General</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

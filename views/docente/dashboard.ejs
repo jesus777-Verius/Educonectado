@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Docente - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span><%= user.nombres %> <%= user.apellidos %></span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard" class="active"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Welcome Section -->
+            <div class="dashboard-card">
+                <h1>👋 ¡Bienvenida, <%= user.nombres %>!</h1>
+                <p>Gestiona tus cursos y monitorea el progreso de tus estudiantes</p>
+            </div>
+
+            <!-- Teacher Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">menu_book</i></div>
+                    <div class="stat-info">
+                        <h3>6</h3>
+                        <p>Cursos Activos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">people</i></div>
+                    <div class="stat-info">
+                        <h3>234</h3>
+                        <p>Estudiantes Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">edit</i></div>
+                    <div class="stat-info">
+                        <h3>18</h3>
+                        <p>Tareas por Revisar</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">star</i></div>
+                    <div class="stat-info">
+                        <h3>4.8</h3>
+                        <p>Calificación Promedio</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Courses Overview -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">menu_book</i> Mis Cursos</h2>
+                    <a href="/docente/cursos" class="btn btn-outline">Ver Todos</a>
+                </div>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/300x150/667eea/ffffff?text=Marketing+Digital" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <h3 class="course-title">Marketing Digital Completo</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 89 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.9</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso Promedio</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">edit</i> 5 tareas</span>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">forum</i> 12 mensajes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/300x150/764ba2/ffffff?text=Programación+Web" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <h3 class="course-title">Desarrollo Web Moderno</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 67 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.7</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso Promedio</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">edit</i> 8 tareas</span>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">forum</i> 8 mensajes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="https://via.placeholder.com/300x150/28a745/ffffff?text=Negocios" alt="Curso" class="course-image">
+                        <div class="course-content">
+                            <h3 class="course-title">Gestión Empresarial</h3>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 45 estudiantes</span>
+                                <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.8</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Progreso Promedio</span>
+                                    <span style="font-size: 0.9rem; color: #28a745;">60%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">edit</i> 3 tareas</span>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">forum</i> 5 mensajes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Tasks -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">assignment</i> Tareas Pendientes de Revisión</h2>
+                    <a href="/docente/tareas" class="btn btn-outline">Ver Todas</a>
+                </div>
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem;">Marketing Digital - Proyecto Final</h4>
+                            <p style="color: #856404; font-size: 0.9rem;">12 estudiantes han entregado sus proyectos</p>
+                        </div>
+                        <button class="btn btn-primary" style="background: #ffc107; color: #000;">Revisar Ahora</button>
+                    </div>
+                </div>
+                <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem;">Programación Web - Quiz JavaScript</h4>
+                            <p style="color: #721c24; font-size: 0.9rem;">6 estudiantes necesitan calificación</p>
+                        </div>
+                        <button class="btn btn-primary">Calificar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">show_chart</i> Actividad Reciente</h2>
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <div class="activity-icon" style="background: rgba(40, 167, 69, 0.1); color: #28a745;"><i class="material-icons">edit</i></div>
+                        <div class="activity-content">
+                            <div class="activity-title">Juan Pérez entregó el proyecto de Marketing</div>
+                            <div class="activity-description">Marketing Digital Completo - Proyecto Final</div>
+                            <div class="activity-time">Hace 15 minutos</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon" style="background: rgba(102, 126, 234, 0.1); color: #667eea;"><i class="material-icons">forum</i></div>
+                        <div class="activity-content">
+                            <div class="activity-title">Nueva pregunta en el foro del curso</div>
+                            <div class="activity-description">Desarrollo Web Moderno - Módulo 2</div>
+                            <div class="activity-time">Hace 1 hora</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon" style="background: rgba(255, 193, 7, 0.1); color: #ffc107;"><i class="material-icons">my_location</i></div>
+                        <div class="activity-content">
+                            <div class="activity-title">8 estudiantes completaron el quiz de SEO</div>
+                            <div class="activity-description">Marketing Digital - Evaluación Módulo 2</div>
+                            <div class="activity-time">Hace 3 horas</div>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon" style="background: rgba(220, 53, 69, 0.1); color: #dc3545;"><i class="material-icons">people</i></div>
+                        <div class="activity-content">
+                            <div class="activity-title">5 nuevos estudiantes se inscribieron</div>
+                            <div class="activity-description">Gestión Empresarial - Nueva cohorte</div>
+                            <div class="activity-time">Ayer</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Student Performance -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Rendimiento de Estudiantes</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">Top Estudiantes del Mes</h3>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                            <div style="margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=J" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-weight: bold;">Juan Pérez</span>
+                                    </div>
+                                    <span style="color: #28a745; font-weight: bold;">95%</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/764ba2/ffffff?text=A" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-weight: bold;">Ana Rodríguez</span>
+                                    </div>
+                                    <span style="color: #28a745; font-weight: bold;">92%</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=C" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-weight: bold;">Carlos Méndez</span>
+                                    </div>
+                                    <span style="color: #28a745; font-weight: bold;">89%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=L" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-weight: bold;">Luisa Fernández</span>
+                                    </div>
+                                    <span style="color: #28a745; font-weight: bold;">87%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">Estudiantes que Necesitan Atención</h3>
+                        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                            <div style="margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/ffc107/000000?text=M" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-weight: bold;">María López</span>
+                                    </div>
+                                    <span style="color: #dc3545; font-weight: bold;">45%</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/17a2b8/ffffff?text=R" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-weight: bold;">Roberto Silva</span>
+                                    </div>
+                                    <span style="color: #dc3545; font-weight: bold;">52%</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=S" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-weight: bold;">Sofía Martínez</span>
+                                    </div>
+                                    <span style="color: #dc3545; font-weight: bold;">58%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <img src="https://via.placeholder.com/24x24/764ba2/ffffff?text=D" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-weight: bold;">David Torres</span>
+                                    </div>
+                                    <span style="color: #dc3545; font-weight: bold;">61%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon blue"><i class="material-icons">add</i></div>
+                        <div class="stat-info">
+                            <h3>Crear Curso</h3>
+                            <p>Nuevo contenido</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon green"><i class="material-icons">edit</i></div>
+                        <div class="stat-info">
+                            <h3>Crear Tarea</h3>
+                            <p>Asignar trabajo</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon orange"><i class="material-icons">my_location</i></div>
+                        <div class="stat-info">
+                            <h3>Crear Quiz</h3>
+                            <p>Nueva evaluación</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon red"><i class="material-icons">forum</i></div>
+                        <div class="stat-info">
+                            <h3>Foros</h3>
+                            <p>Responder dudas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

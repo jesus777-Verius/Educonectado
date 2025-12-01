@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Cursos - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <style>
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            background: #f8f9fa;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-menu a.active {
+            background: rgba(255,255,255,0.2);
+            border-left: 4px solid white;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+        }
+        
+        .header {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            width: 400px;
+        }
+        
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            flex: 1;
+            padding: 0.25rem;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e9ecef;
+            border-radius: 25px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .course-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .course-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .course-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .course-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .price-current {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .enroll-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .enroll-btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .enroll-btn.enrolled {
+            background: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 style="margin: 0; font-size: 1.5rem;">EduConecta</h2>
+                <p style="margin: 0.5rem 0 0; opacity: 0.8;">Panel Estudiante</p>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="/dashboard-estudiante">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">dashboard</span>
+                    Dashboard
+                </a></li>
+                <li><a href="/catalogo-cursos" class="active">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">menu_book</span>
+                    Catálogo de Cursos
+                </a></li>
+                <li><a href="/mis-cursos">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">play_lesson</span>
+                    Mis Cursos
+                </a></li>
+                <li><a href="/tareas">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">assignment</span>
+                    Tareas
+                </a></li>
+                <li><a href="/certificados">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">certificate</span>
+                    Certificados
+                </a></li>
+                <li><a href="/pagos">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">payments</span>
+                    Pagos
+                </a></li>
+                <li><a href="/configuracion">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">settings</span>
+                    Configuración
+                </a></li>
+                <li><a href="/logout">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">logout</span>
+                    Cerrar Sesión
+                </a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div>
+                    <h1 style="margin: 0; color: #333;">Catálogo de Cursos</h1>
+                    <p style="margin: 0.5rem 0 0; color: #666;">Descubre nuestros cursos y comienza tu aprendizaje</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined" style="color: #667eea;">search</span>
+                        <input type="text" placeholder="Buscar cursos..." id="searchInput">
+                    </div>
+                    <img src="https://via.placeholder.com/50x50/667eea/ffffff?text=<%= user.nombres.charAt(0) %>" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%; cursor: pointer;" onclick="window.location.href='/perfil'">
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterCourses('all')">Todos</button>
+                <button class="filter-btn" onclick="filterCourses('marketing')">Marketing</button>
+                <button class="filter-btn" onclick="filterCourses('programacion')">Programación</button>
+                <button class="filter-btn" onclick="filterCourses('diseno')">Diseño</button>
+                <button class="filter-btn" onclick="filterCourses('idiomas')">Idiomas</button>
+                <button class="filter-btn" onclick="filterCourses('negocios')">Negocios</button>
+                <button class="filter-btn" onclick="filterCourses('productividad')">Productividad</button>
+                <button class="filter-btn" onclick="filterCourses('fotografia')">Fotografía</button>
+                <button class="filter-btn" onclick="filterCourses('salud')">Salud</button>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Course 1 -->
+                <div class="course-card" data-category="marketing">
+                    <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                    <div class="course-content">
+                        <span class="course-badge">POPULAR</span>
+                        <h3 class="course-title">Marketing Digital Completo</h3>
+                        <p class="course-description">Domina las estrategias de marketing digital para redes sociales, SEO y publicidad online.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1rem;">star</span>
+                                <span>4.8 (234)</span>
+                            </div>
+                            <div class="course-meta-info">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                                <span>8 horas</span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">$29.99</span>
+                            <span class="price-original">$59.99</span>
+                            <span style="color: #28a745; font-weight: bold;">50% OFF</span>
+                        </div>
+                        <button class="enroll-btn" onclick="enrollCourse(1)">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card" data-category="programacion">
+                    <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                    <div class="course-content">
+                        <span class="course-badge">HOT</span>
+                        <h3 class="course-title">Desarrollo Web Moderno</h3>
+                        <p class="course-description">Aprende HTML5, CSS3, JavaScript y frameworks como React y Vue.js.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1rem;">star</span>
+                                <span>4.9 (189)</span>
+                            </div>
+                            <div class="course-meta-info">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                                <span>20 horas</span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">$49.99</span>
+                            <span class="price-original">$89.99</span>
+                            <span style="color: #28a745; font-weight: bold;">44% OFF</span>
+                        </div>
+                        <button class="enroll-btn" onclick="enrollCourse(2)">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card" data-category="diseno">
+                    <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                    <div class="course-content">
+                        <span class="course-badge">NEW</span>
+                        <h3 class="course-title">Diseño Gráfico Digital</h3>
+                        <p class="course-description">Crea diseños profesionales con Photoshop, Illustrator y herramientas online.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1rem;">star</span>
+                                <span>4.6 (98)</span>
+                            </div>
+                            <div class="course-meta-info">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                                <span>12 horas</span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">$34.99</span>
+                            <span class="price-original">$59.99</span>
+                            <span style="color: #28a745; font-weight: bold;">42% OFF</span>
+                        </div>
+                        <button class="enroll-btn" onclick="enrollCourse(3)">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card" data-category="idiomas">
+                    <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                    <div class="course-content">
+                        <h3 class="course-title">Inglés Conversacional</h3>
+                        <p class="course-description">Mejora tu inglés hablado con técnicas modernas de aprendizaje.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1rem;">star</span>
+                                <span>4.8 (267)</span>
+                            </div>
+                            <div class="course-meta-info">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                                <span>25 horas</span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">$44.99</span>
+                            <span class="price-original">$79.99</span>
+                            <span style="color: #28a745; font-weight: bold;">44% OFF</span>
+                        </div>
+                        <button class="enroll-btn" onclick="enrollCourse(4)">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 5 -->
+                <div class="course-card" data-category="negocios">
+                    <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                    <div class="course-content">
+                        <h3 class="course-title">Gestión Empresarial</h3>
+                        <p class="course-description">Aprende a administrar empresas eficientemente con herramientas modernas de gestión.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1rem;">star</span>
+                                <span>4.7 (156)</span>
+                            </div>
+                            <div class="course-meta-info">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                                <span>15 horas</span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">$39.99</span>
+                            <span class="price-original">$69.99</span>
+                            <span style="color: #28a745; font-weight: bold;">43% OFF</span>
+                        </div>
+                        <button class="enroll-btn" onclick="enrollCourse(5)">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 6 -->
+                <div class="course-card" data-category="productividad">
+                    <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                    <div class="course-content">
+                        <span class="course-badge">FREE</span>
+                        <h3 class="course-title">Excel Avanzado</h3>
+                        <p class="course-description">Domina fórmulas complejas, macros y análisis de datos en Excel.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1rem;">star</span>
+                                <span>4.9 (312)</span>
+                            </div>
+                            <div class="course-meta-info">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                                <span>16 horas</span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current" style="color: #28a745;">GRATIS</span>
+                            <span class="price-original">$49.99</span>
+                            <span style="color: #28a745; font-weight: bold;">100% OFF</span>
+                        </div>
+                        <button class="enroll-btn enrolled" onclick="enrollCourse(6)">✓ Inscrito</button>
+                    </div>
+                </div>
+
+                <!-- Course 7 -->
+                <div class="course-card" data-category="fotografia">
+                    <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                    <div class="course-content">
+                        <span class="course-badge">TRENDING</span>
+                        <h3 class="course-title">Fotografía Profesional</h3>
+                        <p class="course-description">Aprende técnicas avanzadas de composición, iluminación y edición fotográfica profesional.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1rem;">star</span>
+                                <span>4.7 (145)</span>
+                            </div>
+                            <div class="course-meta-info">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                                <span>18 horas</span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">$54.99</span>
+                            <span class="price-original">$89.99</span>
+                            <span style="color: #28a745; font-weight: bold;">39% OFF</span>
+                        </div>
+                        <button class="enroll-btn" onclick="enrollCourse(7)">Inscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Course 8 -->
+                <div class="course-card" data-category="salud">
+                    <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                    <div class="course-content">
+                        <h3 class="course-title">Nutrición y Bienestar</h3>
+                        <p class="course-description">Descubre los principios de una alimentación saludable y hábitos de vida equilibrados.</p>
+                        <div class="course-meta">
+                            <div class="course-rating">
+                                <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1rem;">star</span>
+                                <span>4.8 (203)</span>
+                            </div>
+                            <div class="course-meta-info">
+                                <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                                <span>10 horas</span>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">$37.99</span>
+                            <span class="price-original">$67.99</span>
+                            <span style="color: #28a745; font-weight: bold;">44% OFF</span>
+                        </div>
+                        <button class="enroll-btn" onclick="enrollCourse(8)">Inscribirse</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Filter courses
+        function filterCourses(category) {
+            const courses = document.querySelectorAll('.course-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter courses
+            courses.forEach(course => {
+                if (category === 'all' || course.dataset.category === category) {
+                    course.style.display = 'block';
+                } else {
+                    course.style.display = 'none';
+                }
+            });
+        }
+
+        // Search courses
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const courses = document.querySelectorAll('.course-card');
+            
+            courses.forEach(course => {
+                const title = course.querySelector('.course-title').textContent.toLowerCase();
+                const description = course.querySelector('.course-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    course.style.display = 'block';
+                } else {
+                    course.style.display = 'none';
+                }
+            });
+        });
+
+        // Enroll in course
+        function enrollCourse(courseId) {
+            // Simulate enrollment
+            const button = event.target;
+            button.textContent = 'Procesando...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = '✓ Inscrito';
+                button.classList.add('enrolled');
+                button.disabled = false;
+                
+                // Show success message
+                showNotification('¡Te has inscrito exitosamente en el curso!');
+            }, 1500);
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #28a745;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

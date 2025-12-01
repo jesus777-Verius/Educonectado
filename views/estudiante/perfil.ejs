@@ -1,0 +1,1083 @@
+<%- include('layout') %>
+
+<style>
+    /* Profile Styles */
+    .profile-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .profile-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .profile-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 400px;
+        height: 400px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    
+    .profile-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .profile-avatar-section {
+        text-align: center;
+    }
+    
+    .profile-avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 5px solid rgba(255,255,255,0.3);
+        object-fit: cover;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .profile-avatar:hover {
+        transform: scale(1.05);
+    }
+    
+    .avatar-upload {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .avatar-upload-btn {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(255,255,255,0.9);
+        color: #667eea;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .avatar-upload-btn:hover {
+        background: white;
+        transform: scale(1.1);
+    }
+    
+    .profile-info {
+        flex: 1;
+        min-width: 300px;
+    }
+    
+    .profile-name {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    
+    .profile-email {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-bottom: 1rem;
+    }
+    
+    .profile-badges {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+    }
+    
+    .profile-badge {
+        background: rgba(255,255,255,0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .profile-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .btn-primary {
+        background: white;
+        color: #667eea;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(255,255,255,0.3);
+    }
+    
+    .btn-outline {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+    
+    .btn-outline:hover {
+        background: white;
+        color: #667eea;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 1.5rem;
+    }
+    
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+        color: #666;
+        font-size: 1rem;
+    }
+    
+    /* Section Cards */
+    .section-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+    
+    .section-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .section-content {
+        padding: 2rem;
+    }
+    
+    /* Form Styles */
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .form-textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+    
+    /* Progress Section */
+    .progress-item {
+        margin-bottom: 2rem;
+    }
+    
+    .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .progress-title {
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .progress-percentage {
+        color: #667eea;
+        font-weight: bold;
+    }
+    
+    .progress-bar {
+        background: #f0f0f0;
+        height: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 5px;
+        transition: width 0.3s ease;
+    }
+    
+    /* Achievements */
+    .achievements-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .achievement-card {
+        text-align: center;
+        padding: 1.5rem;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .achievement-card:hover {
+        border-color: #667eea;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+    }
+    
+    .achievement-card.unlocked {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        border-color: #667eea;
+    }
+    
+    .achievement-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 1.5rem;
+        background: #f0f0f0;
+        color: #999;
+    }
+    
+    .achievement-card.unlocked .achievement-icon {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+    
+    .achievement-name {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+    
+    .achievement-description {
+        font-size: 0.9rem;
+        color: #666;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .profile-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .profile-name {
+            font-size: 2rem;
+        }
+        
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .achievements-grid {
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        }
+    }
+</style>
+
+<div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-content">
+            <div class="profile-avatar-section">
+                <div class="avatar-upload">
+                    <img src="https://via.placeholder.com/150x150/667eea/ffffff?text=<%= user.nombres.charAt(0) %><%= user.apellidos.charAt(0) %>" alt="Perfil" class="profile-avatar">
+                    <button class="avatar-upload-btn" onclick="document.getElementById('avatarInput').click()">
+                        <span class="material-symbols-outlined">camera_alt</span>
+                    </button>
+                    <input type="file" id="avatarInput" style="display: none;" accept="image/*" onchange="handleAvatarChange(event)">
+                </div>
+            </div>
+            
+            <div class="profile-info">
+                <h1 class="profile-name"><%= user.nombres %> <%= user.apellidos %></h1>
+                <p class="profile-email"><%= user.email %></p>
+                <div class="profile-badges">
+                    <div class="profile-badge">
+                        <span class="material-symbols-outlined">school</span>
+                        Estudiante Activo
+                    </div>
+                    <div class="profile-badge">
+                        <span class="material-symbols-outlined">emoji_events</span>
+                        Nivel Avanzado
+                    </div>
+                    <div class="profile-badge">
+                        <span class="material-symbols-outlined">verified</span>
+                        Verificado
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn btn-primary" onclick="editProfile()">
+                        <span class="material-symbols-outlined">edit</span>
+                        Editar Perfil
+                    </button>
+                    <button class="btn btn-outline" onclick="shareProfile()">
+                        <span class="material-symbols-outlined">share</span>
+                        Compartir Perfil
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(102, 126, 234, 0.1); color: #667eea;">
+                <span class="material-symbols-outlined">menu_book</span>
+            </div>
+            <div class="stat-value">12</div>
+            <div class="stat-label">Cursos Completados</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(76, 175, 80, 0.1); color: #4caf50;">
+                <span class="material-symbols-outlined">assignment_turned_in</span>
+            </div>
+            <div class="stat-value">45</div>
+            <div class="stat-label">Tareas Entregadas</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(255, 193, 7, 0.1); color: #ffc107;">
+                <span class="material-symbols-outlined">emoji_events</span>
+            </div>
+            <div class="stat-value">8</div>
+            <div class="stat-label">Certificados</div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(156, 39, 176, 0.1); color: #9c27b0;">
+                <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <div class="stat-value">156</div>
+            <div class="stat-label">Horas de Estudio</div>
+        </div>
+    </div>
+
+    <!-- Personal Information -->
+    <div class="section-card">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="material-symbols-outlined">person</span>
+                Información Personal
+            </h2>
+            <button class="btn btn-primary" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;" onclick="toggleEditMode()">
+                <span class="material-symbols-outlined">edit</span>
+                Editar
+            </button>
+        </div>
+        <div class="section-content">
+            <form id="profileForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">Nombres</label>
+                        <input type="text" class="form-input" value="<%= user.nombres %>" id="nombres" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" class="form-input" value="<%= user.apellidos %>" id="apellidos" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-input" value="<%= user.email %>" id="email" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Teléfono</label>
+                        <input type="tel" class="form-input" value="<%= user.telefono %>" id="telefono" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fecha de Registro</label>
+                        <input type="text" class="form-input" value="<%= new Date(user.fecha_registro).toLocaleDateString() %>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tipo de Usuario</label>
+                        <input type="text" class="form-input" value="<%= user.tipo_usuario %>" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Biografía</label>
+                    <textarea class="form-input form-textarea" id="biografia" placeholder="Cuéntanos sobre ti..." disabled>Estudiante apasionado por aprender y crecer profesionalmente. Me encanta el marketing digital y el desarrollo web.</textarea>
+                </div>
+                <div id="formActions" style="display: none; text-align: right; margin-top: 2rem;">
+                    <button type="button" class="btn btn-outline" style="margin-right: 1rem;" onclick="cancelEdit()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Learning Progress -->
+    <div class="section-card">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="material-symbols-outlined">trending_up</span>
+                Progreso de Aprendizaje
+            </h2>
+        </div>
+        <div class="section-content">
+            <div class="progress-item">
+                <div class="progress-header">
+                    <div class="progress-title">Marketing Digital</div>
+                    <div class="progress-percentage">85%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;"></div>
+                </div>
+            </div>
+            
+            <div class="progress-item">
+                <div class="progress-header">
+                    <div class="progress-title">Desarrollo Web</div>
+                    <div class="progress-percentage">72%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 72%;"></div>
+                </div>
+            </div>
+            
+            <div class="progress-item">
+                <div class="progress-header">
+                    <div class="progress-title">Inglés Técnico</div>
+                    <div class="progress-percentage">68%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 68%;"></div>
+                </div>
+            </div>
+            
+            <div class="progress-item">
+                <div class="progress-header">
+                    <div class="progress-title">Gestión Empresarial</div>
+                    <div class="progress-percentage">45%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 45%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="section-card">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="material-symbols-outlined">emoji_events</span>
+                Logros y Certificados
+            </h2>
+        </div>
+        <div class="section-content">
+            <div class="achievements-grid">
+                <div class="achievement-card unlocked">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <div class="achievement-name">Primer Curso</div>
+                    <div class="achievement-description">Completaste tu primer curso</div>
+                </div>
+                
+                <div class="achievement-card unlocked">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-outlined">local_fire_department</span>
+                    </div>
+                    <div class="achievement-name">Racha de 7 días</div>
+                    <div class="achievement-description">Estudiaste por una semana seguida</div>
+                </div>
+                
+                <div class="achievement-card unlocked">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-outlined">military_tech</span>
+                    </div>
+                    <div class="achievement-name">Excelente Estudiante</div>
+                    <div class="achievement-description">Promedio del 95% o superior</div>
+                </div>
+                
+                <div class="achievement-card unlocked">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-outlined">workspace_premium</span>
+                    </div>
+                    <div class="achievement-name">Certificado Oro</div>
+                    <div class="achievement-description">5 certificados obtenidos</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-outlined">rocket_launch</span>
+                    </div>
+                    <div class="achievement-name">Experto en Marketing</div>
+                    <div class="achievement-description">Completa todos los cursos de marketing</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-outlined">psychology</span>
+                    </div>
+                    <div class="achievement-name">Maestro del Código</div>
+                    <div class="achievement-description">Completa todos los cursos de programación</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-outlined">diversity_3</span>
+                    </div>
+                    <div class="achievement-name">Colaborador</div>
+                    <div class="achievement-description">Ayuda a 10 estudiantes en los foros</div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <span class="material-symbols-outlined">auto_awesome</span>
+                    </div>
+                    <div class="achievement-name">Leyenda</div>
+                    <div class="achievement-description">Alcanza el nivel máximo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isEditMode = false;
+
+    function toggleEditMode() {
+        isEditMode = !isEditMode;
+        const inputs = document.querySelectorAll('#profileForm input:not([disabled]), #profileForm textarea');
+        const formActions = document.getElementById('formActions');
+        
+        inputs.forEach(input => {
+            input.disabled = !isEditMode;
+        });
+        
+        formActions.style.display = isEditMode ? 'block' : 'none';
+    }
+
+    function cancelEdit() {
+        isEditMode = false;
+        toggleEditMode();
+        // Reset form values to original
+        document.getElementById('nombres').value = '<%= user.nombres %>';
+        document.getElementById('apellidos').value = '<%= user.apellidos %>';
+        document.getElementById('email').value = '<%= user.email %>';
+        document.getElementById('telefono').value = '<%= user.telefono %>';
+    }
+
+    function editProfile() {
+        toggleEditMode();
+    }
+
+    function shareProfile() {
+        // Create shareable link
+        const shareUrl = window.location.origin + '/estudiante/perfil';
+        
+        if (navigator.share) {
+            navigator.share({
+                title: 'Mi Perfil - EduConecta',
+                text: 'Mira mi perfil de estudiante en EduConecta',
+                url: shareUrl
+            });
+        } else {
+            // Fallback: copy to clipboard
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                showNotification('Enlace copiado al portapapeles');
+            });
+        }
+    }
+
+    function handleAvatarChange(event) {
+        const file = event.target.files[0];
+        if (file) {
+            // Preview avatar
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.querySelector('.profile-avatar').src = e.target.result;
+                showNotification('Avatar actualizado correctamente');
+            };
+            reader.readAsDataURL(file);
+            
+            // Here you would upload the file to the server
+            // uploadAvatar(file);
+        }
+    }
+
+    function showNotification(message) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = 'alert alert-success';
+        notification.textContent = message;
+        notification.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 9999; animation: slideIn 0.3s ease;';
+        
+        document.body.appendChild(notification);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Handle form submission
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+            nombres: document.getElementById('nombres').value,
+            apellidos: document.getElementById('apellidos').value,
+            email: document.getElementById('email').value,
+            telefono: document.getElementById('telefono').value,
+            biografia: document.getElementById('biografia').value
+        };
+        
+        // Here you would send the data to the server
+        console.log('Saving profile:', formData);
+        
+        // Show success message
+        showNotification('Perfil actualizado correctamente');
+        
+        // Exit edit mode
+        isEditMode = false;
+        toggleEditMode();
+    });
+
+    // Animate progress bars on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const progressBars = document.querySelectorAll('.progress-fill');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+    });
+</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Profile Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; gap: 2rem; align-items: center;">
+                    <div style="text-align: center;">
+                        <img src="https://via.placeholder.com/120x120/667eea/ffffff?text=J" alt="Perfil" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid #667eea; margin-bottom: 1rem;">
+                        <button class="btn btn-outline" style="font-size: 0.9rem;">Cambiar Foto</button>
+                    </div>
+                    <div style="flex: 1;">
+                        <h1 style="margin-bottom: 0.5rem;">Juan Pérez</h1>
+                        <p style="color: #666; margin-bottom: 1rem;">juan.perez@email.com</p>
+                        <div style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">Estudiante</div>
+                                <div style="font-size: 0.9rem; color: #666;">Tipo de Cuenta</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">Nov 2024</div>
+                                <div style="font-size: 0.9rem; color: #666;">Miembro desde</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">Caracas, VE</div>
+                                <div style="font-size: 0.9rem; color: #666;">Ubicación</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <button class="btn btn-primary"><i class="material-icons">edit</i> Editar Perfil</button>
+                            <button class="btn btn-outline"><i class="material-icons">assignment</i> Ver CV</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Information -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">assignment</i> Información Personal</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Nombres</label>
+                                    <input type="text" class="form-control" value="Juan">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Apellidos</label>
+                                    <input type="text" class="form-control" value="Pérez">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" value="juan.perez@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" value="+58 414-123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" class="form-control" value="1995-06-15">
+                            </div>
+                        </form>
+                    </div>
+                    <div style="flex: 1;">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-label">País</label>
+                                <select class="form-control">
+                                    <option value="VE" selected>Venezuela</option>
+                                    <option value="CO">Colombia</option>
+                                    <option value="MX">México</option>
+                                    <option value="AR">Argentina</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ciudad</label>
+                                <input type="text" class="form-control" value="Caracas">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ocupación</label>
+                                <input type="text" class="form-control" value="Estudiante Universitario">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Intereses</label>
+                                <textarea class="form-control" rows="3">Marketing Digital, Programación, Diseño Gráfico, Emprendimiento</textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div style="text-align: right; margin-top: 2rem;">
+                    <button class="btn btn-primary"><i class="material-icons">backup</i> Guardar Cambios</button>
+                </div>
+            </div>
+
+            <!-- Academic Background -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">school</i> Formación Académica</h2>
+                <div style="margin-bottom: 2rem;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                            <div>
+                                <h3 style="margin-bottom: 0.5rem;">Licenciatura en Administración</h3>
+                                <p style="color: #666; margin-bottom: 0.5rem;">Universidad Central de Venezuela</p>
+                                <p style="color: #666;">2018 - 2022</p>
+                            </div>
+                            <button class="btn btn-outline" style="font-size: 0.8rem;"><i class="material-icons">edit</i></button>
+                        </div>
+                        <p style="color: #666; font-size: 0.9rem;">Especialización en Marketing y Gestión Empresarial</p>
+                    </div>
+                    <button class="btn btn-outline">+ Añadir Formación</button>
+                </div>
+            </div>
+
+            <!-- Learning Goals -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">my_location</i> Metas de Aprendizaje</h2>
+                <div style="margin-bottom: 2rem;">
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3 style="margin-bottom: 1rem;">Objetivos a Corto Plazo (3 meses)</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.75rem;">
+                                <span style="margin-right: 0.5rem;"><i class="material-icons">check_circle</i></span>
+                                Completar curso de Marketing Digital (75% completado)
+                            </li>
+                            <li style="margin-bottom: 0.75rem;">
+                                <span style="margin-right: 0.5rem;"><i class="material-icons">menu_book</i></span>
+                                Aprender fundamentos de JavaScript
+                            </li>
+                            <li>
+                                <span style="margin-right: 0.5rem;"><i class="material-icons">my_location</i></span>
+                                Obtener certificación en Google Analytics
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <h3 style="margin-bottom: 1rem;">Objetivos a Largo Plazo (1 año)</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.75rem;">
+                                <span style="margin-right: 0.5rem;"><i class="material-icons">rocket_launch</i></span>
+                                Convertirme en Especialista en Marketing Digital
+                            </li>
+                            <li style="margin-bottom: 0.75rem;">
+                                <span style="margin-right: 0.5rem;">💼</span>
+                                Iniciar mi propia agencia de marketing
+                            </li>
+                            <li>
+                                <span style="margin-right: 0.5rem;"><i class="material-icons">language</i></span>
+                                Trabajar como freelance internacional
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline">+ Editar Metas</button>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="dashboard-card">
+                <h2>🛠️ Mis Habilidades</h2>
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Habilidades Desarrolladas</h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                        <span style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px;">Marketing Digital</span>
+                        <span style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px;">SEO</span>
+                        <span style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px;">Redes Sociales</span>
+                        <span style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px;">Excel Avanzado</span>
+                        <span style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px;">Gestión del Tiempo</span>
+                        <span style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px;">Comunicación</span>
+                    </div>
+
+                    <h3 style="margin-bottom: 1rem;">Habilidades en Desarrollo</h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                        <span style="background: #ffc107; color: #000; padding: 0.5rem 1rem; border-radius: 20px;">Programación Web</span>
+                        <span style="background: #ffc107; color: #000; padding: 0.5rem 1rem; border-radius: 20px;">JavaScript</span>
+                        <span style="background: #ffc107; color: #000; padding: 0.5rem 1rem; border-radius: 20px;">Diseño Gráfico</span>
+                        <span style="background: #ffc107; color: #000; padding: 0.5rem 1rem; border-radius: 20px;">Inglés</span>
+                    </div>
+
+                    <h3 style="margin-bottom: 1rem;">Intereses de Aprendizaje</h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <span style="background: #28a745; color: white; padding: 0.5rem 1rem; border-radius: 20px;">IA y Machine Learning</span>
+                        <span style="background: #28a745; color: white; padding: 0.5rem 1rem; border-radius: 20px;">Blockchain</span>
+                        <span style="background: #28a745; color: white; padding: 0.5rem 1rem; border-radius: 20px;">E-commerce</span>
+                        <span style="background: #28a745; color: white; padding: 0.5rem 1rem; border-radius: 20px;">Data Science</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">emoji_events</i> Logros y Reconocimientos</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;"><i class="material-icons">emoji_events</i></div>
+                        <h4>Estudiante Destacado</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Noviembre 2024</p>
+                    </div>
+                    <div class="stat-card" style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;"><i class="material-icons">local_fire_department</i></div>
+                        <h4>Racha de 30 Días</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Estudio consecutivo</p>
+                    </div>
+                    <div class="stat-card" style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;"><i class="material-icons">star</i></div>
+                        <h4>Top 10%</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Mejor calificación</p>
+                    </div>
+                    <div class="stat-card" style="text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;"><i class="material-icons">forum</i></div>
+                        <h4>Contribuidor Activo</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Foros y comunidad</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy Settings -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">security</i> Configuración de Privacidad</h2>
+                <div style="margin-bottom: 2rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Perfil Público</div>
+                                <div style="font-size: 0.9rem; color: #666;">Permitir que otros estudiantes vean tu perfil</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Mostrar Progreso</div>
+                                <div style="font-size: 0.9rem; color: #666;">Compartir tu progreso de aprendizaje</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Notificaciones</div>
+                                <div style="font-size: 0.9rem; color: #666;">Recibir correos sobre nuevos cursos</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+                    <div>
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Newsletter</div>
+                                <div style="font-size: 0.9rem; color: #666;">Recibir boletín semanal</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Actions -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">settings</i> Gestión de Cuenta</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-outline">📥 Exportar Datos</button>
+                    <button class="btn btn-outline">🔐 Cambiar Contraseña</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Configurar Correo</button>
+                    <button class="btn btn-outline" style="border-color: #dc3545; color: #dc3545;"><i class="material-icons">delete</i> Eliminar Cuenta</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

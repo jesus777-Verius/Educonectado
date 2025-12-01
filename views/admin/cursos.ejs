@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cursos - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos" class="active"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">menu_book</i> Gestión de Cursos</h1>
+                        <p>Administra todos los cursos del sistema EduConecta</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Nuevo Curso</button>
+                </div>
+            </div>
+
+            <!-- Course Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">menu_book</i></div>
+                    <div class="stat-info">
+                        <h3>89</h3>
+                        <p>Cursos Totales</p>
+                        <div style="font-size: 0.8rem; color: #28a745;">↑ 5 nuevos este mes</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">check_circle</i></div>
+                    <div class="stat-info">
+                        <h3>67</h3>
+                        <p>Cursos Activos</p>
+                        <div style="font-size: 0.8rem; color: #667eea;">75% del total</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="material-icons">edit</i></div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Pendientes de Aprobación</p>
+                        <div style="font-size: 0.8rem; color: #ffc107;">Requieren revisión</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">people</i></div>
+                    <div class="stat-info">
+                        <h3>2,456</h3>
+                        <p>Estudiantes Inscritos</p>
+                        <div style="font-size: 0.8rem; color: #28a745;">↑ 12% este mes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">search</i> Búsqueda y Filtros</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todas las categorías</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="programming">Programación</option>
+                            <option value="business">Negocios</option>
+                            <option value="design">Diseño</option>
+                            <option value="languages">Idiomas</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los estados</option>
+                            <option value="published">Publicado</option>
+                            <option value="draft">Borrador</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="archived">Archivado</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los niveles</option>
+                            <option value="beginner">Principiante</option>
+                            <option value="intermediate">Intermedio</option>
+                            <option value="advanced">Avanzado</option>
+                        </select>
+                        <input type="text" placeholder="Buscar cursos..." class="form-control" style="width: 250px;">
+                    </div>
+                </div>
+
+                <!-- Courses Table -->
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Curso</th>
+                                <th style="padding: 1rem; text-align: center;">Instructor</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Estudiantes</th>
+                                <th style="padding: 1rem; text-align: center;">Precio</th>
+                                <th style="padding: 1rem; text-align: center;">Calificación</th>
+                                <th style="padding: 1rem; text-align: center;">Ingresos</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/60x40/667eea/ffffff?text=MD" alt="Curso" style="width: 60px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Marketing Digital Completo</div>
+                                            <div style="font-size: 0.8rem; color: #666;">12 módulos • 45 horas</div>
+                                            <div style="font-size: 0.8rem; color: #666;">ID: #CRS001</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=M" alt="Instructor" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">María González</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Publicado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">89</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$50</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">4.8</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$4,450</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Editar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Archivar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/60x40/764ba2/ffffff?text=PW" alt="Curso" style="width: 60px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Programación Web Full Stack</div>
+                                            <div style="font-size: 0.8rem; color: #666;">8 módulos • 60 horas</div>
+                                            <div style="font-size: 0.8rem; color: #666;">ID: #CRS002</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=C" alt="Instructor" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Carlos Rodríguez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Publicado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">67</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$75</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">4.9</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$5,025</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Editar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Archivar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <img src="https://via.placeholder.com/60x40/28a745/ffffff?text=GE" alt="Curso" style="width: 60px; height: 40px; border-radius: 8px;">
+                                        <div>
+                                            <div style="font-weight: bold;">Gestión Empresarial</div>
+                                            <div style="font-size: 0.8rem; color: #666;">6 módulos • 30 horas</div>
+                                            <div style="font-size: 0.8rem; color: #666;">ID: #CRS003</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=A" alt="Instructor" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Ana Martínez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pendiente</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">0</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">$60</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #666;">-</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #666;">$0</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-primary" style="font-size: 0.8rem;">Revisar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Rechazar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pending Courses -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">edit</i> Cursos Pendientes de Aprobación</h2>
+                <div class="course-grid">
+                    <div class="course-card" style="border: 2px solid #ffc107;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Gestión Empresarial</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">6 módulos • 30 horas</p>
+                                </div>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pendiente</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span>👩‍<i class="material-icons">school</i> Ana Martínez</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">calendar_today</i> Enviado: 25 Nov 2024</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">payments</i> $60</span>
+                                </div>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <p style="margin: 0; font-size: 0.9rem;">Curso completo sobre gestión empresarial con enfoque práctico para emprendedores y gerentes.</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">check_circle</i> Aprobar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">assignment</i> Revisar</button>
+                                <button class="btn btn-outline" style="flex: 1; border-color: #dc3545; color: #dc3545;"><i class="material-icons">cancel</i> Rechazar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card" style="border: 2px solid #ffc107;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Diseño Gráfico Avanzado</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">10 módulos • 40 horas</p>
+                                </div>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pendiente</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span>👨‍<i class="material-icons">palette</i> Luis Fernández</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">calendar_today</i> Enviado: 22 Nov 2024</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">payments</i> $80</span>
+                                </div>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <p style="margin: 0; font-size: 0.9rem;">Curso avanzado de diseño gráfico con herramientas profesionales y proyectos reales.</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">check_circle</i> Aprobar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">assignment</i> Revisar</button>
+                                <button class="btn btn-outline" style="flex: 1; border-color: #dc3545; color: #dc3545;"><i class="material-icons">cancel</i> Rechazar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Categories -->
+            <div class="dashboard-card">
+                <h2>📂 Categorías de Cursos</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="material-icons">phone</i></div>
+                            <h3 style="margin-bottom: 1rem;">Marketing Digital</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Cursos sobre marketing en línea y redes sociales</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">23</div>
+                                <div style="font-size: 0.9rem; color: #666;">cursos activos</div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Categoría</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">💻</div>
+                            <h3 style="margin-bottom: 1rem;">Programación</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Desarrollo web, móvil y software</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">18</div>
+                                <div style="font-size: 0.9rem; color: #666;">cursos activos</div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Categoría</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">💼</div>
+                            <h3 style="margin-bottom: 1rem;">Negocios</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Gestión, finanzas y emprendimiento</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">15</div>
+                                <div style="font-size: 0.9rem; color: #666;">cursos activos</div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Categoría</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="material-icons">palette</i></div>
+                            <h3 style="margin-bottom: 1rem;">Diseño</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Diseño gráfico, UI/UX y creatividad</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">12</div>
+                                <div style="font-size: 0.9rem; color: #666;">cursos activos</div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%;">Ver Categoría</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Analytics -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Análisis de Cursos</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">show_chart</i> Cursos Más Populares</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Marketing Digital</span>
+                                    <span style="font-weight: bold; color: #667eea;">89 estudiantes</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Programación Web</span>
+                                    <span style="font-weight: bold; color: #667eea;">67 estudiantes</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Inglés Conversacional</span>
+                                    <span style="font-weight: bold; color: #667eea;">45 estudiantes</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 51%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Diseño Gráfico</span>
+                                    <span style="font-weight: bold; color: #667eea;">34 estudiantes</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 38%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">payments</i> Ingresos por Categoría</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Marketing Digital</span>
+                                    <span style="font-weight: bold; color: #28a745;">$4,450</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 89%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Programación</span>
+                                    <span style="font-weight: bold; color: #28a745;">$5,025</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Negocios</span>
+                                    <span style="font-weight: bold; color: #28a745;">$2,700</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 54%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Diseño</span>
+                                    <span style="font-weight: bold; color: #28a745;">$2,720</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 54%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Nuevo Curso</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline">📥 Exportar Cursos</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Notificar Instructores</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configurar Categorías</button>
+                    <button class="btn btn-outline"><i class="material-icons">refresh</i> Sincronizar Datos</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

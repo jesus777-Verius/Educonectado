@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="container nav">
+            <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/catalogo">Catálogo</a></li>
+                <li><a href="/precios">Precios</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/quienes-somos">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/logout" class="btn btn-outline">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 0;">
+        <div class="container text-center">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">¡Bienvenido a EduConecta!</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9;">Hola <%= user.nombres %> <%= user.apellidos %>, estamos felices de tenerte aquí</p>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="container mb-3">
+        <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div style="font-size: 4rem; color: #667eea; margin-bottom: 2rem;">
+                <i class="material-icons" style="font-size: 4rem;">school</i>
+            </div>
+            <h2 style="color: #667eea; margin-bottom: 1.5rem;">Tu viaje educativo comienza ahora</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">
+                Como estudiante, tienes acceso a cursos de alta calidad, certificaciones reconocidas y una comunidad de aprendizaje vibrante.
+            </p>
+            
+            <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">¿Qué puedes hacer como estudiante?</h3>
+                <div class="grid grid-3" style="text-align: left;">
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">
+                            <i class="material-icons">search</i>
+                        </div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">Explorar Cursos</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Accede a nuestro catálogo de cursos en diversas áreas del conocimiento.</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">
+                            <i class="material-icons">play_circle</i>
+                        </div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">Aprender a tu Ritmo</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Estudia cuando y donde quieras con total flexibilidad.</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-size: 2rem; color: #667eea; margin-bottom: 0.5rem;">
+                            <i class="material-icons">emoji_events</i>
+                        </div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">Obtener Certificados</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Recibe certificados verificados al completar tus cursos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="/estudiante/dashboard" class="btn btn-primary" style="background: #667eea; color: white;">Ir a mi Dashboard</a>
+                <a href="/catalogo" class="btn btn-outline">Explorar Cursos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="container mb-3">
+        <h2 class="text-center mb-2">Consejos para empezar</h2>
+        <div class="grid grid-3">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;">
+                    <i class="material-icons">lightbulb</i>
+                </div>
+                <h4 style="color: #667eea; margin-bottom: 1rem;">Define tus Metas</h4>
+                <p style="color: #666; font-size: 0.9rem;">Establece objetivos claros sobre lo que quieres aprender y lograr.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;">
+                    <i class="material-icons">schedule</i>
+                </div>
+                <h4 style="color: #667eea; margin-bottom: 1rem;">Crea un Horario</h4>
+                <p style="color: #666; font-size: 0.9rem;">Dedica tiempo regularmente a tus estudios para mantener el ritmo.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;">
+                    <i class="material-icons">groups</i>
+                </div>
+                <h4 style="color: #667eea; margin-bottom: 1rem;">Participa Actívamente</h4>
+                <p style="color: #666; font-size: 0.9rem;">Interactúa con otros estudiantes y profesores para maximizar tu aprendizaje.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre EduConecta</h3>
+                    <p>Plataforma educativa líder en Venezuela, comprometida con la formación de calidad accesible para todos.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="/catalogo">Catálogo de Cursos</a></li>
+                        <li><a href="/precios">Planes y Precios</a></li>
+                        <li><a href="/blog">Blog Educativo</a></li>
+                        <li><a href="/contacto">Soporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="material-icons">email</i> info@educonecta.edu.ve</li>
+                        <li><i class="material-icons">phone</i> +58 414-123-4567</li>
+                        <li><i class="material-icons">place</i> Caracas, Venezuela</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduConecta. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

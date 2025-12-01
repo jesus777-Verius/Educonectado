@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foros - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Docente</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">5</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="Usuario" class="user-avatar">
+                        <span>María González</span>
+                        <div class="dropdown">
+                            <a href="/docente/perfil">Mi Perfil</a>
+                            <a href="/docente/configuracion">Configuración</a>
+                            <a href="/docente/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/docente/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/docente/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/docente/crear-curso"><i class="material-icons">add</i> Crear Curso</a></li>
+                    <li><a href="/docente/estudiantes"><i class="material-icons">people</i> Estudiantes</a></li>
+                    <li><a href="/docente/calificaciones"><i class="material-icons">edit</i> Calificaciones</a></li>
+                    <li><a href="/docente/tareas"><i class="material-icons">assignment</i> Tareas</a></li>
+                    <li><a href="/docente/evaluaciones"><i class="material-icons">my_location</i> Evaluaciones</a></li>
+                    <li><a href="/docente/foros" class="active"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/docente/analytics"><i class="material-icons">show_chart</i> Analytics</a></li>
+                    <li><a href="/docente/recursos"><i class="material-icons">folder</i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">forum</i> Gestión de Foros</h1>
+                        <p>Modera y participa en las discusiones de tus cursos</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Crear Nuevo Foro</button>
+                </div>
+            </div>
+
+            <!-- Forum Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">forum</i></div>
+                    <div class="stat-info">
+                        <h3>18</h3>
+                        <p>Foros Activos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">edit</i></div>
+                    <div class="stat-info">
+                        <h3>245</h3>
+                        <p>Temas Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">💭</div>
+                    <div class="stat-info">
+                        <h3>1,234</h3>
+                        <p>Respuestas</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">warning</i></div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Por Moderar</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">menu_book</i> Filtrar por Curso</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 200px;">
+                            <option value="all">Todos los cursos</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="programming">Programación Web</option>
+                            <option value="business">Gestión Empresarial</option>
+                            <option value="design">Diseño Gráfico</option>
+                            <option value="english">Inglés Conversacional</option>
+                        </select>
+                        <input type="text" placeholder="Buscar foros..." class="form-control" style="width: 250px;">
+                    </div>
+                </div>
+
+                <!-- Forums Grid -->
+                <div class="course-grid">
+                    <!-- Forum 1 - Active -->
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3><i class="material-icons">menu_book</i> Marketing Digital - General</h3>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Espacio para discusiones generales sobre marketing digital.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">people</i> 89 estudiantes</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">edit</i> 45 temas</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">💭 234 respuestas</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">local_fire_department</i> 12 activos</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Última actividad:</div>
+                                <div style="font-size: 0.9rem;">"Dudas sobre SEO local" por Juan Pérez - Hace 2 horas</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Gestionar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Foro</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Forum 2 - Needs Attention -->
+                    <div class="course-card" style="border: 2px solid #ffc107;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3><i class="material-icons">local_fire_department</i> Programación Web - Ayuda</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Necesita Atención</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Foro de ayuda técnica para problemas de programación.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">people</i> 67 estudiantes</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">edit</i> 38 temas</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">💭 156 respuestas</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">warning</i> 5 sin responder</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Última actividad:</div>
+                                <div style="font-size: 0.9rem;">"Error en mi código CSS" por Ana Rodríguez - Hace 30 minutos</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Responder Pendientes</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Foro</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Forum 3 - Moderation Required -->
+                    <div class="course-card" style="border: 2px solid #dc3545;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3><i class="material-icons">palette</i> Diseño Gráfico - Proyectos</h3>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Moderación Requerida</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Compartir y recibir feedback sobre proyectos de diseño.</p>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;"><i class="material-icons">people</i> 23 estudiantes</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">edit</i> 28 temas</div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">💭 89 respuestas</div>
+                                    <div style="font-size: 0.8rem; color: #666;"><i class="material-icons">warning</i> 3 por moderar</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Última actividad:</div>
+                                <div style="font-size: 0.9rem;">"Comentario inapropiado" reportado - Hace 1 hora</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;">Moderar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Ver Foro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Discussions -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">forum</i> Discusiones Recientes</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Tema</th>
+                                <th style="padding: 1rem; text-align: center;">Foro</th>
+                                <th style="padding: 1rem; text-align: center;">Autor</th>
+                                <th style="padding: 1rem; text-align: center;">Respuestas</th>
+                                <th style="padding: 1rem; text-align: center;">Última Actividad</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Duda sobre SEO local</div>
+                                        <div style="font-size: 0.8rem; color: #666;">¿Cómo optimizar mi negocio para búsquedas locales?</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Marketing</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=J" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Juan Pérez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">8</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">Hace 2 horas</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Responder</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Error en mi código CSS</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Mi flexbox no funciona correctamente</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #764ba2; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Programación</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/764ba2/ffffff?text=A" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Ana Rodríguez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #ffc107;">3</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">Hace 30 minutos</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Sin Respuesta</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-primary" style="font-size: 0.8rem;">Responder</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Tips para mejorar el engagement</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Compartiendo estrategias que funcionaron</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Marketing</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=C" alt="Usuario" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Carlos Méndez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">15</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">Ayer</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Create Forum Form -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">add</i> Crear Nuevo Foro</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nombre del Foro *</label>
+                            <input type="text" class="form-control" placeholder="Ej: Ayuda con JavaScript" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Curso *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un curso</option>
+                                <option value="marketing">Marketing Digital</option>
+                                <option value="programming">Programación Web</option>
+                                <option value="business">Gestión Empresarial</option>
+                                <option value="design">Diseño Gráfico</option>
+                                <option value="english">Inglés Conversacional</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción *</label>
+                        <textarea class="form-control" rows="3" placeholder="Describe el propósito y las reglas de este foro..." required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Foro</label>
+                            <select class="form-control">
+                                <option value="general">Discusión General</option>
+                                <option value="help">Ayuda y Soporte</option>
+                                <option value="projects">Proyectos Compartidos</option>
+                                <option value="announcements">Anuncios</option>
+                                <option value="resources">Recursos Compartidos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Visibilidad</label>
+                            <select class="form-control">
+                                <option value="public">Público (todos los estudiantes)</option>
+                                <option value="private">Privado (solo inscritos)</option>
+                                <option value="moderated">Moderado (requiere aprobación)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">settings</i> Configuración del Foro</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Permitir que los estudiantes creen temas</div>
+                                <div style="font-size: 0.9rem; color: #666;">Los estudiantes pueden iniciar nuevas discusiones</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Moderación requerida</div>
+                                <div style="font-size: 0.9rem; color: #666;">Las publicaciones necesitan aprobación</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Permitir archivos adjuntos</div>
+                                <div style="font-size: 0.9rem; color: #666;">Los estudiantes pueden subir archivos</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Notificaciones automáticas</div>
+                                <div style="font-size: 0.9rem; color: #666;">Notificar nuevas publicaciones</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Crear Foro</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Moderation Queue -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">warning</i> Cola de Moderación</h2>
+                <div class="course-grid">
+                    <div class="course-card" style="border: 2px solid #dc3545;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Comentario inapropiado</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Reportado por: Luisa Fernández</p>
+                                </div>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Alta Prioridad</span>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <p style="margin: 0;">"Este curso es una pérdida de tiempo y el instructor no sabe nada..."</p>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">menu_book</i> Foro: Diseño Gráfico - Proyectos</span>
+                                    <span style="margin-left: 1rem;">👤 Autor: Roberto Silva</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">calendar_today</i> Hace 1 hora</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="flex: 1; border-color: #dc3545; color: #dc3545;">Eliminar</button>
+                                <button class="btn btn-outline" style="flex: 1;">Advertir Usuario</button>
+                                <button class="btn btn-primary" style="flex: 1;">Aprobar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forum Analytics -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Análisis de Foros</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">show_chart</i> Actividad por Semana</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Semana 1</span>
+                                    <span style="font-weight: bold; color: #667eea;">45 temas</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Semana 2</span>
+                                    <span style="font-weight: bold; color: #667eea;">38 temas</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 63%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Semana 3</span>
+                                    <span style="font-weight: bold; color: #667eea;">52 temas</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 87%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Semana 4</span>
+                                    <span style="font-weight: bold; color: #667eea;">28 temas</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 47%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">people</i> Participación Estudiantil</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Estudiantes Activos</span>
+                                    <span style="font-weight: bold; color: #28a745;">156/234</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Promedio de Respuestas</span>
+                                    <span style="font-weight: bold; color: #667eea;">3.2 por tema</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Tiempo de Respuesta</span>
+                                    <span style="font-weight: bold; color: #ffc107;">4.5 horas</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Tasa de Resolución</span>
+                                    <span style="font-weight: bold; color: #28a745;">87%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Crear Foro</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Notificar Estudiantes</button>
+                    <button class="btn btn-outline"><i class="material-icons">assignment</i> Exportar Datos</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configuración Global</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Docente</p>
+        </div>
+    </footer>
+</body>
+</html>

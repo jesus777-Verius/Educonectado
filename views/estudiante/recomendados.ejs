@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Recomendados - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Estudiante</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">3</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=J" alt="Usuario" class="user-avatar">
+                        <span>Juan Pérez</span>
+                        <div class="dropdown">
+                            <a href="/estudiante/perfil">Mi Perfil</a>
+                            <a href="/estudiante/configuracion">Configuración</a>
+                            <a href="/estudiante/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados" class="active"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">star</i> Cursos Recomendados para Ti</h1>
+                <p>Basado en tu historial de aprendizaje y preferencias</p>
+            </div>
+
+            <!-- Personalized Recommendations -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">my_location</i> Recomendaciones Personalizadas</h2>
+                <div class="course-grid">
+                    <!-- Course 1 -->
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Inglés Conversacional Avanzado</h3>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">95% Match</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Perfecto para complementar tu formación en Marketing Digital con habilidades de comunicación internacional.</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.8 (234 reseñas)</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">menu_book</i> 30 lecciones</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">⏱️ 25 horas</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 1,234 estudiantes</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$44.99</span>
+                                <button class="btn btn-primary">Ver Curso</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 2 -->
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Marketing en Redes Sociales</h3>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">92% Match</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Especialízate en Instagram, TikTok y Facebook para potenciar tus estrategias de marketing.</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.7 (189 reseñas)</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">menu_book</i> 18 lecciones</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">⏱️ 15 horas</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 892 estudiantes</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$24.99</span>
+                                <button class="btn btn-primary">Ver Curso</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course 3 -->
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Google Analytics Avanzado</h3>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">88% Match</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Domina el análisis de datos para tomar decisiones basadas en métricas reales.</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.6 (156 reseñas)</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">menu_book</i> 20 lecciones</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">⏱️ 18 horas</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 567 estudiantes</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$34.99</span>
+                                <button class="btn btn-primary">Ver Curso</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Courses -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">local_fire_department</i> Cursos Trending en tu Área</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Email Marketing Automation</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">local_fire_department</i> Trending</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Automatiza tus campañas de email marketing para maximizar conversiones.</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.9 (98 reseñas)</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">menu_book</i> 12 lecciones</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">⏱️ 10 horas</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 234 estudiantes nuevos</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$29.99</span>
+                                <button class="btn btn-primary">Ver Curso</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h3>Content Marketing Strategy</h3>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;"><i class="material-icons">local_fire_department</i> Trending</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Crea estrategias de contenido que atraigan y conviertan a tu audiencia.</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.8 (145 reseñas)</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">menu_book</i> 16 lecciones</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">⏱️ 14 horas</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 189 estudiantes nuevos</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$39.99</span>
+                                <button class="btn btn-primary">Ver Curso</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Based on Similar Students -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">people</i> Estudiantes Similares También Tomaron</h2>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                    <p style="color: #666; margin-bottom: 1rem;">Estudiantes con intereses similares a los tuyos también completaron estos cursos:</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;"><i class="material-icons">menu_book</i> Marketing Digital</span>
+                        <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">💻 Programación</span>
+                        <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;"><i class="material-icons">business</i> Negocios</span>
+                        <span style="background: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;"><i class="material-icons">palette</i> Diseño</span>
+                    </div>
+                </div>
+
+                <div class="course-grid">
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 0.5rem;">Copywriting Persuasivo</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Escribe textos que conviertan y persuadan a tu audiencia.</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.7 (89 reseñas)</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">menu_book</i> 14 lecciones</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">⏱️ 12 horas</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 456 estudiantes similares</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$19.99</span>
+                                <button class="btn btn-primary">Ver Curso</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <img src="/images/OIP.webp" alt="Curso" class="course-image">
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 0.5rem;">WordPress para Negocios</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Crea y gestiona sitios web profesionales con WordPress.</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">star</i> 4.6 (112 reseñas)</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">menu_book</i> 22 lecciones</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 0.9rem; color: #666;">⏱️ 20 horas</span>
+                                    <span style="font-size: 0.9rem; color: #666;"><i class="material-icons">people</i> 378 estudiantes similares</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$34.99</span>
+                                <button class="btn btn-primary">Ver Curso</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Development -->
+            <div class="dashboard-card">
+                <h2>🛠️ Desarrolla Estas Habilidades</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">Basado en tus cursos actuales, te recomendamos desarrollar estas habilidades complementarias:</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">bar_chart</i></div>
+                        <div class="stat-info">
+                            <h3>Análisis de Datos</h3>
+                            <p>Google Analytics, Power BI</p>
+                            <button class="btn btn-outline" style="margin-top: 0.5rem; font-size: 0.8rem;">Ver Cursos</button>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">palette</i></div>
+                        <div class="stat-info">
+                            <h3>Diseño UI/UX</h3>
+                            <p>Figma, Adobe XD</p>
+                            <button class="btn btn-outline" style="margin-top: 0.5rem; font-size: 0.8rem;">Ver Cursos</button>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="material-icons">phone</i></div>
+                        <div class="stat-info">
+                            <h3>Mobile Marketing</h3>
+                            <p>Apps, SMS Marketing</p>
+                            <button class="btn btn-outline" style="margin-top: 0.5rem; font-size: 0.8rem;">Ver Cursos</button>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red">🤖</div>
+                        <div class="stat-info">
+                            <h3>Marketing con IA</h3>
+                            <p>ChatGPT, Automatización</p>
+                            <button class="btn btn-outline" style="margin-top: 0.5rem; font-size: 0.8rem;">Ver Cursos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Path -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">rocket_launch</i> Tu Ruta Profesional Sugerida</h2>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Especialista en Marketing Digital</h3>
+                    <p style="margin-bottom: 1.5rem; opacity: 0.9;">Basado en tu progreso actual, esta podría ser tu especialización ideal:</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.75rem 1rem; border-radius: 8px;">
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;"><i class="material-icons">check_circle</i> Completado</div>
+                            <div style="font-size: 0.9rem;">Marketing Digital Básico</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.2); padding: 0.75rem 1rem; border-radius: 8px;">
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;"><i class="material-icons">local_library</i> En Progreso</div>
+                            <div style="font-size: 0.9rem;">Marketing Digital Completo</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 0.75rem 1rem; border-radius: 8px; border: 1px dashed rgba(255,255,255,0.5);">
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;"><i class="material-icons">my_location</i> Siguiente</div>
+                            <div style="font-size: 0.9rem;">Marketing en Redes Sociales</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 0.75rem 1rem; border-radius: 8px; border: 1px dashed rgba(255,255,255,0.5);">
+                            <div style="font-weight: bold; margin-bottom: 0.25rem;"><i class="material-icons">calendar_today</i> Futuro</div>
+                            <div style="font-size: 0.9rem;">Email Marketing Avanzado</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: #667eea; margin-bottom: 1rem;"><i class="material-icons">my_location</i> Próximo Paso Recomendado</h4>
+                            <h3 style="margin-bottom: 0.5rem;">Marketing en Redes Sociales</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">El curso perfecto para continuar tu especialización</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$24.99</span>
+                                <button class="btn btn-primary">Comenzar Ahora</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: #667eea; margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Habilidad Complementaria</h4>
+                            <h3 style="margin-bottom: 0.5rem;">Google Analytics Avanzado</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Imprescindible para medir el éxito de tus campañas</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span style="color: #667eea; font-weight: bold;">$34.99</span>
+                                <button class="btn btn-primary">Ver Curso</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Goals -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">my_location</i> Configura tus Metas de Aprendizaje</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">Cuéntanos tus objetivos y te recomendaremos los mejores cursos para alcanzarlos:</p>
+                
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                    <button class="btn btn-outline"><i class="material-icons">rocket_launch</i> Cambiar de Carrera</button>
+                    <button class="btn btn-outline"><i class="material-icons">show_chart</i> Promoción Laboral</button>
+                    <button class="btn btn-outline"><i class="material-icons">business</i> Iniciar Negocio</button>
+                    <button class="btn btn-outline"><i class="material-icons">school</i> Desarrollo Personal</button>
+                    <button class="btn btn-outline"><i class="material-icons">lightbulb</i> Aprender por Hobby</button>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px; text-align: center;">
+                    <h3 style="margin-bottom: 1rem;">🤖 IA Learning Assistant</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Nuestra inteligencia artificial analizará tu perfil y creará un plan de aprendizaje personalizado</p>
+                    <button class="btn btn-primary">Crear Mi Plan Personalizado</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

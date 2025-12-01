@@ -1,0 +1,431 @@
+Diseño de Base de Datos para EduConecta
+ESQUEMA RELACIONAL COMPLETO
+1. TABLAS PRINCIPALES DE USUARIOS Y ROLES
+sql
+-- Tabla principal de usuarios
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    cedula VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    nombres VARCHAR(100) NOT NULL,
+    apellidos VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20),
+    fecha_nacimiento DATE,
+    pais VARCHAR(50) DEFAULT 'Venezuela',
+    estado VARCHAR(50),
+    ciudad VARCHAR(50),
+    direccion TEXT,
+    foto_perfil VARCHAR(255),
+    nivel_digital VARCHAR(20) DEFAULT 'principiante', -- principiante, intermedio, avanzado
+    tipo_conexion VARCHAR(20), -- banda_ancha, movil, limitada
+    dispositivo_principal VARCHAR(20), -- pc, tablet, movil
+    esta_activo BOOLEAN DEFAULT true,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla de roles del sistema
+CREATE TABLE roles (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL, -- admin, coordinador, diseñador, docente, estudiante, soporte
+    descripcion TEXT,
+    permisos JSONB -- Permisos específicos en formato JSON
+);
+
+-- Relación usuarios-roles (un usuario puede tener múltiples roles)
+CREATE TABLE usuario_roles (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE,
+    rol_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
+    asignado_por INTEGER REFERENCES usuarios(id),
+    fecha_asignacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(usuario_id, rol_id)
+);
+2. TABLAS ACADÉMICAS
+sql
+-- Categorías de cursos
+CREATE TABLE categorias_cursos (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    icono VARCHAR(50),
+    color VARCHAR(10),
+    orden INTEGER DEFAULT 0,
+    esta_activa BOOLEAN DEFAULT true,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Cursos principales
+CREATE TABLE cursos (
+    id SERIAL PRIMARY KEY,
+    codigo VARCHAR(20) UNIQUE NOT NULL,
+    titulo VARCHAR(200) NOT NULL,
+    descripcion TEXT,
+    objetivos_aprendizaje JSONB, -- Objetivos en formato JSON
+    publico_objetivo TEXT,
+    requisitos_previos TEXT,
+    categoria_id INTEGER REFERENCES categorias_cursos(id),
+    duracion_horas INTEGER, -- Duración estimada en horas
+    nivel_dificultad VARCHAR(20), -- principiante, intermedio, avanzado
+    imagen_portada VARCHAR(255),
+    video_presentacion VARCHAR(255),
+    precio_base DECIMAL(10,2) DEFAULT 0.00,
+    precio_descuento DECIMAL(10,2),
+    moneda VARCHAR(3) DEFAULT 'USD',
+    es_gratuito BOOLEAN DEFAULT false,
+    es_publico BOOLEAN DEFAULT true,
+    estado VARCHAR(20) DEFAULT 'borrador', -- borrador, revision, publicado, archivado
+    version INTEGER DEFAULT 1,
+    creado_por INTEGER REFERENCES usuarios(id),
+    coordinador_id INTEGER REFERENCES usuarios(id), -- Coordinador académico asignado
+    fecha_publicacion TIMESTAMP,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Módulos de cada curso
+CREATE TABLE modulos (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    titulo VARCHAR(200) NOT NULL,
+    descripcion TEXT,
+    orden INTEGER NOT NULL,
+    objetivos_modulo JSONB,
+    duracion_estimada INTEGER, -- En minutos
+    esta_activo BOOLEAN DEFAULT true,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Lecciones/contenidos dentro de los módulos
+CREATE TABLE lecciones (
+    id SERIAL PRIMARY KEY,
+    modulo_id INTEGER REFERENCES modulos(id) ON DELETE CASCADE,
+    titulo VARCHAR(200) NOT NULL,
+    tipo_contenido VARCHAR(20) NOT NULL, -- video, texto, quiz, archivo, enlace, foro
+    contenido TEXT, -- Contenido en HTML o texto
+    url_video VARCHAR(500),
+    url_recurso VARCHAR(500),
+    duracion_video INTEGER, -- En segundos
+    es_gratuito BOOLEAN DEFAULT false,
+    orden INTEGER NOT NULL,
+    esta_activo BOOLEAN DEFAULT true,
+    requiere_completar_anterior BOOLEAN DEFAULT true,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Recursos adicionales de lecciones
+CREATE TABLE recursos_lecciones (
+    id SERIAL PRIMARY KEY,
+    leccion_id INTEGER REFERENCES lecciones(id) ON DELETE CASCADE,
+    nombre_archivo VARCHAR(255) NOT NULL,
+    tipo_archivo VARCHAR(50),
+    url_archivo VARCHAR(500),
+    tamano_bytes INTEGER,
+    es_descargable BOOLEAN DEFAULT true,
+    orden INTEGER DEFAULT 0,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+3. TABLAS DE MATRÍCULAS Y PROGRESO
+sql
+-- Matrículas de estudiantes en cursos
+CREATE TABLE matriculas (
+    id SERIAL PRIMARY KEY,
+    estudiante_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    estado_matricula VARCHAR(20) DEFAULT 'activa', -- activa, completada, pausada, cancelada
+    fecha_matricula TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_completacion TIMESTAMP,
+    fecha_vencimiento TIMESTAMP,
+    progreso_porcentaje DECIMAL(5,2) DEFAULT 0.00,
+    ultima_leccion_vista INTEGER REFERENCES lecciones(id),
+    ultimo_acceso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    calificacion_final DECIMAL(5,2),
+    metodo_pago VARCHAR(50),
+    monto_pagado DECIMAL(10,2),
+    moneda_pago VARCHAR(3) DEFAULT 'USD',
+    UNIQUE(estudiante_id, curso_id)
+);
+
+-- Progreso de lecciones por estudiante
+CREATE TABLE progreso_lecciones (
+    id SERIAL PRIMARY KEY,
+    matricula_id INTEGER REFERENCES matriculas(id) ON DELETE CASCADE,
+    leccion_id INTEGER REFERENCES lecciones(id) ON DELETE CASCADE,
+    esta_completada BOOLEAN DEFAULT false,
+    fecha_inicio TIMESTAMP,
+    fecha_completacion TIMESTAMP,
+    tiempo_dedicado INTEGER DEFAULT 0, -- En segundos
+    intentos_quiz INTEGER DEFAULT 0,
+    mejor_calificacion_quiz DECIMAL(5,2),
+    datos_progreso JSONB, -- Datos adicionales del progreso
+    UNIQUE(matricula_id, leccion_id)
+);
+
+-- Evaluaciones y quizzes
+CREATE TABLE evaluaciones (
+    id SERIAL PRIMARY KEY,
+    leccion_id INTEGER REFERENCES lecciones(id) ON DELETE CASCADE,
+    titulo VARCHAR(200) NOT NULL,
+    instrucciones TEXT,
+    tipo_evaluacion VARCHAR(20), -- quiz, tarea, proyecto, examen
+    puntaje_maximo DECIMAL(5,2),
+    tiempo_limite INTEGER, -- En minutos
+    intentos_permitidos INTEGER DEFAULT 1,
+    es_obligatorio BOOLEAN DEFAULT true,
+    fecha_disponible_desde TIMESTAMP,
+    fecha_disponible_hasta TIMESTAMP,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Preguntas de evaluaciones
+CREATE TABLE preguntas_evaluaciones (
+    id SERIAL PRIMARY KEY,
+    evaluacion_id INTEGER REFERENCES evaluaciones(id) ON DELETE CASCADE,
+    pregunta TEXT NOT NULL,
+    tipo_pregunta VARCHAR(20), -- multiple, verdadero_falso, desarrollo, emparejamiento
+    opciones JSONB, -- Opciones en formato JSON
+    respuesta_correcta JSONB,
+    puntaje_pregunta DECIMAL(5,2) DEFAULT 1.00,
+    orden INTEGER DEFAULT 0,
+    explicacion TEXT
+);
+
+-- Respuestas de estudiantes
+CREATE TABLE respuestas_estudiantes (
+    id SERIAL PRIMARY KEY,
+    progreso_leccion_id INTEGER REFERENCES progreso_lecciones(id) ON DELETE CASCADE,
+    pregunta_id INTEGER REFERENCES preguntas_evaluaciones(id) ON DELETE CASCADE,
+    respuesta_estudiante JSONB,
+    es_correcta BOOLEAN,
+    puntaje_obtenido DECIMAL(5,2),
+    intento_numero INTEGER DEFAULT 1,
+    fecha_respuesta TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+4. TABLAS DE GESTIÓN DOCENTE
+sql
+-- Asignación de docentes a cursos
+CREATE TABLE docente_cursos (
+    id SERIAL PRIMARY KEY,
+    docente_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    rol_docente VARCHAR(20), -- titular, asistente, tutor
+    fecha_asignacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    asignado_por INTEGER REFERENCES usuarios(id),
+    UNIQUE(docente_id, curso_id)
+);
+
+-- Foros de discusión
+CREATE TABLE foros (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    titulo VARCHAR(200) NOT NULL,
+    descripcion TEXT,
+    tipo_foro VARCHAR(20), -- general, por_modulo, por_leccion
+    modulo_id INTEGER REFERENCES modulos(id),
+    leccion_id INTEGER REFERENCES lecciones(id),
+    es_publico BOOLEAN DEFAULT true,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    creado_por INTEGER REFERENCES usuarios(id)
+);
+
+-- Hilos de discusión
+CREATE TABLE hilos_foro (
+    id SERIAL PRIMARY KEY,
+    foro_id INTEGER REFERENCES foros(id) ON DELETE CASCADE,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    titulo VARCHAR(200) NOT NULL,
+    contenido TEXT NOT NULL,
+    es_fijado BOOLEAN DEFAULT false,
+    esta_cerrado BOOLEAN DEFAULT false,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Mensajes en hilos
+CREATE TABLE mensajes_foro (
+    id SERIAL PRIMARY KEY,
+    hilo_id INTEGER REFERENCES hilos_foro(id) ON DELETE CASCADE,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    contenido TEXT NOT NULL,
+    mensaje_padre_id INTEGER REFERENCES mensajes_foro(id), -- Para respuestas anidadas
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_edicion TIMESTAMP
+);
+5. TABLAS ADMINISTRATIVAS Y FINANCIERAS
+sql
+-- Planes de suscripción
+CREATE TABLE planes (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    tipo_plan VARCHAR(20), -- individual, institucional, empresarial
+    precio_mensual DECIMAL(10,2),
+    precio_anual DECIMAL(10,2),
+    moneda VARCHAR(3) DEFAULT 'USD',
+    max_cursos INTEGER,
+    max_estudiantes INTEGER, -- Para planes institucionales
+    caracteristicas JSONB, -- Características en formato JSON
+    esta_activo BOOLEAN DEFAULT true,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Transacciones y pagos
+CREATE TABLE transacciones (
+    id SERIAL PRIMARY KEY,
+    referencia VARCHAR(100) UNIQUE NOT NULL,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    plan_id INTEGER REFERENCES planes(id),
+    curso_id INTEGER REFERENCES cursos(id),
+    monto DECIMAL(10,2) NOT NULL,
+    moneda VARCHAR(3) DEFAULT 'USD',
+    metodo_pago VARCHAR(50), -- paypal, transferencia, pago_movil, zelle
+    estado_pago VARCHAR(20) DEFAULT 'pendiente', -- pendiente, completado, fallido, reembolsado
+    datos_pago JSONB, -- Datos específicos del método de pago
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Instituciones/clientes corporativos
+CREATE TABLE instituciones (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(200) NOT NULL,
+    rif VARCHAR(20),
+    tipo_institucion VARCHAR(50), -- educativa, empresarial, gubernamental, ong
+    contacto_nombre VARCHAR(100),
+    contacto_email VARCHAR(255),
+    contacto_telefono VARCHAR(20),
+    direccion TEXT,
+    plan_contratado INTEGER REFERENCES planes(id),
+    max_usuarios INTEGER,
+    fecha_inicio_contrato DATE,
+    fecha_fin_contrato DATE,
+    esta_activa BOOLEAN DEFAULT true,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Usuarios vinculados a instituciones
+CREATE TABLE usuario_instituciones (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE,
+    institucion_id INTEGER REFERENCES instituciones(id) ON DELETE CASCADE,
+    rol_institucion VARCHAR(50),
+    fecha_vinculacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(usuario_id, institucion_id)
+);
+6. TABLAS DE SOPORTE Y COMUNICACIÓN
+sql
+-- Sistema de tickets de soporte
+CREATE TABLE tickets_soporte (
+    id SERIAL PRIMARY KEY,
+    codigo_ticket VARCHAR(20) UNIQUE NOT NULL,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    asunto VARCHAR(200) NOT NULL,
+    descripcion TEXT NOT NULL,
+    tipo_ticket VARCHAR(50), -- tecnico, academico, administrativo, facturacion
+    prioridad VARCHAR(20) DEFAULT 'media', -- baja, media, alta, urgente
+    estado VARCHAR(20) DEFAULT 'abierto', -- abierto, en_progreso, esperando_usuario, cerrado
+    asignado_a INTEGER REFERENCES usuarios(id), -- Agente de soporte
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_cierre TIMESTAMP
+);
+
+-- Mensajes de tickets
+CREATE TABLE mensajes_tickets (
+    id SERIAL PRIMARY KEY,
+    ticket_id INTEGER REFERENCES tickets_soporte(id) ON DELETE CASCADE,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    mensaje TEXT NOT NULL,
+    es_interno BOOLEAN DEFAULT false, -- Mensajes del equipo interno
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Notificaciones del sistema
+CREATE TABLE notificaciones (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER REFERENCES usuarios(id) ON DELETE CASCADE,
+    titulo VARCHAR(200) NOT NULL,
+    mensaje TEXT NOT NULL,
+    tipo_notificacion VARCHAR(50),
+    enlace VARCHAR(500),
+    es_leida BOOLEAN DEFAULT false,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+7. TABLAS DE ANALYTICS Y LOGS
+sql
+-- Logs de acceso y actividad
+CREATE TABLE logs_actividad (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    tipo_actividad VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    ip_address INET,
+    user_agent TEXT,
+    recurso_afectado VARCHAR(500),
+    metadata JSONB,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Métricas de uso de la plataforma
+CREATE TABLE metricas_plataforma (
+    id SERIAL PRIMARY KEY,
+    fecha_metrica DATE NOT NULL,
+    total_usuarios INTEGER DEFAULT 0,
+    usuarios_activos INTEGER DEFAULT 0,
+    nuevos_usuarios INTEGER DEFAULT 0,
+    total_cursos INTEGER DEFAULT 0,
+    cursos_activos INTEGER DEFAULT 0,
+    matriculas_nuevas INTEGER DEFAULT 0,
+    completaciones_curso INTEGER DEFAULT 0,
+    ingresos_totales DECIMAL(15,2) DEFAULT 0.00,
+    tasa_completacion DECIMAL(5,2) DEFAULT 0.00,
+    UNIQUE(fecha_metrica)
+);
+
+-- Datos de rendimiento técnico
+CREATE TABLE metricas_rendimiento (
+    id SERIAL PRIMARY KEY,
+    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    endpoint VARCHAR(500),
+    tiempo_respuesta_ms INTEGER,
+    memoria_uso_mb INTEGER,
+    cpu_porcentaje DECIMAL(5,2),
+    usuarios_conectados INTEGER
+);
+🔍 ÍNDICES RECOMENDADOS
+sql
+-- Índices para mejorar rendimiento
+CREATE INDEX idx_usuarios_email ON usuarios(email);
+CREATE INDEX idx_usuarios_cedula ON usuarios(cedula);
+CREATE INDEX idx_cursos_categoria ON cursos(categoria_id);
+CREATE INDEX idx_cursos_estado ON cursos(estado);
+CREATE INDEX idx_matriculas_estudiante ON matriculas(estudiante_id);
+CREATE INDEX idx_matriculas_curso ON matriculas(curso_id);
+CREATE INDEX idx_progreso_matricula ON progreso_lecciones(matricula_id);
+CREATE INDEX idx_progreso_leccion ON progreso_lecciones(leccion_id);
+CREATE INDEX idx_transacciones_usuario ON transacciones(usuario_id);
+CREATE INDEX idx_transacciones_estado ON transacciones(estado_pago);
+CREATE INDEX idx_tickets_estado ON tickets_soporte(estado);
+CREATE INDEX idx_tickets_usuario ON tickets_soporte(usuario_id);
+CREATE INDEX idx_logs_usuario_fecha ON logs_actividad(usuario_id, fecha_creacion);
+🔄 RELACIONES PRINCIPALES
+text
+Usuarios ←→ Roles (Muchos a Muchos)
+Usuarios ←→ Cursos (Matrículas)
+Cursos ←→ Módulos (Uno a Muchos)
+Módulos ←→ Lecciones (Uno a Muchos)
+Lecciones ←→ Evaluaciones (Uno a Uno/Opcional)
+Estudiantes ←→ Progreso (Uno a Muchos)
+Docentes ←→ Cursos (Muchos a Muchos)
+Instituciones ←→ Usuarios (Muchos a Muchos)
+🎯 CONSIDERACIONES PARA VENEZUELA
+Optimizaciones Específicas:
+Campos para moneda dual (USD y VES)
+
+Registro de tipo de conexión para optimizar contenido
+
+Nivel de alfabetización digital para personalizar experiencia
+
+Soporte para métodos de pago locales (Pago Móvil, transferencias)

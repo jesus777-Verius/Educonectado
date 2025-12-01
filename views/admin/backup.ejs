@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backup y Restauración - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup" class="active"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">backup</i> Backup y Restauración</h1>
+                        <p>Gestiona copias de seguridad y recuperación del sistema</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">backup</i> Crear Backup Ahora</button>
+                </div>
+            </div>
+
+            <!-- Backup Overview -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Estado de Backups</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">check_circle</i></div>
+                        <div class="stat-info">
+                            <h3>Activo</h3>
+                            <p>Estado del Sistema</p>
+                            <div style="font-size: 0.8rem; color: #28a745;">Backups automáticos funcionando</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">backup</i></div>
+                        <div class="stat-info">
+                            <h3>23</h3>
+                            <p>Backups Totales</p>
+                            <div style="font-size: 0.8rem; color: #667eea;">Últimos 30 días</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange">📦</div>
+                        <div class="stat-info">
+                            <h3>2.3 GB</h3>
+                            <p>Tamaño Total</p>
+                            <div style="font-size: 0.8rem; color: #ffc107;">Último backup: 245 MB</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red"><i class="material-icons">schedule</i></div>
+                        <div class="stat-info">
+                            <h3>2 días</h3>
+                            <p>Último Backup</p>
+                            <div style="font-size: 0.8rem; color: #28a745;">27 Nov 2024, 03:00 AM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storage Usage -->
+            <div class="dashboard-card">
+                <h2>📦 Uso de Almacenamiento</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">backup</i> Espacio de Backup</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Espacio Total</span>
+                                    <span style="font-weight: bold; color: #667eea;">10 GB</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Espacio Usado</span>
+                                    <span style="font-weight: bold; color: #ffc107;">2.3 GB</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 23%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Espacio Disponible</span>
+                                    <span style="font-weight: bold; color: #28a745;">7.7 GB</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 77%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Distribución por Tipo</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">🗄️ Base de Datos</span>
+                                    <span style="font-weight: bold; color: #667eea;">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">folder</i> Archivos</span>
+                                    <span style="font-weight: bold; color: #667eea;">35%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 35%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">📸 Media</span>
+                                    <span style="font-weight: bold; color: #667eea;">15%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">settings</i> Configuración</span>
+                                    <span style="font-weight: bold; color: #667eea;">5%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 5%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backup Schedule -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">calendar_today</i> Programación de Backups</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Backup *</label>
+                            <select class="form-control" required>
+                                <option value="full">Completo</option>
+                                <option value="incremental">Incremental</option>
+                                <option value="differential">Diferencial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Frecuencia *</label>
+                            <select class="form-control" required>
+                                <option value="daily">Diario</option>
+                                <option value="weekly">Semanal</option>
+                                <option value="monthly">Mensual</option>
+                                <option value="custom">Personalizado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Hora de Ejecución *</label>
+                            <input type="time" class="form-control" value="03:00" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Día de la Semana</label>
+                            <select class="form-control">
+                                <option value="monday">Lunes</option>
+                                <option value="tuesday">Martes</option>
+                                <option value="wednesday">Miércoles</option>
+                                <option value="thursday">Jueves</option>
+                                <option value="friday">Viernes</option>
+                                <option value="saturday">Sábado</option>
+                                <option value="sunday">Domingo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;">🗄️ Componentes a Incluir</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Base de Datos</div>
+                                <div style="font-size: 0.9rem; color: #666;">Incluir todas las tablas y datos</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Archivos de Usuario</div>
+                                <div style="font-size: 0.9rem; color: #666;">Documentos, imágenes y archivos subidos</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Media de Cursos</div>
+                                <div style="font-size: 0.9rem; color: #666;">Videos, imágenes y recursos multimedia</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Configuración del Sistema</div>
+                                <div style="font-size: 0.9rem; color: #666;">Archivos de configuración y settings</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">settings</i> Opciones Adicionales</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Compresión</div>
+                                <div style="font-size: 0.9rem; color: #666;">Comprimir archivos para reducir tamaño</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Encriptación</div>
+                                <div style="font-size: 0.9rem; color: #666;">Encriptar backup con AES-256</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Notificación</div>
+                                <div style="font-size: 0.9rem; color: #666;">Enviar email al completar backup</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;"><i class="material-icons">backup</i> Backup Manual</button>
+                        <button type="submit" class="btn btn-primary"><i class="material-icons">calendar_today</i> Guardar Programación</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Backup History -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">assignment</i> Historial de Backups</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Backup</th>
+                                <th style="padding: 1rem; text-align: center;">Tipo</th>
+                                <th style="padding: 1rem; text-align: center;">Fecha</th>
+                                <th style="padding: 1rem; text-align: center;">Tamaño</th>
+                                <th style="padding: 1rem; text-align: center;">Duración</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Backup_20241127_0300</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Backup automático programado</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Completo</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">27 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">03:00 AM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">245 MB</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">12 min</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Exitoso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">📥 Descargar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">♻️ Restaurar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;"><i class="material-icons">delete</i> Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Backup_20241126_0300</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Backup automático programado</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Completo</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">26 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">03:00 AM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">238 MB</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">10 min</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Exitoso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">📥 Descargar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">♻️ Restaurar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;"><i class="material-icons">delete</i> Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Backup_Manual_20241125_1430</div>
+                                        <div style="font-size: 0.8rem; color: #666;">Backup manual iniciado por admin</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Incremental</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">25 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">02:30 PM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">89 MB</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #28a745;">5 min</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Exitoso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">📥 Descargar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">♻️ Restaurar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;"><i class="material-icons">delete</i> Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Restore Options -->
+            <div class="dashboard-card">
+                <h2>♻️ Opciones de Restauración</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">🗄️ Restauración Completa</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Restaurar todo el sistema desde un backup</p>
+                                </div>
+                                <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Crítico</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Incluye:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Base de datos completa<br>• Todos los archivos<br>• Configuración del sistema</div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Tiempo estimado:</div>
+                                <div style="font-size: 0.9rem; font-weight: bold; color: #dc3545;">2-4 horas</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; border-color: #dc3545; background: #dc3545;"><i class="material-icons">warning</i> Restaurar Completo</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">🗄️ Restauración Parcial</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Restaurar componentes específicos</p>
+                                </div>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Alto</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Opciones:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Solo base de datos<br>• Solo archivos<br>• Componentes seleccionados</div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Tiempo estimado:</div>
+                                <div style="font-size: 0.9rem; font-weight: bold; color: #ffc107;">30-90 minutos</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;"><i class="material-icons">build</i> Restaurar Parcial</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">folder</i> Restauración de Archivos</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Restaurar solo archivos y media</p>
+                                </div>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Medio</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Incluye:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Archivos de usuario<br>• Media de cursos<br>• Documentos</div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Tiempo estimado:</div>
+                                <div style="font-size: 0.9rem; font-weight: bold; color: #28a745;">15-30 minutos</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;"><i class="material-icons">folder</i> Restaurar Archivos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- External Storage -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">cloud</i> Almacenamiento Externo</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">🗃️ Amazon S3</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Almacenamiento en la nube de AWS</p>
+                                </div>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span>📦 educonecta-backups</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">language</i> US-East-1</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">security</i> Encriptado</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Configuración:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Replicación automática<br>• Versionado activado<br>• Lifecycle rules</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">settings</i> Configurar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">refresh</i> Probar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">bar_chart</i> Estadísticas</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">cloud</i> Google Drive</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Almacenamiento en Google Cloud</p>
+                                </div>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">No configurado</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span>📦 No conectado</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">language</i> Global</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">security</i> Disponible</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Características:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• 15 GB gratis<br>• Acceso fácil<br>• Compartir archivos</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;"><i class="material-icons">power</i> Conectar</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">backup</i> Dropbox</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Almacenamiento sincronizado</p>
+                                </div>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">No configurado</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span>📦 No conectado</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">language</i> Global</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">security</i> Disponible</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Características:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• 2 GB gratis<br>• Sincronización<br>• Version history</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;"><i class="material-icons">power</i> Conectar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">backup</i> Backup Manual</button>
+                    <button class="btn btn-outline">♻️ Restaurar Sistema</button>
+                    <button class="btn btn-outline">📥 Descargar Backups</button>
+                    <button class="btn btn-outline"><i class="material-icons">delete</i> Limpiar Backups Antiguos</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configurar Programación</button>
+                    <button class="btn btn-outline"><i class="material-icons">cloud</i> Gestionar Almacenamiento</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1460 @@
+<%- include('layout') %>
+
+<style>
+    /* Library Styles */
+    .library-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .library-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .library-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 300px;
+        height: 300px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    
+    .header-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .header-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+    }
+    
+    .header-stats {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+    }
+    
+    .stat-label {
+        opacity: 0.8;
+        font-size: 0.9rem;
+    }
+    
+    /* Search and Filters */
+    .search-section {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        margin-bottom: 2rem;
+    }
+    
+    .search-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .search-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .search-bar {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .search-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .search-input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .search-btn {
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .search-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .filter-label {
+        font-weight: 600;
+        color: #555;
+        font-size: 0.9rem;
+    }
+    
+    .filter-select {
+        padding: 0.5rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .filter-select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    /* Categories */
+    .categories-section {
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .category-card {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .category-card:hover {
+        border-color: #667eea;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+    }
+    
+    .category-card.active {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-color: #667eea;
+    }
+    
+    .category-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 1.5rem;
+        background: rgba(102, 126, 234, 0.1);
+        color: #667eea;
+        transition: all 0.3s ease;
+    }
+    
+    .category-card:hover .category-icon {
+        background: rgba(102, 126, 234, 0.2);
+        transform: scale(1.1);
+    }
+    
+    .category-card.active .category-icon {
+        background: rgba(255,255,255,0.2);
+        color: white;
+    }
+    
+    .category-name {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: #333;
+    }
+    
+    .category-card.active .category-name {
+        color: white;
+    }
+    
+    .category-count {
+        font-size: 0.85rem;
+        color: #666;
+    }
+    
+    .category-card.active .category-count {
+        color: rgba(255,255,255,0.8);
+    }
+    
+    /* Resources Grid */
+    .resources-section {
+        margin-bottom: 2rem;
+    }
+    
+    .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .resource-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .resource-preview {
+        height: 200px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+    }
+    
+    .resource-type-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .resource-content {
+        padding: 1.5rem;
+    }
+    
+    .resource-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+    }
+    
+    .resource-author {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .resource-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: #666;
+        font-size: 0.85rem;
+    }
+    
+    .resource-description {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    .resource-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        text-decoration: none;
+        font-weight: 600;
+        flex: 1;
+        justify-content: center;
+        min-width: 100px;
+    }
+    
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+    
+    .btn-outline {
+        background: transparent;
+        color: #667eea;
+        border: 2px solid #667eea;
+    }
+    
+    .btn-outline:hover {
+        background: #667eea;
+        color: white;
+    }
+    
+    /* Pagination */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+    }
+    
+    .page-btn {
+        padding: 0.5rem 0.75rem;
+        border: 2px solid #e9ecef;
+        background: white;
+        color: #666;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+    
+    .page-btn:hover {
+        border-color: #667eea;
+        color: #667eea;
+    }
+    
+    .page-btn.active {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-color: #667eea;
+    }
+    
+    .page-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .search-bar {
+            flex-direction: column;
+        }
+        
+        .categories-grid {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+        
+        .resources-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .resource-actions {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<div class="library-container">
+    <!-- Header -->
+    <div class="library-header">
+        <div class="header-content">
+            <div>
+                <h1 class="header-title">Biblioteca Virtual</h1>
+                <p class="header-subtitle">Explora nuestra colección de recursos educativos</p>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1,250+</div>
+                        <div class="stat-label">Recursos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">Categorías</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Nuevos esta semana</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-header">
+            <h2 class="search-title">
+                <span class="material-symbols-outlined">search</span>
+                Buscar Recursos
+            </h2>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Buscar libros, videos, artículos..." id="searchInput">
+            <button class="search-btn" onclick="searchResources()">
+                <span class="material-symbols-outlined">search</span>
+                Buscar
+            </button>
+        </div>
+        <div class="filters-grid">
+            <div class="filter-group">
+                <label class="filter-label">Tipo de Recurso</label>
+                <select class="filter-select" id="typeFilter" onchange="filterResources()">
+                    <option value="">Todos los tipos</option>
+                    <option value="book">Libros</option>
+                    <option value="video">Videos</option>
+                    <option value="article">Artículos</option>
+                    <option value="course">Cursos</option>
+                    <option value="document">Documentos</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Categoría</label>
+                <select class="filter-select" id="categoryFilter" onchange="filterResources()">
+                    <option value="">Todas las categorías</option>
+                    <option value="marketing">Marketing Digital</option>
+                    <option value="development">Desarrollo Web</option>
+                    <option value="business">Negocios</option>
+                    <option value="languages">Idiomas</option>
+                    <option value="design">Diseño</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Nivel</label>
+                <select class="filter-select" id="levelFilter" onchange="filterResources()">
+                    <option value="">Todos los niveles</option>
+                    <option value="beginner">Principiante</option>
+                    <option value="intermediate">Intermedio</option>
+                    <option value="advanced">Avanzado</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Ordenar por</label>
+                <select class="filter-select" id="sortFilter" onchange="sortResources()">
+                    <option value="recent">Más Recientes</option>
+                    <option value="popular">Más Populares</option>
+                    <option value="rating">Mejor Valorados</option>
+                    <option value="title">Alfabético</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Section -->
+    <div class="categories-section">
+        <h2 class="section-title">
+            <span class="material-symbols-outlined">category</span>
+            Categorías Populares
+        </h2>
+        <div class="categories-grid">
+            <div class="category-card active" onclick="selectCategory('all')">
+                <div class="category-icon">
+                    <span class="material-symbols-outlined">apps</span>
+                </div>
+                <div class="category-name">Todos</div>
+                <div class="category-count">1,250 recursos</div>
+            </div>
+            
+            <div class="category-card" onclick="selectCategory('marketing')">
+                <div class="category-icon">
+                    <span class="material-symbols-outlined">trending_up</span>
+                </div>
+                <div class="category-name">Marketing</div>
+                <div class="category-count">320 recursos</div>
+            </div>
+            
+            <div class="category-card" onclick="selectCategory('development')">
+                <div class="category-icon">
+                    <span class="material-symbols-outlined">code</span>
+                </div>
+                <div class="category-name">Desarrollo</div>
+                <div class="category-count">280 recursos</div>
+            </div>
+            
+            <div class="category-card" onclick="selectCategory('business')">
+                <div class="category-icon">
+                    <span class="material-symbols-outlined">business</span>
+                </div>
+                <div class="category-name">Negocios</div>
+                <div class="category-count">195 recursos</div>
+            </div>
+            
+            <div class="category-card" onclick="selectCategory('languages')">
+                <div class="category-icon">
+                    <span class="material-symbols-outlined">language</span>
+                </div>
+                <div class="category-name">Idiomas</div>
+                <div class="category-count">150 recursos</div>
+            </div>
+            
+            <div class="category-card" onclick="selectCategory('design')">
+                <div class="category-icon">
+                    <span class="material-symbols-outlined">palette</span>
+                </div>
+                <div class="category-name">Diseño</div>
+                <div class="category-count">125 recursos</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="resources-section">
+        <h2 class="section-title">
+            <span class="material-symbols-outlined">library_books</span>
+            Recursos Disponibles
+        </h2>
+        <div class="resources-grid" id="resourcesGrid">
+            <div class="resource-card" data-type="book" data-category="marketing" data-level="intermediate" data-title="guía definitiva de marketing digital">
+                <div class="resource-preview">
+                    <span class="material-symbols-outlined">menu_book</span>
+                    <div class="resource-type-badge">Libro</div>
+                </div>
+                <div class="resource-content">
+                    <h3 class="resource-title">Guía Definitiva de Marketing Digital</h3>
+                    <div class="resource-author">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                        Carlos Rodríguez
+                    </div>
+                    <div class="resource-meta">
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                            450 páginas
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                            4.8/5
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            2.3k vistas
+                        </div>
+                    </div>
+                    <p class="resource-description">Una guía completa que cubre todos los aspectos del marketing digital moderno, desde SEO hasta redes sociales.</p>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="openResource(1)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            Leer
+                        </button>
+                        <button class="btn btn-outline" onclick="downloadResource(1)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                            Descargar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card" data-type="video" data-category="development" data-level="beginner" data-title="curso completo de javascript">
+                <div class="resource-preview">
+                    <span class="material-symbols-outlined">play_circle</span>
+                    <div class="resource-type-badge">Video</div>
+                </div>
+                <div class="resource-content">
+                    <h3 class="resource-title">Curso Completo de JavaScript</h3>
+                    <div class="resource-author">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                        Ana Martínez
+                    </div>
+                    <div class="resource-meta">
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                            12 horas
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                            4.9/5
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            5.1k vistas
+                        </div>
+                    </div>
+                    <p class="resource-description">Aprende JavaScript desde cero con este curso completo que incluye proyectos prácticos y ejercicios.</p>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="openResource(2)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">play_arrow</span>
+                            Ver
+                        </button>
+                        <button class="btn btn-outline" onclick="addToFavorites(2)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">favorite</span>
+                            Favorito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card" data-type="article" data-category="business" data-level="advanced" data-title="estrategias de crecimiento empresarial">
+                <div class="resource-preview">
+                    <span class="material-symbols-outlined">article</span>
+                    <div class="resource-type-badge">Artículo</div>
+                </div>
+                <div class="resource-content">
+                    <h3 class="resource-title">Estrategias de Crecimiento Empresarial</h3>
+                    <div class="resource-author">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                        Roberto Silva
+                    </div>
+                    <div class="resource-meta">
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                            15 min lectura
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                            4.7/5
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            890 vistas
+                        </div>
+                    </div>
+                    <p class="resource-description">Descubre las estrategias más efectivas para hacer crecer tu negocio en el mercado actual.</p>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="openResource(3)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            Leer
+                        </button>
+                        <button class="btn btn-outline" onclick="shareResource(3)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">share</span>
+                            Compartir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card" data-type="course" data-category="languages" data-level="intermediate" data-title="inglés para negocios">
+                <div class="resource-preview">
+                    <span class="material-symbols-outlined">school</span>
+                    <div class="resource-type-badge">Curso</div>
+                </div>
+                <div class="resource-content">
+                    <h3 class="resource-title">Inglés para Negocios</h3>
+                    <div class="resource-author">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                        María González
+                    </div>
+                    <div class="resource-meta">
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                            8 semanas
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                            4.6/5
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            1.2k vistas
+                        </div>
+                    </div>
+                    <p class="resource-description">Mejora tu inglés profesional con vocabulario y situaciones reales del mundo empresarial.</p>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="openResource(4)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">play_arrow</span>
+                            Comenzar
+                        </button>
+                        <button class="btn btn-outline" onclick="addToFavorites(4)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">favorite</span>
+                            Favorito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card" data-type="document" data-category="design" data-level="beginner" data-title="fundamentos del diseño gráfico">
+                <div class="resource-preview">
+                    <span class="material-symbols-outlined">description</span>
+                    <div class="resource-type-badge">Documento</div>
+                </div>
+                <div class="resource-content">
+                    <h3 class="resource-title">Fundamentos del Diseño Gráfico</h3>
+                    <div class="resource-author">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                        Laura Pérez
+                    </div>
+                    <div class="resource-meta">
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                            85 páginas
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                            4.5/5
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            650 vistas
+                        </div>
+                    </div>
+                    <p class="resource-description">Introducción completa a los principios básicos del diseño gráfico y la teoría del color.</p>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="openResource(5)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            Ver
+                        </button>
+                        <button class="btn btn-outline" onclick="downloadResource(5)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                            Descargar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resource-card" data-type="video" data-category="marketing" data-level="advanced" data-title="técnicas avanzadas de seo">
+                <div class="resource-preview">
+                    <span class="material-symbols-outlined">play_circle</span>
+                    <div class="resource-type-badge">Video</div>
+                </div>
+                <div class="resource-content">
+                    <h3 class="resource-title">Técnicas Avanzadas de SEO</h3>
+                    <div class="resource-author">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">person</span>
+                        David Chen
+                    </div>
+                    <div class="resource-meta">
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">schedule</span>
+                            2.5 horas
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">star</span>
+                            4.9/5
+                        </div>
+                        <div class="meta-item">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">visibility</span>
+                            3.8k vistas
+                        </div>
+                    </div>
+                    <p class="resource-description">Aprende las técnicas más avanzadas de optimización para motores de búsqueda.</p>
+                    <div class="resource-actions">
+                        <button class="btn btn-primary" onclick="openResource(6)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">play_arrow</span>
+                            Ver
+                        </button>
+                        <button class="btn btn-outline" onclick="addToFavorites(6)">
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">favorite</span>
+                            Favorito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <button class="page-btn" onclick="changePage('prev')" disabled>
+            <span class="material-symbols-outlined" style="font-size: 1rem;">chevron_left</span>
+        </button>
+        <button class="page-btn active" onclick="goToPage(1)">1</button>
+        <button class="page-btn" onclick="goToPage(2)">2</button>
+        <button class="page-btn" onclick="goToPage(3)">3</button>
+        <span style="padding: 0 1rem;">...</span>
+        <button class="page-btn" onclick="goToPage(12)">12</button>
+        <button class="page-btn" onclick="changePage('next')">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span>
+        </button>
+    </div>
+</div>
+
+<script>
+    // Library Functions
+    function searchResources() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        showNotification(`Buscando: "${searchTerm}"`);
+        
+        // Filter resources based on search term
+        const resources = document.querySelectorAll('.resource-card');
+        resources.forEach(resource => {
+            const title = resource.dataset.title.toLowerCase();
+            if (title.includes(searchTerm)) {
+                resource.style.display = '';
+            } else {
+                resource.style.display = 'none';
+            }
+        });
+    }
+
+    function filterResources() {
+        const type = document.getElementById('typeFilter').value;
+        const category = document.getElementById('categoryFilter').value;
+        const level = document.getElementById('levelFilter').value;
+        
+        const resources = document.querySelectorAll('.resource-card');
+        resources.forEach(resource => {
+            const resourceType = resource.dataset.type;
+            const resourceCategory = resource.dataset.category;
+            const resourceLevel = resource.dataset.level;
+            
+            const matchesType = !type || resourceType === type;
+            const matchesCategory = !category || resourceCategory === category;
+            const matchesLevel = !level || resourceLevel === level;
+            
+            if (matchesType && matchesCategory && matchesLevel) {
+                resource.style.display = '';
+            } else {
+                resource.style.display = 'none';
+            }
+        });
+    }
+
+    function sortResources() {
+        const sortBy = document.getElementById('sortFilter').value;
+        showNotification(`Ordenando por: ${sortBy}`);
+        
+        // Implement sorting logic here
+        const grid = document.getElementById('resourcesGrid');
+        const resources = Array.from(grid.querySelectorAll('.resource-card'));
+        
+        resources.sort((a, b) => {
+            // Different sorting logic based on sortBy value
+            switch(sortBy) {
+                case 'title':
+                    return a.dataset.title.localeCompare(b.dataset.title);
+                case 'popular':
+                    // Sort by views (would need to extract from meta)
+                    return 0;
+                case 'rating':
+                    // Sort by rating (would need to extract from meta)
+                    return 0;
+                default:
+                    return 0;
+            }
+        });
+        
+        // Re-append sorted resources
+        resources.forEach(resource => grid.appendChild(resource));
+    }
+
+    function selectCategory(category) {
+        // Update active category
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.classList.remove('active');
+        });
+        event.target.closest('.category-card').classList.add('active');
+        
+        // Filter resources by category
+        const resources = document.querySelectorAll('.resource-card');
+        resources.forEach(resource => {
+            if (category === 'all' || resource.dataset.category === category) {
+                resource.style.display = '';
+            } else {
+                resource.style.display = 'none';
+            }
+        });
+        
+        showNotification(`Filtrando por categoría: ${category}`);
+    }
+
+    function openResource(resourceId) {
+        showNotification('Abriendo recurso...');
+        setTimeout(() => {
+            // Open resource in new tab or modal
+            window.open(`/library/resource/${resourceId}`, '_blank');
+        }, 1000);
+    }
+
+    function downloadResource(resourceId) {
+        showNotification('Descargando recurso...');
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = `/library/download/${resourceId}`;
+            link.download = `resource-${resourceId}.pdf`;
+            link.click();
+        }, 1500);
+    }
+
+    function addToFavorites(resourceId) {
+        showNotification('Añadiendo a favoritos...');
+        setTimeout(() => {
+            showNotification('✅ Recurso añadido a favoritos');
+        }, 1000);
+    }
+
+    function shareResource(resourceId) {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Recurso Educativo',
+                text: 'Mira este increíble recurso que encontré en EduConecta',
+                url: window.location.href + '/resource/' + resourceId
+            });
+        } else {
+            // Fallback - copy to clipboard
+            navigator.clipboard.writeText(window.location.href + '/resource/' + resourceId);
+            showNotification('Enlace copiado al portapapeles');
+        }
+    }
+
+    function changePage(direction) {
+        const currentPage = parseInt(document.querySelector('.page-btn.active').textContent);
+        
+        if (direction === 'prev' && currentPage > 1) {
+            goToPage(currentPage - 1);
+        } else if (direction === 'next' && currentPage < 12) {
+            goToPage(currentPage + 1);
+        }
+    }
+
+    function goToPage(page) {
+        // Update active page button
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.textContent == page) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Enable/disable pagination buttons
+        const prevBtn = document.querySelector('.page-btn:first-child');
+        const nextBtn = document.querySelector('.page-btn:last-child');
+        
+        prevBtn.disabled = page === 1;
+        nextBtn.disabled = page === 12;
+        
+        showNotification(`Cargando página ${page}...`);
+        
+        // Load resources for the selected page
+        // In a real application, this would make an API call
+        setTimeout(() => {
+            showNotification(`Página ${page} cargada`);
+        }, 1000);
+    }
+
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'alert alert-success';
+        notification.textContent = message;
+        notification.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 9999; animation: slideIn 0.3s ease; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Search on Enter key
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            searchResources();
+        }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate stats on page load
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+            const finalValue = stat.textContent;
+            const numericValue = parseFloat(finalValue.replace(/[^0-9.]/g, ''));
+            
+            let currentValue = 0;
+            const increment = numericValue / 50;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= numericValue) {
+                    currentValue = numericValue;
+                    clearInterval(timer);
+                }
+                
+                if (finalValue.includes('+')) {
+                    stat.textContent = Math.floor(currentValue) + '+';
+                } else {
+                    stat.textContent = Math.floor(currentValue);
+                }
+            }, 30);
+        });
+    });
+</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca" class="active"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">local_library</i> Biblioteca Virtual</h1>
+                        <p>Accede a recursos educativos y material de estudio</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="text" placeholder="Buscar recursos..." class="form-control" style="width: 250px;">
+                        <select class="form-control" style="width: 150px;">
+                            <option>Todos los tipos</option>
+                            <option>PDF</option>
+                            <option>Video</option>
+                            <option>Audio</option>
+                            <option>Enlaces</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access -->
+            <div class="dashboard-card">
+                <h2>⚡ Acceso Rápido</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon blue"><i class="material-icons">menu_book</i></div>
+                        <div class="stat-info">
+                            <h3>48</h3>
+                            <p>Libros Digitales</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon green">🎥</div>
+                        <div class="stat-info">
+                            <h3>125</h3>
+                            <p>Videos Educativos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon orange"><i class="material-icons">headphones</i></div>
+                        <div class="stat-info">
+                            <h3>32</h3>
+                            <p>Podcasts</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon red"><i class="material-icons">link</i></div>
+                        <div class="stat-info">
+                            <h3>89</h3>
+                            <p>Enlaces Útiles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="dashboard-card">
+                <h2>📂 Categorías de Recursos</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                    <button class="btn btn-primary">Todos</button>
+                    <button class="btn btn-outline">Marketing Digital</button>
+                    <button class="btn btn-outline">Programación</button>
+                    <button class="btn btn-outline">Negocios</button>
+                    <button class="btn btn-outline">Diseño</button>
+                    <button class="btn btn-outline">Idiomas</button>
+                    <button class="btn btn-outline">Productividad</button>
+                    <button class="btn btn-outline">Habilidades Blandas</button>
+                </div>
+
+                <!-- Resources Grid -->
+                <div class="course-grid">
+                    <!-- PDF Resource -->
+                    <div class="course-card">
+                        <div style="background: #dc3545; color: white; padding: 1rem; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="font-size: 2rem;"><i class="material-icons">description</i></div>
+                            <div>PDF</div>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 0.5rem;">Guía Completa de SEO</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Manual exhaustivo sobre técnicas de optimización para buscadores</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.8rem; color: #666;">Marketing Digital</span>
+                                <span style="font-size: 0.8rem; color: #666;">156 páginas</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Descargar PDF</button>
+                        </div>
+                    </div>
+
+                    <!-- Video Resource -->
+                    <div class="course-card">
+                        <div style="background: #667eea; color: white; padding: 1rem; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="font-size: 2rem;">🎥</div>
+                            <div>Video</div>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 0.5rem;">Tutorial: JavaScript Asíncrono</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Aprende Promises, async/await y manejo de APIs</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.8rem; color: #666;">Programación</span>
+                                <span style="font-size: 0.8rem; color: #666;">45 min</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Ver Video</button>
+                        </div>
+                    </div>
+
+                    <!-- Audio Resource -->
+                    <div class="course-card">
+                        <div style="background: #28a745; color: white; padding: 1rem; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="font-size: 2rem;"><i class="material-icons">headphones</i></div>
+                            <div>Podcast</div>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 0.5rem;">Entrevista: Marketing en Redes</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Conversación con expertos en social media marketing</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.8rem; color: #666;">Marketing</span>
+                                <span style="font-size: 0.8rem; color: #666;">35 min</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Escuchar Audio</button>
+                        </div>
+                    </div>
+
+                    <!-- Link Resource -->
+                    <div class="course-card">
+                        <div style="background: #ffc107; color: #000; padding: 1rem; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="font-size: 2rem;"><i class="material-icons">link</i></div>
+                            <div>Enlace</div>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 0.5rem;">Google Analytics Academy</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Cursos gratuitos oficiales de Google sobre analítica web</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.8rem; color: #666;">Marketing</span>
+                                <span style="font-size: 0.8rem; color: #666;">Sitio externo</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Visitar Sitio</button>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Resource -->
+                    <div class="course-card">
+                        <div style="background: #17a2b8; color: white; padding: 1rem; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="font-size: 2rem;"><i class="material-icons">sports_esports</i></div>
+                            <div>Interactivo</div>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 0.5rem;">Simulador de Negocios</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Practica toma de decisiones empresariales en un entorno virtual</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.8rem; color: #666;">Negocios</span>
+                                <span style="font-size: 0.8rem; color: #666;">Nivel Intermedio</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Abrir Simulador</button>
+                        </div>
+                    </div>
+
+                    <!-- Template Resource -->
+                    <div class="course-card">
+                        <div style="background: #764ba2; color: white; padding: 1rem; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="font-size: 2rem;"><i class="material-icons">bar_chart</i></div>
+                            <div>Plantilla</div>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h3 style="margin-bottom: 0.5rem;">Dashboard Excel Avanzado</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Plantilla profesional para análisis de datos y reportes</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 0.8rem; color: #666;">Excel</span>
+                                <span style="font-size: 0.8rem; color: #666;">Formato .xlsx</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Descargar Plantilla</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Resources -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">menu_book</i> Recursos por Curso</h2>
+                <div style="margin-bottom: 2rem;">
+                    <select class="form-control" style="width: 300px;">
+                        <option>Marketing Digital Completo</option>
+                        <option>Desarrollo Web Moderno</option>
+                        <option>Gestión Empresarial</option>
+                        <option>Diseño Gráfico Digital</option>
+                        <option>Inglés Conversacional</option>
+                    </select>
+                </div>
+
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: #667eea; margin-bottom: 1rem;"><i class="material-icons">local_library</i> Material de Lectura</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Guía SEO Avanzado (PDF)
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Marketing de Contenidos (PDF)
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Guía de Redes Sociales (PDF)
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Email Marketing (PDF)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: #667eea; margin-bottom: 1rem;">🎥 Videos Complementarios</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;">🎥</span>
+                                        Caso de Estudio: Coca-Cola (25 min)
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;">🎥</span>
+                                        Taller: Google Ads (35 min)
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;">🎥</span>
+                                        Entrevista: Expertos SEO (20 min)
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;">🎥</span>
+                                        Tutorial: Analytics (15 min)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: #667eea; margin-bottom: 1rem;"><i class="material-icons">link</i> Herramientas y Enlaces</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">link</i></span>
+                                        Google Search Console
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">link</i></span>
+                                        SEMrush Trial Gratuito
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">link</i></span>
+                                        Canva Education
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">link</i></span>
+                                        HubSpot Academy
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recently Added -->
+            <div class="dashboard-card">
+                <h2>🆕 Recursos Recientes</h2>
+                <div style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem;">
+                    <div style="min-width: 200px; background: #f8f9fa; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="material-icons">description</i></div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Guía IA 2024</h4>
+                        <p style="font-size: 0.8rem; color: #666;">Marketing Digital</p>
+                        <button class="btn btn-outline" style="font-size: 0.8rem; margin-top: 0.5rem;">Ver</button>
+                    </div>
+                    <div style="min-width: 200px; background: #f8f9fa; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎥</div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">React Hooks</h4>
+                        <p style="font-size: 0.8rem; color: #666;">Programación</p>
+                        <button class="btn btn-outline" style="font-size: 0.8rem; margin-top: 0.5rem;">Ver</button>
+                    </div>
+                    <div style="min-width: 200px; background: #f8f9fa; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="material-icons">headphones</i></div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Productividad</h4>
+                        <p style="font-size: 0.8rem; color: #666;">Desarrollo Personal</p>
+                        <button class="btn btn-outline" style="font-size: 0.8rem; margin-top: 0.5rem;">Ver</button>
+                    </div>
+                    <div style="min-width: 200px; background: #f8f9fa; padding: 1rem; border-radius: 8px; text-align: center;">
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="material-icons">bar_chart</i></div>
+                        <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Dashboard KPIs</h4>
+                        <p style="font-size: 0.8rem; color: #666;">Negocios</p>
+                        <button class="btn btn-outline" style="font-size: 0.8rem; margin-top: 0.5rem;">Ver</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reading List -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">menu_book</i> Mi Lista de Lectura</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h4>El Arte del Marketing Digital</h4>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Guía completa sobre estrategias modernas de marketing</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.8rem;">Progreso</span>
+                                    <span style="font-size: 0.8rem; color: #667eea;">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%; font-size: 0.9rem;">Continuar Leyendo</button>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <h4>JavaScript Moderno</h4>
+                                <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pendiente</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">ES6+, async/await y patrones modernos</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">menu_book</i> 320 páginas</span>
+                                    <span style="margin-left: 1rem;">⏱️ ~8 horas</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" style="width: 100%; font-size: 0.9rem;">Comenzar Lectura</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>

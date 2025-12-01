@@ -1,0 +1,353 @@
+MISIÓN: 
+La misión de la empresa es diseñar, desarrollar y ofrecer soluciones de e-learning que 
+garanticen una experiencia de aprendizaje digital de alta calidad, accesible y centrada en el 
+estudiante. A través de plataformas virtuales modernas, contenidos interactivos y metodologías 
+pedagógicas innovadoras, la organización busca facilitar procesos de formación flexibles, 
+dinámicos y adaptados a las necesidades de personas de todas las edades en el país. La empresa se 
+compromete a democratizar el acceso a la educación mediante la enseñanza virtual, 
+promoviendo competencias digitales, pensamiento crítico y habilidades prácticas que permitan a 
+los participantes desenvolverse con éxito en entornos académicos, laborales y tecnológicos. Del 
+mismo modo, se enfoca en reducir brechas educativas mediante la creación de espacios de 
+aprendizaje inclusivos, colaborativos y disponibles en cualquier momento y lugar. 
+VISIÓN: 
+La visión de la empresa es convertirse en la plataforma de e-learning más innovadora, 
+confiable e influyente del país, reconocida por transformar la educación tradicional en 
+experiencias digitales significativas y orientadas al aprendizaje autónomo. A largo plazo, la 
+organización aspira a liderar el desarrollo de ecosistemas educativos virtuales que integren 
+tecnología, pedagogía y accesibilidad, consolidándose como un referente en la enseñanza virtual 
+dentro del país y en la región. La empresa proyecta un futuro donde cada persona tenga acceso a 
+contenidos educativos digitales de vanguardia, diseñados con altos estándares de calidad y 
+respaldados por herramientas tecnológicas eficientes, promoviendo así una sociedad más 
+preparada, conectada y competitiva en el ámbito digital. 
+VALORES CORPORATIVOS: 
+➢ Innovación: Promovemos el uso de tecnologías modernas y metodologías actualizadas 
+que permiten mejorar la enseñanza virtual. 
+➢ Calidad Educativa: Garantizamos que cada curso, contenido y herramienta cumpla con 
+los más altos estándares pedagógicos. 
+➢ Inclusión: Diseñamos recursos accesibles para estudiantes de diferentes contextos, 
+capacidades y niveles de alfabetización digital. 
+➢ Responsabilidad Social: Contribuimos a la democratización del conocimiento, 
+apoyando la formación digital en sectores vulnerables. 
+➢ Excelencia Tecnológica: Aseguramos plataformas estables, seguras y eficientes para 
+una óptima experiencia de usuario. 
+➢ Colaboración: Fomentamos el trabajo conjunto entre docentes, estudiantes y aliados 
+institucionales. 
+OBJETIVOS: 
+Objetivo General: 
+Desarrollar y consolidar una empresa especializada en e-learning y enseñanza virtual, 
+dedicada a ofrecer programas formativos digitales adaptados a las necesidades educativas y 
+tecnológicas de la población, mediante plataformas modernas, interfaces intuitivas y 
+metodologías pedagógicas innovadoras orientadas al aprendizaje autónomo, flexible y accesible. 
+Objetivos Específicos: 
+1. Diseñar cursos, programas y recursos educativos digitales basados en principios de 
+diseño instruccional, interactividad y aprendizaje significativo. 
+2. Implementar una plataforma o entorno virtual de aprendizaje (EVA) que ofrezca 
+navegación intuitiva, estabilidad, accesibilidad y herramientas multimedia que mejoren la 
+experiencia del usuario. 
+3. Capacitar a docentes, facilitadores y creadores de contenido en metodologías propias del 
+e-learning, tales como microlearning, aulas virtuales, clases asincrónicas, gamificación y 
+evaluación digital. 
+4. Promover la alfabetización digital y el uso adecuado de tecnologías educativas, 
+facilitando el desarrollo de competencias necesarias para estudiar en entornos digitales. 
+5. Garantizar que los programas formativos sean accesibles, mediante el uso de materiales 
+optimizados para diferentes dispositivos, bajo consumo de datos y adaptados a diversos perfiles de 
+estudiantes. 
+6. Fomentar la autonomía del aprendizaje, diseñando actividades, recursos y evaluaciones 
+que permitan a los usuarios avanzar a su propio ritmo. 
+7. Establecer alianzas con instituciones académicas, organizaciones y empresas, con el fin de 
+ampliar la cobertura, integrar nuevas tecnologías y fortalecer la oferta educativa digital. 
+8. Mejorar continuamente los contenidos y los procesos académico-tecnológicos, 
+mediante retroalimentación de los usuarios, análisis de métricas y actualización 
+pedagógica constante. 
+RESEÑA HISTÓRICA: 
+EduConecta, C.A. fue fundada en el año 2025 como respuesta a los crecientes 
+desafíos educativos surgidos por la digitalización acelerada en Venezuela. Un grupo de 
+jóvenes ingenieros, docentes y diseñadores tecnológicos identificó la necesidad de crear una 
+plataforma de teleeducación que ofreciera soluciones accesibles, modernas y adaptadas a la 
+realidad del país. 
+Inicialmente, el proyecto comenzó como un prototipo académico, pero debido a su impacto y 
+a la demanda de formación digital, evolucionó rápidamente hacia una empresa formal 
+dedicada al desarrollo de entornos virtuales de aprendizaje. A partir de 2025, EduConecta 
+amplió su alcance mediante alianzas con instituciones educativas, empresas y organizaciones 
+comunitarias, consolidándose como un referente nacional en la creación de contenidos 
+educativos digitales, capacitación docente y desarrollo de competencias tecnológicas. 
+ESTRUCTURA ORGANIZATIVA: 
+La empresa EduConecta adopta una estructura organizativa funcional, diseñada para 
+garantizar eficiencia administrativa, calidad educativa y soporte tecnológico permanente. 
+Esta estructura responde a las necesidades particulares de un entorno e-learning, donde la 
+tecnología y la pedagogía digital deben trabajar de forma integrada. 
+I. Dirección General: Es el nivel más alto de la organización. Su función principal es la 
+toma de decisiones estratégicas, la planificación a mediano y largo plazo, la supervisión integral de 
+todas las áreas y la representación formal de la empresa. Define las políticas institucionales, los 
+lineamientos de crecimiento, alianzas y nuevas oportunidades de desarrollo. 
+II. Coordinación Académica: Encargada del diseño, planificación y evaluación de los 
+programas formativos. Garantiza que cada curso cumpla con estándares pedagógicos e integra 
+metodologías e-learning efectivas. Supervisa a instructores, diseñadores instruccionales y tutores, 
+asegurando la coherencia educativa dentro de la plataforma. 
+III. Departamento de Tecnología y Plataforma: Responsable del mantenimiento, 
+configuración y óptimo funcionamiento del LMS (Learning Management System). Implementa 
+actualizaciones, integra nuevas herramientas, vela por la seguridad de la información y supervisa 
+el soporte técnico. Este departamento es esencial para garantizar la continuidad del aprendizaje 
+virtual. 
+IV. Departamento de Marketing y Comunicaciones: Diseña estrategias de publicidad, 
+posicionamiento digital y captación de estudiantes. Administra redes sociales, campañas 
+promocionales, contenido multimedia y relaciones públicas. Su objetivo es aumentar la visibilidad 
+de la empresa y conectar con audiencias interesadas en formación virtual. 
+V. Departamento de Administración y Finanzas: Gestiona la contabilidad general, 
+presupuestos, pagos, compras, contratos, facturación y reportes financieros. Asegura el uso 
+eficiente de los recursos, organiza los procesos administrativos y mantiene la estabilidad 
+económica de la empresa. 
+VI. Atención y Soporte al Usuario: Brinda asistencia directa a estudiantes, docentes y 
+visitantes de la plataforma. Responde preguntas, soluciona problemas de acceso, gestiona reclamos 
+y garantiza una experiencia satisfactoria. Representa el vínculo más inmediato entre la empresa y 
+el usuario final. 
+MANUAL DE CARGOS: 
+A. GERENTE GENERAL: 
+● Objetivo del cargo: Dirigir, planificar y supervisar todas las operaciones estratégicas y 
+administrativas de la empresa, garantizando el cumplimiento de la misión, visión y 
+objetivos institucionales. 
+● Funciones principales: 
+1. Tomar decisiones estratégicas relacionadas con la operación general. 
+2. Supervisar todas las áreas de la empresa (académica, tecnológica, administrativa  soporte). 
+3. Aprobar proyectos, presupuestos y planes operativos. 
+4. Evaluar indicadores de gestión y desempeño. 
+5. Representar a la empresa ante instituciones públicas y privadas. 
+● Perfil del cargo: 
+1. Profesional universitario en administración, educación, tecnología o áreas afines. 
+2. Experiencia mínima de 5 años en gestión de proyectos o dirección de empresas. 
+3. Liderazgo, comunicación efectiva y toma de decisiones. 
+B. COORDINADOR ACADÉMICO: 
+● Objetivo del cargo: Coordinar el diseño, actualización y calidad de los cursos y 
+programas educativos en modalidad e-learning. 
+● Funciones principales: 
+1. Planificar el catálogo académico. 
+2. Supervisar a los docentes y facilitadores virtuales. 
+3. Gestionar la creación de contenidos y recursos didácticos digitales. 
+4. Velar por el cumplimiento de estándares de calidad educativa. 
+5. Realizar evaluaciones de desempeño académico. 
+● Perfil del cargo: 
+1. Profesional en educación o carrera afín. 
+2. Formación en e-learning y diseño instruccional. 
+3. Capacidad de liderazgo académico. 
+C. DISEÑADOR INSTRUCCIONAL: 
+● Objetivo del cargo: Diseñar cursos, recursos y experiencias de aprendizaje digital bajo 
+metodologías e-learning. 
+● Funciones principales: 
+1. Crear contenidos pedagógicos para la plataforma LMS. 
+2. Diseñar guías, actividades, evaluaciones y recursos multimedia. 
+3. Adaptar contenidos a estudiantes con diversas necesidades. 
+4. Trabajar junto al equipo académico y tecnológico. 
+● Perfil del cargo: 
+1. Profesional en educación, diseño instruccional o tecnología educativa. 
+2. Manejo de metodologías e-learning y herramientas digitales. 
+D. PROGRAMADOR / ADMINISTRADOR LMS: 
+● Objetivo del cargo: Gestionar, configurar y mantener la plataforma LMS utilizada por la 
+empresa. 
+● Funciones principales: 
+1. Administrar usuarios, cursos y permisos. 
+2. Configurar módulos, integraciones y herramientas externas. 
+3. Dar soporte técnico a docentes y estudiantes. 
+4. Implementar actualizaciones y mejoras del sistema. 
+● Perfil del cargo: 
+1. Técnico o profesional en informática, computación o áreas afines. 
+2. Dominio de plataformas LMS (Moodle, Canvas, Chamilo, etc.). 
+E. FACILITADOR VIRTUAL / DOCENTE E-LEARNING: 
+● Objetivo del cargo: Guiar, acompañar y evaluar a los estudiantes dentro de los 
+cursos virtuales. 
+● Funciones principales: 
+1. Impartir clases virtuales sincrónicas y asincrónicas. 
+2. Monitorear el avance de los estudiantes. 
+3. Evaluar actividades, foros y proyectos. 
+4. Generar retroalimentación efectiva. 
+● Perfil del cargo: 
+1. Profesional en el área del curso impartido. 
+2. Formación o experiencia en docencia virtual. 
+F. DEPARTAMENTO DE ATENCIÓN Y SOPORTE AL USUARIO: 
+● Objetivo del cargo: Atender consultas técnicas, académicas y administrativas de usuarios 
+internos y externos. 
+● Funciones principales: 
+1. Resolver incidencias relacionadas con el uso de la plataforma. 
+2. Atender solicitudes de inscripción y certificación. 
+3. Canalizar problemas con docentes y coordinadores. 
+● Perfil del cargo: 
+1. Atención al cliente o soporte técnico. 
+2. Competencias comunicativas. 
+G. DEPARTAMENTO ADMINISTRATIVO: 
+● Objetivo del cargo: Gestionar los procesos internos de facturación, nómina, compras y 
+control financiero. 
+● Funciones principales: 
+1. Control de pagos, facturas y estados financieros. 
+2. Registro contable de ingresos y egresos. 
+3. Gestión de contratos y compras. 
+4. Organización de archivos y documentos administrativos. 
+● Perfil del cargo: 
+1. Técnico o licenciado en administración, contabilidad o áreas afines. 
+CASO DE ESTUDIO (PROBLEMÁTICA): 
+Brecha tecnológica y limitaciones en la formación virtual en Venezuela: 
+En los últimos años, la educación en Venezuela ha enfrentado un conjunto de desafíos 
+derivados de factores económicos, sociales y tecnológicos que afectan directamente el acceso a 
+la enseñanza a distancia.  
+La problemática central gira en torno a la brecha digital, entendida como la desigualdad en 
+el acceso a dispositivos, conectividad estable y competencias digitales básicas. Aunque muchas 
+instituciones han intentado migrar hacia modelos virtuales, un gran porcentaje de usuarios 
+carece de las herramientas necesarias para aprovechar estas modalidades formativas. Entre las 
+principales dificultades identificadas se encuentran: 
+Limitado acceso a Internet estable. Amplios sectores del país presentan fallas 
+constantes de conectividad, baja velocidad de navegación y escasa infraestructura tecnológica, 
+dificultando el acceso a plataformas educativas virtuales. 
+Insuficiencia de equipos tecnológicos. Muchos hogares no cuentan con computadoras, 
+tabletas o teléfonos inteligentes con la capacidad adecuada para participar en clases virtuales, lo 
+que limita enormemente la continuidad educativa. 
+Falta de capacitación digital en estudiantes y docentes. La mayoría de los usuarios no ha 
+recibido formación suficiente en el uso de plataformas LMS, herramientas de 
+videoconferencia o metodologías de aprendizaje virtual, generando frustración, deserción y 
+bajo rendimiento académico. 
+Escasez de contenidos pedagógicos adaptados al e-learning. Numerosas instituciones 
+replican modelos presenciales en formato digital sin considerar las particularidades del 
+aprendizaje virtual, ocasionando experiencias poco interactivas y limitado logro de 
+competencias. 
+Barreras económicas. Los altos costos de dispositivos, reparaciones y servicios de Internet 
+reducen la posibilidad de que familias e instituciones mantengan un acceso continuo a la 
+educación virtual. 
+IMPACTO DE LA PROBLEMÁTICA: 
+Estas dificultades han provocado: 
+● Pérdida de continuidad educativa en estudiantes y trabajadores. 
+● Brechas de conocimiento entre quienes pueden acceder al e-learning y quienes no. 
+● Disminución en la calidad de la enseñanza y en el rendimiento académico. 
+● Deserción estudiantil en instituciones que migraron a la modalidad virtual. 
+● Afectación en la productividad de empresas que requieren capacitación digital. 
+NECESIDAD DE INTERVENCIÓN: 
+Ante esta problemática, surge la necesidad de una empresa dedicada a: 
+● Diseñar experiencias de aprendizaje accesibles. 
+● Capacitar a docentes y estudiantes en competencias digitales. 
+● Implementar plataformas optimizadas para el contexto venezolano. 
+● Ofrecer soluciones tecnológicas de bajo costo y alto impacto. 
+● Democratizar el acceso a la educación virtual en el país. 
+Este caso de estudio evidencia que el e-learning no solo es una alternativa, sino una 
+estrategia imprescindible para garantizar la inclusión educativa y el desarrollo profesional 
+dentro de un país que está en proceso de transformación digital. 
+TIPO DE EMPRESA: 
+EduConecta se clasifica como: 
+Empresa de producción social (ya que promueve inclusión digital y acceso equitativo 
+a la educación) 
+Empresa mercantil (registrada como Compañía Anónima con fines productivos) 
+Empresa corporativa tecnológica–educativa, dedicada al desarrollo de plataformas, 
+servicios y contenido digital. 
+PLAN DE LA PATRIA 2019–2025: 
+Área: Tecnología, Empresa Y Educación: 
+1. Tecnología: 
+● Consolidar un estilo científico, tecnológico e innovador orientado a la independencia 
+nacional. 
+● Fortalecer la actividad científica y de innovación vinculada al aparato productivo 
+nacional. 
+● Crear una Red Nacional de Parques Tecnológicos. 
+● Impulsar el desarrollo de equipos y aplicaciones basados en tecnologías libres. 
+● Implementar centros tecnológicos en instituciones educativas. 
+● Desarrollar política satelital nacional para fortalecer telecomunicaciones. 
+● Promover una política soberana para el ciberespacio y la seguridad digital. 
+2. Empresa: 
+● Impulsar un modelo productivo basado en ciencia y tecnología. 
+● Vincular instituciones educativas con unidades productivas. 
+● Fortalecer la formación técnica en función del modelo productivo. 
+● Desarrollar tecnología local y aplicaciones propias para reducir dependencia extranjera. 
+3. Educación: 
+● Democratizar y fortalecer la educación pública, gratuita y de calidad. 
+● Incorporar las TIC en el proceso educativo. 
+● Fomentar alfabetización digital y competencias tecnológicas. 
+● Crear programas de formación en ciencia, tecnología e innovación. 
+● Promover ciclos educativos vinculados con centros tecnológicos. 
+ADAPTACIÓN DEL PLAN DE LA PATRIA: 
+El proyecto EduConecta se alinea directamente con los objetivos del Plan de la Patria 
+2019–2025 a través de los siguientes ejes: 
+1. Relación con el Área de Tecnología: 
+● La empresa promueve el uso de plataformas LMS, herramientas digitales y soluciones 
+tecnológicas basadas en software libre. 
+● Contribuye a reducir la brecha digital mediante formación en competencias 
+tecnológicas. 
+● Impulsa la soberanía tecnológica al desarrollar contenidos educativos propios. 
+2. Relación con el Área de Empresa: 
+● El proyecto apoya el modelo productivo nacional mediante capacitación digital para 
+trabajadores y emprendedores. 
+● Promueve alianzas con instituciones académicas y sectores productivos. 
+● Fomenta la formación profesional orientada a la innovación y el desarrollo tecnológico. 
+3. Relación con el Área de Educación: 
+● Democratiza el acceso a la educación mediante cursos virtuales accesibles. 
+● Apoya la alfabetización digital de docentes y estudiantes. 
+● Desarrolla programas educativos adaptados a estrategias de aprendizaje virtual. 
+● Contribuye a la modernización del sistema educativo mediante herramientas 
+interactivas e innovadoras. 
+ACTA CONSTITUTIVA: 
+En la ciudad de San Juan de los Morros, Estado Guárico, República Bolivariana de 
+Venezuela, a los veintiocho (28) días del mes de noviembre del año dos mil veinticinco 
+(2025), nosotros, socios fundadores: 
+— Kevin Lizarzabal, titular de la Cédula de Identidad Nº 30.743.762 
+— José Torres, titular de la Cédula de Identidad Nº 27.963.818 
+— Gustavo Colina, titular de la Cédula de Identidad Nº 31.182.936 
+— Gabriel Bolívar, titular de la Cédula de Identidad Nº 28.051.690 
+— Jesús Velázquez, titular de la Cédula de Identidad Nº 31.756.528 
+— Carlos Nieves, titular de la Cédula de Identidad Nº 29.959.129 
+Hemos decidido constituir, como por el presente constituimos, una sociedad mercantil 
+bajo la forma jurídica de Compañía Anónima, que se regirá por el Código de Comercio 
+venezolano, la legislación vigente de la República Bolivariana de Venezuela, y las 
+disposiciones contenidas en las siguientes cláusulas: 
+Cláusula Primera — Denominación Social: 
+La sociedad se denominará EduConecta, C.A., pudiendo utilizar su nombre completo 
+o abreviado en todos sus actos y documentos legales. 
+Cláusula Segunda — Domicilio: 
+El domicilio principal de la empresa será la ciudad de San Juan de los Morros, 
+Estado Guárico. 
+La empresa podrá establecer sucursales, agencias, oficinas, representaciones o 
+dependencias en cualquier otra localidad del país cuando así lo acuerde la Junta Directiva. 
+Cláusula Tercera — Objeto Social: 
+La empresa tendrá como objeto principal: 
+Desarrollo, diseño, gestión y comercialización de plataformas tecnológicas para 
+educación, incluyendo sistemas LMS. 
+Producción y distribución de contenidos educativos digitales en diversos formatos. 
+Prestación de servicios de capacitación, formación profesional y tutorías mediante 
+entornos virtuales. 
+Consultoría en procesos educativos, innovación pedagógica y tecnologías de 
+aprendizaje. 
+Implementación y soporte de soluciones de teleducación, e-learning y herramientas 
+digitales para instituciones educativas y organizaciones. 
+Cualquier otra actividad conexa o complementaria relacionada con tecnología 
+educativa. 
+Cláusula Cuarta — Capital Social: 
+El capital social de la empresa, a efectos académicos y de carácter ficticio, es de cien 
+mil bolívares (Bs. 100.000), dividido en cien (100) acciones nominativas, con un valor de mil 
+bolívares (Bs. 1.000) cada una, distribuidas en partes iguales entre los socios fundadores. 
+Las acciones son nominativas y no podrán transferirse sin la autorización previa de 
+la Junta Directiva. 
+Cláusula Quinta — Duración: 
+La duración de la empresa será de veinte (20) años, contados a partir de su 
+inscripción en el Registro Mercantil correspondiente, pudiendo ser prorrogada por decisión 
+de los socios. 
+Cláusula Sexta — Administración y Representación: 
+La administración de la compañía estará a cargo de una Junta Directiva, integrada 
+por los siguientes cargos: 
+• Gerente General 
+• Coordinador Académico 
+• Director Tecnológico 
+• Director Administrativo-Financiero 
+La Junta Directiva tendrá las atribuciones establecidas en la ley y las que se 
+determinen en los estatutos sociales, incluyendo la representación legal de la empresa y la 
+ejecución de su objeto social. 
+Cláusula Séptima — Asamblea de Accionistas: 
+La Asamblea de Accionistas es el órgano supremo de la sociedad, y sus decisiones 
+obligan a todos los accionistas. 
+Podrá reunirse de forma ordinaria o extraordinaria, conforme a lo dispuesto en el 
+Código de Comercio. 
+Cláusula Octava — Ejercicio Fiscal: 
+El ejercicio económico y fiscal de la empresa comenzará el 1° de enero y finalizará el 
+31 de diciembre de cada año. El primer ejercicio podrá ser excepcionalmente más corto o 
+más largo según la fecha de registro. 
+Cláusula Novena — Disolución y Liquidación: 
+✓ La empresa podrá disolverse por: 
+✓ Acuerdo de la Asamblea de Accionistas. 
+✓ Cumplimiento o imposibilidad de cumplir su objeto social. 
+✓ Causas previstas en la ley. 
+✓ En caso de disolución, la liquidación se hará conforme a las disposiciones del Código 
+de Comercio venezolano. 
+Firma de los Socios Fundadores: 
+____________________               ___________________               ____________________ 
+____________________               ___________________               ____________________ 
+En constancia de conformidad, firman los socios fundadores e

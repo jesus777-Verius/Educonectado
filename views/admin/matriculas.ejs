@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Matrículas - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas" class="active"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1><i class="material-icons">assignment</i> Gestión de Matrículas</h1>
+                        <p>Administra las inscripciones y registros de estudiantes</p>
+                    </div>
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Nueva Matrícula</button>
+                </div>
+            </div>
+
+            <!-- Enrollment Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="material-icons">assignment</i></div>
+                    <div class="stat-info">
+                        <h3>3,456</h3>
+                        <p>Matrículas Totales</p>
+                        <div style="font-size: 0.8rem; color: #28a745;">↑ 18% este mes</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="material-icons">check_circle</i></div>
+                    <div class="stat-info">
+                        <h3>2,890</h3>
+                        <p>Matrículas Activas</p>
+                        <div style="font-size: 0.8rem; color: #667eea;">84% del total</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">⏳</div>
+                    <div class="stat-info">
+                        <h3>234</h3>
+                        <p>Pendientes de Pago</p>
+                        <div style="font-size: 0.8rem; color: #ffc107;">Requieren atención</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon red"><i class="material-icons">cancel</i></div>
+                    <div class="stat-info">
+                        <h3>89</h3>
+                        <p>Matrículas Canceladas</p>
+                        <div style="font-size: 0.8rem; color: #dc3545;">3% del total</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="dashboard-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2><i class="material-icons">search</i> Búsqueda y Filtros</h2>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los estados</option>
+                            <option value="active">Activa</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="completed">Completada</option>
+                            <option value="cancelled">Cancelada</option>
+                            <option value="suspended">Suspendida</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los cursos</option>
+                            <option value="marketing">Marketing Digital</option>
+                            <option value="programming">Programación Web</option>
+                            <option value="business">Gestión Empresarial</option>
+                            <option value="design">Diseño Gráfico</option>
+                        </select>
+                        <select class="form-control" style="width: 150px;">
+                            <option value="all">Todos los tipos</option>
+                            <option value="individual">Individual</option>
+                            <option value="corporate">Corporativa</option>
+                            <option value="institutional">Institucional</option>
+                        </select>
+                        <input type="text" placeholder="Buscar matrículas..." class="form-control" style="width: 250px;">
+                    </div>
+                </div>
+
+                <!-- Enrollments Table -->
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Matrícula</th>
+                                <th style="padding: 1rem; text-align: center;">Estudiante</th>
+                                <th style="padding: 1rem; text-align: center;">Curso</th>
+                                <th style="padding: 1rem; text-align: center;">Tipo</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Fecha</th>
+                                <th style="padding: 1rem; text-align: center;">Progreso</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#MAT001</div>
+                                        <div style="font-size: 0.8rem; color: #666;">ID: #ENR2024001</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/667eea/ffffff?text=J" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Juan Pérez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>
+                                        <div style="font-weight: bold;">Marketing Digital</div>
+                                        <div style="font-size: 0.8rem; color: #666;">12 módulos</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Individual</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activa</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">15 Ene 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">67%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Editar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Suspender</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#MAT002</div>
+                                        <div style="font-size: 0.8rem; color: #666;">ID: #ENR2024002</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/28a745/ffffff?text=M" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">María González</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>
+                                        <div style="font-weight: bold;">Programación Web</div>
+                                        <div style="font-size: 0.8rem; color: #666;">8 módulos</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Corporativa</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activa</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">10 Ene 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #667eea;">45%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Editar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Suspender</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">#MAT003</div>
+                                        <div style="font-size: 0.8rem; color: #666;">ID: #ENR2024003</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                                        <img src="https://via.placeholder.com/24x24/dc3545/ffffff?text=A" alt="Estudiante" style="width: 24px; height: 24px; border-radius: 50%;">
+                                        <span style="font-size: 0.9rem;">Ana Rodríguez</span>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>
+                                        <div style="font-weight: bold;">Gestión Empresarial</div>
+                                        <div style="font-size: 0.8rem; color: #666;">6 módulos</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Individual</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pendiente</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">28 Nov 2024</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-weight: bold; color: #666;">0%</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-primary" style="font-size: 0.8rem;">Activar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Cancelar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Create Enrollment Form -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">add</i> Nueva Matrícula</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Estudiante *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un estudiante</option>
+                                <option value="student1">Juan Pérez - juan.perez@email.com</option>
+                                <option value="student2">María González - maria.gonzalez@email.com</option>
+                                <option value="student3">Carlos Méndez - carlos.mendez@email.com</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Curso *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un curso</option>
+                                <option value="marketing">Marketing Digital - $50</option>
+                                <option value="programming">Programación Web - $75</option>
+                                <option value="business">Gestión Empresarial - $60</option>
+                                <option value="design">Diseño Gráfico - $80</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Matrícula *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el tipo</option>
+                                <option value="individual">Individual</option>
+                                <option value="corporate">Corporativa</option>
+                                <option value="institutional">Institucional</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Método de Pago *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el método</option>
+                                <option value="card">Tarjeta de Crédito/Débito</option>
+                                <option value="transfer">Transferencia Bancaria</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="corporate">Facturación Corporativa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Fecha de Inicio</label>
+                            <input type="date" class="form-control" value="2024-11-29">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Duración Estimada</label>
+                            <select class="form-control">
+                                <option value="1">1 mes</option>
+                                <option value="3">3 meses</option>
+                                <option value="6">6 meses</option>
+                                <option value="12">12 meses</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">payments</i> Detalles de Pago</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.9rem;">Costo del Curso</span>
+                                <span style="font-weight: bold; color: #667eea;">$75.00</span>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.9rem;">Descuento</span>
+                                <span style="font-weight: bold; color: #dc3545;">-$0.00</span>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-size: 0.9rem;">Impuestos (16%)</span>
+                                <span style="font-weight: bold; color: #667eea;">$12.00</span>
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid #ddd; padding-top: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-weight: bold;">Total a Pagar</span>
+                                <span style="font-weight: bold; color: #28a745; font-size: 1.2rem;">$87.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">settings</i> Configuración de la Matrícula</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Acceso Inmediato</div>
+                                <div style="font-size: 0.9rem; color: #666;">Permitir acceso al curso inmediatamente</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Enviar Certificado al Finalizar</div>
+                                <div style="font-size: 0.9rem; color: #666;">Generar certificado automáticamente</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Recordatorios de Progreso</div>
+                                <div style="font-size: 0.9rem; color: #666;">Enviar notificaciones periódicas</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Extensión Automática</div>
+                                <div style="font-size: 0.9rem; color: #666;">Extender acceso si no completa a tiempo</div>
+                            </div>
+                            <input type="checkbox" style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Crear Matrícula</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Enrollment Analytics -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Análisis de Matrículas</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">show_chart</i> Matrículas por Mes</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Enero</span>
+                                    <span style="font-weight: bold; color: #667eea;">234</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Febrero</span>
+                                    <span style="font-weight: bold; color: #667eea;">289</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 96%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Marzo</span>
+                                    <span style="font-weight: bold; color: #667eea;">301</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">Abril (proyección)</span>
+                                    <span style="font-weight: bold; color: #28a745;">325</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Distribución por Tipo</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">👤 Individual</span>
+                                    <span style="font-weight: bold; color: #667eea;">2,123</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 61%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">business</i> Corporativa</span>
+                                    <span style="font-weight: bold; color: #667eea;">1,089</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 32%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">🏛️ Institucional</span>
+                                    <span style="font-weight: bold; color: #667eea;">244</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 7%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Enrollments -->
+            <div class="dashboard-card">
+                <h2>⏳ Matrículas Pendientes</h2>
+                <div class="course-grid">
+                    <div class="course-card" style="border: 2px solid #ffc107;">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Ana Rodríguez</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">ana.rodriguez@email.com</p>
+                                </div>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Pendiente</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">menu_book</i> Gestión Empresarial</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">calendar_today</i> Registrado: 28 Nov 2024</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">payments</i> $60</span>
+                                </div>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                <p style="margin: 0; font-size: 0.9rem;">Esperando confirmación de pago por transferencia bancaria.</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">check_circle</i> Confirmar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">assignment</i> Ver Detalles</button>
+                                <button class="btn btn-outline" style="flex: 1; border-color: #dc3545; color: #dc3545;"><i class="material-icons">cancel</i> Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">add</i> Nueva Matrícula</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline">📥 Exportar Matrículas</button>
+                    <button class="btn btn-outline"><i class="material-icons">email</i> Enviar Recordatorios</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configurar Automatización</button>
+                    <button class="btn btn-outline"><i class="material-icons">refresh</i> Sincronizar Pagos</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

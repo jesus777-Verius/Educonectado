@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .maintenance-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .maintenance-content {
+            max-width: 700px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .maintenance-icon {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            animation: rotate 3s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        
+        .maintenance-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .maintenance-description {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .progress-container {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.3);
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            border-radius: 10px;
+            animation: progress 5s ease-in-out infinite;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 100%; }
+        }
+        
+        .countdown {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .status-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .status-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .status-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .notification-box {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .email-input {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            min-width: 250px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .email-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .btn-notify {
+            background: white;
+            color: #ff9800;
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-notify:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .activity-feed {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            margin: 2rem 0;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .activity-time {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            min-width: 60px;
+        }
+        
+        .activity-text {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .maintenance-title {
+                font-size: 2rem;
+            }
+            
+            .maintenance-description {
+                font-size: 1.1rem;
+            }
+            
+            .countdown {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="maintenance-container">
+        <div class="maintenance-content">
+            <div class="maintenance-icon"><i class="material-icons">build</i></div>
+            
+            <h1 class="maintenance-title">Mantenimiento en Progreso</h1>
+            
+            <p class="maintenance-description">
+                Estamos mejorando nuestra plataforma para brindarte una mejor experiencia. 
+                El mantenimiento durará aproximadamente 2 horas.
+            </p>
+            
+            <div class="progress-container">
+                <h3 style="margin-bottom: 1rem;"><i class="material-icons">bar_chart</i> Progreso del Mantenimiento</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="countdown" id="countdown">01:45:23</div>
+                <p style="opacity: 0.8;">Tiempo estimado restante</p>
+            </div>
+            
+            <div class="status-grid">
+                <div class="status-card">
+                    <div class="status-icon">🗄️</div>
+                    <div class="status-title">Base de Datos</div>
+                    <div class="status-description">Optimización en progreso</div>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-icon"><i class="material-icons">security</i></div>
+                    <div class="status-title">Seguridad</div>
+                    <div class="status-description">Actualización completa</div>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-icon">⚡</div>
+                    <div class="status-title">Rendimiento</div>
+                    <div class="status-description">Mejoras aplicadas</div>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-icon"><i class="material-icons">palette</i></div>
+                    <div class="status-title">Interfaz</div>
+                    <div class="status-description">Nuevas funciones</div>
+                </div>
+            </div>
+            
+            <div class="notification-box">
+                <h3 style="margin-bottom: 1rem;"><i class="material-icons">email</i> Notificarme cuando termine</h3>
+                <p style="margin-bottom: 1rem; opacity: 0.9;">
+                    Déjanos tu email y te avisaremos en cuanto la plataforma esté disponible.
+                </p>
+                <form class="email-form" onsubmit="handleNotification(event)">
+                    <input type="email" class="email-input" placeholder="tu@email.com" required>
+                    <button type="submit" class="btn-notify">Notificarme</button>
+                </form>
+            </div>
+            
+            <div class="activity-feed">
+                <h3 style="margin-bottom: 1rem;"><i class="material-icons">assignment</i> Actividad Reciente</h3>
+                <div id="activity-list">
+                    <div class="activity-item">
+                        <span class="activity-time">14:23</span>
+                        <span class="activity-text"><i class="material-icons">check_circle</i> Actualización de seguridad completada</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">14:15</span>
+                        <span class="activity-text"><i class="material-icons">refresh</i> Iniciando optimización de base de datos</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-time">14:00</span>
+                        <span class="activity-text"><i class="material-icons">build</i> Sistema puesto en modo mantenimiento</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; opacity: 0.8;">
+                <p style="margin-bottom: 1rem;">¿Necesitas ayuda urgente?</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:soporte@educonecta.com" style="color: white; text-decoration: underline;">
+                        <i class="material-icons">email</i> soporte@educonecta.com
+                    </a>
+                    <a href="tel:+5218001234567" style="color: white; text-decoration: underline;">
+                        📞 800-123-4567
+                    </a>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">
+                <p>Mantenimiento ID: MNT-20241129-001</p>
+                <p style="margin-top: 0.5rem;">Tiempo de inicio: 14:00:00 UTC-6</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Countdown timer
+        let totalSeconds = 6323; // 1:45:23 in seconds
+        const countdownEl = document.getElementById('countdown');
+        
+        const countdown = setInterval(() => {
+            totalSeconds--;
+            
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            
+            countdownEl.textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (totalSeconds <= 0) {
+                clearInterval(countdown);
+                countdownEl.textContent = '¡Completado!';
+                // Auto-reload when maintenance is done
+                setTimeout(() => location.reload(), 2000);
+            }
+        }, 1000);
+        
+        // Activity feed simulation
+        const activities = [
+            "<i class="material-icons">refresh</i> Aplicando parches de rendimiento",
+            "📦 Actualizando módulos del sistema",
+            "<i class="material-icons">search</i> Verificando integridad de datos",
+            "⚡ Optimizando consultas SQL",
+            "<i class="material-icons">palette</i> Implementando mejoras UI/UX"
+        ];
+        
+        let activityIndex = 0;
+        const activityList = document.getElementById('activity-list');
+        
+        // Add new activity every 30 seconds
+        setInterval(() => {
+            if (activityIndex < activities.length) {
+                const now = new Date();
+                const time = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+                
+                const newActivity = document.createElement('div');
+                newActivity.className = 'activity-item';
+                newActivity.innerHTML = `
+                    <span class="activity-time">${time}</span>
+                    <span class="activity-text">${activities[activityIndex]}</span>
+                `;
+                
+                activityList.insertBefore(newActivity, activityList.firstChild);
+                
+                // Remove old activities if too many
+                while (activityList.children.length > 5) {
+                    activityList.removeChild(activityList.lastChild);
+                }
+                
+                activityIndex++;
+            }
+        }, 30000);
+        
+        // Handle notification form
+        function handleNotification(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('.email-input').value;
+            
+            // Show success message
+            const form = event.target;
+            form.innerHTML = `
+                <div style="color: #28a745; font-weight: bold;">
+                    <i class="material-icons">check_circle</i> ¡Te notificaremos a ${email} cuando terminemos!
+                </div>
+            `;
+            
+            // Store in localStorage (in real app, this would be sent to server)
+            const notifications = JSON.parse(localStorage.getItem('maintenance_notifications') || '[]');
+            notifications.push({ email, timestamp: new Date().toISOString() });
+            localStorage.setItem('maintenance_notifications', JSON.stringify(notifications));
+        }
+        
+        // Auto-refresh every 5 minutes
+        setInterval(() => {
+            fetch(window.location.href, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        // Maintenance is over, reload
+                        location.reload();
+                    }
+                })
+                .catch(() => {
+                    // Still in maintenance
+                });
+        }, 300000); // 5 minutes
+    </script>
+</body>
+</html>

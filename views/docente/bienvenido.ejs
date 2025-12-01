@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido Docente - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="container nav">
+            <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/catalogo">Catálogo</a></li>
+                <li><a href="/precios">Precios</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/quienes-somos">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/logout" class="btn btn-outline">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%); color: white; padding: 4rem 0;">
+        <div class="container text-center">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">¡Bienvenido Docente!</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9;">Hola <%= user.nombres %> <%= user.apellidos %>, gracias por unirte a nuestra comunidad educativa</p>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="container mb-3">
+        <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <div style="font-size: 4rem; color: #764ba2; margin-bottom: 2rem;">
+                <i class="material-icons" style="font-size: 4rem;">psychology</i>
+            </div>
+            <h2 style="color: #764ba2; margin-bottom: 1.5rem;">Comparte tu conocimiento con el mundo</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">
+                Como docente, tienes las herramientas para crear cursos impactantes, llegar a miles de estudiantes y generar ingresos mientras haces lo que amas.
+            </p>
+            
+            <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                <h3 style="color: #764ba2; margin-bottom: 1rem;">¿Qué puedes hacer como docente?</h3>
+                <div class="grid grid-3" style="text-align: left;">
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-size: 2rem; color: #764ba2; margin-bottom: 0.5rem;">
+                            <i class="material-icons">video_library</i>
+                        </div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">Crear Cursos</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Diseña y publica cursos en formato video, texto o interactivo.</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-size: 2rem; color: #764ba2; margin-bottom: 0.5rem;">
+                            <i class="material-icons">assessment</i>
+                        </div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">Seguir Progreso</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Monitorea el avance y rendimiento de tus estudiantes.</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-size: 2rem; color: #764ba2; margin-bottom: 0.5rem;">
+                            <i class="material-icons">payments</i>
+                        </div>
+                        <h4 style="color: #333; margin-bottom: 0.5rem;">Generar Ingresos</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Recibe pagos por cada estudiante que se inscriba a tus cursos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <a href="/docente/dashboard" class="btn btn-primary" style="background: #764ba2; color: white;">Ir a mi Dashboard</a>
+                <a href="/docente/crear-curso" class="btn btn-outline">Crear mi Primer Curso</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="container mb-3">
+        <h2 class="text-center mb-2">Beneficios de enseñar en EduConecta</h2>
+        <div class="grid grid-3">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2.5rem; color: #764ba2; margin-bottom: 1rem;">
+                    <i class="material-icons">public</i>
+                </div>
+                <h4 style="color: #764ba2; margin-bottom: 1rem;">Alcance Global</h4>
+                <p style="color: #666; font-size: 0.9rem;">Llega a estudiantes de todo el mundo desde Venezuela.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2.5rem; color: #764ba2; margin-bottom: 1rem;">
+                    <i class="material-icons">schedule</i>
+                </div>
+                <h4 style="color: #764ba2; margin-bottom: 1rem;">Flexibilidad Total</h4>
+                <p style="color: #666; font-size: 0.9rem;">Crea contenido a tu propio ritmo y horario.</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2.5rem; color: #764ba2; margin-bottom: 1rem;">
+                    <i class="material-icons">support</i>
+                </div>
+                <h4 style="color: #764ba2; margin-bottom: 1rem;">Soporte Completo</h4>
+                <p style="color: #666; font-size: 0.9rem;">Te ayudamos con producción, marketing y tecnología.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="container mb-3">
+        <div class="card" style="background: linear-gradient(135deg, #764ba2 0%, #f093fb 100%); color: white;">
+            <h2 class="text-center" style="color: white; margin-bottom: 1.5rem;">Próximos Pasos</h2>
+            <div class="grid grid-4" style="text-align: center;">
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">1️⃣</div>
+                    <h4 style="margin-bottom: 0.5rem;">Completa tu Perfil</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Añade tu experiencia y especialidades</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">2️⃣</div>
+                    <h4 style="margin-bottom: 0.5rem;">Crea tu Curso</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Diseña tu primer curso impactante</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">3️⃣</div>
+                    <h4 style="margin-bottom: 0.5rem;">Publica y Promociona</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Lanza tu curso y atrae estudiantes</p>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">4️⃣</div>
+                    <h4 style="margin-bottom: 0.5rem;">Interactúa y Crece</h4>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Enseña y genera ingresos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre EduConecta</h3>
+                    <p>Plataforma educativa líder en Venezuela, comprometida con la formación de calidad accesible para todos.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="/catalogo">Catálogo de Cursos</a></li>
+                        <li><a href="/precios">Planes y Precios</a></li>
+                        <li><a href="/blog">Blog Educativo</a></li>
+                        <li><a href="/contacto">Soporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="material-icons">email</i> info@educonecta.edu.ve</li>
+                        <li><i class="material-icons">phone</i> +58 414-123-4567</li>
+                        <li><i class="material-icons">place</i> Caracas, Venezuela</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduConecta. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

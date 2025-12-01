@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integraciones - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Administrador</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">12</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=A" alt="Usuario" class="user-avatar">
+                        <span>Admin Sistema</span>
+                        <div class="dropdown">
+                            <a href="/admin/perfil">Mi Perfil</a>
+                            <a href="/admin/configuracion">Configuración</a>
+                            <a href="/admin/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/admin/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/admin/usuarios"><i class="material-icons">people</i> Usuarios</a></li>
+                    <li><a href="/admin/cursos"><i class="material-icons">menu_book</i> Cursos</a></li>
+                    <li><a href="/admin/instituciones"><i class="material-icons">business</i> Instituciones</a></li>
+                    <li><a href="/admin/matriculas"><i class="material-icons">assignment</i> Matrículas</a></li>
+                    <li><a href="/admin/pagos"><i class="material-icons">payments</i> Pagos</a></li>
+                    <li><a href="/admin/reportes"><i class="material-icons">show_chart</i> Reportes</a></li>
+                    <li><a href="/admin/configuracion-sistema"><i class="material-icons">settings</i> Configuración</a></li>
+                    <li><a href="/admin/seguridad"><i class="material-icons">security</i> Seguridad</a></li>
+                    <li><a href="/admin/soporte-admin"><i class="material-icons">forum</i> Soporte</a></li>
+                    <li><a href="/admin/auditoria"><i class="material-icons">assignment</i> Auditoría</a></li>
+                    <li><a href="/admin/mantenimiento"><i class="material-icons">build</i> Mantenimiento</a></li>
+                    <li><a href="/admin/notificaciones"><i class="material-icons">campaign</i> Notificaciones</a></li>
+                    <li><a href="/admin/integraciones" class="active"><i class="material-icons">power</i> Integraciones</a></li>
+                    <li><a href="/admin/backup"><i class="material-icons">backup</i> Backup</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1><i class="material-icons">power</i> Integraciones</h1>
+                <p>Administra las conexiones con servicios externos</p>
+            </div>
+
+            <!-- Integration Overview -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Resumen de Integraciones</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="material-icons">check_circle</i></div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Integraciones Activas</p>
+                            <div style="font-size: 0.8rem; color: #28a745;">Funcionando correctamente</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon orange"><i class="material-icons">warning</i></div>
+                        <div class="stat-info">
+                            <h3>2</h3>
+                            <p>Con Problemas</p>
+                            <div style="font-size: 0.8rem; color: #ffc107;">Requieren atención</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="material-icons">refresh</i></div>
+                        <div class="stat-info">
+                            <h3>45,678</h3>
+                            <p>API Calls Hoy</p>
+                            <div style="font-size: 0.8rem; color: #667eea;">↑ 12% vs ayer</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red">🚫</div>
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>Desactivadas</p>
+                            <div style="font-size: 0.8rem; color: #dc3545;">Sin configuración</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Integrations -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">power</i> Integraciones Activas</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">💳 Stripe</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Procesamiento de pagos</p>
+                                </div>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">refresh</i> 12,345 llamadas hoy</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">check_circle</i> 99.8% éxito</span>
+                                    <span style="margin-left: 1rem;">⏱️ 234ms avg</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Configuración:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Webhook configurado<br>• Modo producción<br>• 3D Secure activado</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">settings</i> Configurar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">bar_chart</i> Estadísticas</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">refresh</i> Probar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">email</i> SendGrid</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Envío de emails</p>
+                                </div>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">refresh</i> 8,901 llamadas hoy</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">check_circle</i> 99.5% éxito</span>
+                                    <span style="margin-left: 1rem;">⏱️ 145ms avg</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Configuración:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Templates configurados<br>• Domain verified<br>• Tracking activado</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">settings</i> Configurar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">bar_chart</i> Estadísticas</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">refresh</i> Probar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">phone</i> Firebase</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Notificaciones push</p>
+                                </div>
+                                <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">refresh</i> 3,456 llamadas hoy</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">check_circle</i> 98.9% éxito</span>
+                                    <span style="margin-left: 1rem;">⏱️ 89ms avg</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Configuración:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Cloud Messaging<br>• Analytics activado<br>• iOS + Android</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">settings</i> Configurar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">bar_chart</i> Estadísticas</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">refresh</i> Probar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">🗃️ Amazon S3</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Almacenamiento de archivos</p>
+                                </div>
+                                <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Advertencia</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">refresh</i> 2,345 llamadas hoy</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">check_circle</i> 97.2% éxito</span>
+                                    <span style="margin-left: 1rem;">⏱️ 567ms avg</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Configuración:</div>
+                                <div style="font-size: 0.8rem; color: #ffc107;">• Bucket configurado<br>• CDN activado<br>• <i class="material-icons">warning</i> Cuota casi llena</div>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary" style="flex: 1;"><i class="material-icons">settings</i> Configurar</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">bar_chart</i> Estadísticas</button>
+                                <button class="btn btn-outline" style="flex: 1;"><i class="material-icons">refresh</i> Probar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available Integrations -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">add</i> Integraciones Disponibles</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">payments</i> PayPal</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Procesamiento de pagos alternativo</p>
+                                </div>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">No configurado</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">bar_chart</i> Popularidad: Alta</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">language</i> Global</span>
+                                    <span style="margin-left: 1rem;">💳 Múltiples monedas</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Características:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Pagos internacionales<br>• One-click payments<br>• Buyer protection</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;"><i class="material-icons">power</i> Conectar</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">bar_chart</i> Google Analytics</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Análisis de tráfico y comportamiento</p>
+                                </div>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">No configurado</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">bar_chart</i> Popularidad: Alta</span>
+                                    <span style="margin-left: 1rem;">🆓 Gratis</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">show_chart</i> Insights avanzados</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Características:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Tracking de eventos<br>• Conversion tracking<br>• Custom dashboards</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;"><i class="material-icons">power</i> Conectar</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="material-icons">forum</i> Slack</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Notificaciones y comunicación</p>
+                                </div>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">No configurado</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">bar_chart</i> Popularidad: Alta</span>
+                                    <span style="margin-left: 1rem;">💼 Empresarial</span>
+                                    <span style="margin-left: 1rem;">🤖 Integraciones</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Características:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• Alertas en tiempo real<br>• Comandos personalizados<br>• File sharing</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;"><i class="material-icons">power</i> Conectar</button>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">🗃️ Dropbox</h4>
+                                    <p style="color: #666; font-size: 0.9rem;">Almacenamiento y sincronización</p>
+                                </div>
+                                <span style="background: #6c757d; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">No configurado</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666;">
+                                    <span><i class="material-icons">bar_chart</i> Popularidad: Media</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">cloud</i> Cloud storage</span>
+                                    <span style="margin-left: 1rem;"><i class="material-icons">phone</i> Multiplataforma</span>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.25rem;">Características:</div>
+                                <div style="font-size: 0.8rem; color: #667eea;">• File sharing<br>• Version control<br>• Offline access</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;"><i class="material-icons">power</i> Conectar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Configuration -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">settings</i> Configuración de API</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Servicio *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="stripe">Stripe</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="sendgrid">SendGrid</option>
+                                <option value="firebase">Firebase</option>
+                                <option value="aws">Amazon Web Services</option>
+                                <option value="google">Google Services</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Entorno *</label>
+                            <select class="form-control" required>
+                                <option value="">Selecciona el entorno</option>
+                                <option value="development">Desarrollo</option>
+                                <option value="staging">Staging</option>
+                                <option value="production">Producción</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">API Key</label>
+                            <input type="text" class="form-control" placeholder="sk_live_...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Secret Key</label>
+                            <input type="password" class="form-control" placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Webhook URL</label>
+                        <input type="url" class="form-control" placeholder="https://educonecta.com/webhooks/stripe">
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">build</i> Configuración Avanzada</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Retry Logic</div>
+                                <div style="font-size: 0.9rem; color: #666;">Reintentar llamadas fallidas automáticamente</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Rate Limiting</div>
+                                <div style="font-size: 0.9rem; color: #666;">Limitar llamadas por segundo</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between;">
+                            <div>
+                                <div style="font-weight: bold; margin-bottom: 0.25rem;">Logging</div>
+                                <div style="font-size: 0.9rem; color: #666;">Registrar todas las llamadas a la API</div>
+                            </div>
+                            <input type="checkbox" checked style="width: 20px; height: 20px;">
+                        </label>
+                    </div>
+
+                    <div style="text-align: right;">
+                        <button type="button" class="btn btn-outline" style="margin-right: 1rem;"><i class="material-icons">refresh</i> Probar Conexión</button>
+                        <button type="submit" class="btn btn-primary"><i class="material-icons">backup</i> Guardar Configuración</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- API Usage Statistics -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">bar_chart</i> Estadísticas de Uso de API</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">show_chart</i> Llamadas por Servicio</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">💳 Stripe</span>
+                                    <span style="font-weight: bold; color: #667eea;">12,345</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">email</i> SendGrid</span>
+                                    <span style="font-weight: bold; color: #667eea;">8,901</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">phone</i> Firebase</span>
+                                    <span style="font-weight: bold; color: #667eea;">3,456</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">🗃️ S3</span>
+                                    <span style="font-weight: bold; color: #667eea;">2,345</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 18%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">⏱️ Tiempo de Respuesta</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px;">
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">phone</i> Firebase</span>
+                                    <span style="font-weight: bold; color: #28a745;">89ms</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;"><i class="material-icons">email</i> SendGrid</span>
+                                    <span style="font-weight: bold; color: #28a745;">145ms</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 25%; background: #28a745;"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">💳 Stripe</span>
+                                    <span style="font-weight: bold; color: #ffc107;">234ms</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <span style="font-size: 0.9rem;">🗃️ S3</span>
+                                    <span style="font-weight: bold; color: #dc3545;">567ms</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%; background: #dc3545;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Webhook Management -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">link</i> Gestión de Webhooks</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Webhook</th>
+                                <th style="padding: 1rem; text-align: center;">Servicio</th>
+                                <th style="padding: 1rem; text-align: center;">Eventos</th>
+                                <th style="padding: 1rem; text-align: center;">Última Llamada</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">Stripe Webhook</div>
+                                        <div style="font-size: 0.8rem; color: #666;">https://educonecta.com/webhooks/stripe</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Stripe</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">payment.success<br>payment.failed<br>customer.created</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">29 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">10:23 AM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Editar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Probar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Logs</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold;">SendGrid Webhook</div>
+                                        <div style="font-size: 0.8rem; color: #666;">https://educonecta.com/webhooks/sendgrid</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">SendGrid</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">delivered<br>bounce<br>spamreport</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="font-size: 0.9rem;">28 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">03:45 PM</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Activo</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Editar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Probar</button>
+                                        <button class="btn btn-outline" style="font-size: 0.8rem;">Logs</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="btn btn-primary"><i class="material-icons">power</i> Nueva Integración</button>
+                    <button class="btn btn-outline"><i class="material-icons">bar_chart</i> Ver Estadísticas</button>
+                    <button class="btn btn-outline"><i class="material-icons">refresh</i> Probar Conexiones</button>
+                    <button class="btn btn-outline"><i class="material-icons">assignment</i> Ver Logs</button>
+                    <button class="btn btn-outline"><i class="material-icons">settings</i> Configurar API</button>
+                    <button class="btn btn-outline"><i class="material-icons">link</i> Gestionar Webhooks</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Administrativo</p>
+        </div>
+    </footer>
+</body>
+</html>

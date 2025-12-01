@@ -1,0 +1,369 @@
+ Flujo de Trabajo de Creación de Cursos - EduConecta
+🔰 DIAGRAMA DE FLUJO COMPLETO
+text
+FASE 1: Planificación → FASE 2: Diseño → FASE 3: Desarrollo → FASE 4: Revisión → FASE 5: Publicación → FASE 6: Mantenimiento
+🎯 FASE 1: PLANIFICACIÓN ESTRATÉGICA
+1.1. Solicitud de Creación de Curso
+sql
+-- Tabla para gestionar solicitudes
+CREATE TABLE solicitudes_cursos (
+    id SERIAL PRIMARY KEY,
+    titulo_propuesto VARCHAR(200) NOT NULL,
+    categoria_id INTEGER REFERENCES categorias_cursos(id),
+    solicitante_id INTEGER REFERENCES usuarios(id),
+    justificacion_mercado TEXT,
+    publico_objetivo TEXT,
+    objetivos_generales TEXT,
+    duracion_estimada INTEGER,
+    prioridad VARCHAR(20) DEFAULT 'media', -- baja, media, alta
+    estado VARCHAR(20) DEFAULT 'pendiente', -- pendiente, aprobada, rechazada
+    comentarios_aprobacion TEXT,
+    aprobado_por INTEGER REFERENCES usuarios(id),
+    fecha_aprobacion TIMESTAMP,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+Roles Involucrados:
+
+Coordinador Académico (Aprueba/Rechaza)
+
+Diseñador Instruccional (Analiza viabilidad)
+
+Solicitante (Docente/Cliente Institucional)
+
+Proceso:
+
+Formulario de Solicitud con datos básicos
+
+Análisis de Mercado (¿Existe demanda?)
+
+Evaluación de Recursos disponibles
+
+Aprobación/Rechazo con comentarios
+
+✏️ FASE 2: DISEÑO INSTRUCCIONAL
+2.1. Creación del Diseño Curricular
+sql
+CREATE TABLE diseños_curriculares (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    diseñador_id INTEGER REFERENCES usuarios(id),
+    
+    -- Metadatos educativos
+    competencias_desarrollar JSONB,
+    resultados_aprendizaje JSONB,
+    metodologia_enseñanza VARCHAR(100),
+    estrategias_evaluacion JSONB,
+    
+    -- Estructura modular
+    numero_modulos INTEGER,
+    numero_lecciones INTEGER,
+    recursos_requeridos JSONB, -- videos, PDFs, quizzes, etc.
+    
+    -- Especificaciones técnicas
+    nivel_conexion_requerido VARCHAR(20), -- baja, media, alta
+    dispositivos_compatibles JSONB, -- [movil, tablet, pc]
+    requisitos_tecnicos TEXT,
+    
+    estado VARCHAR(20) DEFAULT 'borrador',
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_aprobacion TIMESTAMP
+);
+2.2. Herramientas de Diseño
+Plantillas Disponibles:
+
+Template Básico: Video + Texto + Quiz
+
+Template Avanzado: Múltiples recursos + Foros + Proyectos
+
+Template Corporativo: Evaluaciones + Certificaciones
+
+Template Interactivo: Gamificación + Microlearning
+
+Checklist de Diseño:
+
+Objetivos de aprendizaje claros
+
+Secuencia lógica de contenidos
+
+Variedad de recursos multimedia
+
+Mecanismos de evaluación
+
+Accesibilidad verificada
+
+Optimización para baja conexión
+
+🛠️ FASE 3: DESARROLLO DE CONTENIDOS
+3.1. Asignación de Recursos
+sql
+CREATE TABLE tareas_desarrollo (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    modulo_id INTEGER REFERENCES modulos(id) ON DELETE CASCADE,
+    leccion_id INTEGER REFERENCES lecciones(id) ON DELETE CASCADE,
+    
+    tipo_contenido VARCHAR(50), -- video, texto, quiz, recurso, etc.
+    descripcion_tarea TEXT,
+    asignado_a INTEGER REFERENCES usuarios(id),
+    
+    -- Especificaciones
+    formato_requerido VARCHAR(50),
+    duracion_estimada VARCHAR(50), -- para videos
+    calidad_minima VARCHAR(20),
+    tamano_maximo INTEGER, -- en MB
+    
+    fecha_limite TIMESTAMP,
+    estado VARCHAR(20) DEFAULT 'pendiente',
+    fecha_completacion TIMESTAMP,
+    
+    -- Control de calidad
+    revisado_por INTEGER REFERENCES usuarios(id),
+    comentarios_revision TEXT,
+    requiere_correccion BOOLEAN DEFAULT false
+);
+3.2. Flujo de Desarrollo por Tipo de Contenido
+A. CONTENIDO MULTIMEDIA (Videos)
+text
+Grabación → Edición → Compresión → Subtitulado → Optimización → Upload
+Especificaciones Técnicas:
+
+Resolución: 720p (máximo) para ahorro de datos
+
+Formato: MP4 con H.264
+
+Duración: 5-15 minutos (microlearning)
+
+Tamaño: <50MB por video
+
+Subtítulos: Obligatorios para accesibilidad
+
+B. CONTENIDO TEXTUAL
+text
+Redacción → Revisión → Formateo HTML → Inserción imágenes → Prueba lectura
+Estándares:
+
+Longitud: 500-2000 palabras por lección
+
+Formato: HTML semántico
+
+Imágenes: Comprimidas, <100KB cada una
+
+Lectura: Nivel de dificultad apropiado
+
+C. EVALUACIONES Y QUIZZES
+text
+Diseño preguntas → Validación respuestas → Configuración parámetros → Prueba funcional
+Tipos de Preguntas:
+
+Opción múltiple
+
+Verdadero/Falso
+
+Emparejamiento
+
+Desarrollo corto
+
+Casos prácticos
+
+🔍 FASE 4: REVISIÓN Y CONTROL DE CALIDAD
+4.1. Sistema de Revisiones
+sql
+CREATE TABLE revisiones_cursos (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    revisor_id INTEGER REFERENCES usuarios(id),
+    tipo_revision VARCHAR(50), -- pedagogica, tecnica, contenido, accesibilidad
+    puntuacion INTEGER, -- 1-5
+    comentarios TEXT,
+    acciones_correctivas JSONB,
+    estado VARCHAR(20) DEFAULT 'pendiente',
+    fecha_revision TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_aprobaacion TIMESTAMP
+);
+
+CREATE TABLE checklist_calidad (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    
+    -- Revisión Pedagógica
+    objetivos_claros BOOLEAN DEFAULT false,
+    secuencia_logica BOOLEAN DEFAULT false,
+    evaluaciones_adecuadas BOOLEAN DEFAULT false,
+    retroalimentacion_incluida BOOLEAN DEFAULT false,
+    
+    -- Revisión Técnica
+    videos_funcionan BOOLEAN DEFAULT false,
+    enlaces_activos BOOLEAN DEFAULT false,
+    recursos_descargables BOOLEAN DEFAULT false,
+    responsive_design BOOLEAN DEFAULT false,
+    
+    -- Revisión de Contenido
+    contenido_actualizado BOOLEAN DEFAULT false,
+    libre_errores BOOLEAN DEFAULT false,
+    citas_correctas BOOLEAN DEFAULT false,
+    derechos_autor BOOLEAN DEFAULT false,
+    
+    -- Accesibilidad
+    subtitulos_videos BOOLEAN DEFAULT false,
+    texto_legible BOOLEAN DEFAULT false,
+    navegacion_clara BOOLEAN DEFAULT false,
+    contraste_colores BOOLEAN DEFAULT false,
+    
+    fecha_revision TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    revisado_por INTEGER REFERENCES usuarios(id)
+);
+4.2. Proceso de Revisión por Roles
+Revisor Pedagógico (Coordinador Académico)
+Verifica alineación con objetivos
+
+Evalúa metodología educativa
+
+Revisa sistema de evaluaciones
+
+Valida secuencia de aprendizaje
+
+Revisor Técnico (Administrador LMS)
+Prueba funcionalidad de recursos
+
+Verifica compatibilidad dispositivos
+
+Confirma optimización datos
+
+Valida experiencia de usuario
+
+Revisor de Contenido (Experto en Materia)
+Verifica exactitud científica
+
+Evalúa actualidad de información
+
+Revisa claridad explicativa
+
+Confirma fuentes y referencias
+
+🚀 FASE 5: PUBLICACIÓN Y LANZAMIENTO
+5.1. Preparación para Lanzamiento
+sql
+CREATE TABLE lanzamientos_cursos (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    fecha_lanzamiento_planificada TIMESTAMP,
+    fecha_lanzamiento_real TIMESTAMP,
+    estrategia_lanzamiento VARCHAR(100),
+    
+    -- Configuración de publicación
+    es_gratuito BOOLEAN DEFAULT false,
+    precio_publicacion DECIMAL(10,2),
+    cupo_maximo INTEGER,
+    requiere_aprobaacion BOOLEAN DEFAULT false,
+    
+    -- Marketing
+    email_marketing_preparado BOOLEAN DEFAULT false,
+    redes_sociales_programadas BOOLEAN DEFAULT false,
+    landing_page_activa BOOLEAN DEFAULT false,
+    
+    estado VARCHAR(20) DEFAULT 'preparacion',
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+5.2. Checklist de Publicación
+Metadatos completos (título, descripción, imagen)
+
+Configuración de precios y descuentos
+
+Pruebas finales de funcionalidad
+
+Comunicación a interesados
+
+Backup de contenidos
+
+Monitoreo inicial de rendimiento
+
+🔄 FASE 6: MANTENIMIENTO Y MEJORA CONTINUA
+6.1. Sistema de Feedback y Mejoras
+sql
+CREATE TABLE feedback_cursos (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    tipo_feedback VARCHAR(50), -- contenido, tecnico, pedagogico, sugerencia
+    comentario TEXT,
+    calificacion INTEGER, -- 1-5
+    esta_resuelto BOOLEAN DEFAULT false,
+    accion_tomada TEXT,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE metricas_curso (
+    id SERIAL PRIMARY KEY,
+    curso_id INTEGER REFERENCES cursos(id) ON DELETE CASCADE,
+    fecha_metrica DATE,
+    
+    -- Engagement
+    estudiantes_activos INTEGER,
+    tiempo_promedio_sesion INTEGER,
+    tasa_completacion DECIMAL(5,2),
+    tasa_abandono DECIMAL(5,2),
+    
+    -- Rendimiento académico
+    calificacion_promedio DECIMAL(5,2),
+    preguntas_frecuentes JSONB,
+    
+    -- Satisfacción
+    satisfaccion_promedio DECIMAL(5,2),
+    sugerencias_mejora TEXT
+);
+6.2. Ciclo de Mejora Continua
+text
+Monitoreo → Análisis → Planificación → Implementación → Validación
+Indicadores Clave a Monitorear:
+
+Tasa de Completación (>70% objetivo)
+
+Satisfacción Estudiantil (>4/5 estrellas)
+
+Problemas Técnicos Reportados
+
+Tiempo Promedio de Completación
+
+Puntos de Abandono (lecciones con alta deserción)
+
+⏱️ TIMELINE ESTIMADO POR CURSO
+Fase	Duración	Responsables	Entregables
+Planificación	1-2 semanas	Coordinador, Solicitante	Propuesta aprobada
+Diseño	2-3 semanas	Diseñador Instruccional	Diseño curricular
+Desarrollo	4-6 semanas	Docentes, Diseñadores	Contenidos completos
+Revisión	1-2 semanas	Revisores	Checklist aprobado
+Publicación	1 semana	Admin, Marketing	Curso activo
+TOTAL	9-14 semanas		
+🎛️ PANEL DE CONTROL DEL PROCESO
+Vista Coordinador Académico:
+sql
+-- Query para dashboard de seguimiento
+SELECT 
+    c.titulo,
+    c.estado,
+    COUNT(DISTINCT td.id) as tareas_totales,
+    COUNT(DISTINCT CASE WHEN td.estado = 'completado' THEN td.id END) as tareas_completadas,
+    COUNT(DISTINCT rc.id) as revisiones_pendientes,
+    c.fecha_creacion,
+    u.nombres as creador_nombre
+FROM cursos c
+LEFT JOIN tareas_desarrollo td ON c.id = td.curso_id
+LEFT JOIN revisiones_cursos rc ON c.id = rc.curso_id AND rc.estado = 'pendiente'
+LEFT JOIN usuarios u ON c.creado_por = u.id
+GROUP BY c.id, c.titulo, c.estado, c.fecha_creacion, u.nombres;
+Vista Diseñador Instruccional:
+sql
+-- Tareas asignadas por prioridad
+SELECT 
+    c.titulo as curso,
+    m.titulo as modulo,
+    td.tipo_contenido,
+    td.descripcion_tarea,
+    td.fecha_limite,
+    td.estado,
+    DATEDIFF(td.fecha_limite, NOW()) as dias_restantes
+FROM tareas_desarrollo td
+JOIN cursos c ON td.curso_id = c.id
+LEFT JOIN modulos m ON td.modulo_id = m.id
+WHERE td.asignado_a = :user_id
+ORDER BY td.fecha_limite ASC;

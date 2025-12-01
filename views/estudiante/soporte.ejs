@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="dashboard-nav">
+                <div class="nav-left">
+                    <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+                    <span class="user-role">Estudiante</span>
+                </div>
+                <div class="nav-right">
+                    <div class="notifications">
+                        <button class="btn-icon"><i class="material-icons">notifications</i> <span class="badge">3</span></button>
+                    </div>
+                    <div class="user-menu">
+                        <img src="https://via.placeholder.com/40x40/667eea/ffffff?text=J" alt="Usuario" class="user-avatar">
+                        <span>Juan Pérez</span>
+                        <div class="dropdown">
+                            <a href="/estudiante/perfil">Mi Perfil</a>
+                            <a href="/estudiante/configuracion">Configuración</a>
+                            <a href="/estudiante/soporte">Soporte</a>
+                            <a href="/logout">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/estudiante/dashboard"><i class="material-icons">bar_chart</i> Dashboard</a></li>
+                    <li><a href="/estudiante/cursos"><i class="material-icons">menu_book</i> Mis Cursos</a></li>
+                    <li><a href="/estudiante/aula"><i class="material-icons">school</i> Mi Aula Virtual</a></li>
+                    <li><a href="/estudiante/progreso"><i class="material-icons">show_chart</i> Progreso</a></li>
+                    <li><a href="/estudiante/calificaciones"><i class="material-icons">my_location</i> Calificaciones</a></li>
+                    <li><a href="/estudiante/biblioteca"><i class="material-icons">local_library</i> Biblioteca</a></li>
+                    <li><a href="/estudiante/foros"><i class="material-icons">forum</i> Foros</a></li>
+                    <li><a href="/estudiante/certificados"><i class="material-icons">emoji_events</i> Certificados</a></li>
+                    <li><a href="/estudiante/recomendados"><i class="material-icons">star</i> Recomendados</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header -->
+            <div class="dashboard-card">
+                <h1>🛠️ Centro de Soporte</h1>
+                <p>Estamos aquí para ayudarte con cualquier duda o problema</p>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>⚡ Acciones Rápidas</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon blue"><i class="material-icons">edit</i></div>
+                        <div class="stat-info">
+                            <h3>Crear Ticket</h3>
+                            <p>Reportar un problema</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon green"><i class="material-icons">forum</i></div>
+                        <div class="stat-info">
+                            <h3>Chat en Vivo</h3>
+                            <p>Soporte inmediato</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon orange"><i class="material-icons">menu_book</i></div>
+                        <div class="stat-info">
+                            <h3>Guías</h3>
+                            <p>Documentación</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" style="cursor: pointer;">
+                        <div class="stat-icon red">📞</div>
+                        <div class="stat-info">
+                            <h3>Llamar</h3>
+                            <p>Soporte telefónico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Categories -->
+            <div class="dashboard-card">
+                <h2>📂 Categorías de Ayuda</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="material-icons">menu_book</i></div>
+                            <h3 style="margin-bottom: 1rem;">Cursos y Aprendizaje</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Acceso a cursos, progreso, certificados</p>
+                            <button class="btn btn-outline">Ver Ayuda</button>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">💳</div>
+                            <h3 style="margin-bottom: 1rem;">Pagos y Suscripciones</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Facturación, métodos de pago, reembolsos</p>
+                            <button class="btn btn-outline">Ver Ayuda</button>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🔐</div>
+                            <h3 style="margin-bottom: 1rem;">Cuenta y Seguridad</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Inicio de sesión, perfil, privacidad</p>
+                            <button class="btn btn-outline">Ver Ayuda</button>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div style="padding: 1.5rem; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🎥</div>
+                            <h3 style="margin-bottom: 1rem;">Problemas Técnicos</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Videos, descargas, plataforma</p>
+                            <button class="btn btn-outline">Ver Ayuda</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="dashboard-card">
+                <h2>❓ Preguntas Frecuentes</h2>
+                <div style="margin-bottom: 2rem;">
+                    <input type="text" placeholder="Buscar en las preguntas frecuentes..." class="form-control">
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                            <h4 style="margin: 0;">¿Cómo puedo acceder a mis cursos comprados?</h4>
+                            <span style="font-size: 1.2rem;">▼</span>
+                        </div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e0e0;">
+                            <p style="color: #666;">Para acceder a tus cursos comprados, ve a la sección "Mis Cursos" en el menú lateral. Allí encontrarás todos los cursos que has adquirido con acceso completo.</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                            <h4 style="margin: 0;">¿Cómo obtengo mi certificado?</h4>
+                            <span style="font-size: 1.2rem;">▶</span>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                            <h4 style="margin: 0;">¿Puedo cambiar mi plan de suscripción?</h4>
+                            <span style="font-size: 1.2rem;">▶</span>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                            <h4 style="margin: 0;">¿Los videos se pueden descargar?</h4>
+                            <span style="font-size: 1.2rem;">▶</span>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                            <h4 style="margin: 0;">¿Cómo solicito un reembolso?</h4>
+                            <span style="font-size: 1.2rem;">▶</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <button class="btn btn-outline">Ver Todas las Preguntas</button>
+                </div>
+            </div>
+
+            <!-- Support Tickets -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">edit</i> Mis Tickets de Soporte</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <div>
+                        <button class="btn btn-primary">+ Nuevo Ticket</button>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="form-control" style="width: 150px;">
+                            <option>Todos los estados</option>
+                            <option>Abierto</option>
+                            <option>En Progreso</option>
+                            <option>Cerrado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left;">Ticket</th>
+                                <th style="padding: 1rem; text-align: left;">Asunto</th>
+                                <th style="padding: 1rem; text-align: center;">Categoría</th>
+                                <th style="padding: 1rem; text-align: center;">Estado</th>
+                                <th style="padding: 1rem; text-align: center;">Fecha</th>
+                                <th style="padding: 1rem; text-align: center;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">#001</span>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Problema con video del curso</div>
+                                        <div style="font-size: 0.8rem; color: #666;">El video de la lección 3.2 no se reproduce</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #dc3545; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Técnico</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #ffc107; color: #000; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">En Progreso</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>15 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">Hace 2 días</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 1rem;">
+                                    <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">#002</span>
+                                </td>
+                                <td style="padding: 1rem;">
+                                    <div>
+                                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Duda sobre certificado</div>
+                                        <div style="font-size: 0.8rem; color: #666;">¿Cómo puedo descargar mi certificado?</div>
+                                    </div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Cursos</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem;">Cerrado</span>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <div>12 Nov 2024</div>
+                                    <div style="font-size: 0.8rem; color: #666;">Hace 5 días</div>
+                                </td>
+                                <td style="padding: 1rem; text-align: center;">
+                                    <button class="btn btn-outline" style="font-size: 0.8rem;">Ver</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Contact Options -->
+            <div class="dashboard-card">
+                <h2>📞 Otras Formas de Contacto</h2>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;"><i class="material-icons">forum</i> Chat en Vivo</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="material-icons">forum</i></div>
+                            <p style="margin-bottom: 1.5rem;">Chatea con nuestro equipo de soporte en tiempo real</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="color: #28a745; font-weight: bold;">🟢 Disponible ahora</div>
+                                <div style="font-size: 0.9rem; color: #666;">Tiempo de espera: ~2 minutos</div>
+                            </div>
+                            <button class="btn btn-primary">Iniciar Chat</button>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 1rem;">📞 Soporte Telefónico</h3>
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📞</div>
+                            <p style="margin-bottom: 1.5rem;">Llámanos para asistencia inmediata</p>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">+58 800-EDU-HELP</div>
+                                <div style="font-size: 0.9rem; color: #666;">Lunes a Viernes, 9am - 6pm</div>
+                            </div>
+                            <button class="btn btn-outline">Llamar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">menu_book</i> Recursos de Ayuda</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: #667eea; margin-bottom: 1rem;"><i class="material-icons">local_library</i> Guías de Inicio Rápido</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Guía para nuevos estudiantes
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Cómo navegar la plataforma
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Tips para el aprendizaje online
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Configuración de perfil
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: #667eea; margin-bottom: 1rem;">🎥 Tutoriales en Video</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;">🎥</span>
+                                        Tutorial: Comprar un curso
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;">🎥</span>
+                                        Tutorial: Usar el aula virtual
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;">🎥</span>
+                                        Tutorial: Descargar certificados
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;">🎥</span>
+                                        Tutorial: Foros y comunidad
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: #667eea; margin-bottom: 1rem;"><i class="material-icons">description</i> Documentación Técnica</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Requisitos del sistema
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Solución de problemas comunes
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 0.75rem;">
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Guía de navegación móvil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" style="color: #667eea; text-decoration: none;">
+                                        <span style="margin-right: 0.5rem;"><i class="material-icons">description</i></span>
+                                        Preguntas frecuentes técnicas
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Support -->
+            <div class="dashboard-card">
+                <h2><i class="material-icons">people</i> Soporte Comunitario</h2>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
+                    <h3 style="margin-bottom: 1rem;">Únete a Nuestra Comunidad</h3>
+                    <p style="margin-bottom: 1.5rem; opacity: 0.9;">Conecta con otros estudiantes, comparte experiencias y obtén ayuda de la comunidad EduConecta</p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <a href="/estudiante/foros" class="btn" style="background: white; color: #667eea;"><i class="material-icons">forum</i> Foros</a>
+                        <a href="#" class="btn" style="background: white; color: #667eea;"><i class="material-icons">phone</i> WhatsApp</a>
+                        <a href="#" class="btn" style="background: white; color: #667eea;"><i class="material-icons">email</i> Newsletter</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="dashboard-card">
+                <h2>💭 Tu Opición Importa</h2>
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px; text-align: center;">
+                    <h3 style="margin-bottom: 1rem;">¿Cómo podemos mejorar?</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Tu feedback nos ayuda a mejorar nuestro servicio de soporte</p>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+                            <button class="btn btn-outline" style="font-size: 1.5rem; padding: 0.5rem 1rem;">😞</button>
+                            <button class="btn btn-outline" style="font-size: 1.5rem; padding: 0.5rem 1rem;">😐</button>
+                            <button class="btn btn-outline" style="font-size: 1.5rem; padding: 0.5rem 1rem;">🙂</button>
+                            <button class="btn btn-outline" style="font-size: 1.5rem; padding: 0.5rem 1rem;">😊</button>
+                            <button class="btn btn-outline" style="font-size: 1.5rem; padding: 0.5rem 1rem;">🤩</button>
+                        </div>
+                    </div>
+                    <textarea placeholder="Cuéntanos más sobre tu experiencia..." style="width: 100%; min-height: 100px; padding: 1rem; border: 1px solid #e0e0e0; border-radius: 8px; resize: vertical;"></textarea>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Enviar Feedback</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <div class="container">
+            <p>&copy; 2024 EduConecta. Panel Estudiantil</p>
+        </div>
+    </footer>
+</body>
+</html>
