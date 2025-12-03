@@ -394,7 +394,7 @@ CREATE TABLE metricas_rendimiento (
     cpu_porcentaje DECIMAL(5,2),
     usuarios_conectados INTEGER
 );
-🔍 ÍNDICES RECOMENDADOS
+ ÍNDICES RECOMENDADOS
 sql
 -- Índices para mejorar rendimiento
 CREATE INDEX idx_usuarios_email ON usuarios(email);
@@ -410,7 +410,7 @@ CREATE INDEX idx_transacciones_estado ON transacciones(estado_pago);
 CREATE INDEX idx_tickets_estado ON tickets_soporte(estado);
 CREATE INDEX idx_tickets_usuario ON tickets_soporte(usuario_id);
 CREATE INDEX idx_logs_usuario_fecha ON logs_actividad(usuario_id, fecha_creacion);
-🔄 RELACIONES PRINCIPALES
+ RELACIONES PRINCIPALES
 text
 Usuarios ←→ Roles (Muchos a Muchos)
 Usuarios ←→ Cursos (Matrículas)
@@ -420,7 +420,7 @@ Lecciones ←→ Evaluaciones (Uno a Uno/Opcional)
 Estudiantes ←→ Progreso (Uno a Muchos)
 Docentes ←→ Cursos (Muchos a Muchos)
 Instituciones ←→ Usuarios (Muchos a Muchos)
-🎯 CONSIDERACIONES PARA VENEZUELA
+ CONSIDERACIONES PARA VENEZUELA
 Optimizaciones Específicas:
 Campos para moneda dual (USD y VES)
 

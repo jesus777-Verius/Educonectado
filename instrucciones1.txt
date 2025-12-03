@@ -34,7 +34,7 @@ Acceso: Panel corporativo
 
 Funciones: Gestionar grupos de estudiantes, ver reportes de progreso
 
-🎯 Tipos de Clientes
+Tipos de Clientes
 1. Clientes Individuales
 Perfil: Estudiantes particulares, profesionales
 
@@ -70,7 +70,7 @@ Modelo: Precios especiales o gratuitos
 
 Características: Enfoque en comunidades vulnerables
 
-🖥️ Vistas Necesarias en la Plataforma
+Vistas Necesarias en la Plataforma
 A. VISTAS PÚBLICAS (8 vistas)
 Landing Page - Presentación de la plataforma
 

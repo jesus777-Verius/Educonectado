@@ -1,8 +1,8 @@
  Flujo de Trabajo de Creación de Cursos - EduConecta
-🔰 DIAGRAMA DE FLUJO COMPLETO
+ DIAGRAMA DE FLUJO COMPLETO
 text
 FASE 1: Planificación → FASE 2: Diseño → FASE 3: Desarrollo → FASE 4: Revisión → FASE 5: Publicación → FASE 6: Mantenimiento
-🎯 FASE 1: PLANIFICACIÓN ESTRATÉGICA
+ FASE 1: PLANIFICACIÓN ESTRATÉGICA
 1.1. Solicitud de Creación de Curso
 sql
 -- Tabla para gestionar solicitudes
@@ -40,7 +40,7 @@ Evaluación de Recursos disponibles
 
 Aprobación/Rechazo con comentarios
 
-✏️ FASE 2: DISEÑO INSTRUCCIONAL
+ FASE 2: DISEÑO INSTRUCCIONAL
 2.1. Creación del Diseño Curricular
 sql
 CREATE TABLE diseños_curriculares (
@@ -93,7 +93,7 @@ Accesibilidad verificada
 
 Optimización para baja conexión
 
-🛠️ FASE 3: DESARROLLO DE CONTENIDOS
+ FASE 3: DESARROLLO DE CONTENIDOS
 3.1. Asignación de Recursos
 sql
 CREATE TABLE tareas_desarrollo (
@@ -165,7 +165,7 @@ Desarrollo corto
 
 Casos prácticos
 
-🔍 FASE 4: REVISIÓN Y CONTROL DE CALIDAD
+ FASE 4: REVISIÓN Y CONTROL DE CALIDAD
 4.1. Sistema de Revisiones
 sql
 CREATE TABLE revisiones_cursos (
@@ -240,7 +240,7 @@ Revisa claridad explicativa
 
 Confirma fuentes y referencias
 
-🚀 FASE 5: PUBLICACIÓN Y LANZAMIENTO
+ FASE 5: PUBLICACIÓN Y LANZAMIENTO
 5.1. Preparación para Lanzamiento
 sql
 CREATE TABLE lanzamientos_cursos (
@@ -277,7 +277,7 @@ Backup de contenidos
 
 Monitoreo inicial de rendimiento
 
-🔄 FASE 6: MANTENIMIENTO Y MEJORA CONTINUA
+ FASE 6: MANTENIMIENTO Y MEJORA CONTINUA
 6.1. Sistema de Feedback y Mejoras
 sql
 CREATE TABLE feedback_cursos (
@@ -326,7 +326,7 @@ Tiempo Promedio de Completación
 
 Puntos de Abandono (lecciones con alta deserción)
 
-⏱️ TIMELINE ESTIMADO POR CURSO
+ TIMELINE ESTIMADO POR CURSO
 Fase	Duración	Responsables	Entregables
 Planificación	1-2 semanas	Coordinador, Solicitante	Propuesta aprobada
 Diseño	2-3 semanas	Diseñador Instruccional	Diseño curricular
@@ -334,7 +334,7 @@ Desarrollo	4-6 semanas	Docentes, Diseñadores	Contenidos completos
 Revisión	1-2 semanas	Revisores	Checklist aprobado
 Publicación	1 semana	Admin, Marketing	Curso activo
 TOTAL	9-14 semanas		
-🎛️ PANEL DE CONTROL DEL PROCESO
+ PANEL DE CONTROL DEL PROCESO
 Vista Coordinador Académico:
 sql
 -- Query para dashboard de seguimiento
