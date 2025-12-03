@@ -15,42 +15,42 @@ app.use(express.json());
 
 // Ruta principal - Landing Page
 app.get('/', (req, res) => {
-    res.render('public/landing');
+    res.render('clientes/landing');
 });
 
 // Rutas públicas
 app.get('/catalogo', (req, res) => {
-    res.render('public/catalogo');
+    res.render('clientes/catalogo');
 });
 
 app.get('/precios', (req, res) => {
-    res.render('public/precios');
+    res.render('clientes/precios');
 });
 
 app.get('/blog', (req, res) => {
-    res.render('public/blog');
+    res.render('clientes/blog');
 });
 
 app.get('/quienes-somos', (req, res) => {
-    res.render('public/quienes-somos');
+    res.render('clientes/quienes-somos');
 });
 
 app.get('/contacto', (req, res) => {
-    res.render('public/contacto');
+    res.render('clientes/contacto');
 });
 
 // Rutas de cursos
 app.get('/curso/:id', (req, res) => {
-    res.render('public/detalle-curso');
+    res.render('clientes/detalle-curso');
 });
 
 // Rutas de autenticación
 app.get('/login', (req, res) => {
-    res.render('public/auth');
+    res.render('clientes/auth');
 });
 
 app.get('/register', (req, res) => {
-    res.render('public/auth');
+    res.render('clientes/auth');
 });
 
 // Iniciar servidor

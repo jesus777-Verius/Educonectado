@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <style>
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            background: #f8f9fa;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-menu a.active {
+            background: rgba(255,255,255,0.2);
+            border-left: 4px solid white;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+        }
+        
+        .header {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .payment-method-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .payment-method-card.selected {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .payment-method-icon {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .payment-method-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .payment-method-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .payment-history {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .payment-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .payment-table th {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 2px solid #e9ecef;
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .payment-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .payment-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .add-payment-method-btn {
+            padding: 0.75rem 1.5rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .add-payment-method-btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .payment-form {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: #5a6fd8;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            color: #e9ecef;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2 style="margin: 0; font-size: 1.5rem;">EduConecta</h2>
+                <p style="margin: 0.5rem 0 0; opacity: 0.8;">Panel Estudiante</p>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="/dashboard-estudiante">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">dashboard</span>
+                    Dashboard
+                </a></li>
+                <li><a href="/catalogo-cursos">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">menu_book</span>
+                    Catálogo de Cursos
+                </a></li>
+                <li><a href="/mis-cursos">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">play_lesson</span>
+                    Mis Cursos
+                </a></li>
+                <li><a href="/tareas">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">assignment</span>
+                    Tareas
+                </a></li>
+                <li><a href="/certificados">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">certificate</span>
+                    Certificados
+                </a></li>
+                <li><a href="/pagos" class="active">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">payments</span>
+                    Pagos
+                </a></li>
+                <li><a href="/configuracion">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">settings</span>
+                    Configuración
+                </a></li>
+                <li><a href="/logout">
+                    <span class="material-symbols-outlined" style="margin-right: 0.5rem;">logout</span>
+                    Cerrar Sesión
+                </a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div>
+                    <h1 style="margin: 0; color: #333;">Pagos</h1>
+                    <p style="margin: 0.5rem 0 0; color: #666;">Gestiona tus métodos de pago y historial de transacciones</p>
+                </div>
+                <img src="https://via.placeholder.com/50x50/667eea/ffffff?text=<%= user.nombres.charAt(0) %>" alt="Avatar" style="width: 50px; height: 50px; border-radius: 50%; cursor: pointer;" onclick="window.location.href='/perfil'">
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">$134.96</div>
+                    <div class="stat-label">Total Invertido</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Cursos Pagados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Métodos de Pago</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$49.99</div>
+                    <div class="stat-label">Próximo Pago</div>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <section>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h2 class="section-title">Métodos de Pago</h2>
+                    <button class="add-payment-method-btn" onclick="showAddPaymentForm()">
+                        <span class="material-symbols-outlined">add</span>
+                        Agregar Método
+                    </button>
+                </div>
+                
+                <div class="payment-methods">
+                    <div class="payment-method-card selected" onclick="selectPaymentMethod(this, 'visa')">
+                        <div class="payment-method-icon">
+                            <span class="material-symbols-outlined">credit_card</span>
+                        </div>
+                        <div class="payment-method-title">Visa ••••4242</div>
+                        <div class="payment-method-description">Vence 12/25</div>
+                    </div>
+                    
+                    <div class="payment-method-card" onclick="selectPaymentMethod(this, 'paypal')">
+                        <div class="payment-method-icon">
+                            <span class="material-symbols-outlined">account_balance</span>
+                        </div>
+                        <div class="payment-method-title">PayPal</div>
+                        <div class="payment-method-description">juan.perez@email.com</div>
+                    </div>
+                    
+                    <div class="payment-method-card" onclick="selectPaymentMethod(this, 'transfer')">
+                        <div class="payment-method-icon">
+                            <span class="material-symbols-outlined">account_balance_wallet</span>
+                        </div>
+                        <div class="payment-method-title">Transferencia Bancaria</div>
+                        <div class="payment-method-description">Banco Nacional ••••7890</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Payment Form (Hidden by default) -->
+            <div class="payment-form" id="addPaymentForm" style="display: none;">
+                <h2 class="section-title">Agregar Nuevo Método de Pago</h2>
+                
+                <div class="form-group">
+                    <label>Tipo de Método</label>
+                    <select id="paymentType" onchange="togglePaymentFields()">
+                        <option value="card">Tarjeta de Crédito/Débito</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="transfer">Transferencia Bancaria</option>
+                    </select>
+                </div>
+                
+                <!-- Card Fields -->
+                <div id="cardFields">
+                    <div class="form-group">
+                        <label>Nombre del Titular</label>
+                        <input type="text" placeholder="Juan Pérez">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Número de Tarjeta</label>
+                        <input type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Fecha de Vencimiento</label>
+                            <input type="text" placeholder="MM/AA" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="text" placeholder="123" maxlength="4">
+                        </div>
+                        <div class="form-group">
+                            <label>País</label>
+                            <select>
+                                <option>Venezuela</option>
+                                <option>Colombia</option>
+                                <option>México</option>
+                                <option>España</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PayPal Fields -->
+                <div id="paypalFields" style="display: none;">
+                    <div class="form-group">
+                        <label>Email de PayPal</label>
+                        <input type="email" placeholder="tu@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Contraseña de PayPal</label>
+                        <input type="password" placeholder="Tu contraseña">
+                    </div>
+                </div>
+                
+                <!-- Transfer Fields -->
+                <div id="transferFields" style="display: none;">
+                    <div class="form-group">
+                        <label>Banco</label>
+                        <select>
+                            <option>Banco Nacional de Venezuela</option>
+                            <option>Banco Mercantil</option>
+                            <option>Banco Provincial</option>
+                            <option>Banesco</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Número de Cuenta</label>
+                        <input type="text" placeholder="0102 0000 0000 0000 0000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tipo de Cuenta</label>
+                        <select>
+                            <option>Cuenta Corriente</option>
+                            <option>Cuenta de Ahorro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem;">
+                    <button type="button" class="submit-btn" onclick="addPaymentMethod()">Agregar Método</button>
+                    <button type="button" class="add-payment-method-btn" onclick="hideAddPaymentForm()">Cancelar</button>
+                </div>
+            </div>
+
+            <!-- Payment History -->
+            <section class="payment-history">
+                <h2 class="section-title">Historial de Pagos</h2>
+                
+                <table class="payment-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th>Monto</th>
+                            <th>Método</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>28/11/2024</td>
+                            <td>Excel Avanzado</td>
+                            <td>$0.00</td>
+                            <td>Gratis</td>
+                            <td><span class="status-badge status-completed">Completado</span></td>
+                            <td>
+                                <button class="add-payment-method-btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="downloadReceipt(1)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                                    Recibo
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>15/11/2024</td>
+                            <td>Marketing Digital Completo</td>
+                            <td>$29.99</td>
+                            <td>Visa ••••4242</td>
+                            <td><span class="status-badge status-completed">Completado</span></td>
+                            <td>
+                                <button class="add-payment-method-btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="downloadReceipt(2)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                                    Recibo
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10/11/2024</td>
+                            <td>Desarrollo Web Moderno</td>
+                            <td>$49.99</td>
+                            <td>PayPal</td>
+                            <td><span class="status-badge status-completed">Completado</span></td>
+                            <td>
+                                <button class="add-payment-method-btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;" onclick="downloadReceipt(3)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">download</span>
+                                    Recibo
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>05/11/2024</td>
+                            <td>Diseño Gráfico Digital</td>
+                            <td>$34.99</td>
+                            <td>Visa ••••4242</td>
+                            <td><span class="status-badge status-pending">Pendiente</span></td>
+                            <td>
+                                <button class="add-payment-method-btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: #ffc107;" onclick="retryPayment(4)">
+                                    <span class="material-symbols-outlined" style="font-size: 1rem;">refresh</span>
+                                    Reintentar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Select payment method
+        function selectPaymentMethod(element, method) {
+            document.querySelectorAll('.payment-method-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            showNotification(`Método de pago seleccionado: ${method}`);
+        }
+
+        // Show add payment form
+        function showAddPaymentForm() {
+            document.getElementById('addPaymentForm').style.display = 'block';
+        }
+
+        // Hide add payment form
+        function hideAddPaymentForm() {
+            document.getElementById('addPaymentForm').style.display = 'none';
+        }
+
+        // Toggle payment fields
+        function togglePaymentFields() {
+            const type = document.getElementById('paymentType').value;
+            document.getElementById('cardFields').style.display = type === 'card' ? 'block' : 'none';
+            document.getElementById('paypalFields').style.display = type === 'paypal' ? 'block' : 'none';
+            document.getElementById('transferFields').style.display = type === 'transfer' ? 'block' : 'none';
+        }
+
+        // Add payment method
+        function addPaymentMethod() {
+            showNotification('Procesando método de pago...');
+            setTimeout(() => {
+                hideAddPaymentForm();
+                showNotification('Método de pago agregado exitosamente');
+            }, 2000);
+        }
+
+        // Download receipt
+        function downloadReceipt(paymentId) {
+            showNotification('Generando recibo...');
+            setTimeout(() => {
+                const link = document.createElement('a');
+                link.href = `/api/recibo/${paymentId}`;
+                link.download = `recibo_${paymentId}.pdf`;
+                link.click();
+                showNotification('Recibo descargado exitosamente');
+            }, 1500);
+        }
+
+        // Retry payment
+        function retryPayment(paymentId) {
+            showNotification('Redirigiendo al proceso de pago...');
+            setTimeout(() => {
+                window.location.href = `/pagar/${paymentId}`;
+            }, 1500);
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #667eea;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Format card number
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardInput = document.querySelector('input[placeholder*="1234"]');
+            if (cardInput) {
+                cardInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s/g, '');
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    e.target.value = formattedValue;
+                });
+            }
+
+            // Format expiry date
+            const expiryInput = document.querySelector('input[placeholder*="MM/AA"]');
+            if (expiryInput) {
+                expiryInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios y Planes - EduConecta</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: #f8f9fa;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .modal-close:hover {
+            background: #e9ecef;
+            transform: rotate(90deg);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input,
+        .form-group password {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group password:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        .btn-outline {
+            border: 2px solid #667eea;
+            color: #667eea;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="container nav">
+            <a href="/" class="logo"><i class="material-icons">menu_book</i> EduConecta</a>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/catalogo">Catálogo</a></li>
+                <li><a href="/precios">Precios</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/quienes-somos">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="#" class="btn btn-outline" onclick="openModal('loginModal')">Iniciar Sesión</a></li>
+                <li><a href="#" class="btn btn-primary" onclick="openModal('registerModal')">Crear Cuenta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 6rem 0; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('/images/OIP.webp') center/cover; opacity: 0.1;"></div>
+        <div class="container text-center" style="position: relative; z-index: 2;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: bold;">Planes y Precios</h1>
+            <p style="font-size: 1.3rem; opacity: 0.9; max-width: 600px; margin: 0 auto; line-height: 1.6;">Elige el plan perfecto para tu aprendizaje y desarrollo profesional con opciones mensuales y anuales</p>
+        </div>
+    </section>
+
+    <!-- Pricing Toggle -->
+    <section class="container mb-3" style="padding: 3rem 0;">
+        <div class="text-center">
+            <div style="display: inline-flex; background: white; border-radius: 50px; padding: 0.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <button id="monthly-btn" class="btn btn-primary" style="border-radius: 50px; padding: 0.75rem 2rem; font-weight: 600; transition: all 0.3s ease;">Pago Mensual</button>
+                <button id="annual-btn" class="btn btn-outline" style="border-radius: 50px; padding: 0.75rem 2rem; font-weight: 600; transition: all 0.3s ease;">Pago Anual <span style="color: #28a745; font-weight: bold;">(Ahorra 20%)</span></button>
+            </div>
+            <p style="color: #666; margin-top: 1rem; font-size: 0.9rem;">Ahorra $240 al año con el plan anual</p>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="container mb-3" style="padding: 3rem 0;">
+        <div class="grid grid-3" style="gap: 2rem;">
+            <!-- Basic Plan -->
+            <div class="pricing-card" style="text-align: center; border-radius: 12px; overflow: hidden; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="padding: 2.5rem 2rem;">
+                    <div style="margin-bottom: 2rem;">
+                        <div style="background: #f8f9fa; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="material-icons" style="font-size: 2rem; color: #667eea;">person</i>
+                        </div>
+                        <h3 style="color: #667eea; margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 600;">Básico</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Perfecto para empezar</p>
+                    </div>
+                    <div class="price-container" style="margin-bottom: 2rem;">
+                        <div class="monthly-price">
+                            <span style="font-size: 3rem; font-weight: bold; color: #333;">$9.99</span>
+                            <span style="color: #666; font-size: 1.1rem;">/mes</span>
+                        </div>
+                        <div class="annual-price" style="display: none;">
+                            <span style="font-size: 3rem; font-weight: bold; color: #333;">$95.90</span>
+                            <span style="color: #666; font-size: 1.1rem;">/año</span>
+                            <div style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-top: 0.5rem;">Ahorra $24</div>
+                        </div>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem; text-align: left;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Acceso a 20 cursos básicos</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Certificados de participación</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Foros de discusión</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Acceso móvil</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #dc3545; margin-right: 0.75rem; font-size: 1.2rem;">cancel</i> <span style="color: #999;">Cursos premium</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #dc3545; margin-right: 0.75rem; font-size: 1.2rem;">cancel</i> <span style="color: #999;">Soporte personalizado</span></li>
+                        <li style="display: flex; align-items: center;"><i class="material-icons" style="color: #dc3545; margin-right: 0.75rem; font-size: 1.2rem;">cancel</i> <span style="color: #999;">Mentoring individual</span></li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%; padding: 1rem; font-weight: 600; border-radius: 8px; transition: all 0.3s ease;">Seleccionar Plan</button>
+                </div>
+            </div>
+
+            <!-- Professional Plan (Popular) -->
+            <div class="pricing-card" style="text-align: center; border: 2px solid #667eea; position: relative; transform: scale(1.05); border-radius: 12px; overflow: hidden; background: white; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #667eea; color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; z-index: 2;">Más Popular</div>
+                <div style="padding: 2.5rem 2rem;">
+                    <div style="margin-bottom: 2rem;">
+                        <div style="background: #667eea; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="material-icons" style="font-size: 2rem; color: white;">business_center</i>
+                        </div>
+                        <h3 style="color: #667eea; margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 600;">Profesional</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Ideal para profesionales</p>
+                    </div>
+                    <div class="price-container" style="margin-bottom: 2rem;">
+                        <div class="monthly-price">
+                            <span style="font-size: 3rem; font-weight: bold; color: #333;">$29.99</span>
+                            <span style="color: #666; font-size: 1.1rem;">/mes</span>
+                        </div>
+                        <div class="annual-price" style="display: none;">
+                            <span style="font-size: 3rem; font-weight: bold; color: #333;">$287.90</span>
+                            <span style="color: #666; font-size: 1.1rem;">/año</span>
+                            <div style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-top: 0.5rem;">Ahorra $72</div>
+                        </div>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem; text-align: left;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Acceso a todos los cursos</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Certificados verificados</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Foros prioritarios</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Acceso móvil y offline</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Descarga de recursos</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Soporte por email 24/7</span></li>
+                        <li style="display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Webinars exclusivos mensuales</span></li>
+                    </ul>
+                    <button class="btn btn-primary" style="width: 100%; padding: 1rem; font-weight: 600; border-radius: 8px; background: #667eea; border-color: #667eea; transition: all 0.3s ease;">Seleccionar Plan</button>
+                </div>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="pricing-card" style="text-align: center; border-radius: 12px; overflow: hidden; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                <div style="padding: 2.5rem 2rem;">
+                    <div style="margin-bottom: 2rem;">
+                        <div style="background: #f8f9fa; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                            <i class="material-icons" style="font-size: 2rem; color: #667eea;">business</i>
+                        </div>
+                        <h3 style="color: #667eea; margin-bottom: 0.5rem; font-size: 1.5rem; font-weight: 600;">Empresarial</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Para equipos y empresas</p>
+                    </div>
+                    <div class="price-container" style="margin-bottom: 2rem;">
+                        <div class="monthly-price">
+                            <span style="font-size: 3rem; font-weight: bold; color: #333;">$99.99</span>
+                            <span style="color: #666; font-size: 1.1rem;">/mes</span>
+                        </div>
+                        <div class="annual-price" style="display: none;">
+                            <span style="font-size: 3rem; font-weight: bold; color: #333;">$959.90</span>
+                            <span style="color: #666; font-size: 1.1rem;">/año</span>
+                            <div style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: inline-block; margin-top: 0.5rem;">Ahorra $240</div>
+                        </div>
+                    </div>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem; text-align: left;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Todo lo del plan Profesional</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Hasta 50 usuarios</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Cursos personalizados</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Dashboard de administración</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Reportes de progreso</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Mentoring grupal</span></li>
+                        <li style="display: flex; align-items: center;"><i class="material-icons" style="color: #28a745; margin-right: 0.75rem; font-size: 1.2rem;">check_circle</i> <span>Integración con LMS corporativo</span></li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%; padding: 1rem; font-weight: 600; border-radius: 8px; transition: all 0.3s ease;">Contactar Ventas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Course Purchase -->
+    <section class="container mb-3" style="padding: 3rem 0;">
+        <div class="card" style="background: #f8f9fa; border-radius: 12px; padding: 3rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <h2 class="text-center mb-2" style="font-size: 2rem; color: #333; font-weight: 600; margin-bottom: 0.5rem;">Compra Individual de Cursos</h2>
+            <p class="text-center" style="color: #666; margin-bottom: 2rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">¿Prefieres comprar cursos específicos sin suscripción? También tenemos esa opción con acceso de por vida.</p>
+            
+            <div class="grid grid-3" style="gap: 2rem;">
+                <div class="course-card" style="border-radius: 12px; overflow: hidden; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <img src="/images/OIP.webp" alt="Curso" style="width: 100%; height: 150px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <div style="margin-bottom: 1rem;">
+                            <span style="background: #667eea; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Marketing</span>
+                        </div>
+                        <h4 style="margin-bottom: 0.5rem; color: #333; font-weight: 600;">Marketing Digital</h4>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Acceso de por vida</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                            <div>
+                                <span style="color: #667eea; font-weight: bold; font-size: 1.3rem;">$29.99</span>
+                                <span style="text-decoration: line-through; color: #999; margin-left: 0.5rem; font-size: 0.9rem;">$49.99</span>
+                            </div>
+                            <button class="btn btn-primary" style="padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600;">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card" style="border-radius: 12px; overflow: hidden; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <img src="/images/OIP.webp" alt="Curso" style="width: 100%; height: 150px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <div style="margin-bottom: 1rem;">
+                            <span style="background: #764ba2; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Programación</span>
+                        </div>
+                        <h4 style="margin-bottom: 0.5rem; color: #333; font-weight: 600;">Programación Web</h4>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Acceso de por vida</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                            <div>
+                                <span style="color: #667eea; font-weight: bold; font-size: 1.3rem;">$49.99</span>
+                                <span style="text-decoration: line-through; color: #999; margin-left: 0.5rem; font-size: 0.9rem;">$79.99</span>
+                            </div>
+                            <button class="btn btn-primary" style="padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600;">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card" style="border-radius: 12px; overflow: hidden; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <img src="/images/OIP.webp" alt="Curso" style="width: 100%; height: 150px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <div style="margin-bottom: 1rem;">
+                            <span style="background: #28a745; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Negocios</span>
+                        </div>
+                        <h4 style="margin-bottom: 0.5rem; color: #333; font-weight: 600;">Gestión de Negocios</h4>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Acceso de por vida</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                            <div>
+                                <span style="color: #667eea; font-weight: bold; font-size: 1.3rem;">$39.99</span>
+                                <span style="text-decoration: line-through; color: #999; margin-left: 0.5rem; font-size: 0.9rem;">$69.99</span>
+                            </div>
+                            <button class="btn btn-primary" style="padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600;">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Comparison -->
+    <section class="container mb-3">
+        <h2 class="text-center mb-2">Comparación de Características</h2>
+        <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: #667eea; color: white;">
+                        <th style="padding: 1rem; text-align: left;">Característica</th>
+                        <th style="padding: 1rem; text-align: center;">Básico</th>
+                        <th style="padding: 1rem; text-align: center;">Profesional</th>
+                        <th style="padding: 1rem; text-align: center;">Empresarial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 1rem;">Cursos disponibles</td>
+                        <td style="padding: 1rem; text-align: center;">20</td>
+                        <td style="padding: 1rem; text-align: center;">150+</td>
+                        <td style="padding: 1rem; text-align: center;">150+</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 1rem;">Certificados</td>
+                        <td style="padding: 1rem; text-align: center;">✓</td>
+                        <td style="padding: 1rem; text-align: center;">✓ Verificados</td>
+                        <td style="padding: 1rem; text-align: center;">✓ Personalizados</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 1rem;">Acceso offline</td>
+                        <td style="padding: 1rem; text-align: center;">✗</td>
+                        <td style="padding: 1rem; text-align: center;">✓</td>
+                        <td style="padding: 1rem; text-align: center;">✓</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 1rem;">Soporte prioritario</td>
+                        <td style="padding: 1rem; text-align: center;">✗</td>
+                        <td style="padding: 1rem; text-align: center;">✓</td>
+                        <td style="padding: 1rem; text-align: center;">✓</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f0f0f0;">
+                        <td style="padding: 1rem;">Usuarios simultáneos</td>
+                        <td style="padding: 1rem; text-align: center;">1</td>
+                        <td style="padding: 1rem; text-align: center;">1</td>
+                        <td style="padding: 1rem; text-align: center;">50</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem;">Reportes avanzados</td>
+                        <td style="padding: 1rem; text-align: center;">✗</td>
+                        <td style="padding: 1rem; text-align: center;">✗</td>
+                        <td style="padding: 1rem; text-align: center;">✓</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container mb-3">
+        <h2 class="text-center mb-2">Preguntas Frecuentes</h2>
+        <div class="grid grid-2">
+            <div class="card">
+                <h4 style="color: #667eea; margin-bottom: 0.5rem;">¿Puedo cancelar mi suscripción en cualquier momento?</h4>
+                <p style="color: #666;">Sí, puedes cancelar tu suscripción en cualquier momento sin penalidades. Mantendrás el acceso hasta el final del período pagado.</p>
+            </div>
+            <div class="card">
+                <h4 style="color: #667eea; margin-bottom: 0.5rem;">¿Los certificados son reconocidos?</h4>
+                <p style="color: #666;">Sí, nuestros certificados son reconocidos por empresas en Venezuela y Latinoamérica. Incluyen códigos de verificación únicos.</p>
+            </div>
+            <div class="card">
+                <h4 style="color: #667eea; margin-bottom: 0.5rem;">¿Hay descuentos para estudiantes?</h4>
+                <p style="color: #666;">Ofrecemos descuentos especiales para estudiantes universitarios con carnet válido. Contáctanos para más información.</p>
+            </div>
+            <div class="card">
+                <h4 style="color: #667eea; margin-bottom: 0.5rem;">¿Qué métodos de pago aceptan?</h4>
+                <p style="color: #666;">Aceptamos tarjetas de crédito/débito, transferencias bancarias, Pago Móvil y Zelle para mayor comodidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container mb-3" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 3rem; border-radius: 12px; text-align: center;">
+        <h2>¿Listo para comenzar tu transformación?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Únete a miles de estudiantes que ya están transformando su futuro con EduConecta.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/login" class="btn btn-primary" style="background: white; color: #667eea;">Comenzar Gratis</a>
+            <a href="/contacto" class="btn btn-outline" style="border-color: white; color: white;">Contactar Ventas</a>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('loginModal')">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">login</span>
+                    Iniciar Sesión
+                </div>
+                <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">Bienvenido de Nuevo</h2>
+                <p style="color: #666; font-size: 1rem;">Ingresa tus credenciales para acceder a tu cuenta</p>
+            </div>
+            <form id="loginForm" style="">
+                <div class="form-group">
+                    <label for="loginEmail">Correo Electrónico</label>
+                    <div style="position: relative;">
+                        <input type="email" id="loginEmail" name="email" required placeholder="tu@email.com" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">email</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <div style="position: relative;">
+                        <input type="password" id="loginPassword" name="password" required placeholder="••••••••" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                    <label style="display: flex; align-items: center;">
+                        <input type="checkbox" name="remember" style="margin-right: 0.5rem;">
+                        <span style="color: #666; font-size: 0.9rem;">Recordarme</span>
+                    </label>
+                    <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">login</span>
+                    Iniciar Sesión
+                </button>
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #e9ecef;">
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">¿No tienes una cuenta?</p>
+                    <a href="#" onclick="switchToRegister()" style="color: #667eea; text-decoration: none; font-weight: 600;">Regístrate gratis</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('registerModal')">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">person_add</span>
+                    Crear Cuenta
+                </div>
+                <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">Únete a EduConecta</h2>
+                <p style="color: #666; font-size: 1rem;">Comienza tu journey educativo hoy mismo</p>
+            </div>
+            <form id="registerForm" style="">
+                <div class="form-group">
+                    <label for="registerName">Nombre Completo</label>
+                    <div style="position: relative;">
+                        <input type="text" id="registerName" name="name" required placeholder="Juan Pérez" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Correo Electrónico</label>
+                    <div style="position: relative;">
+                        <input type="email" id="registerEmail" name="email" required placeholder="tu@email.com" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">email</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Contraseña</label>
+                    <div style="position: relative;">
+                        <input type="password" id="registerPassword" name="password" required placeholder="••••••••" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Contraseña</label>
+                    <div style="position: relative;">
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="••••••••" style="padding: 1rem 1rem 1rem 3rem;">
+                        <div style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">
+                            <span class="material-symbols-outlined">lock</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" name="terms" required style="margin-right: 0.5rem;">
+                        <span style="color: #666; font-size: 0.9rem;">Acepto los términos y condiciones</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">person_add</span>
+                    Crear Cuenta
+                </button>
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #e9ecef;">
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">¿Ya tienes una cuenta?</p>
+                    <a href="#" onclick="switchToLogin()" style="color: #667eea; text-decoration: none; font-weight: 600;">Inicia sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchToRegister() {
+            closeModal('loginModal');
+            setTimeout(() => openModal('registerModal'), 300);
+        }
+
+        function switchToLogin() {
+            closeModal('registerModal');
+            setTimeout(() => openModal('loginModal'), 300);
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal.active');
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Form submissions
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle login logic here
+            console.log('Login submitted');
+            closeModal('loginModal');
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle registration logic here
+            console.log('Register submitted');
+            closeModal('registerModal');
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre EduConecta</h3>
+                    <p>Plataforma educativa líder en Venezuela, comprometida con la formación de calidad accesible para todos.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="/catalogo">Catálogo de Cursos</a></li>
+                        <li><a href="/precios">Planes y Precios</a></li>
+                        <li><a href="/blog">Blog Educativo</a></li>
+                        <li><a href="/contacto">Soporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="material-icons">email</i> info@educonecta.edu.ve</li>
+                        <li><i class="material-icons">phone</i> +58 414-123-4567</li>
+                        <li><i class="material-icons">place</i> Caracas, Venezuela</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduConecta. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
