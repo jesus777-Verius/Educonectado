@@ -1,0 +1,123 @@
+<%# 
+========================================
+MODALES - EDUCONECTA
+========================================
+Modales de Login y Registro
+%>
+
+<%# Modal de Login %>
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('loginModal')">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        
+        <%# Header %>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">login</span>
+                Iniciar Sesión
+            </div>
+            <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">Bienvenido de Nuevo</h2>
+            <p style="color: #666;">Ingresa tus credenciales</p>
+        </div>
+        
+        <%# Formulario %>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Correo Electrónico</label>
+                <div style="position: relative;">
+                    <input type="email" id="loginEmail" required placeholder="tu@email.com" style="padding-left: 3rem;">
+                    <span class="material-symbols-outlined" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">email</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Contraseña</label>
+                <div style="position: relative;">
+                    <input type="password" id="loginPassword" required placeholder="••••••••" style="padding-left: 3rem;">
+                    <span class="material-symbols-outlined" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">lock</span>
+                </div>
+            </div>
+            <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; margin: 0;">
+                    <input type="checkbox" style="margin-right: 0.5rem; width: auto;">
+                    <span style="color: #666; font-size: 0.9rem; font-weight: normal;">Recordarme</span>
+                </label>
+                <a href="#" style="color: #667eea; text-decoration: none; font-size: 0.9rem;">¿Olvidaste tu contraseña?</a>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                <span class="material-symbols-outlined" style="vertical-align: middle; margin-right: 0.5rem;">login</span>
+                Iniciar Sesión
+            </button>
+            <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #e9ecef;">
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">¿No tienes cuenta?</p>
+                <a href="#" onclick="switchToRegister()" style="color: #667eea; text-decoration: none; font-weight: 600;">Regístrate gratis</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%# Modal de Registro %>
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('registerModal')">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        
+        <%# Header %>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; display: inline-block; font-weight: 600; margin-bottom: 1rem;">
+                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;">person_add</span>
+                Crear Cuenta
+            </div>
+            <h2 style="color: #333; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: bold;">Únete a EduConecta</h2>
+            <p style="color: #666;">Comienza tu journey educativo</p>
+        </div>
+        
+        <%# Formulario %>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="registerName">Nombre Completo</label>
+                <div style="position: relative;">
+                    <input type="text" id="registerName" required placeholder="Juan Pérez" style="padding-left: 3rem;">
+                    <span class="material-symbols-outlined" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">person</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Correo Electrónico</label>
+                <div style="position: relative;">
+                    <input type="email" id="registerEmail" required placeholder="tu@email.com" style="padding-left: 3rem;">
+                    <span class="material-symbols-outlined" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">email</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Contraseña</label>
+                <div style="position: relative;">
+                    <input type="password" id="registerPassword" required placeholder="••••••••" style="padding-left: 3rem;">
+                    <span class="material-symbols-outlined" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">lock</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar Contraseña</label>
+                <div style="position: relative;">
+                    <input type="password" id="confirmPassword" required placeholder="••••••••" style="padding-left: 3rem;">
+                    <span class="material-symbols-outlined" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #667eea;">lock</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label style="display: flex; align-items: center; cursor: pointer; margin: 0;">
+                    <input type="checkbox" required style="margin-right: 0.5rem; width: auto;">
+                    <span style="color: #666; font-size: 0.9rem; font-weight: normal;">Acepto los términos y condiciones</span>
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                <span class="material-symbols-outlined" style="vertical-align: middle; margin-right: 0.5rem;">person_add</span>
+                Crear Cuenta
+            </button>
+            <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #e9ecef;">
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">¿Ya tienes cuenta?</p>
+                <a href="#" onclick="switchToLogin()" style="color: #667eea; text-decoration: none; font-weight: 600;">Inicia sesión</a>
+            </div>
+        </form>
+    </div>
+</div>

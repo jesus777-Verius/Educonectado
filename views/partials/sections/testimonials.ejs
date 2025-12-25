@@ -1,0 +1,46 @@
+<%# 
+========================================
+SECCIÓN TESTIMONIOS
+========================================
+Opiniones de estudiantes
+%>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Testimonios de Estudiantes</h2>
+            <p class="section-subtitle">Descubre las experiencias de quienes ya transformaron su futuro</p>
+        </div>
+        
+        <div class="grid grid-3">
+            <% 
+            // Testimonios
+            const testimonials = [
+                { name: 'Gabriel Bolívar', role: 'Estudiante de Marketing', image: '/images/OIP.webp', text: 'Excelente plataforma. Los cursos son muy prácticos.', rating: 5 },
+                { name: 'José Torres', role: 'Estudiante de Programación', image: '/images/OIP.webp', text: 'Gracias a EduConecta pude cambiar de carrera.', rating: 5 },
+                { name: 'Jesús Velázquez', role: 'Estudiante de Negocios', image: '/images/OIP.webp', text: 'La flexibilidad de horarios es increíble.', rating: 5 }
+            ];
+            
+            testimonials.forEach(t => { %>
+                <div class="card" style="text-align: center; position: relative; padding-top: 3rem;">
+                    <%# Avatar %>
+                    <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%);">
+                        <img src="<%= t.image %>" alt="<%= t.name %>" style="width: 60px; height: 60px; border-radius: 50%; border: 4px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    </div>
+                    
+                    <%# Estrellas %>
+                    <div style="margin-bottom: 1.5rem;">
+                        <% for(let i = 0; i < t.rating; i++) { %>
+                            <span class="material-symbols-outlined" style="color: #ffc107; font-size: 1.2rem;">star</span>
+                        <% } %>
+                    </div>
+                    
+                    <%# Texto %>
+                    <p style="color: #666; margin-bottom: 1.5rem; font-style: italic; line-height: 1.6;">"<%= t.text %>"</p>
+                    <div style="font-weight: bold; color: #333; font-size: 1.1rem; margin-bottom: 0.5rem;">- <%= t.name %></div>
+                    <small style="color: #666;"><%= t.role %></small>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>

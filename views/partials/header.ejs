@@ -1,0 +1,71 @@
+<%# 
+========================================
+HEADER / NAVEGACIÓN - EDUCONECTA
+========================================
+Barra de navegación responsive con menú móvil
+%>
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+        
+        <%# Logo %> 
+        <div class="flex items-center space-x-3">
+            <img src="/images/logoEduConecta.png" alt="Logo" class="w-14 h-14 object-cover rounded-full">
+            <a href="/" class="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition">
+                EduConecta
+            </a>
+        </div>
+
+        <%# Navegación Desktop %>
+        <ul class="hidden md:flex items-center space-x-6 lg:space-x-8">
+            <li><a href="/" class="text-gray-600 hover:text-indigo-600 font-medium transition">Inicio</a></li>
+            <li><a href="/catalogo" class="text-gray-600 hover:text-indigo-600 font-medium transition">Catálogo</a></li>
+            <li><a href="/precios" class="text-gray-600 hover:text-indigo-600 font-medium transition">Precios</a></li>
+            <li><a href="/blog" class="text-gray-600 hover:text-indigo-600 font-medium transition">Blog</a></li>
+            <li><a href="/quienes-somos" class="text-gray-600 hover:text-indigo-600 font-medium transition">Nosotros</a></li>
+            <li><a href="/contacto" class="text-gray-600 hover:text-indigo-600 font-medium transition">Contacto</a></li>
+        </ul>
+
+        <%# Botones de Autenticación %>
+        <div class="hidden md:flex items-center space-x-4">
+            <a href="#" onclick="openModal('loginModal')" 
+               class="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition font-semibold">
+                Iniciar Sesión
+            </a>
+            <a href="#" onclick="openModal('registerModal')" 
+               class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-semibold shadow-md">
+                Crear Cuenta
+            </a>
+        </div>
+
+        <%# Botón Menú Móvil %>
+        <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-indigo-600 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <%# Menú Móvil Desplegable %>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+        <div class="px-4 py-3 space-y-3">
+            <a href="/" class="block text-gray-600 hover:text-indigo-600 font-medium">Inicio</a>
+            <a href="/catalogo" class="block text-gray-600 hover:text-indigo-600 font-medium">Catálogo</a>
+            <a href="/precios" class="block text-gray-600 hover:text-indigo-600 font-medium">Precios</a>
+            <a href="/blog" class="block text-gray-600 hover:text-indigo-600 font-medium">Blog</a>
+            <a href="/quienes-somos" class="block text-gray-600 hover:text-indigo-600 font-medium">Nosotros</a>
+            <a href="/contacto" class="block text-gray-600 hover:text-indigo-600 font-medium">Contacto</a>
+            <div class="pt-3 border-t space-y-2">
+                <a href="#" onclick="openModal('loginModal')" class="block w-full text-center px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg font-semibold">Iniciar Sesión</a>
+                <a href="#" onclick="openModal('registerModal')" class="block w-full text-center px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold">Crear Cuenta</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+// Toggle menú móvil
+document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+});
+</script>

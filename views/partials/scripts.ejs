@@ -1,0 +1,152 @@
+<%# 
+========================================
+SCRIPTS JAVASCRIPT - EDUCONECTA
+========================================
+Funciones para modales, validación y utilidades
+%>
+
+<script>
+// ========================================
+// GESTIÓN DE MODALES
+// ========================================
+
+// Abrir modal por ID
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Cerrar modal por ID
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Cambiar entre modales de login/registro
+function switchToRegister() {
+    closeModal('loginModal');
+    setTimeout(() => openModal('registerModal'), 300);
+}
+
+function switchToLogin() {
+    closeModal('registerModal');
+    setTimeout(() => openModal('loginModal'), 300);
+}
+
+// Cerrar modal al hacer clic fuera
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+        closeModal(e.target.id);
+    }
+});
+
+// Cerrar modal con tecla ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const activeModal = document.querySelector('.modal.active');
+        if (activeModal) closeModal(activeModal.id);
+    }
+});
+
+// ========================================
+// VALIDACIÓN DE FORMULARIOS
+// ========================================
+
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const validatePassword = (password) => password.length >= 6;
+
+// Handler del formulario de login
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+        if (!validateEmail(email)) {
+            alert('Por favor ingresa un correo válido');
+            return;
+        }
+        if (!validatePassword(password)) {
+            alert('La contraseña debe tener al menos 6 caracteres');
+            return;
+        }
+        
+        // TODO: Implementar autenticación real
+        alert('Funcionalidad de login en desarrollo');
+    });
+}
+
+// Handler del formulario de registro
+const registerForm = document.getElementById('registerForm');
+if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('registerName').value;
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (name.trim().length < 3) {
+            alert('El nombre debe tener al menos 3 caracteres');
+            return;
+        }
+        if (!validateEmail(email)) {
+            alert('Por favor ingresa un correo válido');
+            return;
+        }
+        if (!validatePassword(password)) {
+            alert('La contraseña debe tener al menos 6 caracteres');
+            return;
+        }
+        if (password !== confirmPassword) {
+            alert('Las contraseñas no coinciden');
+            return;
+        }
+        
+        // TODO: Implementar registro real
+        alert('Funcionalidad de registro en desarrollo');
+    });
+}
+
+// ========================================
+// SCROLL SUAVE
+// ========================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// ========================================
+// LAZY LOADING DE IMÁGENES
+// ========================================
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            }
+        });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+</script>

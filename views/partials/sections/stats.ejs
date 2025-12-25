@@ -1,0 +1,38 @@
+<%# 
+========================================
+SECCIÓN ESTADÍSTICAS
+========================================
+Logros y números de EduConecta
+%>
+
+<section class="section" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: url('/images/OIP.webp') center/cover; opacity: 0.05;"></div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="section-header">
+            <h2 class="section-title" style="color: white;">Nuestros Logros</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Los números que demuestran nuestro compromiso</p>
+        </div>
+        
+        <div class="grid grid-4">
+            <% 
+            // Estadísticas
+            const stats = [
+                { number: '10,000+', label: 'Estudiantes Activos', icon: 'people' },
+                { number: '150+', label: 'Cursos Online', icon: 'school' },
+                { number: '50+', label: 'Instructores Expertos', icon: 'person' },
+                { number: '95%', label: 'Tasa de Satisfacción', icon: 'star' }
+            ];
+            
+            stats.forEach(s => { %>
+                <div class="text-center" style="padding: 2rem 1rem;">
+                    <div style="background: rgba(255,255,255,0.1); width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; backdrop-filter: blur(10px);">
+                        <span class="material-symbols-outlined" style="font-size: 2.5rem;"><%= s.icon %></span>
+                    </div>
+                    <h3 style="color: white; font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;"><%= s.number %></h3>
+                    <p style="color: rgba(255,255,255,0.9);"><%= s.label %></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>

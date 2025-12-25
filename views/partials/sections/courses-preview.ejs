@@ -1,0 +1,44 @@
+<%# 
+========================================
+SECCIÓN CURSOS DESTACADOS
+========================================
+Preview de cursos populares
+%>
+
+<section class="section" style="background: #f8f9fa;">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Cursos Destacados</h2>
+            <p class="section-subtitle">Explora nuestra selección de cursos más populares</p>
+        </div>
+        
+        <div class="grid grid-3">
+            <% if (typeof courses !== 'undefined' && courses.length > 0) {
+                courses.slice(0, 3).forEach(course => { %>
+                    <div class="card">
+                        <img src="<%= course.image %>" alt="<%= course.title %>" 
+                             style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #333; font-weight: 600;">
+                            <%= course.title %>
+                        </h3>
+                        <p style="color: #666; margin-bottom: 1.5rem; line-height: 1.6;">
+                            <%= course.description.substring(0, 100) %>...
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <% if (course.price === 0) { %>
+                                <span style="color: #28a745; font-weight: bold; font-size: 1.2rem;">GRATIS</span>
+                            <% } else { %>
+                                <span style="color: #667eea; font-weight: bold; font-size: 1.2rem;">$<%= course.price %></span>
+                            <% } %>
+                            <a href="/curso/<%= course.id %>" class="btn btn-primary" style="padding: 0.75rem 1.5rem;">Ver Curso</a>
+                        </div>
+                    </div>
+                <% });
+            } %>
+        </div>
+        
+        <div class="text-center mt-3">
+            <a href="/catalogo" class="btn btn-outline">Ver Todos los Cursos</a>
+        </div>
+    </div>
+</section>

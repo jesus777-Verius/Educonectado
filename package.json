@@ -1,0 +1,21 @@
+{
+  "name": "educonecta",
+  "version": "1.0.0",
+  "description": "Plataforma educativa EduConecta - Cursos online en Venezuela",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["educacion", "cursos", "e-learning", "venezuela"],
+  "author": "EduConecta Team",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

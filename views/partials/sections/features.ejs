@@ -1,0 +1,35 @@
+<%# 
+========================================
+SECCIÓN CARACTERÍSTICAS
+========================================
+Por qué elegir EduConecta
+%>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">¿Por qué elegir EduConecta?</h2>
+            <p class="section-subtitle">Descubre por qué somos la plataforma educativa líder en Venezuela</p>
+        </div>
+        
+        <div class="grid grid-3">
+            <% 
+            // Características principales
+            const features = [
+                { icon: 'my_location', title: 'Contenido Relevante', description: 'Cursos diseñados para el mercado venezolano y latinoamericano.' },
+                { icon: 'school', title: 'Instructores Expertos', description: 'Aprende de profesionales con experiencia real.' },
+                { icon: 'phone', title: 'Acceso Móvil', description: 'Estudia desde cualquier dispositivo.' }
+            ];
+            
+            features.forEach(f => { %>
+                <div class="card" style="text-align: center;">
+                    <div style="background: #f8f9fa; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <span class="material-symbols-outlined" style="color: #667eea; font-size: 2.5rem;"><%= f.icon %></span>
+                    </div>
+                    <h3 style="font-size: 1.3rem; color: #333; margin-bottom: 1rem; font-weight: 600;"><%= f.title %></h3>
+                    <p style="color: #666; line-height: 1.6;"><%= f.description %></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</section>

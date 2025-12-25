@@ -1,0 +1,51 @@
+<%# 
+========================================
+LANDING PAGE - EDUCONECTA
+========================================
+Página principal del sitio
+%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduConecta - Plataforma educativa líder en Venezuela. Cursos online de calidad con certificación reconocida.">
+    <title>EduConecta - Plataforma Educativa Líder en Venezuela</title>
+    
+    <%# Favicon %>
+    <link rel="icon" type="image/png" href="/images/logoEduConecta.png">
+    
+    <%# Fuentes e Iconos %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+    <%# Tailwind CSS %>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <%# Estilos Personalizados %>
+    <%- include('../partials/styles') %>
+</head>
+<body>
+    <%# Header %>
+    <%- include('../partials/header') %>
+
+    <%# Secciones de la Landing %>
+    <%- include('../partials/sections/hero') %>
+    <%- include('../partials/sections/features') %>
+    <%- include('../partials/sections/courses-preview') %>
+    <%- include('../partials/sections/stats') %>
+    <%- include('../partials/sections/testimonials') %>
+    <%- include('../partials/sections/cta') %>
+
+    <%# Footer %>
+    <%- include('../partials/footer') %>
+
+    <%# Modales %>
+    <%- include('../partials/modals') %>
+
+    <%# Scripts %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>

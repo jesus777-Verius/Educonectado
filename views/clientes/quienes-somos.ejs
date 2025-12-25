@@ -1,0 +1,193 @@
+<%# 
+========================================
+QUIÉNES SOMOS - EDUCONECTA
+========================================
+Historia, misión y equipo fundador
+%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce la historia y equipo de EduConecta. Transformando la educación digital en Venezuela.">
+    <title>Quiénes Somos - EduConecta</title>
+    
+    <link rel="icon" type="image/png" href="/images/logoEduConecta.png">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <%- include('../partials/styles') %>
+</head>
+<body class="bg-gray-50">
+    <%- include('../partials/header') %>
+
+    <%# Hero %>
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-24">
+        <div class="container mx-auto px-4 text-center max-w-4xl">
+            <div class="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full mb-6">
+                <span class="material-symbols-outlined text-2xl mr-2" style="vertical-align: middle;">school</span>
+                <span class="font-semibold">Transformando la Educación Digital</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">Quiénes Somos</h1>
+            <p class="text-xl opacity-90 mb-12">Soluciones de e-learning de alta calidad, accesibles y centradas en el estudiante</p>
+            
+            <%# Stats %>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                    <div class="text-4xl font-bold mb-2">10,000+</div>
+                    <div class="text-sm opacity-90">Estudiantes</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                    <div class="text-4xl font-bold mb-2">150+</div>
+                    <div class="text-sm opacity-90">Cursos</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                    <div class="text-4xl font-bold mb-2">95%</div>
+                    <div class="text-sm opacity-90">Satisfacción</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                    <div class="text-4xl font-bold mb-2">2025</div>
+                    <div class="text-sm opacity-90">Fundación</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%# Historia %>
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Nuestra Historia</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">El viaje que comenzó con un sueño</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-8 border-2 border-indigo-100">
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Nacimiento</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <strong class="text-indigo-600">EduConecta, C.A.</strong> fue fundada en <strong>2025</strong> en San Juan de los Morros, Estado Guárico, como respuesta a los desafíos educativos de la digitalización en Venezuela.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Un grupo de seis jóvenes ingenieros, docentes y diseñadores tecnológicos identificó la necesidad de crear una plataforma de teleeducación accesible y moderna.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-3xl p-8 border-2 border-green-100">
+                    <div class="bg-gradient-to-r from-green-600 to-teal-600 text-white w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-3xl">trending_up</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Crecimiento</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        EduConecta amplió su alcance mediante alianzas con instituciones educativas, empresas y organizaciones comunitarias, consolidándose como referente nacional.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Nos especializamos en contenidos educativos digitales, capacitación docente y desarrollo de competencias tecnológicas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%# Misión, Visión y Valores %>
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Misión, Visión y Valores</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <%# Misión %>
+                <div class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white rounded-3xl p-8 shadow-2xl transform hover:scale-105 transition">
+                    <span class="material-symbols-outlined text-6xl mb-6 inline-block">rocket_launch</span>
+                    <h3 class="text-2xl font-bold mb-4">Misión</h3>
+                    <p class="text-lg opacity-95 leading-relaxed">
+                        Ofrecer soluciones de e-learning de alta calidad, accesibles y centradas en el estudiante.
+                    </p>
+                </div>
+
+                <%# Visión %>
+                <div class="bg-gradient-to-br from-green-600 to-teal-600 text-white rounded-3xl p-8 shadow-2xl transform hover:scale-105 transition">
+                    <span class="material-symbols-outlined text-6xl mb-6 inline-block">visibility</span>
+                    <h3 class="text-2xl font-bold mb-4">Visión</h3>
+                    <p class="text-lg opacity-95 leading-relaxed">
+                        Ser la plataforma de e-learning más innovadora y confiable de Venezuela.
+                    </p>
+                </div>
+
+                <%# Valores %>
+                <div class="bg-gradient-to-br from-yellow-500 to-orange-500 text-white rounded-3xl p-8 shadow-2xl transform hover:scale-105 transition">
+                    <span class="material-symbols-outlined text-6xl mb-6 inline-block">diamond</span>
+                    <h3 class="text-2xl font-bold mb-4">Valores</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span>Innovación</div>
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span>Calidad</div>
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span>Inclusión</div>
+                        <div class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span>Colaboración</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%# Equipo Fundador %>
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Nuestros Fundadores</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">El equipo detrás de la transformación educativa</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <% 
+                const founders = [
+                    { name: 'Kevin Lizarzabal', role: 'CEO & Fundador', desc: 'Lidera la visión estratégica de EduConecta.', color: 'from-indigo-600 to-purple-700' },
+                    { name: 'José Torres', role: 'Director de Operaciones', desc: 'Especialista en optimización de procesos.', color: 'from-green-600 to-teal-600' },
+                    { name: 'Gustavo Colina', role: 'Director de Marketing', desc: 'Lidera estrategias de crecimiento.', color: 'from-yellow-600 to-orange-600' },
+                    { name: 'Gabriel Bolívar', role: 'Director de Tecnología', desc: 'Experto en plataformas educativas.', color: 'from-blue-600 to-cyan-600' },
+                    { name: 'Jesús Velázquez', role: 'Fundador', desc: 'Especialista en diseño instruccional.', color: 'from-red-600 to-pink-600' },
+                    { name: 'Carlos Nieves', role: 'Fundador', desc: 'Experto en contenidos educativos.', color: 'from-purple-600 to-pink-600' }
+                ];
+                
+                founders.forEach(f => { %>
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="relative h-64 bg-gradient-to-br <%= f.color %>">
+                        <img src="/images/OIP.webp" alt="<%= f.name %>" class="w-full h-full object-cover opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="text-2xl font-bold text-white mb-1"><%= f.name %></h3>
+                            <p class="text-white/80 font-semibold"><%= f.role %></p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 leading-relaxed"><%= f.desc %></p>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
+
+    <%# CTA %>
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6">¿Listo para Transformar tu Futuro?</h2>
+            <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Únete a miles de estudiantes transformando su futuro profesional</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="/catalogo" class="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl transition">
+                    Explorar Cursos <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+                <a href="/contacto" class="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-indigo-600 transition">
+                    Contactar <span class="material-symbols-outlined">phone</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+    <%- include('../partials/modals') %>
+    <%- include('../partials/scripts') %>
+</body>
+</html>
