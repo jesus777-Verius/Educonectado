@@ -22,7 +22,7 @@ Página de planes de suscripción
     <%- include('../partials/header') %>
 
     <%# Hero %>
-    <section class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-20">
+    <section class="bg-gradient-to-r from-blue-600 to-blue-900 text-white py-20">
         <div class="container mx-auto px-4 text-center max-w-4xl">
             <div class="inline-block bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full mb-6">
                 <span class="material-symbols-outlined text-2xl mr-2" style="vertical-align: middle;">payments</span>
@@ -33,7 +33,7 @@ Página de planes de suscripción
             
             <%# Toggle Mensual/Anual %>
             <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full p-2 gap-2">
-                <button class="px-6 py-3 bg-white text-indigo-600 rounded-full font-semibold">Mensual</button>
+                <button class="px-6 py-3 bg-white text-blue-600 rounded-full font-semibold">Mensual</button>
                 <button class="px-6 py-3 text-white rounded-full font-semibold hover:bg-white/10 transition">
                     Anual <span class="text-xs bg-green-500 px-2 py-1 rounded-full ml-2">-20%</span>
                 </button>
@@ -72,7 +72,7 @@ Página de planes de suscripción
                 </div>
 
                 <%# Plan Pro (Destacado) %>
-                <div class="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl shadow-2xl p-8 transform scale-105 relative">
+                <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-2xl p-8 transform scale-105 relative">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
                         <span class="bg-yellow-400 text-gray-900 px-6 py-2 rounded-full font-bold text-sm shadow-lg">MÁS POPULAR</span>
                     </div>
@@ -94,7 +94,7 @@ Página de planes de suscripción
                         <li class="flex items-start gap-3"><span class="material-symbols-outlined text-yellow-400">check_circle</span><span>Contenido premium</span></li>
                         <li class="flex items-start gap-3"><span class="material-symbols-outlined text-yellow-400">check_circle</span><span>Descuentos en eventos</span></li>
                     </ul>
-                    <button class="w-full bg-white text-indigo-600 py-4 rounded-xl font-bold hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <button class="w-full bg-white text-blue-600 py-4 rounded-xl font-bold hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
                         Comenzar Ahora <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
@@ -102,8 +102,8 @@ Página de planes de suscripción
                 <%# Plan Empresarial %>
                 <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition transform hover:-translate-y-2">
                     <div class="text-center mb-8">
-                        <div class="inline-block bg-indigo-100 p-4 rounded-full mb-4">
-                            <span class="material-symbols-outlined text-5xl text-indigo-600">business</span>
+                        <div class="inline-block bg-blue-100 p-4 rounded-full mb-4">
+                            <span class="material-symbols-outlined text-5xl text-blue-600">business</span>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Plan Empresarial</h3>
                         <p class="text-gray-600">Para equipos</p>
@@ -119,7 +119,7 @@ Página de planes de suscripción
                         <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-500">check_circle</span><span class="text-gray-700">Reportes de progreso</span></li>
                         <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-500">check_circle</span><span class="text-gray-700">Soporte dedicado</span></li>
                     </ul>
-                    <button class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-bold hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <button class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-xl font-bold hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
                         Contactar Ventas <span class="material-symbols-outlined">arrow_forward</span>
                     </button>
                 </div>
@@ -143,7 +143,7 @@ Página de planes de suscripción
                 faqs.forEach(faq => { %>
                 <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
                     <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-                        <span class="material-symbols-outlined text-indigo-600">help</span>
+                        <span class="material-symbols-outlined text-blue-600">help</span>
                         <%= faq.q %>
                     </h4>
                     <p class="text-gray-600 pl-8"><%= faq.a %></p>
@@ -154,15 +154,15 @@ Página de planes de suscripción
     </section>
 
     <%# CTA %>
-    <section class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-20">
+    <section class="bg-gradient-to-r from-blue-600 to-blue-900 text-white py-20">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl font-bold mb-6">¿Listo para comenzar?</h2>
             <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">Únete a miles de estudiantes transformando su futuro</p>
             <div class="flex gap-4 justify-center flex-wrap">
-                <button onclick="openModal('registerModal')" class="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl transition">
+                <button onclick="openModal('registerModal')" class="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:shadow-xl transition">
                     Comenzar Gratis <span class="material-symbols-outlined">arrow_forward</span>
                 </button>
-                <a href="/contacto" class="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-indigo-600 transition">
+                <a href="/contacto" class="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-blue-600 transition">
                     Contactar Ventas <span class="material-symbols-outlined">phone</span>
                 </a>
             </div>
