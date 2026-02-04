@@ -143,18 +143,18 @@ Historia, misión y equipo fundador
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <% 
                 const founders = [
-                    { name: 'Kevin Lizarzabal', role: 'CEO & Fundador', desc: 'Lidera la visión estratégica de EduConecta.', color: 'from-indigo-600 to-purple-700' },
-                    { name: 'José Torres', role: 'Director de Operaciones', desc: 'Especialista en optimización de procesos.', color: 'from-green-600 to-teal-600' },
-                    { name: 'Gustavo Colina', role: 'Director de Marketing', desc: 'Lidera estrategias de crecimiento.', color: 'from-yellow-600 to-orange-600' },
-                    { name: 'Gabriel Bolívar', role: 'Director de Tecnología', desc: 'Experto en plataformas educativas.', color: 'from-blue-600 to-cyan-600' },
-                    { name: 'Jesús Velázquez', role: 'Fundador', desc: 'Especialista en diseño instruccional.', color: 'from-red-600 to-pink-600' },
-                    { name: 'Carlos Nieves', role: 'Fundador', desc: 'Experto en contenidos educativos.', color: 'from-purple-600 to-pink-600' }
+                    { name: 'Kevin Lizarzabal', role: 'CEO & Fundador', desc: 'Lidera la visión estratégica de EduConecta.', color: 'from-indigo-600 to-purple-700', image: '/images/profile-man-1.jpg' },
+                    { name: 'José Torres', role: 'Director de Operaciones', desc: 'Especialista en optimización de procesos.', color: 'from-green-600 to-teal-600', image: '/images/profile-man-2.jpg' },
+                    { name: 'Gustavo Colina', role: 'Director de Marketing', desc: 'Lidera estrategias de crecimiento.', color: 'from-yellow-600 to-orange-600', image: '/images/profile-man-3.jpg' },
+                    { name: 'Gabriel Bolívar', role: 'Director de Tecnología', desc: 'Experto en plataformas educativas.', color: 'from-blue-600 to-cyan-600', image: '/images/profile-man-4.jpg' },
+                    { name: 'Jesús Velázquez', role: 'Fundador', desc: 'Especialista en diseño instruccional.', color: 'from-red-600 to-pink-600', image: '/images/profile-man-5.jpg' },
+                    { name: 'Carlos Nieves', role: 'Fundador', desc: 'Experto en contenidos educativos.', color: 'from-purple-600 to-pink-600', image: '/images/profile-man-6.jpg' }
                 ];
                 
                 founders.forEach(f => { %>
                 <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
                     <div class="relative h-64 bg-gradient-to-br <%= f.color %>">
-                        <img src="/images/OIP.webp" alt="<%= f.name %>" class="w-full h-full object-cover opacity-80">
+                        <img src="<%= f.image %>" alt="<%= f.name %>" class="w-full h-full object-cover opacity-80">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         <div class="absolute bottom-4 left-4 right-4">
                             <h3 class="text-2xl font-bold text-white mb-1"><%= f.name %></h3>

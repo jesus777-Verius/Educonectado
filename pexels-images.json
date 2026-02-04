@@ -1,0 +1,32 @@
+{
+  "images": {
+    "profile-man-1.jpg": "https://images.pexels.com/photos/32525235/pexels-photo-32525235.jpeg?_gl=1*1u8rxn1*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjM0NzcxJGo1OSRsMCRoMA..",
+    "profile-man-2.jpg": "https://images.pexels.com/photos/16886371/pexels-photo-16886371.jpeg?_gl=1*132869p*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzMzI4JGo1OSRsMCRoMA..",
+    "profile-man-3.jpg": "https://images.pexels.com/photos/19664588/pexels-photo-19664588.jpeg?_gl=1*sihw5d*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjM0NzcxJGo1OSRsMCRoMA..",
+    "profile-man-4.jpg": "https://images.pexels.com/photos/16886372/pexels-photo-16886372.jpeg?_gl=1*1y209w2*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzMzI4JGo1OSRsMCRoMA..",
+    "profile-man-5.jpg": "https://images.pexels.com/photos/34408928/pexels-photo-34408928.jpeg?_gl=1*1u8rxn1*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjM0NzcxJGo1OSRsMCRoMA..",
+    "profile-man-6.jpg": "https://images.pexels.com/photos/18153492/pexels-photo-18153492.jpeg?_gl=1*sihw5d*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjM0NzcxJGo1OSRsMCRoMA..",
+    "course-english.jpg": "https://images.pexels.com/photos/5905709/pexels-photo-5905709.jpeg?_gl=1*1avr49q*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMyMzkwJGo1NyRsMCRoMA..",
+    "course-languages.jpg": "https://images.pexels.com/photos/6084298/pexels-photo-6084298.jpeg?_gl=1*1x8uoot*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzMzI4JGo1OSRsMCRoMA..",
+    "course-travel.jpg": "https://images.pexels.com/photos/8869333/pexels-photo-8869333.jpeg?_gl=1*2edye4*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzNDQ1JGo1MCRsMCRoMA..",
+    "course-programming.jpg": "https://images.pexels.com/photos/5926382/pexels-photo-5926382.jpeg?_gl=1*19crk34*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzNTU0JGoyOSRsMCRoMA..",
+    "course-coding.jpg": "https://images.pexels.com/photos/3861967/pexels-photo-3861967.jpeg?_gl=1*1mr6gv3*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzNTU0JGoyOSRsMCRoMA..",
+    "course-web.jpg": "https://images.pexels.com/photos/1036641/pexels-photo-1036641.jpeg?_gl=1*1mr6gv3*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzNTU0JGoyOSRsMCRoMA..",
+    "course-business.jpg": "https://images.pexels.com/photos/8145352/pexels-photo-8145352.jpeg?_gl=1*f6en5s*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzNjU2JGo2MCRsMCRoMA..",
+    "course-marketing.jpg": "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?_gl=1*juyfky*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzNzA0JGoxMiRsMCRoMA..",
+    "course-management.jpg": "https://images.pexels.com/photos/5561920/pexels-photo-5561920.jpeg?_gl=1*juyfky*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzNzA0JGoxMiRsMCRoMA..",
+    "course-kids.jpg": "https://images.pexels.com/photos/8423049/pexels-photo-8423049.jpeg?_gl=1*1urc1vg*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMyMjU0JGo1MCRsMCRoMA..",
+    "course-grammar.jpg": "https://images.pexels.com/photos/8199595/pexels-photo-8199595.jpeg?_gl=1*1a1uh12*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjM0MjQ5JGo1OSRsMCRoMA..",
+    "course-certification.jpg": "https://images.pexels.com/photos/4144694/pexels-photo-4144694.jpeg?_gl=1*1z0yscn*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjM0MzI5JGo1OSRsMCRoMA..",
+    "course-reading.jpg": "https://images.pexels.com/photos/35566030/pexels-photo-35566030.jpeg?_gl=1*1n6l0rd*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjM0MjQ5JGo1OSRsMCRoMA..",
+    "blog-digital.jpg": "https://images.pexels.com/photos/265667/pexels-photo-265667.jpeg?_gl=1*9nbj7s*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzNzgxJGo1OSRsMCRoMA..",
+    "blog-startup.jpg": "https://images.pexels.com/photos/7414222/pexels-photo-7414222.jpeg?_gl=1*t16vi*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzODI0JGoxNiRsMCRoMA..",
+    "blog-learning.jpg": "https://images.pexels.com/photos/4144531/pexels-photo-4144531.jpeg?_gl=1*pgw5go*_ga*MTk2NzIzNDE3NC4xNzU4NjAwMjA1*_ga_8JE65Q40S6*czE3NzAyMzIyNDQkbzQxJGcxJHQxNzcwMjMzODU0JGo1OSRsMCRoMA.."
+  },
+  "instructions": {
+    "title": "Descargador de Imágenes de Pexels",
+    "description": "Este archivo contiene URLs de imágenes de Pexels",
+    "usage": "Ejecuta: npm run download-images",
+    "note": "Puedes reemplazar cualquier URL con otra de Pexels manteniendo el formato"
+  }
+}

@@ -68,7 +68,7 @@ Artículos y recursos educativos
                         Descubre cómo la educación digital está transformando el panorama educativo venezolano.
                     </p>
                     <div class="flex items-center gap-4 mb-8 pb-8 border-b border-white/20">
-                        <img src="/images/OIP.webp" alt="Kevin Lizarzabal" class="w-16 h-16 rounded-full border-4 border-white/30">
+                        <img src="/images/profile-man-1.jpg" alt="Kevin Lizarzabal" class="w-16 h-16 rounded-full border-4 border-white/30">
                         <div>
                             <div class="font-bold text-lg">Kevin Lizarzabal</div>
                             <div class="text-sm opacity-80">CEO & Fundador • 15 min de lectura</div>
@@ -79,7 +79,7 @@ Artículos y recursos educativos
                     </a>
                 </div>
                 <div class="relative h-full min-h-[400px]">
-                    <img src="/images/OIP.webp" alt="Artículo destacado" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="/images/blog-learning.jpg" alt="Artículo destacado" class="absolute inset-0 w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -95,12 +95,12 @@ Artículos y recursos educativos
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <% 
             const posts = [
-                { title: '10 Estrategias de Marketing Digital para PyMEs', category: 'Marketing', color: '#667eea', author: 'José Torres', role: 'Director de Operaciones', time: 'Hace 3 días', read: '8 min', image: '/images/imagen 1.png' },
-                { title: 'JavaScript en 2025: ¿Qué aprender primero?', category: 'Tecnología', color: '#764ba2', author: 'Gabriel Bolívar', role: 'Director de Tecnología', time: 'Hace 5 días', read: '12 min', image: '/images/imagen 2.png' },
-                { title: 'Cómo Empezar tu Negocio Online con $100', category: 'Negocios', color: '#28a745', author: 'Gustavo Colina', role: 'Director de Marketing', time: 'Hace 1 semana', read: '10 min', image: '/images/imagen 3.png' },
-                { title: 'Microlearning: El Futuro del Aprendizaje', category: 'Educación', color: '#dc3545', author: 'Jesús Velázquez', role: 'Fundador', time: 'Hace 2 semanas', read: '7 min', image: '/images/imagen 4.png' },
-                { title: 'Hábitos de Estudiantes Exitosos', category: 'Desarrollo Personal', color: '#17a2b8', author: 'Carlos Nieves', role: 'Fundador', time: 'Hace 2 semanas', read: '6 min', image: '/images/imagen 5.png' },
-                { title: 'Herramientas Gratuitas para Estudiantes', category: 'Productividad', color: '#ffc107', author: 'José Torres', role: 'Director de Operaciones', time: 'Hace 3 semanas', read: '9 min', image: '/images/imagen 6.png' }
+                { title: '10 Estrategias de Marketing Digital para PyMEs', category: 'Marketing', color: '#667eea', author: 'José Torres', role: 'Director de Operaciones', time: 'Hace 3 días', read: '8 min', image: '/images/blog-digital.jpg', authorImage: '/images/profile-man-2.jpg' },
+                { title: 'JavaScript en 2025: ¿Qué aprender primero?', category: 'Tecnología', color: '#764ba2', author: 'Gabriel Bolívar', role: 'Director de Tecnología', time: 'Hace 5 días', read: '12 min', image: '/images/course-programming.jpg', authorImage: '/images/profile-man-4.jpg' },
+                { title: 'Cómo Empezar tu Negocio Online con $100', category: 'Negocios', color: '#28a745', author: 'Gustavo Colina', role: 'Director de Marketing', time: 'Hace 1 semana', read: '10 min', image: '/images/blog-startup.jpg', authorImage: '/images/profile-man-3.jpg' },
+                { title: 'Microlearning: El Futuro del Aprendizaje', category: 'Educación', color: '#dc3545', author: 'Jesús Velázquez', role: 'Fundador', time: 'Hace 2 semanas', read: '7 min', image: '/images/blog-learning.jpg', authorImage: '/images/profile-man-5.jpg' },
+                { title: 'Hábitos de Estudiantes Exitosos', category: 'Desarrollo Personal', color: '#17a2b8', author: 'Carlos Nieves', role: 'Fundador', time: 'Hace 2 semanas', read: '6 min', image: '/images/course-business.jpg', authorImage: '/images/profile-man-6.jpg' },
+                { title: 'Herramientas Gratuitas para Estudiantes', category: 'Productividad', color: '#ffc107', author: 'José Torres', role: 'Director de Operaciones', time: 'Hace 3 semanas', read: '9 min', image: '/images/course-web.jpg', authorImage: '/images/profile-man-2.jpg' }
             ];
             
             posts.forEach(post => { %>
@@ -121,7 +121,7 @@ Artículos y recursos educativos
                     <h3 class="text-xl font-bold text-gray-800 mb-3 line-clamp-2 hover:text-indigo-600 transition"><%= post.title %></h3>
                     <div class="flex items-center justify-between pt-4 border-t">
                         <div class="flex items-center gap-3">
-                            <img src="/images/OIP.webp" alt="<%= post.author %>" class="w-10 h-10 rounded-full">
+                            <img src="<%= post.authorImage %>" alt="<%= post.author %>" class="w-10 h-10 rounded-full">
                             <div>
                                 <div class="font-semibold text-sm text-gray-800"><%= post.author %></div>
                                 <div class="text-xs text-gray-500"><%= post.role %></div>

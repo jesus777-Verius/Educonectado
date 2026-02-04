@@ -22,7 +22,7 @@ const courses = [
         description: 'Aprende las primeras 1000 palabras y estructuras simples.',
         rating: 4.8, reviews: 234, hours: 8, lessons: 12,
         price: 29.99, originalPrice: 59.99, discount: 50,
-        image: '/images/OIP.webp',
+        image: '/images/course-english.jpg',
         badge: 'POPULAR', badgeColor: '#28a745'
     },
     {
@@ -33,7 +33,7 @@ const courses = [
         description: 'Mejora tu pronunciación y amplía tus modismos.',
         rating: 4.9, reviews: 189, hours: 20, lessons: 24,
         price: 49.99, originalPrice: 89.99, discount: 44,
-        image: '/images/imagen 1.png',
+        image: '/images/course-languages.jpg',
         badge: 'HOT', badgeColor: '#ffc107'
     },
     {
@@ -44,7 +44,7 @@ const courses = [
         description: 'Domina tiempos verbales avanzados y estructuras complejas.',
         rating: 4.6, reviews: 98, hours: 12, lessons: 16,
         price: 34.99, originalPrice: 59.99, discount: 42,
-        image: '/images/imagen 2.png',
+        image: '/images/course-grammar.jpg',
         badge: 'NEW', badgeColor: '#dc3545'
     },
     {
@@ -55,7 +55,7 @@ const courses = [
         description: 'Estrategias para exámenes internacionales.',
         rating: 4.8, reviews: 267, hours: 25, lessons: 30,
         price: 44.99, originalPrice: 79.99, discount: 44,
-        image: '/images/imagen 3.png',
+        image: '/images/course-certification.jpg',
         badge: null, badgeColor: null
     },
     {
@@ -66,7 +66,7 @@ const courses = [
         description: 'Reuniones, emails y negociación en inglés.',
         rating: 4.7, reviews: 156, hours: 15, lessons: 18,
         price: 39.99, originalPrice: 69.99, discount: 43,
-        image: '/images/imagen 4.png',
+        image: '/images/course-business.jpg',
         badge: null, badgeColor: null
     },
     {
@@ -77,7 +77,7 @@ const courses = [
         description: 'Frases clave para aeropuertos, hoteles y restaurantes.',
         rating: 4.9, reviews: 312, hours: 16, lessons: 20,
         price: 0, originalPrice: 49.99, discount: 100,
-        image: '/images/imagen 5.png',
+        image: '/images/course-travel.jpg',
         badge: 'FREE', badgeColor: '#28a745'
     },
     {
@@ -88,7 +88,7 @@ const courses = [
         description: 'Mejora tu velocidad y comprensión lectora.',
         rating: 4.7, reviews: 145, hours: 10, lessons: 14,
         price: 24.99, originalPrice: 44.99, discount: 44,
-        image: '/images/imagen 6.png',
+        image: '/images/course-reading.jpg',
         badge: 'TRENDING', badgeColor: '#ff6b6b'
     },
     {
@@ -99,7 +99,7 @@ const courses = [
         description: 'Aprende jugando con actividades interactivas.',
         rating: 4.9, reviews: 287, hours: 12, lessons: 20,
         price: 34.99, originalPrice: 67.99, discount: 49,
-        image: '/images/imagen 7.png',
+        image: '/images/course-kids.jpg',
         badge: 'KIDS', badgeColor: '#ff6b6b'
     },
     {
@@ -110,7 +110,7 @@ const courses = [
         description: 'SEO, redes sociales y publicidad pagada.',
         rating: 4.8, reviews: 234, hours: 20, lessons: 24,
         price: 29.99, originalPrice: 59.99, discount: 50,
-        image: '/images/imagen 1.png',
+        image: '/images/course-marketing.jpg',
         badge: 'POPULAR', badgeColor: '#28a745'
     },
     {
@@ -121,7 +121,7 @@ const courses = [
         description: 'HTML, CSS, JavaScript y frameworks.',
         rating: 4.9, reviews: 456, hours: 40, lessons: 50,
         price: 49.99, originalPrice: 99.99, discount: 50,
-        image: '/images/OIP.webp',
+        image: '/images/course-web.jpg',
         badge: 'BESTSELLER', badgeColor: '#667eea'
     },
     {
@@ -132,7 +132,7 @@ const courses = [
         description: 'Administración, finanzas y liderazgo.',
         rating: 4.7, reviews: 178, hours: 18, lessons: 22,
         price: 39.99, originalPrice: 79.99, discount: 50,
-        image: '/images/imagen 2.png',
+        image: '/images/course-management.jpg',
         badge: null, badgeColor: null
     }
 ];
