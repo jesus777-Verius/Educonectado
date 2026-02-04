@@ -10,8 +10,22 @@ ERROR 404 - PÁGINA NO ENCONTRADA
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error 404 - EduConecta</title>
     <link rel="icon" type="image/png" href="/images/logoEduConecta.png">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Figtree:wght@400;500;600;700&family=Material+Symbols+Outlined" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Space Grotesk', 'sans-serif'],
+                        'body': ['Figtree', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 <body class="bg-gradient-to-r from-blue-600 to-blue-900 min-h-screen flex items-center justify-center p-4">
     <div class="max-w-2xl mx-auto text-center text-white">
